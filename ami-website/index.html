@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       HƯỚNG DẪN CHỈNH SỬA:
+       - Tìm phần có chú thích "✏️ SỬA:" để thay nội dung
+       - Tìm phần có chú thích "🖼️ ẢNH:" để thêm hình ảnh
+       - Thay src="images/xxx.jpg" bằng đường dẫn ảnh thật
+       ============================================= */
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #fff;
+      color: #222;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* ---- TOPBAR ---- */
+    .topbar {
+      background: #111;
+      padding: 7px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar-left { color: #aaa; font-size: 12px; }
+    .topbar-left a { color: #aaa; }
+    .topbar-social { display: flex; gap: 8px; }
+    .soc {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 13px; font-weight: 700;
+    }
+    .soc-fb { background: #1877f2; }
+    .soc-yt { background: #ff0000; }
+    .soc-tw { background: #1da1f2; }
+    .soc-ig { background: #c13584; }
+    .soc-pt { background: #e60023; }
+
+    /* ---- HEADER ---- */
+    .header {
+      background: #000;
+      padding: 14px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { display: flex; align-items: center; gap: 14px; }
+    /* 🖼️ ẢNH: Logo — đặt file logo.png vào thư mục images/ */
+    .logo-img {
+      width: 60px; height: 60px; object-fit: contain;
+      display: none; /* Bỏ "display:none" khi đã có ảnh logo */
+    }
+    .logo-text .name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 38px;
+      letter-spacing: 0.18em;
+      color: #fff;
+      line-height: 1;
+    }
+    .logo-text .sub {
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      color: #ccc;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .header-right {
+      display: flex; align-items: center; gap: 20px;
+      color: #fff; font-size: 11px; letter-spacing: 0.1em;
+    }
+    .cart-btn {
+      display: flex; align-items: center; gap: 6px;
+      border: 1px solid #444; padding: 6px 14px;
+      color: #fff; font-size: 11px; letter-spacing: 0.12em;
+      cursor: pointer;
+    }
+
+    /* ---- NAV ---- */
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: center;
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    nav a {
+      color: #222;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      padding: 16px 16px;
+      border-bottom: 2px solid transparent;
+      display: block;
+    }
+    nav a:hover, nav a.active {
+      color: #000;
+      border-bottom-color: #000;
+    }
+
+    /* ---- HERO BANNER ---- */
+    .hero {
+      background: #000;
+      position: relative;
+      overflow: hidden;
+      min-height: 480px;
+      display: flex;
+      align-items: center;
+    }
+    /* Slideshow banner — nhiều ảnh tự động đổi */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.45;
+      transition: background-image 0s;
+    }
+    .hero-slide {
+      position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease-in-out;
+    }
+    .hero-slide.active { opacity: 0.45; }
+
+    /* Chấm điều hướng slideshow */
+    .hero-dots {
+      position: absolute; bottom: 16px; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 8px; z-index: 10;
+    }
+    .hero-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      cursor: pointer; border: none;
+      transition: background .3s, transform .3s;
+    }
+    .hero-dot.active {
+      background: #e00;
+      transform: scale(1.3);
+    }
+
+    /* Nút trái / phải */
+    .hero-arrow {
+      position: absolute; top: 50%; z-index: 10;
+      transform: translateY(-50%);
+      background: rgba(0,0,0,0.35); color: #fff;
+      border: none; font-size: 22px; cursor: pointer;
+      width: 40px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .hero-arrow:hover { background: rgba(200,0,0,0.6); }
+    .hero-arrow-prev { left: 12px; }
+    .hero-arrow-next { right: 12px; }
+    /* Tia đỏ neon trang trí */
+    .hero-rays {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      width: 100%; max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px;
+      display: grid;
+      grid-template-columns: 200px 200px 1fr 200px;
+      gap: 12px;
+      align-items: end;
+    }
+    /* 🖼️ ẢNH: 3 ảnh trong hero — thay src bên dưới */
+    .hero-photo {
+      height: 320px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo-placeholder {
+      /* Hiện khi chưa có ảnh */
+      width: 100%; height: 100%;
+      background: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      color: #444; font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .hero-text {
+      padding-bottom: 12px;
+      padding-left: 20px;
+    }
+    .hero-label {
+      font-size: 10px; letter-spacing: 0.35em;
+      color: #e00; text-transform: uppercase; margin-bottom: 8px;
+    }
+    /* ✏️ SỬA: Tiêu đề hero banner */
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      color: #fff;
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+      margin-bottom: 10px;
+    }
+    /* ✏️ SỬA: Dòng chữ script nghiêng */
+    .hero-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 28px;
+      color: #fff;
+      opacity: 0.9;
+    }
+
+    /* ---- CTA BAR ---- */
+    .cta-bar {
+      background: #222;
+      padding: 13px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    /* ✏️ SỬA: Text và số điện thoại */
+    .cta-label {
+      color: #fff; font-size: 13px;
+      font-weight: 700; font-style: italic; letter-spacing: 0.08em;
+    }
+    .cta-phones { display: flex; gap: 32px; }
+    .cta-phone {
+      color: #fff; font-size: 13px;
+      font-weight: 700; letter-spacing: 0.05em;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .cta-phone::before {
+      content: '📞';
+      font-size: 12px;
+    }
+
+    /* ---- SECTION CHUNG ---- */
+    .section { padding: 48px 40px; }
+    .section-center { text-align: center; }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px; letter-spacing: 0.12em;
+      color: #111; text-align: center;
+      margin-bottom: 32px;
+    }
+    .section-title-white { color: #fff; }
+
+    .btn-outline {
+      border: 1.5px solid #111;
+      color: #111; background: none;
+      padding: 12px 28px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-outline:hover { background: #111; color: #fff; }
+    .btn-solid {
+      border: 1.5px solid #111;
+      color: #fff; background: #111;
+      padding: 12px 28px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-solid:hover { background: #333; }
+    .btn-outline-white {
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: #fff; background: none;
+      padding: 12px 28px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      cursor: pointer; font-family: 'Montserrat', sans-serif;
+    }
+    .btn-row { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
+
+    /* ---- KHOÁ HỌC ---- */
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .course-card {
+      border: 1px solid #e8e8e8;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .course-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    /* 🖼️ ẢNH: Ảnh thumbnail khoá học — thay src trong mỗi .course-thumb */
+    .course-thumb {
+      height: 180px; overflow: hidden; position: relative;
+      background: #f0f0f0;
+    }
+    .course-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .course-overlay {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.62);
+      color: #fff; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 10px;
+      line-height: 1.4;
+    }
+    .course-body { padding: 12px; }
+    .course-price { color: #c00; font-size: 15px; font-weight: 700; }
+    .course-old { color: #aaa; font-size: 11px; text-decoration: line-through; }
+    .course-desc { font-size: 11px; color: #666; margin-top: 5px; line-height: 1.5; }
+
+    /* ---- 10 UY TÍN ---- */
+    .utin {
+      background: #111;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    /* 🖼️ ẢNH: Background section "10 điều uy tín" */
+    .utin-bg {
+      position: absolute; inset: 0;
+      background-image: url('images/utin-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.12;
+    }
+    .utin-inner { position: relative; z-index: 2; }
+    .utin-script {
+      font-family: 'Dancing Script', cursive;
+      font-size: 42px; color: #fff; margin-bottom: 8px;
+    }
+    .utin-sub {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #888; margin-bottom: 32px;
+    }
+    .utin-nums {
+      display: flex; justify-content: center; gap: 8px;
+      margin-bottom: 32px;
+      border-top: 1px solid #2a2a2a;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 16px 0;
+    }
+    .utin-num {
+      width: 40px; height: 40px;
+      border: 1px solid #e00;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px; color: #e00;
+    }
+    /* ✏️ SỬA: 10 điều uy tín — thay nội dung từng điểm */
+    .utin-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; max-width: 800px; margin: 0 auto;
+    }
+    .utin-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid #1e1e1e;
+      text-align: left;
+    }
+    .utin-item-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px; color: #e00; flex-shrink: 0; line-height: 1;
+    }
+    .utin-item-text { font-size: 12px; color: #bbb; line-height: 1.6; }
+
+    /* ---- DỊCH VỤ ---- */
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .svc-card {
+      height: 280px; position: relative; overflow: hidden;
+      cursor: pointer;
+    }
+    .svc-card:hover .svc-img { transform: scale(1.04); }
+    /* 🖼️ ẢNH: Ảnh dịch vụ — thay src trong .svc-img img */
+    .svc-img {
+      width: 100%; height: 100%;
+      transition: transform 0.4s;
+      background: #1a1a1a;
+    }
+    .svc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .svc-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
+    }
+    .svc-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 16px;
+      color: #fff; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.45);
+    }
+
+    /* ---- ABOUT ---- */
+    .about {
+      background: #000;
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-glitter {
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 45%;
+      background: radial-gradient(ellipse at left center, #4a001533 0%, transparent 70%);
+    }
+    /* 🖼️ ẢNH: Ảnh bên phải section About */
+    .about-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr 380px;
+      gap: 48px; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-photo {
+      height: 380px; overflow: hidden;
+      border: 1px solid #333;
+    }
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about-text { text-align: center; }
+    .about-eyebrow {
+      font-size: 10px; letter-spacing: 0.3em; color: #888;
+      text-transform: uppercase; margin-bottom: 8px;
+    }
+    .about-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px; letter-spacing: 0.15em;
+      color: #fff; margin-bottom: 20px;
+    }
+    /* ✏️ SỬA: Nội dung giới thiệu */
+    .about-body {
+      font-size: 13px; color: #999;
+      line-height: 1.9;
+    }
+
+    /* ---- STATS ---- */
+    .stats {
+      background: #000;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid #1e1e1e;
+    }
+    .stat {
+      padding: 28px 20px; text-align: center;
+      border-right: 1px solid #1e1e1e;
+    }
+    .stat:last-child { border-right: none; }
+    /* ✏️ SỬA: Số liệu thống kê */
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px; color: #fff; letter-spacing: 0.05em;
+    }
+    .stat-lbl {
+      font-size: 10px; letter-spacing: 0.2em;
+      color: #555; text-transform: uppercase; margin-top: 4px;
+    }
+
+    /* ---- GALLERY ---- */
+    .gallery-section { background: #000; padding: 40px 0; }
+    .gallery-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px; letter-spacing: 0.14em;
+      color: #fff; text-align: center; margin-bottom: 24px;
+    }
+    /* 🖼️ ẢNH: Gallery ảnh tone makeup — thêm ảnh vào .gallery-grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+    .gal-item {
+      height: 220px; overflow: hidden;
+      background: #111; cursor: pointer;
+    }
+    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .gal-item:hover img { transform: scale(1.05); }
+    .gal-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      color: #333; font-size: 11px; letter-spacing: 0.1em;
+    }
+    .gallery-more { text-align: center; margin-top: 24px; }
+
+    /* ---- FORM ĐĂNG KÝ ---- */
+    .form-section { background: #fff; padding: 60px 40px; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; max-width: 700px; margin: 0 auto;
+    }
+    .form-grid input,
+    .form-grid select,
+    .form-grid textarea {
+      border: 1px solid #ddd;
+      font-size: 13px; padding: 12px 14px;
+      width: 100%; font-family: 'Montserrat', sans-serif;
+      outline: none; color: #222;
+    }
+    .form-grid input:focus,
+    .form-grid select:focus,
+    .form-grid textarea:focus { border-color: #111; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .form-grid textarea { height: 100px; resize: none; }
+    .form-submit {
+      text-align: center; margin-top: 16px;
+    }
+    .form-submit button {
+      background: #000; color: #fff; border: none;
+      padding: 14px 48px; font-size: 11px;
+      font-weight: 700; letter-spacing: 0.25em;
+      text-transform: uppercase; cursor: pointer;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .form-submit button:hover { background: #222; }
+
+    /* ---- TIN TỨC ---- */
+    .news-section { padding: 48px 40px; background: #fff; border-top: 1px solid #eee; }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+    .news-card { border: 1px solid #eee; overflow: hidden; cursor: pointer; }
+    .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    /* 🖼️ ẢNH: Ảnh tin tức — thay src trong mỗi .news-thumb img */
+    .news-thumb { height: 160px; overflow: hidden; background: #f5f5f5; }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .news-card:hover .news-thumb img { transform: scale(1.04); }
+    .news-body { padding: 14px; }
+    .news-tag {
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: #c00; font-weight: 700; margin-bottom: 6px;
+    }
+    .news-title { font-size: 12px; font-weight: 500; line-height: 1.5; color: #222; margin-bottom: 8px; }
+    .news-date { font-size: 10px; color: #aaa; }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background: #111;
+      padding: 48px 40px 24px;
+      color: #666;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 40px; margin-bottom: 32px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 30px; letter-spacing: 0.22em; color: #fff; line-height: 1;
+    }
+    .footer-logo-sub {
+      font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
+      color: #444; margin-top: 2px; margin-bottom: 16px;
+    }
+    .footer-desc { font-size: 12px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .footer-contact {
+      display: flex; gap: 8px; margin-bottom: 8px;
+      font-size: 12px; color: #555; align-items: flex-start;
+    }
+    .footer-contact .ic { color: #e00; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .footer-bank {
+      background: #0a0a0a; border: 1px solid #1e1e1e;
+      padding: 12px; margin-top: 14px; font-size: 11px; color: #555; line-height: 1.7;
+    }
+    .footer-bank strong {
+      color: #777; display: block;
+      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px;
+    }
+    .footer-social { display: flex; gap: 8px; margin-top: 16px; }
+    footer h4 {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: #fff; font-weight: 700;
+      margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+    footer ul { list-style: none; padding: 0; }
+    footer li { font-size: 12px; color: #555; margin-bottom: 8px; }
+    footer a { color: #555; }
+    footer a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid #1a1a1a;
+      padding-top: 16px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ---- FLOATING CONTACT ---- */
+    .float-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: #222; z-index: 999;
+      padding: 10px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .float-label {
+      color: #fff; font-size: 12px; font-weight: 700;
+      font-style: italic; letter-spacing: 0.08em;
+    }
+    .float-phones { display: flex; gap: 28px; }
+    .float-phone {
+      color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOPBAR
+       ✏️ SỬA: Giờ làm việc, số điện thoại, link mạng xã hội
+  ============================================================ -->
+  <div class="topbar">
+    <div class="topbar-left">
+      📞 Hotline: <a href="tel:0909123456">0909 123 456</a>
+      &nbsp;|&nbsp;
+      🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00
+    </div>
+    <div class="topbar-social">
+      <!-- ✏️ SỬA: Thay href bằng link trang mạng xã hội của bạn -->
+      <a href="https://facebook.com/" target="_blank" class="soc soc-fb">f</a>
+      <a href="https://youtube.com/" target="_blank" class="soc soc-yt">▶</a>
+      <a href="https://twitter.com/" target="_blank" class="soc soc-tw">𝕏</a>
+      <a href="https://instagram.com/" target="_blank" class="soc soc-ig">📷</a>
+      <a href="https://pinterest.com/" target="_blank" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       HEADER
+       🖼️ ẢNH: Đặt file logo vào images/logo.png rồi bỏ display:none
+       ✏️ SỬA: Tên thương hiệu, slogan
+  ============================================================ -->
+  <div class="header">
+    <div class="logo">
+      <img src="images/logo.png" alt="AMI Logo" class="logo-img" />
+      <div class="logo-text">
+        <div class="name">AMI</div>              <!-- ✏️ SỬA: Tên thương hiệu -->
+        <div class="sub">Make &nbsp;Up &nbsp;Academy</div>  <!-- ✏️ SỬA: Slogan -->
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="cart-btn">🛒 GIỎ HÀNG (0)</button>
+    </div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <!-- ============================================================
+       HERO BANNER
+       🖼️ ẢNH: images/banner.jpg — ảnh nền banner chính
+       🖼️ ẢNH: images/hero-1.jpg, hero-2.jpg, hero-3.jpg — 3 ảnh trong khung
+       ✏️ SỬA: Tiêu đề, dòng chữ script
+  ============================================================ -->
+  <section class="hero" id="hero-section">
+    <!--
+      🖼️ ẢNH SLIDESHOW: Thêm ảnh bìa tại đây.
+      Mỗi dòng là một ảnh — thêm bao nhiêu cũng được.
+      Chỉ cần thêm thêm dòng: 'images/banner4.jpg',
+    -->
+    <script>
+    const HERO_SLIDES = [
+      'images/banner.jpg',
+      'images/banner2.jpg',
+      'images/banner3.jpg',
+    ];
+    </script>
+
+    <!-- Nút trái / phải -->
+    <button class="hero-arrow hero-arrow-prev" onclick="heroMove(-1)">&#8249;</button>
+    <button class="hero-arrow hero-arrow-next" onclick="heroMove(1)">&#8250;</button>
+
+    <!-- Chấm điều hướng -->
+    <div class="hero-dots" id="hero-dots"></div>
+
+    <!-- Tia đỏ neon trang trí — KHÔNG CẦN SỬA -->
+    <svg class="hero-rays" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="40%" stop-color="#ff2200" stop-opacity="0.95"/>
+          <stop offset="100%" stop-color="#ff2200" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="r2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#880000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff0000" stop-opacity="0.6"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="350" y1="0" x2="1200" y2="340" stroke="url(#r1)" stroke-width="2.5"/>
+      <line x1="370" y1="0" x2="1200" y2="300" stroke="url(#r2)" stroke-width="1.2"/>
+      <line x1="330" y1="10" x2="1200" y2="400" stroke="url(#r1)" stroke-width="3.5"/>
+      <line x1="310" y1="0" x2="1100" y2="500" stroke="url(#r2)" stroke-width="1.8"/>
+      <line x1="300" y1="20" x2="1050" y2="500" stroke="url(#r1)" stroke-width="1"/>
+      <ellipse cx="650" cy="250" rx="200" ry="100" fill="#88000012"/>
+    </svg>
+
+    <div class="hero-inner">
+      <!-- Ảnh trái 1 -->
+      <div class="hero-photo">
+        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
+        <img src="images/hero-1.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="hero-photo-placeholder" style="display:none">Ảnh 1</div>
+      </div>
+
+      <!-- Ảnh trái 2 -->
+      <div class="hero-photo">
+        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
+        <img src="images/hero-2.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="hero-photo-placeholder" style="display:none">Ảnh 2</div>
+      </div>
+
+      <!-- Chữ giữa -->
+      <div class="hero-text">
+        <div class="hero-label">AMI Make Up Academy</div>  <!-- ✏️ SỬA -->
+        <div class="hero-h1">MAKE UP PRO<br/>2026</div>   <!-- ✏️ SỬA -->
+        <div class="hero-script">Basic To Advanced 2026</div>  <!-- ✏️ SỬA -->
+      </div>
+
+      <!-- Ảnh phải -->
+      <div class="hero-photo">
+        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
+        <img src="images/hero-3.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="hero-photo-placeholder" style="display:none">Ảnh 3</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Bar -->
+  <div class="cta-bar">
+    <div class="cta-label">TƯ VẤN TRỰC TUYẾN 24/7</div>  <!-- ✏️ SỬA -->
+    <div class="cta-phones">
+      <div class="cta-phone">0979.963.369</div>  <!-- ✏️ SỬA: Số điện thoại -->
+      <div class="cta-phone">0888.646.886</div>  <!-- ✏️ SỬA: Số điện thoại -->
+    </div>
+  </div>
+
+  <!-- ============================================================
+       KHOÁ HỌC
+       🖼️ ẢNH: images/course-1.jpg ... course-8.jpg
+       ✏️ SỬA: Tên khoá, giá, mô tả
+       👉 Thêm/xoá .course-card để thêm/bớt khoá học
+  ============================================================ -->
+  <section class="section" id="khoa-hoc">
+    <div class="section-title">KHÓA HỌC NỔI BẬT</div>  <!-- ✏️ SỬA -->
+    <div class="courses-grid">
+
+      <!-- Khoá 1 -->
+      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=1'" style="cursor:pointer">
+        <div class="course-thumb">
+          <img src="images/course-1.jpg" alt="" onerror="this.style.display='none'" />
+          <div class="course-overlay">Khoá Học Make Up Pro 2026<br>Dành Cho Người Mới Bắt Đầu</div>
+        </div>
+        <div class="course-body">
+          <div class="course-price">5.500.000đ</div>
+          <div class="course-old">7.000.000đ</div>
+          <div class="course-desc">Khoá học cơ bản toàn diện, phù hợp người mới bắt đầu</div>
+        </div>
+      </div>
+
+      <!-- Khoá 2 -->
+      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=2'" style="cursor:pointer">
+        <div class="course-thumb">
+          <img src="images/course-2.jpg" alt="" onerror="this.style.display='none'" />
+          <div class="course-overlay">Khoá Make Up Nâng Cao<br>Cấp Tốc Sài Gòn 2026</div>
+        </div>
+        <div class="course-body">
+          <div class="course-price">12.000.000đ</div>
+          <div class="course-old">15.000.000đ</div>
+          <div class="course-desc">6 - 4 | 7 Phú Nhuận | Thành Phố Hồ Chí Minh</div>
+        </div>
+      </div>
+
+      <!-- Khoá 3 -->
+      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=3'" style="cursor:pointer">
+        <div class="course-thumb">
+          <img src="images/course-3.jpg" alt="" onerror="this.style.display='none'" />
+          <div class="course-overlay">Khoá Make Up Nâng Cao<br>Cấp Tốc Hà Nội 2026</div>
+        </div>
+        <div class="course-body">
+          <div class="course-price">12.000.000đ</div>
+          <div class="course-old">15.000.000đ</div>
+          <div class="course-desc">Giảng dạy 3 ngày · 1 day training · 3 layout</div>
+        </div>
+      </div>
+
+      <!-- Khoá 4 -->
+      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=4'" style="cursor:pointer">
+        <div class="course-thumb">
+          <img src="images/course-4.jpg" alt="" onerror="this.style.display='none'" />
+          <div class="course-overlay">Khoá Make Up Cá Nhân<br>Welcome To AMI Academy</div>
+        </div>
+        <div class="course-body">
+          <div class="course-price">18.000.000đ</div>
+          <div class="course-old">22.000.000đ</div>
+          <div class="course-desc">Trợ giảng kèm, hỗ trợ 100% makeup artist</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-row">
+      <button class="btn-outline" onclick="window.location='khoa-hoc.html'">Xem tất cả các khóa học</button>
+      <button class="btn-solid" onclick="window.location='khoa-hoc.html'">Đăng ký giữ xuất học</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       10 ĐIỀU UY TÍN
+       ✏️ SỬA: Tiêu đề và từng điểm uy tín
+  ============================================================ -->
+  <section class="utin" style="position:relative">
+    <div class="utin-bg"></div>
+    <div class="utin-inner">
+      <div class="utin-script">10 Điều uy tín</div>  <!-- ✏️ SỬA -->
+      <div class="utin-sub">Khiến bạn nhất định phải trở thành học viên tại AMI Make Up Academy</div>  <!-- ✏️ SỬA -->
+      <div class="utin-nums">
+        <div class="utin-num">1</div><div class="utin-num">2</div><div class="utin-num">3</div>
+        <div class="utin-num">4</div><div class="utin-num">5</div><div class="utin-num">6</div>
+        <div class="utin-num">7</div><div class="utin-num">8</div><div class="utin-num">9</div>
+        <div class="utin-num">10</div>
+      </div>
+      <div class="utin-grid">
+        <!-- ✏️ SỬA: 10 điều uy tín — thay nội dung từng dòng -->
+        <div class="utin-item"><div class="utin-item-num">01</div><div class="utin-item-text">Không chỉ đào tạo kiến thức, học viên còn được trang bị tư duy thẩm mỹ chuyên sâu</div></div>
+        <div class="utin-item"><div class="utin-item-num">02</div><div class="utin-item-text">Giảng viên là chuyên gia với 10+ năm kinh nghiệm thực chiến trong ngành</div></div>
+        <div class="utin-item"><div class="utin-item-num">03</div><div class="utin-item-text">Lớp học nhỏ, tỉ lệ giảng viên – học viên đảm bảo chất lượng 1-1</div></div>
+        <div class="utin-item"><div class="utin-item-num">04</div><div class="utin-item-text">Cơ sở vật chất hiện đại, trang thiết bị cao cấp chuyên nghiệp</div></div>
+        <div class="utin-item"><div class="utin-item-num">05</div><div class="utin-item-text">Chứng chỉ được công nhận, hỗ trợ giới thiệu việc làm sau khoá học</div></div>
+        <div class="utin-item"><div class="utin-item-num">06</div><div class="utin-item-text">Thực hành trên mô hình người thật ngay từ những buổi học đầu tiên</div></div>
+        <div class="utin-item"><div class="utin-item-num">07</div><div class="utin-item-text">Chương trình học được cập nhật liên tục theo xu hướng quốc tế mới nhất</div></div>
+        <div class="utin-item"><div class="utin-item-num">08</div><div class="utin-item-text">Hỗ trợ tư vấn và giải đáp sau khi tốt nghiệp không giới hạn thời gian</div></div>
+        <div class="utin-item"><div class="utin-item-num">09</div><div class="utin-item-text">Học viên được tham gia các buổi workshop, show diễn thực tế</div></div>
+        <div class="utin-item"><div class="utin-item-num">10</div><div class="utin-item-text">Cộng đồng alumni rộng lớn, kết nối cơ hội nghề nghiệp sau khoá học</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DỊCH VỤ
+       🖼️ ẢNH: images/service-1.jpg, service-2.jpg, service-3.jpg
+       ✏️ SỬA: Tên dịch vụ
+  ============================================================ -->
+  <section class="section" id="dich-vu">
+    <div class="section-title">DỊCH VỤ MAKE UP</div>
+    <div class="services-grid">
+
+      <div class="svc-card">
+        <div class="svc-img">
+          <!-- 🖼️ ẢNH: Thay src -->
+          <img src="images/service-1.jpg" alt="Make Up Ngày Cưới" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="svc-overlay"></div>
+        <div class="svc-label">Make Up Ngày Cưới</div>  <!-- ✏️ SỬA -->
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img">
+          <img src="images/service-2.jpg" alt="Make Up Kỷ Yếu" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="svc-overlay"></div>
+        <div class="svc-label">Make Up Kỷ Yếu</div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-img">
+          <img src="images/service-3.jpg" alt="" onerror="this.parentElement.style.background='#1a1a1a'" />
+        </div>
+        <div class="svc-overlay"></div>
+        <div class="svc-label">Make Up Sự Kiện, Sinh Nhật,<br>Party, Chụp Hình Thời Trang</div>  <!-- ✏️ SỬA -->
+      </div>
+
+    </div>
+    <div class="btn-row">
+      <button class="btn-outline">Xem tất cả dịch vụ</button>
+      <button class="btn-solid">Đặt trước dịch vụ</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GIỚI THIỆU
+       🖼️ ẢNH: images/about.jpg
+       ✏️ SỬA: Nội dung giới thiệu
+  ============================================================ -->
+  <section class="about" id="gioi-thieu">
+    <div class="about-glitter"></div>
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="about-eyebrow">About Us</div>
+        <div class="about-title">AMI MAKEUP ACADEMY</div>  <!-- ✏️ SỬA -->
+        <p class="about-body">
+          <!-- ✏️ SỬA: Nội dung giới thiệu về thương hiệu của bạn -->
+          AMI Makeup Academy — Học viện thương hiệu Make Up chuyên nghiệp được thành lập trên sự uy tín và kinh nghiệm đào tạo nhiều năm. Chúng tôi kiến tạo nên nguồn đam mê học hỏi và phá bỏ giới hạn sáng tạo trong nghệ thuật trang điểm tới các học viên. Sau nhiều năm không ngừng nỗ lực mang cái đẹp đi muôn phương, AMI đã trở thành sự lựa chọn hàng đầu và là cái tên đóng góp không nhỏ trong sự phát triển chung của ngành makeup Việt Nam.
+        </p>
+      </div>
+      <div class="about-photo">
+        <!-- 🖼️ ẢNH: Thay src -->
+        <img src="images/about.jpg" alt="AMI Academy" onerror="this.style.display='none'" />
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats">
+    <!-- ✏️ SỬA: Số liệu -->
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Năm kinh nghiệm</div></div>
+    <div class="stat"><div class="stat-num">33.000+</div><div class="stat-lbl">Học viên</div></div>
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-lbl">Nhân sự</div></div>
+    <div class="stat"><div class="stat-num">8+</div><div class="stat-lbl">Kênh truyền thông</div></div>
+  </div>
+
+  <!-- ============================================================
+       GALLERY — TONE MAKEUP & KIỂU TÓC
+       🖼️ ẢNH: Thêm ảnh vào gallery-grid, sao chép .gal-item
+  ============================================================ -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-title">TONE MAKEUP &amp; KIỂU TÓC 2026</div>  <!-- ✏️ SỬA -->
+    <div class="gallery-grid">
+      <!-- 🖼️ ẢNH: Thêm/thay ảnh — sao chép .gal-item để thêm ô -->
+      <div class="gal-item"><img src="images/gallery-1.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 1</div></div>
+      <div class="gal-item"><img src="images/gallery-2.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 2</div></div>
+      <div class="gal-item"><img src="images/gallery-3.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 3</div></div>
+      <div class="gal-item"><img src="images/gallery-4.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 4</div></div>
+      <div class="gal-item"><img src="images/gallery-5.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 5</div></div>
+      <div class="gal-item"><img src="images/gallery-6.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 6</div></div>
+      <div class="gal-item"><img src="images/gallery-7.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 7</div></div>
+      <div class="gal-item"><img src="images/gallery-8.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 8</div></div>
+    </div>
+    <div class="gallery-more">
+      <button class="btn-outline-white" style="margin-top:0">XEM THÊM</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FORM ĐĂNG KÝ
+       ✏️ SỬA: Tiêu đề form, các option khoá học
+  ============================================================ -->
+  <section class="form-section" id="dang-ky">
+    <div class="section-title">ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</div>
+    <div class="form-grid">
+      <input type="text" placeholder="Họ và tên *" required />
+      <input type="tel" placeholder="Số điện thoại *" required />
+      <input type="email" placeholder="Email" />
+      <input type="text" placeholder="Địa chỉ" />
+      <!-- ✏️ SỬA: Danh sách khoá học trong dropdown -->
+      <select class="full">
+        <option value="">— Chọn khoá học quan tâm —</option>
+        <option>Khoá Học Make Up Pro 2026</option>
+        <option>Khoá Make Up Nâng Cao Cấp Tốc Sài Gòn</option>
+        <option>Khoá Make Up Nâng Cao Cấp Tốc Hà Nội</option>
+        <option>Khoá Make Up Cá Nhân</option>
+        <option>Khoá Online Xử Lý Kỹ Thuật Nền</option>
+        <option>Khoá Hairstylist</option>
+        <!-- ➕ Thêm khoá học mới vào đây -->
+      </select>
+      <textarea class="full" placeholder="Ghi chú thêm (nếu có)..."></textarea>
+    </div>
+    <div class="form-submit">
+      <button type="submit">GỬI ĐĂNG KÝ</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIN TỨC
+       🖼️ ẢNH: images/news-1.jpg ... news-4.jpg
+       ✏️ SỬA: Tiêu đề, tag, ngày tháng từng bài
+       👉 Sao chép .news-card để thêm bài viết
+  ============================================================ -->
+  <section class="news-section" id="tin-tuc">
+    <div class="section-title">TIN TỨC</div>
+    <div class="news-grid">
+
+      <div class="news-card">
+        <div class="news-thumb">
+          <img src="images/news-1.jpg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="news-body">
+          <div class="news-tag">Kỹ thuật</div>  <!-- ✏️ SỬA -->
+          <div class="news-title">10 bước trang điểm cô dâu chuẩn salon cho ngày cưới hoàn hảo</div>  <!-- ✏️ SỬA -->
+          <div class="news-date">15/06/2026</div>  <!-- ✏️ SỬA -->
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-thumb">
+          <img src="images/news-2.jpg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="news-body">
+          <div class="news-tag">Xu hướng</div>
+          <div class="news-title">Xu hướng màu son 2026: tông cam đất và hồng đất lên ngôi</div>
+          <div class="news-date">10/06/2026</div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-thumb">
+          <img src="images/news-3.jpg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="news-body">
+          <div class="news-tag">Chăm sóc da</div>
+          <div class="news-title">Cách phục hồi da sau makeup để luôn căng bóng khỏe mạnh</div>
+          <div class="news-date">05/06/2026</div>
+        </div>
+      </div>
+
+      <div class="news-card">
+        <div class="news-thumb">
+          <img src="images/news-4.jpg" alt="" onerror="this.style.display='none'" />
+        </div>
+        <div class="news-body">
+          <div class="news-tag">Câu chuyện</div>
+          <div class="news-title">Từ tay ngang đến makeup artist chuyên nghiệp — hành trình 6 tháng</div>
+          <div class="news-date">01/06/2026</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="btn-row">
+      <button class="btn-outline">Xem tất cả tin tức</button>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ✏️ SỬA: Địa chỉ, phone, email, tài khoản ngân hàng
+       ✏️ SỬA: Link mạng xã hội
+  ============================================================ -->
+  <footer>
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">AMI</div>  <!-- ✏️ SỬA -->
+        <div class="footer-logo-sub">Make Up Academy</div>
+        <p class="footer-desc">
+          <!-- ✏️ SỬA -->
+          Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam với hơn 10 năm kinh nghiệm và 33.000+ học viên tin tưởng.
+        </p>
+        <!-- ✏️ SỬA: Thông tin liên hệ -->
+        <div class="footer-contact"><span class="ic">📍</span><span>123 Đường ABC, Quận 1, TP. Hồ Chí Minh</span></div>
+        <div class="footer-contact"><span class="ic">📞</span><span>0979.963.369 — 0888.646.886</span></div>
+        <div class="footer-contact"><span class="ic">✉️</span><span>info@amimakeupacademy.vn</span></div>
+        <div class="footer-contact"><span class="ic">🌐</span><span>www.amimakeupacademy.vn</span></div>
+        <!-- ✏️ SỬA: Thông tin tài khoản ngân hàng -->
+        <div class="footer-bank">
+          <strong>Tài khoản đóng phí</strong>
+          AMI MAKE UP ACADEMY · STK: 1234567890 · Ngân hàng Vietcombank
+        </div>
+        <!-- ✏️ SỬA: Link mạng xã hội -->
+        <div class="footer-social">
+          <a href="https://facebook.com/" class="soc soc-fb" target="_blank">f</a>
+          <a href="https://youtube.com/" class="soc soc-yt" target="_blank">▶</a>
+          <a href="https://twitter.com/" class="soc soc-tw" target="_blank">𝕏</a>
+          <a href="https://instagram.com/" class="soc soc-ig" target="_blank">📷</a>
+          <a href="https://pinterest.com/" class="soc soc-pt" target="_blank">P</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Khóa học</h4>
+        <ul>
+          <!-- ✏️ SỬA: Danh sách khoá học -->
+          <li><a href="#">Khoá Make Up Pro 2026</a></li>
+          <li><a href="#">Make Up Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="#">Make Up Nâng Cao Cấp Tốc HN</a></li>
+          <li><a href="#">Make Up Cá Nhân</a></li>
+          <li><a href="#">Make Up Nâng Cao Pro HN</a></li>
+          <li><a href="#">Khoá Online Xử Lý Nền</a></li>
+          <li><a href="#">Khoá Online Trang Điểm Mắt</a></li>
+          <li><a href="#">Khoá Hairstylist</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <!-- ✏️ SỬA: Danh sách dịch vụ -->
+          <li><a href="#">Make Up Ngày Cưới</a></li>
+          <li><a href="#">Make Up Kỷ Yếu</a></li>
+          <li><a href="#">Make Up Sự Kiện</a></li>
+          <li><a href="#">Make Up Sinh Nhật / Party</a></li>
+          <li><a href="#">Chụp Hình Thời Trang</a></li>
+        </ul>
+        <h4 style="margin-top: 24px">Liên kết</h4>
+        <ul>
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Tin tức</a></li>
+          <li><a href="#">Tuyển dụng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 AMI Make Up Academy · All rights reserved</div>  <!-- ✏️ SỬA -->
+      <div class="footer-social">
+        <a href="#" class="soc soc-fb">f</a>
+        <a href="#" class="soc soc-ig">📷</a>
+        <a href="#" class="soc soc-yt">▶</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING BAR -->
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>  <!-- ✏️ SỬA -->
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>  <!-- ✏️ SỬA -->
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>  <!-- ✏️ SỬA -->
+    </div>
+  </div>
+
+  <div style="height: 50px"></div>
+
+  <!-- ============================================================
+       ADMIN PANEL — Chế độ quản trị
+  ============================================================ -->
+
+  <!-- Nút mở admin — góc dưới phải -->
+  <button id="admin-toggle" title="Quản trị viên" style="
+    position:fixed; bottom:60px; right:16px; z-index:9999;
+    width:44px; height:44px; border-radius:50%;
+    background:#000; color:#fff; border:2px solid #fff;
+    font-size:18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.4);
+  ">🔑</button>
+
+  <!-- Thanh công cụ admin -->
+  <div id="admin-bar" style="
+    display:none; position:fixed; top:0; left:0; right:0; z-index:99999;
+    background:#c00; color:#fff; padding:10px 20px;
+    display:none; align-items:center; justify-content:space-between;
+    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  ">
+    <span>🛠️ CHẾ ĐỘ QUẢN TRỊ — Click vào ẢNH để thay | Click vào CHỮ để sửa</span>
+    <div style="display:flex;gap:10px">
+      <button onclick="adminSave()" style="background:#fff;color:#c00;border:none;padding:7px 18px;font-weight:700;cursor:pointer;font-size:12px;letter-spacing:0.1em">💾 LƯU</button>
+      <button onclick="adminExit()" style="background:transparent;color:#fff;border:2px solid #fff;padding:7px 18px;font-weight:700;cursor:pointer;font-size:12px;letter-spacing:0.1em">✕ THOÁT</button>
+    </div>
+  </div>
+
+  <!-- Input file ẩn để chọn ảnh -->
+  <input type="file" id="img-picker" accept="image/*" style="display:none" />
+
+  <style>
+    /* Hiệu ứng khi admin mode */
+    body.admin-mode [data-editable] {
+      outline: 2px dashed #ff0 !important;
+      outline-offset: 2px;
+      cursor: text !important;
+      min-height: 20px;
+    }
+    body.admin-mode [data-editable]:hover {
+      outline-color: #fff !important;
+      background: rgba(255,255,0,0.08) !important;
+    }
+    body.admin-mode .img-wrap {
+      position: relative !important;
+      cursor: pointer !important;
+    }
+    body.admin-mode .img-wrap::after {
+      content: '📷 Nhấn để thay ảnh';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.55);
+      color: #fff; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    body.admin-mode .img-wrap:hover::after { opacity: 1; }
+    body.admin-mode { padding-top: 46px; }
+  </style>
+
+  <script>
+    // ── SLIDESHOW BANNER ──
+    (function initSlideshow() {
+      const hero = document.getElementById('hero-section');
+      const dotsWrap = document.getElementById('hero-dots');
+      if (!hero || !HERO_SLIDES || HERO_SLIDES.length === 0) return;
+
+      // Tạo các lớp slide
+      const slides = HERO_SLIDES.map(url => {
+        const d = document.createElement('div');
+        d.className = 'hero-slide';
+        d.style.backgroundImage = "url('" + url + "')";
+        hero.insertBefore(d, hero.firstChild);
+        return d;
+      });
+
+      // Tạo chấm điều hướng
+      HERO_SLIDES.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'hero-dot';
+        dot.onclick = () => goTo(i);
+        dotsWrap.appendChild(dot);
+      });
+
+      let current = 0;
+      let timer;
+
+      function goTo(idx) {
+        slides[current].classList.remove('active');
+        dotsWrap.children[current].classList.remove('active');
+        current = (idx + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dotsWrap.children[current].classList.add('active');
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 5000);
+      }
+
+      window.heroMove = function(dir) { goTo(current + dir); };
+
+      // Bắt đầu
+      goTo(0);
+    })();
+
+    const ADMIN_PASS = '1234'; // ✏️ SỬA: Đổi mật khẩu quản trị tại đây
+
+    let currentImgTarget = null;
+    let isAdmin = false;
+
+    // ── Khởi động: nạp dữ liệu đã lưu ──
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSaved();
+      wrapImages();
+      markEditable();
+    });
+
+    // ── Đánh dấu các phần tử có thể sửa chữ ──
+    function markEditable() {
+      const selectors = [
+        '.hero-label', '.hero-h1', '.hero-script',
+        '.cta-label', '.cta-phone',
+        '.section-title', '.course-overlay', '.course-price', '.course-old', '.course-desc',
+        '.utin-script', '.utin-sub', '.utin-item-text',
+        '.svc-label',
+        '.about-eyebrow', '.about-title', '.about-body',
+        '.stat-num', '.stat-lbl',
+        '.gallery-title',
+        '.news-tag', '.news-title', '.news-date',
+        '.footer-logo', '.footer-logo-sub', '.footer-desc',
+        '.footer-contact span', '.footer-bank',
+        '.footer-copy', '.logo-text .name', '.logo-text .sub',
+        '.float-label', '.float-phone',
+      ];
+      selectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+          el.setAttribute('data-editable', sel.replace(/[^a-z0-9]/gi,'') + i);
+        });
+      });
+    }
+
+    // ── Bọc ảnh bằng wrapper để click thay ──
+    function wrapImages() {
+      const imgSelectors = [
+        '.hero-photo img', '.course-thumb img', '.svc-img img',
+        '.about-photo img', '.gal-item img', '.news-thumb img', '.logo-img'
+      ];
+      imgSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(img => {
+          if (!img.parentElement.classList.contains('img-wrap')) {
+            const wrap = document.createElement('div');
+            wrap.className = 'img-wrap';
+            wrap.style.cssText = 'width:100%;height:100%;position:relative;';
+            img.parentNode.insertBefore(wrap, img);
+            wrap.appendChild(img);
+            wrap.addEventListener('click', () => {
+              if (!isAdmin) return;
+              currentImgTarget = img;
+              document.getElementById('img-picker').click();
+            });
+          }
+        });
+      });
+    }
+
+    // ── Chọn ảnh mới ──
+    document.getElementById('img-picker').addEventListener('change', function() {
+      if (!this.files[0] || !currentImgTarget) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        currentImgTarget.src = e.target.result;
+        currentImgTarget.style.display = 'block';
+        // Ẩn placeholder nếu có
+        const next = currentImgTarget.nextElementSibling;
+        if (next && next.classList.contains('hero-photo-placeholder')) next.style.display = 'none';
+        if (next && next.classList.contains('gal-placeholder')) next.style.display = 'none';
+      };
+      reader.readAsDataURL(this.files[0]);
+      this.value = '';
+    });
+
+    // ── Bật admin mode ──
+    document.getElementById('admin-toggle').addEventListener('click', () => {
+      if (isAdmin) { adminExit(); return; }
+      const pass = prompt('Nhập mật khẩu quản trị:');
+      if (pass !== ADMIN_PASS) {
+        if (pass !== null) alert('❌ Sai mật khẩu!');
+        return;
+      }
+      adminEnter();
+    });
+
+    function adminEnter() {
+      isAdmin = true;
+      document.body.classList.add('admin-mode');
+      const bar = document.getElementById('admin-bar');
+      bar.style.display = 'flex';
+      document.getElementById('admin-toggle').textContent = '✕';
+      // Bật contenteditable cho chữ
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        el.contentEditable = 'true';
+      });
+    }
+
+    function adminExit() {
+      isAdmin = false;
+      document.body.classList.remove('admin-mode');
+      document.getElementById('admin-bar').style.display = 'none';
+      document.getElementById('admin-toggle').textContent = '🔑';
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        el.contentEditable = 'false';
+      });
+    }
+
+    // ── Lưu tất cả thay đổi vào localStorage ──
+    function adminSave() {
+      const data = {};
+
+      // Lưu nội dung chữ
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        const key = el.getAttribute('data-editable');
+        data['text_' + key] = el.innerHTML;
+      });
+
+      // Lưu ảnh (base64)
+      const imgSelectors = [
+        '.hero-photo img', '.course-thumb img', '.svc-img img',
+        '.about-photo img', '.gal-item img', '.news-thumb img'
+      ];
+      imgSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach((img, i) => {
+          const key = sel.replace(/[^a-z0-9]/gi,'') + i;
+          if (img.src && img.src.startsWith('data:')) {
+            data['img_' + key] = img.src;
+          }
+        });
+      });
+
+      localStorage.setItem('ami_website_data', JSON.stringify(data));
+      alert('✅ Đã lưu! Trang sẽ nhớ thay đổi của bạn ngay cả khi tắt trình duyệt.');
+    }
+
+    // ── Nạp dữ liệu đã lưu ──
+    function loadSaved() {
+      const raw = localStorage.getItem('ami_website_data');
+      if (!raw) return;
+      const data = JSON.parse(raw);
+
+      // Nạp chữ
+      document.querySelectorAll('[data-editable]').forEach(el => {
+        const key = 'text_' + el.getAttribute('data-editable');
+        if (data[key] !== undefined) el.innerHTML = data[key];
+      });
+
+      // Nạp ảnh — chạy sau khi wrap
+      setTimeout(() => {
+        const imgSelectors = [
+          '.hero-photo img', '.course-thumb img', '.svc-img img',
+          '.about-photo img', '.gal-item img', '.news-thumb img'
+        ];
+        imgSelectors.forEach(sel => {
+          document.querySelectorAll(sel).forEach((img, i) => {
+            const key = 'img_' + sel.replace(/[^a-z0-9]/gi,'') + i;
+            if (data[key]) {
+              img.src = data[key];
+              img.style.display = 'block';
+            }
+          });
+        });
+      }, 100);
+    }
+  </script>
+
+</body>
+</html>

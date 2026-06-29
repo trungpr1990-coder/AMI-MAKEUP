@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liên Hệ — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+
+    .topbar { background: #111; padding: 7px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar span { color: #aaa; font-size: 12px; }
+    .topbar-social { display: flex; gap: 8px; }
+    .soc { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-tw{background:#1da1f2} .soc-ig{background:#c13584} .soc-pt{background:#e60023}
+
+    .header { background: #000; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.18em; color: #fff; line-height: 1; }
+    .logo-sub { font-size: 10px; letter-spacing: 0.4em; color: #ccc; text-transform: uppercase; }
+
+    .page-header { background: #000; padding: 48px 40px; position: relative; overflow: hidden; }
+    .page-header svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 2; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.1em; color: #fff; }
+    .page-header p { color: #888; font-size: 13px; margin-top: 8px; letter-spacing: 0.05em; }
+    .breadcrumb { font-size: 11px; color: #555; margin-bottom: 12px; letter-spacing: 0.08em; }
+    .breadcrumb a { color: #e00; }
+
+    /* Contact layout */
+    .contact-section { max-width: 1100px; margin: 0 auto; padding: 60px 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+
+    /* Info side */
+    .contact-info h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.1em; color: #111; margin-bottom: 24px; }
+    .info-item { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+    .info-icon { width: 44px; height: 44px; background: #000; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+    .info-text { }
+    .info-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #aaa; font-weight: 700; margin-bottom: 4px; }
+    .info-value { font-size: 13px; color: #333; line-height: 1.7; }
+    .info-value a { color: #e00; }
+
+    /* Map placeholder */
+    .map-box { background: #f0f0f0; height: 200px; display: flex; align-items: center; justify-content: center; color: #aaa; font-size: 13px; margin-top: 24px; border: 1px solid #eee; }
+
+    /* Form side */
+    .contact-form h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.1em; color: #111; margin-bottom: 8px; }
+    .contact-form p { font-size: 13px; color: #888; margin-bottom: 24px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #555; margin-bottom: 6px; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea { width: 100%; border: 1px solid #ddd; padding: 12px 14px; font-size: 13px; font-family: 'Montserrat', sans-serif; color: #222; outline: none; transition: border-color .2s; background: #fff; }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus { border-color: #000; }
+    .form-group textarea { height: 120px; resize: vertical; }
+    .form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .btn-submit { width: 100%; background: #000; color: #fff; border: none; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 16px; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: background .2s; margin-top: 8px; }
+    .btn-submit:hover { background: #e00; }
+
+    /* Success message */
+    .form-success { display: none; background: #f0fff4; border: 1px solid #68d391; padding: 20px; color: #276749; font-size: 13px; text-align: center; margin-top: 16px; }
+
+    footer { background: #111; padding: 40px 40px 20px; color: #555; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.22em; color: #fff; }
+    footer h4 { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e1e1e; }
+    footer ul { list-style: none; padding: 0; }
+    footer li { font-size: 12px; color: #555; margin-bottom: 6px; }
+    footer a { color: #555; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 14px; font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #222; z-index: 999; padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .float-label { color: #fff; font-size: 12px; font-weight: 700; font-style: italic; }
+    .float-phones { display: flex; gap: 28px; }
+    .float-phone { color: #fff; font-size: 13px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-tw">𝕏</a>
+      <a href="#" class="soc soc-ig">📷</a>
+      <a href="#" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff; font-size:11px; letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <div class="page-header">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff2200" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="200" y1="0" x2="1200" y2="180" stroke="url(#r1)" stroke-width="2"/>
+      <line x1="180" y1="0" x2="1000" y2="200" stroke="url(#r1)" stroke-width="3.5"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="breadcrumb"><a href="index.html">Trang chủ</a> &rsaquo; Liên hệ</div>
+      <h1>LIÊN HỆ</h1>
+      <p>Chúng tôi luôn sẵn sàng hỗ trợ bạn 24/7</p>
+    </div>
+  </div>
+
+  <div class="contact-section">
+    <!-- Thông tin liên hệ -->
+    <div class="contact-info">
+      <h2>THÔNG TIN LIÊN HỆ</h2>
+
+      <!-- ✏️ SỬA: Địa chỉ, điện thoại, email của bạn -->
+      <div class="info-item">
+        <div class="info-icon">📍</div>
+        <div class="info-text">
+          <div class="info-label">Địa chỉ</div>
+          <div class="info-value">123 Đường ABC, Phường XYZ<br>Quận 1, TP. Hồ Chí Minh</div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📞</div>
+        <div class="info-text">
+          <div class="info-label">Điện thoại</div>
+          <div class="info-value">
+            <a href="tel:0979963369">0979.963.369</a><br>
+            <a href="tel:0888646886">0888.646.886</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">📧</div>
+        <div class="info-text">
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:ami@gmail.com">ami@gmail.com</a></div>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">🕐</div>
+        <div class="info-text">
+          <div class="info-label">Giờ làm việc</div>
+          <div class="info-value">Thứ 2 – Chủ nhật: 8:00 – 20:00</div>
+        </div>
+      </div>
+
+      <div class="map-box">
+        🗺️ Bản đồ — Thêm Google Maps embed tại đây
+      </div>
+    </div>
+
+    <!-- Form đăng ký -->
+    <div class="contact-form">
+      <h2>ĐĂNG KÝ GIỮ XUẤT HỌC</h2>
+      <p>Điền thông tin để được tư vấn miễn phí về khoá học phù hợp với bạn.</p>
+
+      <form id="contact-form" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input type="text" placeholder="Nguyễn Văn A" required />
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại *</label>
+            <input type="tel" placeholder="0909 123 456" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@gmail.com" />
+        </div>
+
+        <div class="form-group">
+          <label>Khoá học quan tâm</label>
+          <select>
+            <option value="">-- Chọn khoá học --</option>
+            <option>Khoá Học Make Up Pro 2026 (Người Mới)</option>
+            <option>Khoá Make Up Nâng Cao Cấp Tốc Sài Gòn</option>
+            <option>Khoá Make Up Nâng Cao Cấp Tốc Hà Nội</option>
+            <option>Khoá Make Up Cá Nhân 1-1</option>
+            <option>Khoá Online: Kỹ Thuật Nền Ngọc Trai</option>
+            <option>Khoá Online: Trang Điểm Mắt</option>
+            <option>Khoá Hairstylist: Tóc Cô Dâu</option>
+            <option>Khoá Online: Mix Son Môi</option>
+            <option>Dịch vụ makeup (cưới, kỷ yếu, sự kiện)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Tài khoản đóng phí</label>
+          <select>
+            <option value="">-- Chọn ngân hàng --</option>
+            <option>AMI MAKE UP ACADEMY · Vietcombank · STK: 1234567890</option>
+            <option>AMI MAKE UP ACADEMY · MB Bank · STK: 0987654321</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Ghi chú</label>
+          <textarea placeholder="Câu hỏi hoặc nội dung cần tư vấn..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Gửi đăng ký</button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        ✅ Cảm ơn bạn đã đăng ký! Chúng tôi sẽ liên hệ trong vòng 24 giờ.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AMI</div>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+      </div>
+      <div>
+        <h4>Khóa học</h4>
+        <ul>
+          <li><a href="khoa-hoc-chi-tiet.html?id=1">Make Up Pro 2026</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=2">Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=4">Make Up Cá Nhân</a></li>
+          <li><a href="khoa-hoc.html">Xem tất cả →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="dich-vu.html#cuoi">Make Up Ngày Cưới</a></li>
+          <li><a href="dich-vu.html#ky-yeu">Make Up Kỷ Yếu</a></li>
+          <li><a href="dich-vu.html#su-kien">Make Up Sự Kiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <script>
+    function submitForm(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('form-success').style.display = 'block';
+    }
+  </script>
+  <script src="admin.js"></script>
+
+</body>
+</html>

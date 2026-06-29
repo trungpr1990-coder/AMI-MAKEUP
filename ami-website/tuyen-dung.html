@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tuyển Dụng — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    .topbar { background: #111; padding: 7px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar span { color: #aaa; font-size: 12px; }
+    .topbar-social { display: flex; gap: 8px; }
+    .soc { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-tw{background:#1da1f2} .soc-ig{background:#c13584} .soc-pt{background:#e60023}
+
+    .header { background: #000; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.18em; color: #fff; line-height: 1; }
+    .logo-sub { font-size: 10px; letter-spacing: 0.4em; color: #ccc; text-transform: uppercase; }
+
+    .page-header { background: #000; padding: 48px 40px; position: relative; overflow: hidden; }
+    .page-header svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 2; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.1em; color: #fff; }
+    .page-header p { color: #888; font-size: 13px; margin-top: 8px; letter-spacing: 0.05em; }
+    .breadcrumb { font-size: 11px; color: #555; margin-bottom: 12px; letter-spacing: 0.08em; }
+    .breadcrumb a { color: #e00; }
+
+    .page-layout { max-width: 1200px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; }
+
+    /* Job listings */
+    .job-intro { font-size: 14px; color: #555; line-height: 1.9; margin-bottom: 32px; }
+    .job-card { border: 1px solid #eee; padding: 24px; margin-bottom: 20px; transition: box-shadow .2s; }
+    .job-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .job-title { font-size: 16px; font-weight: 700; color: #111; margin-bottom: 8px; }
+    .job-meta { display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+    .job-tag { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; padding: 4px 10px; }
+    .job-tag-type { background: #000; color: #fff; }
+    .job-tag-location { background: #f0f0f0; color: #444; }
+    .job-tag-salary { background: #fff0f0; color: #e00; border: 1px solid #fdd; }
+    .job-desc { font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 16px; }
+    .job-requirements { margin-bottom: 16px; }
+    .job-requirements h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #111; margin-bottom: 8px; }
+    .job-requirements ul { list-style: none; padding: 0; }
+    .job-requirements li { font-size: 12px; color: #555; padding: 4px 0; padding-left: 14px; position: relative; }
+    .job-requirements li::before { content: '•'; position: absolute; left: 0; color: #e00; }
+    .btn-apply { display: inline-block; background: #000; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 24px; transition: background .2s; cursor: pointer; border: none; font-family: 'Montserrat', sans-serif; }
+    .btn-apply:hover { background: #e00; }
+
+    /* No jobs message */
+    .no-jobs { background: #f8f8f8; border: 1px solid #eee; padding: 40px; text-align: center; color: #888; font-size: 13px; }
+
+    /* Sidebar */
+    .sidebar-box { border: 1px solid #eee; margin-bottom: 24px; }
+    .sidebar-title { background: #000; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 16px; }
+    .sidebar-list { list-style: none; padding: 0; }
+    .sidebar-list li a { display: block; padding: 12px 16px; font-size: 12px; color: #444; border-bottom: 1px solid #f5f5f5; transition: all .2s; }
+    .sidebar-list li a:hover, .sidebar-list li.active a { background: #f8f8f8; color: #e00; padding-left: 20px; }
+    .sidebar-list li:last-child a { border-bottom: none; }
+    .sidebar-contact { padding: 16px; }
+    .sidebar-contact p { font-size: 12px; color: #555; line-height: 1.8; margin-bottom: 12px; }
+    .sidebar-contact a { color: #e00; font-weight: 700; }
+
+    footer { background: #111; padding: 40px 40px 20px; color: #555; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.22em; color: #fff; }
+    footer h4 { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e1e1e; }
+    footer ul { list-style: none; padding: 0; }
+    footer li { font-size: 12px; color: #555; margin-bottom: 6px; }
+    footer a { color: #555; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 14px; font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #222; z-index: 999; padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .float-label { color: #fff; font-size: 12px; font-weight: 700; font-style: italic; }
+    .float-phones { display: flex; gap: 28px; }
+    .float-phone { color: #fff; font-size: 13px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-tw">𝕏</a>
+      <a href="#" class="soc soc-ig">📷</a>
+      <a href="#" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff; font-size:11px; letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <div class="page-header">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff2200" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="200" y1="0" x2="1200" y2="180" stroke="url(#r1)" stroke-width="2"/>
+      <line x1="180" y1="0" x2="1000" y2="200" stroke="url(#r1)" stroke-width="3.5"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="breadcrumb"><a href="index.html">Trang chủ</a> &rsaquo; Tuyển dụng</div>
+      <h1>TUYỂN DỤNG</h1>
+      <p>Cơ hội nghề nghiệp tại AMI Make Up Academy</p>
+    </div>
+  </div>
+
+  <div class="page-layout">
+    <div>
+      <!-- ✏️ SỬA: Lời giới thiệu tuyển dụng -->
+      <p class="job-intro">AMI Make Up Academy luôn tìm kiếm những tài năng đam mê nghề trang điểm để cùng phát triển. Nếu bạn có năng lực, nhiệt huyết và muốn được làm việc trong môi trường chuyên nghiệp — hãy ứng tuyển ngay!</p>
+
+      <!-- ✏️ SỬA: Thêm/bớt vị trí tuyển dụng tại đây -->
+      <div class="job-card">
+        <div class="job-title">Giảng Viên / Trợ Giảng Makeup</div>
+        <div class="job-meta">
+          <span class="job-tag job-tag-type">Toàn thời gian</span>
+          <span class="job-tag job-tag-location">📍 TP.HCM & Hà Nội</span>
+          <span class="job-tag job-tag-salary">Thỏa thuận</span>
+        </div>
+        <div class="job-desc">Chúng tôi tìm kiếm giảng viên/trợ giảng có kinh nghiệm giảng dạy makeup để phục vụ các lớp học tại AMI Academy.</div>
+        <div class="job-requirements">
+          <h4>Yêu cầu</h4>
+          <ul>
+            <li>Có ít nhất 2 năm kinh nghiệm trong nghề trang điểm chuyên nghiệp</li>
+            <li>Có kinh nghiệm giảng dạy hoặc đào tạo (ưu tiên)</li>
+            <li>Khả năng giao tiếp và truyền đạt tốt</li>
+            <li>Đam mê, nhiệt huyết với nghề</li>
+          </ul>
+        </div>
+        <a href="lien-he.html" class="btn-apply">Ứng tuyển ngay</a>
+      </div>
+
+      <div class="job-card">
+        <div class="job-title">Makeup Artist — Dịch Vụ Cưới & Sự Kiện</div>
+        <div class="job-meta">
+          <span class="job-tag job-tag-type">Bán thời gian / Freelance</span>
+          <span class="job-tag job-tag-location">📍 TP.HCM</span>
+          <span class="job-tag job-tag-salary">8 – 20 triệu/tháng</span>
+        </div>
+        <div class="job-desc">Chúng tôi cần thêm Makeup Artist phục vụ các đơn trang điểm cưới, kỷ yếu và sự kiện. Lịch làm việc linh hoạt, thu nhập hấp dẫn.</div>
+        <div class="job-requirements">
+          <h4>Yêu cầu</h4>
+          <ul>
+            <li>Thành thạo kỹ thuật makeup cô dâu và sự kiện</li>
+            <li>Có portfolio ảnh thực tế</li>
+            <li>Có phương tiện di chuyển</li>
+            <li>Tinh thần làm việc nhóm tốt</li>
+          </ul>
+        </div>
+        <a href="lien-he.html" class="btn-apply">Ứng tuyển ngay</a>
+      </div>
+
+      <div class="job-card">
+        <div class="job-title">Nhân Viên Chăm Sóc Khách Hàng</div>
+        <div class="job-meta">
+          <span class="job-tag job-tag-type">Toàn thời gian</span>
+          <span class="job-tag job-tag-location">📍 TP.HCM</span>
+          <span class="job-tag job-tag-salary">7 – 12 triệu/tháng</span>
+        </div>
+        <div class="job-desc">Phụ trách tư vấn, giải đáp thắc mắc và hỗ trợ học viên/khách hàng qua điện thoại, Zalo và mạng xã hội.</div>
+        <div class="job-requirements">
+          <h4>Yêu cầu</h4>
+          <ul>
+            <li>Giọng nói dễ nghe, giao tiếp lưu loát</li>
+            <li>Sử dụng thành thạo điện thoại và mạng xã hội</li>
+            <li>Yêu thích lĩnh vực làm đẹp</li>
+            <li>Có thể đi làm ngay</li>
+          </ul>
+        </div>
+        <a href="lien-he.html" class="btn-apply">Ứng tuyển ngay</a>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div>
+      <div class="sidebar-box">
+        <div class="sidebar-title">Danh mục</div>
+        <ul class="sidebar-list">
+          <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+          <li><a href="tin-tuc.html">Tin tức</a></li>
+          <li class="active"><a href="tuyen-dung.html">Tuyển dụng</a></li>
+          <li><a href="cam-nhan.html">Cảm nhận khách hàng</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-box">
+        <div class="sidebar-title">Liên hệ ứng tuyển</div>
+        <div class="sidebar-contact">
+          <p>Gửi CV và portfolio của bạn đến:</p>
+          <p><a href="mailto:ami@gmail.com">📧 ami@gmail.com</a></p>
+          <p style="margin-top:8px;"><a href="tel:0979963369">📞 0979.963.369</a></p>
+          <p style="margin-top:8px; color:#888; font-size:11px;">Hoặc điền form tại trang <a href="lien-he.html">Liên hệ</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AMI</div>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+      </div>
+      <div>
+        <h4>Khóa học</h4>
+        <ul>
+          <li><a href="khoa-hoc-chi-tiet.html?id=1">Make Up Pro 2026</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=2">Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=4">Make Up Cá Nhân</a></li>
+          <li><a href="khoa-hoc.html">Xem tất cả →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="dich-vu.html#cuoi">Make Up Ngày Cưới</a></li>
+          <li><a href="dich-vu.html#ky-yeu">Make Up Kỷ Yếu</a></li>
+          <li><a href="dich-vu.html#su-kien">Make Up Sự Kiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

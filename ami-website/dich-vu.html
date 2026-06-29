@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dịch Vụ — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    .topbar { background: #111; padding: 7px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar span { color: #aaa; font-size: 12px; }
+    .topbar-social { display: flex; gap: 8px; }
+    .soc { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-tw{background:#1da1f2} .soc-ig{background:#c13584} .soc-pt{background:#e60023}
+
+    .header { background: #000; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.18em; color: #fff; line-height: 1; }
+    .logo-sub { font-size: 10px; letter-spacing: 0.4em; color: #ccc; text-transform: uppercase; }
+
+    .page-header { background: #000; padding: 48px 40px; position: relative; overflow: hidden; }
+    .page-header svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 2; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.1em; color: #fff; }
+    .page-header p { color: #888; font-size: 13px; margin-top: 8px; letter-spacing: 0.05em; }
+    .breadcrumb { font-size: 11px; color: #555; margin-bottom: 12px; letter-spacing: 0.08em; }
+    .breadcrumb a { color: #e00; }
+
+    /* Services grid — 3 cards like Hằng Thu */
+    .services-section { padding: 60px 40px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { position: relative; overflow: hidden; cursor: pointer; }
+    .service-card:hover .service-img { transform: scale(1.04); }
+    .service-img { width: 100%; height: 380px; object-fit: cover; transition: transform .4s; display: block; background: #f0f0f0; }
+    .service-img-placeholder { width: 100%; height: 380px; background: #111; display: flex; align-items: center; justify-content: center; color: #555; font-size: 13px; }
+    .service-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,.85)); padding: 32px 20px 20px; }
+    .service-name { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.1em; color: #fff; text-transform: uppercase; line-height: 1.3; }
+    .service-tag { font-size: 10px; letter-spacing: 0.2em; color: #e00; text-transform: uppercase; font-weight: 700; margin-top: 6px; }
+    .service-card-wrapper { overflow: hidden; }
+
+    /* Service detail sections */
+    .service-detail { padding: 60px 40px; border-bottom: 1px solid #f0f0f0; }
+    .service-detail:nth-child(even) .service-detail-inner { flex-direction: row-reverse; }
+    .service-detail-inner { display: flex; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .service-detail-img { flex: 1; height: 420px; background: #f0f0f0; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 13px; }
+    .service-detail-img img { width: 100%; height: 100%; object-fit: cover; }
+    .service-detail-text { flex: 1; }
+    .service-detail-text .tag { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #e00; font-weight: 700; margin-bottom: 12px; }
+    .service-detail-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.1em; color: #111; margin-bottom: 16px; line-height: 1.2; }
+    .service-detail-text p { font-size: 13px; line-height: 1.9; color: #555; margin-bottom: 14px; }
+    .service-detail-text ul { list-style: none; padding: 0; margin-bottom: 24px; }
+    .service-detail-text ul li { font-size: 13px; color: #444; padding: 6px 0; border-bottom: 1px solid #f5f5f5; padding-left: 16px; position: relative; }
+    .service-detail-text ul li::before { content: '✓'; position: absolute; left: 0; color: #e00; font-weight: 700; }
+    .btn-book { display: inline-block; background: #000; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 14px 28px; transition: background .2s; }
+    .btn-book:hover { background: #e00; }
+
+    footer { background: #111; padding: 40px 40px 20px; color: #555; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.22em; color: #fff; }
+    footer h4 { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e1e1e; }
+    footer ul { list-style: none; padding: 0; }
+    footer li { font-size: 12px; color: #555; margin-bottom: 6px; }
+    footer a { color: #555; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 14px; font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #222; z-index: 999; padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .float-label { color: #fff; font-size: 12px; font-weight: 700; font-style: italic; }
+    .float-phones { display: flex; gap: 28px; }
+    .float-phone { color: #fff; font-size: 13px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-tw">𝕏</a>
+      <a href="#" class="soc soc-ig">📷</a>
+      <a href="#" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff; font-size:11px; letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <div class="page-header">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff2200" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="200" y1="0" x2="1200" y2="180" stroke="url(#r1)" stroke-width="2"/>
+      <line x1="180" y1="0" x2="1000" y2="200" stroke="url(#r1)" stroke-width="3.5"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="breadcrumb"><a href="index.html">Trang chủ</a> &rsaquo; Dịch vụ</div>
+      <h1>DỊCH VỤ</h1>
+      <p>Trang điểm chuyên nghiệp cho mọi dịp — Cưới · Kỷ yếu · Sự kiện</p>
+    </div>
+  </div>
+
+  <!-- 3 service cards -->
+  <div class="services-section">
+    <div class="services-grid">
+      <div class="service-card-wrapper">
+        <div class="service-card" onclick="document.getElementById('cuoi').scrollIntoView({behavior:'smooth'})">
+          <!-- 🖼️ ẢNH: Ảnh dịch vụ cưới — đặt file service-1.jpg vào thư mục images/ -->
+          <img class="service-img" src="images/service-1.jpg" alt="Make Up Ngày Cưới"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <div class="service-img-placeholder" style="display:none">🖼️ service-1.jpg</div>
+          <div class="service-overlay">
+            <div class="service-name">Make Up Ngày Cưới</div>
+            <div class="service-tag">Bridal Makeup</div>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-wrapper">
+        <div class="service-card" onclick="document.getElementById('ky-yeu').scrollIntoView({behavior:'smooth'})">
+          <img class="service-img" src="images/service-2.jpg" alt="Make Up Kỷ Yếu"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <div class="service-img-placeholder" style="display:none">🖼️ service-2.jpg</div>
+          <div class="service-overlay">
+            <div class="service-name">Make Up Kỷ Yếu</div>
+            <div class="service-tag">Graduation Makeup</div>
+          </div>
+        </div>
+      </div>
+      <div class="service-card-wrapper">
+        <div class="service-card" onclick="document.getElementById('su-kien').scrollIntoView({behavior:'smooth'})">
+          <img class="service-img" src="images/service-3.jpg" alt="Make Up Sự Kiện"
+               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+          <div class="service-img-placeholder" style="display:none">🖼️ service-3.jpg</div>
+          <div class="service-overlay">
+            <div class="service-name">Make Up Sự Kiện, Sinh Nhật, Party, Chụp Hình Thời Trang</div>
+            <div class="service-tag">Event Makeup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chi tiết từng dịch vụ -->
+  <div id="cuoi" class="service-detail">
+    <div class="service-detail-inner">
+      <div class="service-detail-img">
+        <!-- 🖼️ ẢNH: Ảnh chi tiết cưới — đặt file service-cuoi.jpg vào thư mục images/ -->
+        <img src="images/service-cuoi.jpg" alt="Make Up Ngày Cưới" onerror="this.parentElement.innerHTML='🖼️ service-cuoi.jpg'" />
+      </div>
+      <div class="service-detail-text">
+        <div class="tag">Bridal Makeup</div>
+        <h2>MAKE UP NGÀY CƯỚI</h2>
+        <!-- ✏️ SỬA: Mô tả dịch vụ cưới -->
+        <p>Ngày cưới là ngày đặc biệt nhất trong cuộc đời mỗi cô dâu. AMI Make Up Academy cam kết mang đến cho bạn diện mạo hoàn hảo nhất — tự nhiên, sang trọng và tỏa sáng trong từng khoảnh khắc.</p>
+        <ul>
+          <li>Makeup cô dâu chuyên nghiệp, bền đẹp cả ngày</li>
+          <li>Tư vấn phong cách phù hợp với váy cưới và không gian</li>
+          <li>Phục vụ tại nhà hoặc tại studio</li>
+          <li>Tóc cô dâu kết hợp makeup tổng thể</li>
+        </ul>
+        <a href="lien-he.html" class="btn-book">Đặt lịch ngay</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="ky-yeu" class="service-detail" style="background:#fafafa;">
+    <div class="service-detail-inner">
+      <div class="service-detail-img">
+        <img src="images/service-ky-yeu.jpg" alt="Make Up Kỷ Yếu" onerror="this.parentElement.innerHTML='🖼️ service-ky-yeu.jpg'" />
+      </div>
+      <div class="service-detail-text">
+        <div class="tag">Graduation Makeup</div>
+        <h2>MAKE UP KỶ YẾU</h2>
+        <p>Kỷ yếu là kỷ niệm đẹp nhất của tuổi học trò. Hãy để AMI giúp bạn tỏa sáng trong bộ ảnh kỷ yếu với phong cách tươi trẻ, rạng rỡ và cá tính.</p>
+        <ul>
+          <li>Makeup trẻ trung, phù hợp với học sinh — sinh viên</li>
+          <li>Đa dạng phong cách: tự nhiên, vintage, fashion</li>
+          <li>Giá ưu đãi cho nhóm từ 5 người trở lên</li>
+          <li>Phục vụ tận nơi theo lịch hẹn</li>
+        </ul>
+        <a href="lien-he.html" class="btn-book">Đặt lịch ngay</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="su-kien" class="service-detail">
+    <div class="service-detail-inner">
+      <div class="service-detail-img">
+        <img src="images/service-su-kien.jpg" alt="Make Up Sự Kiện" onerror="this.parentElement.innerHTML='🖼️ service-su-kien.jpg'" />
+      </div>
+      <div class="service-detail-text">
+        <div class="tag">Event Makeup</div>
+        <h2>MAKE UP SỰ KIỆN, SINH NHẬT, PARTY, CHỤP HÌNH THỜI TRANG</h2>
+        <p>Dù là tiệc sinh nhật, sự kiện doanh nghiệp, buổi chụp hình thời trang hay party cuối năm — AMI sẽ làm bạn nổi bật và tự tin nhất trong không gian đó.</p>
+        <ul>
+          <li>Makeup phù hợp với từng concept sự kiện</li>
+          <li>Phong cách đa dạng: glam, editorial, natural glow</li>
+          <li>Phục vụ nhiều người cùng lúc — có đội ngũ hỗ trợ</li>
+          <li>Báo giá nhanh — linh hoạt theo yêu cầu</li>
+        </ul>
+        <a href="lien-he.html" class="btn-book">Đặt lịch ngay</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AMI</div>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+      </div>
+      <div>
+        <h4>Khóa học</h4>
+        <ul>
+          <li><a href="khoa-hoc-chi-tiet.html?id=1">Make Up Pro 2026</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=2">Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=4">Make Up Cá Nhân</a></li>
+          <li><a href="khoa-hoc.html">Xem tất cả →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="dich-vu.html#cuoi">Make Up Ngày Cưới</a></li>
+          <li><a href="dich-vu.html#ky-yeu">Make Up Kỷ Yếu</a></li>
+          <li><a href="dich-vu.html#su-kien">Make Up Sự Kiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

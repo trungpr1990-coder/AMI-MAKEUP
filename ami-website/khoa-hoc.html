@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khóa Học — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    /* Topbar & Header & Nav — copy từ index.html */
+    .topbar { background:#111; padding:7px 40px; display:flex; justify-content:space-between; align-items:center; }
+    .topbar span { color:#aaa; font-size:12px; }
+    .topbar-social { display:flex; gap:8px; }
+    .soc { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-tw{background:#1da1f2} .soc-ig{background:#c13584} .soc-pt{background:#e60023}
+    .header { background:#000; padding:14px 40px; display:flex; justify-content:space-between; align-items:center; }
+    .logo-name { font-family:'Bebas Neue',sans-serif; font-size:38px; letter-spacing:0.18em; color:#fff; line-height:1; }
+    .logo-sub { font-size:10px; letter-spacing:0.4em; color:#ccc; text-transform:uppercase; }
+    nav { background:#fff; border-bottom:1px solid #eee; display:flex; justify-content:center; padding:0 40px; position:sticky; top:0; z-index:100; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    nav a { color:#222; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:16px 16px; display:block; border-bottom:2px solid transparent; }
+    nav a:hover, nav a.active { color:#000; border-bottom-color:#000; }
+
+    /* Page header */
+    .page-header { background:#000; padding:48px 40px; position:relative; overflow:hidden; }
+    .page-header svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+    .page-header-inner { position:relative; z-index:2; }
+    .page-header h1 { font-family:'Bebas Neue',sans-serif; font-size:48px; letter-spacing:0.1em; color:#fff; }
+    .page-header p { color:#888; font-size:13px; margin-top:8px; letter-spacing:0.05em; }
+    .breadcrumb { font-size:11px; color:#555; margin-bottom:12px; letter-spacing:0.08em; }
+    .breadcrumb a { color:#e00; }
+    .breadcrumb a:hover { text-decoration:underline; }
+
+    /* Filter bar */
+    .filter-bar { background:#f8f8f8; border-bottom:1px solid #eee; padding:14px 40px; display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .filter-label { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#666; margin-right:4px; }
+    .filter-btn { border:1px solid #ddd; background:#fff; color:#555; padding:7px 16px; font-size:11px; font-weight:600; letter-spacing:0.08em; cursor:pointer; font-family:'Montserrat',sans-serif; transition:all .2s; }
+    .filter-btn.active, .filter-btn:hover { background:#000; color:#fff; border-color:#000; }
+
+    /* Courses grid */
+    .courses-section { padding:40px 40px 60px; }
+    .courses-count { font-size:12px; color:#999; margin-bottom:24px; letter-spacing:0.05em; }
+    .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+    .card { border:1px solid #eee; overflow:hidden; cursor:pointer; transition:box-shadow .2s, transform .2s; }
+    .card:hover { box-shadow:0 6px 24px rgba(0,0,0,.1); transform:translateY(-2px); }
+    .card-thumb { height:200px; background:#f5f5f5; position:relative; overflow:hidden; }
+    .card-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .3s; }
+    .card:hover .card-thumb img { transform:scale(1.04); }
+    .card-thumb-placeholder { width:100%; height:100%; background:#f0f0f0; display:flex; align-items:center; justify-content:center; color:#ccc; font-size:12px; }
+    .card-badge { position:absolute; top:10px; left:10px; background:#e00; color:#fff; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:4px 8px; }
+    .card-overlay { position:absolute; bottom:0; left:0; right:0; background:rgba(0,0,0,.6); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:10px; line-height:1.4; }
+    .card-body { padding:14px; }
+    .card-tag { font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:#999; font-weight:700; margin-bottom:6px; }
+    .card-name { font-size:13px; font-weight:700; color:#111; line-height:1.4; margin-bottom:8px; }
+    .card-desc { font-size:11px; color:#888; line-height:1.6; margin-bottom:10px; }
+    .card-footer { display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid #f0f0f0; padding-top:10px; }
+    .card-price { color:#c00; font-size:16px; font-weight:700; }
+    .card-old { color:#ccc; font-size:10px; text-decoration:line-through; }
+    .card-btn { background:#000; color:#fff; border:none; font-size:9px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; padding:8px 14px; cursor:pointer; font-family:'Montserrat',sans-serif; }
+    .card-btn:hover { background:#333; }
+
+    /* Footer */
+    footer { background:#111; padding:40px 40px 20px; color:#555; }
+    .footer-grid { display:grid; grid-template-columns:1.6fr 1fr 1fr; gap:40px; margin-bottom:28px; }
+    .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.22em; color:#fff; }
+    footer h4 { font-size:10px; letter-spacing:0.25em; text-transform:uppercase; color:#fff; font-weight:700; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #1e1e1e; }
+    footer ul { list-style:none; padding:0; }
+    footer li { font-size:12px; color:#555; margin-bottom:6px; }
+    footer a { color:#555; }
+    footer a:hover { color:#fff; }
+    .footer-bottom { border-top:1px solid #1a1a1a; padding-top:14px; font-size:10px; color:#333; letter-spacing:0.1em; text-transform:uppercase; }
+
+    /* Float */
+    .float-bar { position:fixed; bottom:0; left:0; right:0; background:#222; z-index:999; padding:10px 40px; display:flex; align-items:center; justify-content:space-between; }
+    .float-label { color:#fff; font-size:12px; font-weight:700; font-style:italic; }
+    .float-phones { display:flex; gap:28px; }
+    .float-phone { color:#fff; font-size:13px; font-weight:700; }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-tw">𝕏</a>
+      <a href="#" class="soc soc-ig">📷</a>
+      <a href="#" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff; font-size:11px; letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff2200" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="200" y1="0" x2="1200" y2="180" stroke="url(#r1)" stroke-width="2"/>
+      <line x1="180" y1="0" x2="1000" y2="200" stroke="url(#r1)" stroke-width="3.5"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="breadcrumb"><a href="index.html">Trang chủ</a> &rsaquo; Khóa học</div>
+      <h1>KHÓA HỌC</h1>
+      <p>Chương trình đào tạo chuyên nghiệp từ cơ bản đến nâng cao — dành cho mọi trình độ</p>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="filter-bar">
+    <span class="filter-label">Lọc theo:</span>
+    <button class="filter-btn active" onclick="filterCourses('all', this)">Tất cả</button>
+    <button class="filter-btn" onclick="filterCourses('Chuyên nghiệp', this)">Chuyên nghiệp</button>
+    <button class="filter-btn" onclick="filterCourses('Online', this)">Online</button>
+    <button class="filter-btn" onclick="filterCourses('Premium 1-1', this)">Premium 1-1</button>
+    <button class="filter-btn" onclick="filterCourses('Tóc & Trang điểm', this)">Tóc & Makeup</button>
+    <button class="filter-btn" onclick="filterCourses('Dành cho người mới bắt đầu', this)">Người mới</button>
+  </div>
+
+  <!-- Courses -->
+  <div class="courses-section">
+    <div class="courses-count" id="count"></div>
+    <div class="grid" id="courses-grid"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AMI</div>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+      </div>
+      <div>
+        <h4>Khóa học</h4>
+        <ul id="footer-courses"></ul>
+      </div>
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="#">Make Up Ngày Cưới</a></li>
+          <li><a href="#">Make Up Kỷ Yếu</a></li>
+          <li><a href="#">Make Up Sự Kiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <script src="data-khoa-hoc.js"></script>
+  <script>
+    let currentFilter = 'all';
+
+    function renderCourses(list) {
+      const grid = document.getElementById('courses-grid');
+      document.getElementById('count').textContent = list.length + ' khoá học';
+      grid.innerHTML = list.map(k => `
+        <div class="card" onclick="window.location='khoa-hoc-chi-tiet.html?id=${k.id}'">
+          <div class="card-thumb">
+            <img src="${k.hinh}" alt="${k.ten}" onerror="this.style.display='none'" />
+            <div class="card-thumb-placeholder" style="${k.hinh ? 'display:none' : ''}">📷 Chưa có ảnh</div>
+            <div class="card-badge">${k.the}</div>
+            <div class="card-overlay">${k.ten_ngan}</div>
+          </div>
+          <div class="card-body">
+            <div class="card-tag">${k.the}</div>
+            <div class="card-name">${k.ten}</div>
+            <div class="card-desc">${k.mo_ta_ngan}</div>
+            <div class="card-footer">
+              <div>
+                <div class="card-price">${k.gia}</div>
+                <div class="card-old">${k.gia_goc}</div>
+              </div>
+              <button class="card-btn">Xem chi tiết</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Footer links
+      document.getElementById('footer-courses').innerHTML =
+        KHOA_HOC.map(k => `<li><a href="khoa-hoc-chi-tiet.html?id=${k.id}">${k.ten_ngan}</a></li>`).join('');
+    }
+
+    function filterCourses(tag, btn) {
+      currentFilter = tag;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const list = tag === 'all' ? KHOA_HOC : KHOA_HOC.filter(k => k.the === tag);
+      renderCourses(list);
+    }
+
+    renderCourses(KHOA_HOC);
+  </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chi Tiết Khoá Học — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'Montserrat',sans-serif; background:#fff; color:#222; }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; width:100%; height:100%; object-fit:cover; }
+
+    .topbar { background:#111; padding:7px 40px; display:flex; justify-content:space-between; align-items:center; }
+    .topbar span { color:#aaa; font-size:12px; }
+    .topbar-social { display:flex; gap:8px; }
+    .soc { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-ig{background:#c13584}
+    .header { background:#000; padding:14px 40px; display:flex; justify-content:space-between; align-items:center; }
+    .logo-name { font-family:'Bebas Neue',sans-serif; font-size:38px; letter-spacing:0.18em; color:#fff; line-height:1; }
+    .logo-sub { font-size:10px; letter-spacing:0.4em; color:#ccc; text-transform:uppercase; }
+    nav { background:#fff; border-bottom:1px solid #eee; display:flex; justify-content:center; padding:0 40px; position:sticky; top:0; z-index:100; box-shadow:0 1px 4px rgba(0,0,0,.06); }
+    nav a { color:#222; font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; padding:16px 16px; display:block; border-bottom:2px solid transparent; }
+    nav a:hover, nav a.active { color:#000; border-bottom-color:#000; }
+
+    /* Breadcrumb */
+    .breadcrumb { padding:14px 40px; font-size:11px; color:#999; letter-spacing:0.06em; border-bottom:1px solid #f0f0f0; }
+    .breadcrumb a { color:#e00; }
+    .breadcrumb a:hover { text-decoration:underline; }
+
+    /* Layout chính */
+    .detail-wrap { max-width:1200px; margin:0 auto; padding:40px 40px 60px; display:grid; grid-template-columns:1fr 360px; gap:40px; align-items:start; }
+
+    /* Cột trái */
+    .detail-left {}
+    .detail-badge { display:inline-block; background:#e00; color:#fff; font-size:9px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; padding:5px 12px; margin-bottom:14px; }
+    .detail-title { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.08em; color:#111; line-height:1.1; margin-bottom:16px; }
+    .detail-img { width:100%; height:380px; overflow:hidden; background:#f0f0f0; margin-bottom:28px; border:1px solid #eee; }
+    .detail-img img { width:100%; height:100%; object-fit:cover; }
+    .detail-img-placeholder { width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#ccc; font-size:13px; }
+
+    /* Tabs nội dung */
+    .tabs { display:flex; border-bottom:2px solid #f0f0f0; margin-bottom:28px; }
+    .tab { padding:12px 20px; font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; cursor:pointer; border-bottom:2px solid transparent; margin-bottom:-2px; color:#999; }
+    .tab.active { color:#000; border-bottom-color:#000; }
+    .tab-content { display:none; }
+    .tab-content.active { display:block; }
+
+    .mo-ta p { font-size:13px; color:#555; line-height:1.9; margin-bottom:12px; }
+
+    .noi-dung-list { list-style:none; padding:0; }
+    .noi-dung-list li { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid #f5f5f5; font-size:13px; color:#444; line-height:1.5; }
+    .noi-dung-list li::before { content:'✓'; color:#e00; font-weight:700; flex-shrink:0; margin-top:1px; }
+
+    .duoc-hoc-list { list-style:none; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .duoc-hoc-list li { display:flex; gap:10px; font-size:12px; color:#444; align-items:flex-start; padding:10px; background:#fafafa; border:1px solid #f0f0f0; }
+    .duoc-hoc-list li::before { content:'🎁'; flex-shrink:0; }
+
+    /* Cột phải — sticky card đăng ký */
+    .register-card { position:sticky; top:80px; border:1px solid #eee; background:#fff; box-shadow:0 4px 24px rgba(0,0,0,.08); }
+    .register-card-header { background:#000; padding:20px; }
+    .register-price { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.05em; color:#fff; }
+    .register-old { font-size:12px; color:#666; text-decoration:line-through; margin-top:2px; }
+    .register-saving { font-size:11px; color:#e00; font-weight:700; margin-top:4px; }
+    .register-body { padding:20px; }
+    .register-info { list-style:none; padding:0; margin-bottom:20px; }
+    .register-info li { display:flex; gap:10px; font-size:12px; color:#555; padding:8px 0; border-bottom:1px solid #f5f5f5; }
+    .register-info li strong { color:#111; min-width:90px; }
+    .register-btn { display:block; width:100%; background:#e00; color:#fff; border:none; padding:16px; font-size:12px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; font-family:'Montserrat',sans-serif; margin-bottom:10px; }
+    .register-btn:hover { background:#c00; }
+    .register-btn-2 { display:block; width:100%; background:#fff; color:#000; border:1.5px solid #000; padding:13px; font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; font-family:'Montserrat',sans-serif; }
+    .register-btn-2:hover { background:#000; color:#fff; }
+    .register-note { font-size:10px; color:#999; text-align:center; margin-top:12px; line-height:1.6; }
+    .register-hotline { text-align:center; margin-top:14px; padding-top:14px; border-top:1px solid #f0f0f0; font-size:12px; color:#555; }
+    .register-hotline strong { display:block; font-size:16px; color:#e00; margin-top:4px; }
+
+    /* Form popup đăng ký */
+    .popup-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.7); z-index:9999; align-items:center; justify-content:center; }
+    .popup-overlay.open { display:flex; }
+    .popup { background:#fff; width:100%; max-width:480px; padding:32px; position:relative; }
+    .popup h2 { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:0.1em; margin-bottom:6px; }
+    .popup p { font-size:12px; color:#888; margin-bottom:20px; }
+    .popup input, .popup select, .popup textarea { width:100%; border:1px solid #ddd; padding:11px 14px; font-size:13px; font-family:'Montserrat',sans-serif; margin-bottom:10px; outline:none; }
+    .popup input:focus, .popup select:focus { border-color:#000; }
+    .popup textarea { height:80px; resize:none; }
+    .popup-submit { width:100%; background:#000; color:#fff; border:none; padding:14px; font-size:11px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; font-family:'Montserrat',sans-serif; }
+    .popup-close { position:absolute; top:14px; right:16px; font-size:20px; cursor:pointer; color:#999; background:none; border:none; }
+
+    /* Khoá học liên quan */
+    .related { background:#f8f8f8; padding:40px 40px; }
+    .related h2 { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.1em; color:#111; margin-bottom:24px; }
+    .related-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+    .rel-card { background:#fff; border:1px solid #eee; overflow:hidden; cursor:pointer; transition:box-shadow .2s; }
+    .rel-card:hover { box-shadow:0 4px 16px rgba(0,0,0,.08); }
+    .rel-thumb { height:140px; background:#f0f0f0; overflow:hidden; }
+    .rel-thumb img { width:100%; height:100%; object-fit:cover; }
+    .rel-body { padding:12px; }
+    .rel-name { font-size:12px; font-weight:700; color:#111; line-height:1.4; margin-bottom:6px; }
+    .rel-price { color:#c00; font-size:14px; font-weight:700; }
+
+    /* Footer */
+    footer { background:#111; padding:32px 40px 20px; color:#555; }
+    .footer-bottom { font-size:10px; color:#333; letter-spacing:0.1em; text-transform:uppercase; text-align:center; padding-top:20px; border-top:1px solid #1a1a1a; }
+    .float-bar { position:fixed; bottom:0; left:0; right:0; background:#222; z-index:998; padding:10px 40px; display:flex; align-items:center; justify-content:space-between; }
+    .float-label { color:#fff; font-size:12px; font-weight:700; font-style:italic; }
+    .float-phone { color:#fff; font-size:13px; font-weight:700; }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-ig">📷</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff;font-size:11px;letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="index.html">Trang chủ</a> &rsaquo;
+    <a href="khoa-hoc.html">Khóa học</a> &rsaquo;
+    <span id="bc-name">Chi tiết khoá học</span>
+  </div>
+
+  <!-- Nội dung chi tiết -->
+  <div class="detail-wrap">
+
+    <!-- Cột trái -->
+    <div class="detail-left">
+      <div class="detail-badge" id="d-badge"></div>
+      <h1 class="detail-title" id="d-title"></h1>
+
+      <div class="detail-img">
+        <img id="d-img" src="" alt="" onerror="this.style.display='none';document.getElementById('d-img-ph').style.display='flex'" />
+        <div class="detail-img-placeholder" id="d-img-ph" style="display:none">📷 Chưa có ảnh</div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab('mo-ta', this)">Giới thiệu</div>
+        <div class="tab" onclick="switchTab('noi-dung', this)">Nội dung khoá học</div>
+        <div class="tab" onclick="switchTab('duoc-hoc', this)">Bạn sẽ được</div>
+      </div>
+
+      <div class="tab-content active mo-ta" id="tab-mo-ta">
+        <div class="mo-ta" id="d-mo-ta"></div>
+      </div>
+
+      <div class="tab-content noi-dung" id="tab-noi-dung">
+        <ul class="noi-dung-list" id="d-noi-dung"></ul>
+      </div>
+
+      <div class="tab-content duoc-hoc" id="tab-duoc-hoc">
+        <ul class="duoc-hoc-list" id="d-duoc-hoc"></ul>
+      </div>
+    </div>
+
+    <!-- Cột phải — Card đăng ký -->
+    <div>
+      <div class="register-card">
+        <div class="register-card-header">
+          <div class="register-price" id="r-price"></div>
+          <div class="register-old" id="r-old"></div>
+          <div class="register-saving" id="r-saving"></div>
+        </div>
+        <div class="register-body">
+          <ul class="register-info">
+            <li><strong>⏱ Thời lượng</strong> <span id="r-tl"></span></li>
+            <li><strong>📅 Lịch học</strong> <span id="r-bh"></span></li>
+            <li><strong>👥 Sĩ số</strong> <span id="r-shv"></span></li>
+            <li><strong>📍 Địa điểm</strong> <span id="r-dd"></span></li>
+          </ul>
+          <button class="register-btn" onclick="openPopup()">ĐĂNG KÝ GIỮ XUẤT HỌC</button>
+          <button class="register-btn-2" onclick="openPopup()">TƯ VẤN MIỄN PHÍ</button>
+          <div class="register-note">✅ Tư vấn viên sẽ liên hệ trong vòng 30 phút<br>🔒 Thông tin của bạn được bảo mật tuyệt đối</div>
+          <div class="register-hotline">
+            Hoặc gọi ngay hotline<br>
+            <strong>0979.963.369</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Khoá học liên quan -->
+  <div class="related">
+    <h2>KHOÁ HỌC LIÊN QUAN</h2>
+    <div class="related-grid" id="related-grid"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div style="display:flex;gap:28px">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <!-- Popup đăng ký -->
+  <div class="popup-overlay" id="popup">
+    <div class="popup">
+      <button class="popup-close" onclick="closePopup()">✕</button>
+      <h2>ĐĂNG KÝ TƯ VẤN</h2>
+      <p>Điền thông tin — chúng tôi sẽ liên hệ trong vòng 30 phút</p>
+      <input type="text" placeholder="Họ và tên *" />
+      <input type="tel" placeholder="Số điện thoại *" />
+      <input type="email" placeholder="Email" />
+      <select id="popup-course">
+        <option value="">Chọn khoá học quan tâm</option>
+      </select>
+      <textarea placeholder="Ghi chú thêm..."></textarea>
+      <button class="popup-submit" onclick="alert('Đã gửi đăng ký! Chúng tôi sẽ liên hệ bạn sớm nhất.')">GỬI ĐĂNG KÝ</button>
+    </div>
+  </div>
+
+  <script src="data-khoa-hoc.js"></script>
+  <script>
+    // Đọc id từ URL
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get('id')) || 1;
+    const khoa = KHOA_HOC.find(k => k.id === id) || KHOA_HOC[0];
+
+    // Điền thông tin vào trang
+    document.title = khoa.ten + ' — AMI Make Up Academy';
+    document.getElementById('bc-name').textContent = khoa.ten_ngan;
+    document.getElementById('d-badge').textContent = khoa.the;
+    document.getElementById('d-title').textContent = khoa.ten;
+
+    const img = document.getElementById('d-img');
+    img.src = khoa.hinh;
+    img.alt = khoa.ten;
+
+    document.getElementById('d-mo-ta').innerHTML = khoa.mo_ta_day_du;
+
+    document.getElementById('d-noi-dung').innerHTML =
+      khoa.noi_dung.map(item => `<li>${item}</li>`).join('');
+
+    document.getElementById('d-duoc-hoc').innerHTML =
+      khoa.duoc_hoc.map(item => `<li>${item}</li>`).join('');
+
+    document.getElementById('r-price').textContent = khoa.gia;
+    document.getElementById('r-old').textContent = 'Giá gốc: ' + khoa.gia_goc;
+    document.getElementById('r-tl').textContent = khoa.thoi_luong;
+    document.getElementById('r-bh').textContent = khoa.buoi_hoc;
+    document.getElementById('r-shv').textContent = khoa.so_hoc_vien;
+    document.getElementById('r-dd').textContent = khoa.dia_diem;
+
+    // Khoá học liên quan (4 khoá khác)
+    const related = KHOA_HOC.filter(k => k.id !== id).slice(0, 4);
+    document.getElementById('related-grid').innerHTML = related.map(k => `
+      <div class="rel-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=${k.id}'">
+        <div class="rel-thumb">
+          <img src="${k.hinh}" alt="${k.ten}" onerror="this.style.display='none'" />
+        </div>
+        <div class="rel-body">
+          <div class="rel-name">${k.ten}</div>
+          <div class="rel-price">${k.gia}</div>
+        </div>
+      </div>
+    `).join('');
+
+    // Dropdown khoá học trong popup
+    document.getElementById('popup-course').innerHTML =
+      '<option value="">Chọn khoá học</option>' +
+      KHOA_HOC.map(k => `<option value="${k.id}" ${k.id===id?'selected':''}>${k.ten}</option>`).join('');
+
+    // Tabs
+    function switchTab(name, btn) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+    }
+
+    // Popup
+    function openPopup() {
+      document.getElementById('popup').classList.add('open');
+    }
+    function closePopup() {
+      document.getElementById('popup').classList.remove('open');
+    }
+    document.getElementById('popup').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closePopup();
+    });
+  </script>
+</body>
+</html>

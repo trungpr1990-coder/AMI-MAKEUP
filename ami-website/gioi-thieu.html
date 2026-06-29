@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giới Thiệu — AMI Make Up Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #222; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; width: 100%; object-fit: cover; }
+
+    .topbar { background: #111; padding: 7px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .topbar span { color: #aaa; font-size: 12px; }
+    .topbar-social { display: flex; gap: 8px; }
+    .soc { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: 700; }
+    .soc-fb{background:#1877f2} .soc-yt{background:#ff0000} .soc-tw{background:#1da1f2} .soc-ig{background:#c13584} .soc-pt{background:#e60023}
+
+    .header { background: #000; padding: 14px 40px; display: flex; justify-content: space-between; align-items: center; }
+    .logo-name { font-family: 'Bebas Neue', sans-serif; font-size: 38px; letter-spacing: 0.18em; color: #fff; line-height: 1; }
+    .logo-sub { font-size: 10px; letter-spacing: 0.4em; color: #ccc; text-transform: uppercase; }
+
+    /* Page header */
+    .page-header { background: #000; padding: 48px 40px; position: relative; overflow: hidden; }
+    .page-header svg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .page-header-inner { position: relative; z-index: 2; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 48px; letter-spacing: 0.1em; color: #fff; }
+    .page-header p { color: #888; font-size: 13px; margin-top: 8px; letter-spacing: 0.05em; }
+    .breadcrumb { font-size: 11px; color: #555; margin-bottom: 12px; letter-spacing: 0.08em; }
+    .breadcrumb a { color: #e00; }
+
+    /* Layout: content + sidebar */
+    .page-layout { max-width: 1200px; margin: 0 auto; padding: 48px 40px; display: grid; grid-template-columns: 1fr 280px; gap: 48px; }
+    .page-content h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 0.1em; color: #111; margin-bottom: 16px; }
+    .page-content p { font-size: 14px; line-height: 1.9; color: #444; margin-bottom: 16px; }
+    .page-content strong { color: #111; }
+
+    /* About image */
+    .about-img { width: 100%; height: 360px; object-fit: cover; margin-bottom: 32px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 13px; }
+    .about-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Stats */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stat { background: #000; color: #fff; padding: 24px; text-align: center; }
+    .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 42px; letter-spacing: 0.08em; color: #e00; line-height: 1; }
+    .stat-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #aaa; margin-top: 6px; }
+
+    /* Team */
+    .team-section { margin-top: 40px; }
+    .team-section h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.1em; color: #111; margin-bottom: 20px; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .team-card { border: 1px solid #eee; overflow: hidden; }
+    .team-card-img { height: 220px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; color: #ccc; font-size: 12px; }
+    .team-card-img img { width: 100%; height: 100%; object-fit: cover; }
+    .team-card-info { padding: 14px; }
+    .team-card-name { font-size: 14px; font-weight: 700; color: #111; margin-bottom: 4px; }
+    .team-card-role { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #e00; }
+
+    /* Sidebar */
+    .sidebar { }
+    .sidebar-box { border: 1px solid #eee; margin-bottom: 24px; }
+    .sidebar-title { background: #000; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 12px 16px; }
+    .sidebar-list { list-style: none; padding: 0; }
+    .sidebar-list li a { display: block; padding: 12px 16px; font-size: 12px; color: #444; border-bottom: 1px solid #f5f5f5; transition: all .2s; }
+    .sidebar-list li a:hover, .sidebar-list li.active a { background: #f8f8f8; color: #e00; padding-left: 20px; }
+    .sidebar-list li:last-child a { border-bottom: none; }
+
+    /* Footer */
+    footer { background: #111; padding: 40px 40px 20px; color: #555; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 40px; margin-bottom: 28px; }
+    .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.22em; color: #fff; }
+    footer h4 { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: #fff; font-weight: 700; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid #1e1e1e; }
+    footer ul { list-style: none; padding: 0; }
+    footer li { font-size: 12px; color: #555; margin-bottom: 6px; }
+    footer a { color: #555; }
+    footer a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid #1a1a1a; padding-top: 14px; font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .float-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #222; z-index: 999; padding: 10px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .float-label { color: #fff; font-size: 12px; font-weight: 700; font-style: italic; }
+    .float-phones { display: flex; gap: 28px; }
+    .float-phone { color: #fff; font-size: 13px; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <div class="topbar-social">
+      <a href="#" class="soc soc-fb">f</a>
+      <a href="#" class="soc soc-yt">▶</a>
+      <a href="#" class="soc soc-tw">𝕏</a>
+      <a href="#" class="soc soc-ig">📷</a>
+      <a href="#" class="soc soc-pt">P</a>
+    </div>
+  </div>
+
+  <div class="header">
+    <a href="index.html">
+      <div class="logo-name">AMI</div>
+      <div class="logo-sub">Make &nbsp;Up &nbsp;Academy</div>
+    </a>
+    <div style="color:#fff; font-size:11px; letter-spacing:0.1em;">🛒 GIỎ HÀNG (0)</div>
+  </div>
+
+  <nav id="main-nav"></nav>
+  <script src="nav.js"></script>
+
+  <div class="page-header">
+    <svg viewBox="0 0 1200 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
+          <stop offset="50%" stop-color="#ff2200" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <line x1="200" y1="0" x2="1200" y2="180" stroke="url(#r1)" stroke-width="2"/>
+      <line x1="180" y1="0" x2="1000" y2="200" stroke="url(#r1)" stroke-width="3.5"/>
+    </svg>
+    <div class="page-header-inner">
+      <div class="breadcrumb"><a href="index.html">Trang chủ</a> &rsaquo; Giới thiệu</div>
+      <h1>GIỚI THIỆU</h1>
+      <p>Hơn 10 năm đào tạo makeup chuyên nghiệp — uy tín hàng đầu Việt Nam</p>
+    </div>
+  </div>
+
+  <div class="page-layout">
+    <!-- Nội dung chính -->
+    <div class="page-content">
+      <!-- 🖼️ ẢNH: Ảnh giới thiệu — đặt file about.jpg vào thư mục images/ -->
+      <div class="about-img">
+        <img src="images/about.jpg" alt="AMI Make Up Academy" onerror="this.parentElement.innerHTML='🖼️ about.jpg'" />
+      </div>
+
+      <h2>AMI MAKE UP ACADEMY</h2>
+      <!-- ✏️ SỬA: Nội dung giới thiệu -->
+      <p>Với hơn 10 năm kinh nghiệm trong nghề trang điểm, <strong>AMI Make Up Academy</strong> đã trở thành một biểu tượng trong lĩnh vực làm đẹp và đào tạo trang điểm tại Việt Nam. Hơn 20.000 học viên đã được chúng tôi hướng dẫn từ những bước đi cơ bản, chuyên nghiệp cho đến nâng cao.</p>
+      <p>Không chỉ học được kỹ thuật mà còn nhận được sự định hướng, cảm hứng và ngọn lửa đam mê để phát triển sự nghiệp của riêng mình. Thương hiệu <strong>AMI Make Up</strong> đã khẳng định vị thế, trở thành cái tên được nhớ đến trong lòng mọi học viên, đặc biệt là những người đã từng học tập và trưởng thành từ AMI Make Up Academy.</p>
+      <p>Make Up Artist AMI chính là giảng viên chính thức và duy nhất tại AMI Make Up Academy. Đồng hành cùng cô là đội ngũ chuyên viên trang điểm và trợ giảng chuyên nghiệp, đầy nhiệt huyết. Học viện không chỉ là nơi đào tạo mà còn là một môi trường học tập lành mạnh, sáng tạo, nơi mà mọi người luôn đoàn kết, hỗ trợ lẫn nhau, cùng nhau phấn đấu để nâng cao chất lượng đào tạo và phát triển các thế hệ Make Up Artist ngày càng tài năng và chất lượng.</p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Năm kinh nghiệm</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">20K+</div>
+          <div class="stat-label">Học viên đã tốt nghiệp</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Khoá học chuyên sâu</div>
+        </div>
+      </div>
+
+      <p>Chúng tôi tự hào khi nhìn thấy học viên của mình ngày càng thành công và góp phần xây dựng ngành trang điểm Việt Nam ngày càng tầm cao mới. AMI Make Up Academy — nơi ươm mầm những tài năng trang điểm và kiến tạo tương lai nghề nghiệp bền vững.</p>
+
+      <div class="team-section">
+        <h3>ĐỘI NGŨ GIẢNG VIÊN</h3>
+        <div class="team-grid">
+          <div class="team-card">
+            <!-- 🖼️ ẢNH: Ảnh giảng viên — đặt file teacher-1.jpg vào thư mục images/ -->
+            <div class="team-card-img">
+              <img src="images/teacher-1.jpg" alt="Giảng viên" onerror="this.parentElement.innerHTML='👩 teacher-1.jpg'" />
+            </div>
+            <div class="team-card-info">
+              <!-- ✏️ SỬA: Tên và chức danh giảng viên -->
+              <div class="team-card-name">AMI — Makeup Artist</div>
+              <div class="team-card-role">Giảng viên chính</div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/teacher-2.jpg" alt="Trợ giảng" onerror="this.parentElement.innerHTML='👩 teacher-2.jpg'" />
+            </div>
+            <div class="team-card-info">
+              <div class="team-card-name">Trợ Giảng Chuyên Nghiệp</div>
+              <div class="team-card-role">Trợ giảng</div>
+            </div>
+          </div>
+          <div class="team-card">
+            <div class="team-card-img">
+              <img src="images/teacher-3.jpg" alt="Chuyên viên" onerror="this.parentElement.innerHTML='👩 teacher-3.jpg'" />
+            </div>
+            <div class="team-card-info">
+              <div class="team-card-name">Chuyên Viên Trang Điểm</div>
+              <div class="team-card-role">Trợ giảng</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-box">
+        <div class="sidebar-title">Danh mục</div>
+        <ul class="sidebar-list">
+          <li class="active"><a href="gioi-thieu.html">Giới thiệu</a></li>
+          <li><a href="tin-tuc.html">Tin tức</a></li>
+          <li><a href="tuyen-dung.html">Tuyển dụng</a></li>
+          <li><a href="cam-nhan.html">Cảm nhận khách hàng</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-box">
+        <div class="sidebar-title">Khoá học nổi bật</div>
+        <ul class="sidebar-list">
+          <li><a href="khoa-hoc-chi-tiet.html?id=1">Make Up Pro 2026</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=2">Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=4">Make Up Cá Nhân 1-1</a></li>
+          <li><a href="khoa-hoc.html">Xem tất cả →</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AMI</div>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+      </div>
+      <div>
+        <h4>Khóa học</h4>
+        <ul>
+          <li><a href="khoa-hoc-chi-tiet.html?id=1">Make Up Pro 2026</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=2">Nâng Cao Cấp Tốc SG</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=3">Nâng Cao Cấp Tốc HN</a></li>
+          <li><a href="khoa-hoc-chi-tiet.html?id=4">Make Up Cá Nhân</a></li>
+          <li><a href="khoa-hoc.html">Xem tất cả →</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="dich-vu.html#cuoi">Make Up Ngày Cưới</a></li>
+          <li><a href="dich-vu.html#ky-yeu">Make Up Kỷ Yếu</a></li>
+          <li><a href="dich-vu.html#su-kien">Make Up Sự Kiện</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 AMI Make Up Academy · All rights reserved</div>
+  </footer>
+
+  <div class="float-bar">
+    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
+    <div class="float-phones">
+      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
+      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+    </div>
+  </div>
+  <div style="height:50px"></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

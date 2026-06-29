@@ -1,0 +1,21 @@
+# Sensitive / credentials
+.env
+*.token
+auth_qr.png
+lark-config-qr*.png
+qr_*.png
+
+# Large data / temp files
+*.json
+!CLAUDE.md
+
+# Node
+node_modules/
+mcp-pancake/node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Output / cache
+output/
