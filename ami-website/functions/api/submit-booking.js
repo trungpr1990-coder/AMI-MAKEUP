@@ -21,36 +21,55 @@ export async function onRequestPost(context) {
 
     const token = await getTenantAccessToken(env);
 
-    // Upload từng nhóm ảnh (nếu có), mỗi ảnh là { name, dataUrl }
+    // Upload từng nhóm ảnh (nếu có), mỗi ảnh là { name, dataUrl } — dùng chung cho mọi ngày của đơn này
     const depositTokens = await uploadImages(body.depositImages, env.LARK_BASE_TOKEN, token);
     const makeupTokens  = await uploadImages(body.makeupImages, env.LARK_BASE_TOKEN, token);
     const hairTokens    = await uploadImages(body.hairImages, env.LARK_BASE_TOKEN, token);
 
-    const fields = {
+    const orderCode = body.orderCode || ('AMI-' + Date.now());
+    const days = Array.isArray(body.days) && body.days.length ? body.days : [{}];
+
+    const baseFields = {
+      'Mã đơn': orderCode,
       'Họ và tên': body.name || '',
       'Địa chỉ': body.address || '',
       'Tên nhắn tin': body.contactName || '',
       'Dịch vụ': body.service || '',
       'Ghi chú dịch vụ': body.note || '',
-      'Chi tiết ngày làm': body.daysSummary || '',
       'Trạng thái': 'Mới',
     };
-    // Các field kiểu phone/email/url/select không được gửi chuỗi rỗng — bỏ hẳn key nếu không có giá trị
-    if (body.phone) fields['Số điện thoại'] = body.phone;
-    if (body.email) fields['Email'] = body.email;
-    if (body.mapsLink) fields['Google Maps'] = { text: 'Xem bản đồ', link: body.mapsLink };
-    if (body.contactChannel) fields['Kênh nhắn tin'] = body.contactChannel;
-    if (body.dob) fields['Ngày sinh'] = new Date(body.dob).getTime();
-    if (depositTokens.length) fields['Ảnh đặt cọc'] = depositTokens.map(t => ({ file_token: t }));
-    if (makeupTokens.length) fields['Ảnh makeup mẫu'] = makeupTokens.map(t => ({ file_token: t }));
-    if (hairTokens.length) fields['Ảnh kiểu tóc mẫu'] = hairTokens.map(t => ({ file_token: t }));
+    if (body.phone) baseFields['Số điện thoại'] = body.phone;
+    if (body.email) baseFields['Email'] = body.email;
+    if (body.mapsLink) baseFields['Google Maps'] = { text: 'Xem bản đồ', link: body.mapsLink };
+    if (body.contactChannel) baseFields['Kênh nhắn tin'] = body.contactChannel;
+    if (body.dob) baseFields['Ngày sinh'] = new Date(body.dob).getTime();
+    if (depositTokens.length) baseFields['Ảnh đặt cọc'] = depositTokens.map(t => ({ file_token: t }));
+    if (makeupTokens.length) baseFields['Ảnh makeup mẫu'] = makeupTokens.map(t => ({ file_token: t }));
+    if (hairTokens.length) baseFields['Ảnh kiểu tóc mẫu'] = hairTokens.map(t => ({ file_token: t }));
+
+    // Mỗi ngày làm là 1 dòng riêng — để lọc/sắp xếp theo "Ngày làm" xem tổng quan lịch, tránh trùng lịch
+    const records = days.map(d => {
+      const fields = { ...baseFields };
+      if (d.label) fields['Buổi'] = d.label;
+      if (d.place) fields['Địa điểm'] = d.place;
+      if (d.date && d.time) {
+        // +07:00 = giờ Việt Nam — nếu không ghi rõ offset, JS sẽ hiểu là UTC và lệch 7 tiếng khi Lark hiển thị
+        const ts = new Date(`${d.date}T${d.time}:00+07:00`).getTime();
+        if (!isNaN(ts)) fields['Ngày làm'] = ts;
+      }
+      const soNguoi = d.codau !== undefined
+        ? (+d.codau || 0) + (+d.me || 0) + (+d.nh || 0)
+        : +d.qty || 0;
+      if (soNguoi) fields['Số người'] = soNguoi;
+      return { fields };
+    });
 
     const createRes = await fetch(
-      `${LARK_API}/bitable/v1/apps/${env.LARK_BASE_TOKEN}/tables/${env.LARK_TABLE_ID}/records`,
+      `${LARK_API}/bitable/v1/apps/${env.LARK_BASE_TOKEN}/tables/${env.LARK_TABLE_ID}/records/batch_create`,
       {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ fields }),
+        body: JSON.stringify({ records }),
       }
     );
     const createData = await createRes.json();
@@ -58,7 +77,11 @@ export async function onRequestPost(context) {
       return json({ ok: false, error: 'Lark record error', detail: createData }, 502);
     }
 
-    return json({ ok: true, record_id: createData.data?.record?.record_id });
+    return json({
+      ok: true,
+      order_code: orderCode,
+      record_ids: (createData.data?.records || []).map(r => r.record_id),
+    });
   } catch (err) {
     return json({ ok: false, error: String(err && err.message || err) }, 500);
   }
