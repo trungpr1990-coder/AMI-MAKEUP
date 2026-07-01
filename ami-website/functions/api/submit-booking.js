@@ -98,13 +98,13 @@ async function getTenantAccessToken(env) {
   return data.tenant_access_token;
 }
 
-// images: [{ name, dataUrl }] -> trả về mảng file_token đã upload lên Lark
+// images: [{ name, src }] — "src" là data URL base64, khớp với format files.deposit/makeup/hair phía client
 async function uploadImages(images, baseToken, token) {
   if (!Array.isArray(images) || images.length === 0) return [];
   const tokens = [];
   for (const img of images) {
-    if (!img || !img.dataUrl) continue;
-    const fileToken = await uploadOneImage(img.name || 'anh.jpg', img.dataUrl, baseToken, token);
+    if (!img || !img.src) continue;
+    const fileToken = await uploadOneImage(img.name || 'anh.jpg', img.src, baseToken, token);
     if (fileToken) tokens.push(fileToken);
   }
   return tokens;
