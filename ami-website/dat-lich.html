@@ -228,19 +228,33 @@
       <div class="fc-body">
         <div class="fr">
           <div class="fg">
-            <label>Họ và tên <span class="req">*</span></label>
-            <input type="text" id="f-name" placeholder="Nguyễn Thị Lan" required />
+            <label>Bạn nhắn tin cho AMI từ đâu <span class="req">*</span></label>
+            <select id="f-contact-channel" required>
+              <option value="">— Chọn kênh —</option>
+              <option value="Zalo">Zalo</option>
+              <option value="Facebook Messenger">Facebook Messenger</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Gọi điện / SMS">Gọi điện / SMS</option>
+              <option value="Đến trực tiếp cửa hàng">Đến trực tiếp cửa hàng</option>
+              <option value="Khác">Khác</option>
+            </select>
           </div>
           <div class="fg">
-            <label>Số điện thoại <span class="req">*</span></label>
-            <input type="tel" id="f-phone" placeholder="0909 123 456" required />
+            <label>Tên hiển thị lúc nhắn tin <span class="req">*</span></label>
+            <input type="text" id="f-contact-name" placeholder="VD: tên Zalo/Facebook bạn dùng để nhắn" required />
           </div>
         </div>
         <div class="fr">
           <div class="fg">
+            <label>Số điện thoại <span class="req">*</span></label>
+            <input type="tel" id="f-phone" placeholder="0909 123 456" required />
+          </div>
+          <div class="fg">
             <label>Email</label>
             <input type="email" id="f-email" placeholder="email@gmail.com" />
           </div>
+        </div>
+        <div class="fr fr1">
           <div class="fg">
             <label>Ngày sinh</label>
             <input type="date" id="f-dob" />
@@ -256,24 +270,6 @@
           <div class="fg">
             <label>Link Google Maps <span class="hint">(nếu có, giúp AMI tìm địa điểm chính xác hơn)</span></label>
             <input type="url" id="f-maps-link" placeholder="Dán link Google Maps vị trí của bạn tại đây..." />
-          </div>
-        </div>
-        <div class="fr">
-          <div class="fg">
-            <label>Bạn nhắn tin cho AMI từ đâu <span class="req">*</span></label>
-            <select id="f-contact-channel" required>
-              <option value="">— Chọn kênh —</option>
-              <option value="Zalo">Zalo</option>
-              <option value="Facebook Messenger">Facebook Messenger</option>
-              <option value="Instagram">Instagram</option>
-              <option value="Gọi điện / SMS">Gọi điện / SMS</option>
-              <option value="Đến trực tiếp cửa hàng">Đến trực tiếp cửa hàng</option>
-              <option value="Khác">Khác</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Tên hiển thị lúc nhắn tin <span class="hint">(nếu khác họ tên trên)</span></label>
-            <input type="text" id="f-contact-name" placeholder="VD: tên Zalo/Facebook bạn dùng để nhắn" />
           </div>
         </div>
       </div>
@@ -728,20 +724,20 @@
   document.getElementById('booking-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    const name    = document.getElementById('f-name').value.trim();
     const phone   = document.getElementById('f-phone').value.trim();
     const address = document.getElementById('f-address').value.trim();
     const mapsLink = document.getElementById('f-maps-link').value.trim();
     const contactChannel = document.getElementById('f-contact-channel').value;
     const contactName = document.getElementById('f-contact-name').value.trim();
+    const name = contactName;
     const service = document.getElementById('f-service').value;
 
-    if (!name || !phone || !address) {
-      alert('⚠️ Vui lòng điền Họ tên, SĐT và Địa chỉ');
+    if (!contactChannel || !contactName) {
+      alert('⚠️ Vui lòng chọn kênh nhắn tin và điền tên hiển thị lúc nhắn tin');
       return;
     }
-    if (!contactChannel) {
-      alert('⚠️ Vui lòng chọn kênh bạn nhắn tin cho AMI');
+    if (!phone || !address) {
+      alert('⚠️ Vui lòng điền SĐT và Địa chỉ');
       return;
     }
     if (!service) {
@@ -799,13 +795,13 @@
     const note = document.getElementById('f-note').value;
 
     document.getElementById('sum-personal').innerHTML = `
-      <div class="sm-row"><span class="sm-label">Họ tên</span><span class="sm-val">${name}</span></div>
+      <div class="sm-row"><span class="sm-label">Tên khách hàng</span><span class="sm-val">${contactName}</span></div>
+      <div class="sm-row"><span class="sm-label">Kênh nhắn tin</span><span class="sm-val">${contactChannel}</span></div>
       <div class="sm-row"><span class="sm-label">SĐT</span><span class="sm-val">${phone}</span></div>
       ${email?`<div class="sm-row"><span class="sm-label">Email</span><span class="sm-val">${email}</span></div>`:''}
       ${dob?`<div class="sm-row"><span class="sm-label">Ngày sinh</span><span class="sm-val">${fmtDate(dob)}</span></div>`:''}
       <div class="sm-row"><span class="sm-label">Địa chỉ</span><span class="sm-val">${address}</span></div>
       ${mapsLink?`<div class="sm-row"><span class="sm-label">Google Maps</span><span class="sm-val"><a href="${mapsLink}" target="_blank" style="color:#e00">Xem bản đồ ↗</a></span></div>`:''}
-      <div class="sm-row"><span class="sm-label">Nhắn tin từ</span><span class="sm-val">${contactChannel}${contactName?' — '+contactName:''}</span></div>
       <div class="sm-row"><span class="sm-label">Dịch vụ</span><span class="sm-val">${service}</span></div>
       ${note?`<div class="sm-row"><span class="sm-label">Ghi chú</span><span class="sm-val">${note}</span></div>`:''}
     `;
@@ -892,7 +888,7 @@
   }
 
   // Auto-fill nội dung CK
-  document.getElementById('f-name').addEventListener('input',function(){
+  document.getElementById('f-contact-name').addEventListener('input',function(){
     document.getElementById('bank-content').textContent='ĐẶT CỌC - '+(this.value.toUpperCase()||'[TÊN]')+' - [NGÀY]';
   });
 

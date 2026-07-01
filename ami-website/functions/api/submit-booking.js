@@ -31,9 +31,8 @@ export async function onRequestPost(context) {
 
     const baseFields = {
       'Mã đơn': orderCode,
-      'Họ và tên': body.name || '',
+      'Họ và tên': body.contactName || body.name || '',
       'Địa chỉ': body.address || '',
-      'Tên nhắn tin': body.contactName || '',
       'Dịch vụ': body.service || '',
       'Ghi chú dịch vụ': body.note || '',
       'Trạng thái': 'Mới',
