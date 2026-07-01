@@ -19,3 +19,5 @@ Thumbs.db
 
 # Output / cache
 output/
+.dev.vars
+.wrangler/

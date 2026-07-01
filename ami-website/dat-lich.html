@@ -841,6 +841,27 @@
     document.getElementById('sum-hair').innerHTML =
       files.hair.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('') || '<p style="color:#bbb;font-size:11px">Không có ảnh</p>';
 
+    // ── Ghi vào Lark Base (không chặn luồng của khách nếu lỗi) ──
+    const daysSummary = days.map(d => {
+      const isWedding = d.codau !== undefined;
+      const peopleTxt = isWedding
+        ? `Cô dâu ${d.codau}, Mẹ cô dâu ${d.me}, Người nhà ${d.nh}`
+        : `Số người ${d.qty}${d.snote ? ', Ghi chú: '+d.snote : ''}`;
+      return `${d.label} — ${fmtDate(d.date)} ${d.time} — ${d.place||'—'} — ${peopleTxt}`;
+    }).join('\n');
+
+    fetch('/api/submit-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, phone, email, dob, address, mapsLink, contactChannel, contactName,
+        service, note, daysSummary,
+        depositImages: files.deposit.filter(Boolean),
+        makeupImages: files.makeup.filter(Boolean),
+        hairImages: files.hair.filter(Boolean),
+      }),
+    }).catch(err => console.error('Ghi Lark Base thất bại:', err));
+
     document.getElementById('form-area').style.display = 'none';
     document.getElementById('success-screen').style.display = 'block';
     window.scrollTo(0,0);
