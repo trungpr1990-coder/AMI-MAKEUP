@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khoá Make Up Cá Nhân 2026 — Chương Trình 1-1 Cao Cấp | AMI Make Up Academy</title>
+<meta name="description" content="Chương trình đào tạo makeup cá nhân hoá 1-1 cùng Thuý Trần — 7+ năm kinh nghiệm, 500+ học viên tốt nghiệp. Chỉ nhận 1 học viên mỗi khoá." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,500;1,600&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --gold:#c9a84c;
+    --gold-light:#e8c97a;
+    --gold-deep:#a9822e;
+    --dark:#0c0c0c;
+    --dark2:#161616;
+    --charcoal:#1c1710;
+    --cream:#f9f5f0;
+    --ivory:#fffdf9;
+    --ink:#222;
+    --ink-soft:#5a5a5a;
+    --line:#e8c97a33;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+  body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--ink);min-height:100vh;line-height:1.7;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  ul{list-style:none}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  .wrap-narrow{max-width:760px;margin:0 auto;padding:0 24px}
+
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+  .eyebrow.on-light{color:var(--gold-deep)}
+
+  .ornament{display:flex;align-items:center;justify-content:center;gap:10px;margin:18px 0}
+  .ornament .l{flex:0 0 46px;height:1px;background:var(--gold);opacity:.6}
+  .ornament .d{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;line-height:1.2}
+  .h-display{font-size:clamp(34px,5.2vw,58px);font-weight:700;letter-spacing:.005em}
+  .h-section{font-size:clamp(26px,3.6vw,38px);text-align:center;color:var(--dark)}
+  .h-section em{font-style:italic;color:var(--gold-deep)}
+
+  /* ── TOP BAR ── */
+  .topbar{position:sticky;top:0;z-index:500;background:rgba(12,12,12,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(201,168,76,.18)}
+  .topbar-inner{max-width:1040px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .tb-logo{font-family:'Playfair Display',serif;font-size:19px;color:#fff;letter-spacing:.04em}
+  .tb-logo span{color:var(--gold)}
+  .tb-cta{background:var(--gold);color:var(--dark);font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;white-space:nowrap;transition:background .2s}
+  .tb-cta:hover{background:var(--gold-light)}
+
+  /* ── HERO ── */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+  .hero-media{position:absolute;inset:0}
+  .hero-media img{width:100%;height:100%;object-fit:cover;object-position:top center;opacity:.62}
+  .hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(12,12,12,.97) 20%,rgba(12,12,12,.75) 48%,rgba(12,12,12,.35) 78%,rgba(12,12,12,.55) 100%)}
+  .hero-inner{position:relative;z-index:2;padding:120px 24px 80px;max-width:1040px;margin:0 auto;width:100%}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px;margin-bottom:22px}
+  .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .hero h1{color:#fff;max-width:680px;margin-bottom:20px}
+  .hero h1 em{font-style:italic;color:var(--gold-light)}
+  .hero-sub{color:rgba(255,255,255,.72);font-size:16px;max-width:520px;margin-bottom:34px;line-height:1.8}
+  .hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:52px}
+  .btn-gold{background:var(--gold);color:var(--dark);border:none;padding:17px 32px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;display:inline-block}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-1px)}
+  .btn-ghost-light{border:1px solid rgba(255,255,255,.35);color:#fff;padding:17px 28px;font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;background:none;cursor:pointer;font-family:inherit;transition:border-color .2s}
+  .btn-ghost-light:hover{border-color:var(--gold)}
+  .hero-stats{display:flex;flex-wrap:wrap;gap:36px;border-top:1px solid rgba(201,168,76,.2);padding-top:24px;max-width:640px}
+  .hero-stat b{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold-light);display:block;line-height:1}
+  .hero-stat span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-top:6px}
+
+  /* ── SECTION SHELL ── */
+  section{padding:96px 0}
+  .section-dark{background:var(--dark);color:#fff}
+  .section-dark .h-section{color:#fff}
+
+  /* ── FOR-WHO ── */
+  .forwho-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:56px;align-items:start}
+  @media(max-width:760px){.forwho-grid{grid-template-columns:1fr}}
+  .forwho-col h3{font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--gold-deep);margin-bottom:18px}
+  .forwho-list li{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e9e2d4;font-size:14.5px;color:var(--ink-soft)}
+  .forwho-list li:last-child{border-bottom:none}
+  .forwho-list .ic{flex-shrink:0;width:20px;height:20px;margin-top:1px}
+  .forwho-list.no .ic{color:#b3554a}
+  .forwho-list.yes .ic{color:var(--gold-deep)}
+
+  /* ── VALUE LEDGER (signature element) ── */
+  .ledger-wrap{display:flex;justify-content:center;margin-top:56px}
+  .ledger{position:relative;width:100%;max-width:620px;background:var(--ivory);border:1px solid var(--gold);box-shadow:0 0 0 6px var(--dark) inset,0 30px 70px -30px rgba(0,0,0,.35);padding:3px}
+  .ledger-inner{border:1px solid rgba(201,168,76,.5);padding:46px 38px}
+  .ledger-seal{width:56px;height:56px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Playfair Display',serif;color:var(--gold-deep);font-size:22px}
+  .ledger-title{text-align:center;font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:4px}
+  .ledger-sub{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:15px;color:var(--ink-soft);margin-bottom:30px}
+  .ledger-row{display:flex;align-items:baseline;gap:8px;padding:13px 0;border-bottom:1px dashed #d8cba0}
+  .ledger-row .name{font-size:13.5px;color:var(--ink);font-weight:600;flex-shrink:0}
+  .ledger-row .fill{flex:1;border-bottom:1px dotted #c9bb8f;position:relative;top:-4px}
+  .ledger-row .val{font-family:'Playfair Display',serif;font-size:14.5px;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+  .ledger-total{margin-top:22px;padding-top:22px;border-top:2px solid var(--gold);text-align:center}
+  .ledger-total-label{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px}
+  .ledger-total-strike{position:relative;display:inline-block;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:#9a9a9a}
+  .ledger-total-strike::after{content:'';position:absolute;left:-4px;right:-4px;top:52%;height:1.5px;background:#b3554a;transform:rotate(-4deg)}
+  .ledger-total-usd{font-size:11px;color:var(--ink-soft);margin-top:4px}
+  .ledger-invest{background:var(--dark);color:#fff;text-align:center;padding:26px 20px;margin-top:26px}
+  .ledger-invest-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:10px}
+  .ledger-invest-price{font-family:'Playfair Display',serif;font-size:38px;color:#fff;font-weight:700}
+  .ledger-invest-orig{font-size:13px;color:rgba(255,255,255,.45);text-decoration:line-through;margin-left:10px}
+  .ledger-scarcity{margin-top:18px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);text-align:center}
+  .ledger-note{font-size:10px;color:#b8a877;text-align:center;margin-top:10px;font-style:italic}
+  .ledger-cta{display:flex;justify-content:center;margin-top:30px}
+
+  /* ── CURRICULUM ── */
+  .curr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;margin-top:56px;border:1px solid #e3d9c2}
+  @media(max-width:700px){.curr-grid{grid-template-columns:1fr}}
+  .curr-item{display:flex;gap:16px;padding:24px 26px;border-bottom:1px solid #e3d9c2;border-right:1px solid #e3d9c2}
+  .curr-item:nth-child(even){border-right:none}
+  @media(max-width:700px){.curr-item{border-right:none !important}}
+  .curr-num{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);flex-shrink:0;line-height:1;width:34px}
+  .curr-item h4{font-family:'Montserrat',sans-serif;font-weight:700;font-size:13.5px;color:var(--dark);margin-bottom:5px;letter-spacing:.01em}
+  .curr-item p{font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+  .curr-perks{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .curr-perk{border:1px solid var(--gold-deep);color:var(--gold-deep);font-size:11px;font-weight:700;letter-spacing:.06em;padding:9px 16px}
+
+  /* ── CREDIBILITY (dark) ── */
+  .cred-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:760px;margin:0 auto 60px;border-top:1px solid #262019;border-bottom:1px solid #262019}
+  @media(max-width:700px){.cred-stats{grid-template-columns:repeat(2,1fr)}}
+  .cred-stat{text-align:center;padding:26px 12px;border-right:1px solid #262019}
+  .cred-stat:last-child{border-right:none}
+  @media(max-width:700px){.cred-stat:nth-child(2){border-right:none}}
+  .cred-stat b{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,42px);color:var(--gold-light);display:block;line-height:1}
+  .cred-stat span{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);display:block;margin-top:8px}
+  .cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:820px;margin:0 auto;border:1px solid #262019}
+  @media(max-width:700px){.cred-grid{grid-template-columns:1fr}}
+  .cred-item{display:flex;gap:14px;padding:20px 24px;border-bottom:1px solid #262019;border-right:1px solid #262019}
+  .cred-item:nth-child(even){border-right:none}
+  @media(max-width:700px){.cred-item{border-right:none !important}}
+  .cred-item-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);flex-shrink:0;line-height:1}
+  .cred-item strong{display:block;color:#fff;font-size:13px;margin-bottom:4px}
+  .cred-item p{font-size:11.5px;color:rgba(255,255,255,.6);line-height:1.6}
+
+  /* ── GUARANTEE ── */
+  .guarantee{max-width:640px;margin:56px auto 0;text-align:center;border:1px solid var(--gold);padding:40px 32px;position:relative}
+  .guarantee-badge{width:64px;height:64px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:-72px auto 20px;background:var(--cream)}
+  .guarantee h3{font-size:20px;color:var(--dark);margin-bottom:12px}
+  .guarantee p{font-size:13.5px;color:var(--ink-soft);line-height:1.8}
+
+  /* ── FAQ ── */
+  .faq{max-width:720px;margin:52px auto 0}
+  .faq-item{border-bottom:1px solid #e3d9c2}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:22px 4px;display:flex;justify-content:space-between;align-items:center;gap:16px;cursor:pointer;font-family:'Montserrat',sans-serif;font-size:14.5px;font-weight:600;color:var(--dark)}
+  .faq-q .plus{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold-deep);flex-shrink:0;transition:transform .25s}
+  .faq-item[data-open="true"] .plus{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a p{padding:0 4px 22px;font-size:13px;color:var(--ink-soft);line-height:1.8;max-width:640px}
+
+  /* ── FINAL CTA ── */
+  .final-cta{background:var(--gold);text-align:center;padding:88px 24px}
+  .final-cta h2{color:var(--dark);font-size:clamp(26px,3.6vw,38px);margin-bottom:14px}
+  .final-cta p{color:#5a4a1f;font-size:14px;margin-bottom:34px}
+  .btn-dark{background:var(--dark);color:#fff;border:none;padding:18px 36px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background .2s}
+  .btn-dark:hover{background:var(--dark2)}
+  .final-contact{margin-top:22px;font-size:12.5px;color:#5a4a1f}
+  .final-contact strong{color:var(--dark)}
+
+  footer{background:var(--dark);text-align:center;padding:26px;color:rgba(255,255,255,.4);font-size:10.5px;letter-spacing:.04em}
+
+  /* reveal-on-scroll */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="tb-logo">AMI <span>Cá Nhân 1-1</span></div>
+    <a href="dat-lich.html" class="tb-cta">Đặt Lịch Tư Vấn</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-media"><img src="images/hero-ca-nhan-luxury.jpg" alt="Học viên được trang điểm bởi giảng viên AMI Make Up Academy" width="1400" height="2100" /></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Chỉ nhận 1 học viên / khoá</div>
+    <h1 class="h-display">Trở Thành Makeup Artist Đẳng Cấp — <em>Kèm 1-1</em> Cùng Thuý Trần</h1>
+    <p class="hero-sub">Không lớp đông, không giáo trình đại trà. Một chương trình được thiết kế riêng cho duy nhất bạn — từ nền tảng đến khi bạn tự tin cầm cọ kiếm sống bằng nghề.</p>
+    <div class="hero-ctas">
+      <a href="dat-lich.html" class="btn-gold">Đăng Ký Tư Vấn 1-1</a>
+      <a href="#ledger" class="btn-ghost-light">Xem Giá Trị Chương Trình ↓</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>7+</b><span>Năm kinh nghiệm</span></div>
+      <div class="hero-stat"><b>500+</b><span>Học viên tốt nghiệp</span></div>
+      <div class="hero-stat"><b>1</b><span>Học viên mỗi khoá</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;display:block">Chương Trình Này Dành Cho Ai</p>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <h2 class="h-section">Bạn xứng đáng một lộ trình <em>được may đo riêng</em></h2>
+    <div class="forwho-grid">
+      <div class="forwho-col rv">
+        <h3>Lớp học đại trà thường</h3>
+        <ul class="forwho-list no">
+          <li><span class="ic">✕</span> Giáo trình chung cho 8-10 người, không ai được chú ý sâu</li>
+          <li><span class="ic">✕</span> Tốc độ học phải khớp với người chậm nhất hoặc nhanh nhất lớp</li>
+          <li><span class="ic">✕</span> Điểm yếu cá nhân ít khi được sửa triệt để</li>
+          <li><span class="ic">✕</span> Lịch học cố định, khó xoay sở nếu bạn bận rộn</li>
+        </ul>
+      </div>
+      <div class="forwho-col rv">
+        <h3>Chương trình Cá Nhân 1-1</h3>
+        <ul class="forwho-list yes">
+          <li><span class="ic">✓</span> Giáo trình xây riêng theo mục tiêu và trình độ hiện tại của bạn</li>
+          <li><span class="ic">✓</span> Thuý Trần trực tiếp đồng hành xuyên suốt, không giao trợ giảng</li>
+          <li><span class="ic">✓</span> Tập trung 100% vào điểm yếu và phong cách riêng của bạn</li>
+          <li><span class="ic">✓</span> Lịch học linh hoạt theo thời gian của bạn</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUE LEDGER — signature element -->
+<section id="ledger" style="background:var(--dark2)">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;display:block">Định Giá Minh Bạch</p>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <h2 class="h-section" style="color:#fff">Giá trị thực sự của chương trình <em>Cá Nhân 1-1</em></h2>
+
+    <div class="ledger-wrap">
+      <div class="ledger rv">
+        <div class="ledger-inner">
+          <div class="ledger-seal">A</div>
+          <div class="ledger-title">Chứng Nhận Giá Trị</div>
+          <div class="ledger-sub">"Khoá Make Up Cá Nhân 2026"</div>
+
+          <div class="ledger-row"><span class="name">Kèm 1-1 trực tiếp cùng Thuý Trần</span><span class="fill"></span><span class="val">65.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Giáo trình cá nhân hoá 100%</span><span class="fill"></span><span class="val">40.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Bộ ảnh portfolio chuyên nghiệp</span><span class="fill"></span><span class="val">25.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Chứng chỉ Master AMI Academy</span><span class="fill"></span><span class="val">15.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Kết nối việc làm ưu tiên</span><span class="fill"></span><span class="val">20.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Hỗ trợ 1-1 trọn đời sau khoá</span><span class="fill"></span><span class="val">60.000.000đ</span></div>
+          <div class="ledger-row"><span class="name">Bộ dụng cụ AMI Signature Kit</span><span class="fill"></span><span class="val">15.000.000đ</span></div>
+          <div class="ledger-row" style="border-bottom:none"><span class="name">Cộng đồng học viên & ưu đãi khoá sau</span><span class="fill"></span><span class="val">10.000.000đ</span></div>
+
+          <div class="ledger-total">
+            <div class="ledger-total-label">Tổng giá trị chương trình</div>
+            <div class="ledger-total-strike">250.000.000đ</div>
+            <div class="ledger-total-usd">tương đương hơn 10.000 USD</div>
+          </div>
+        </div>
+        <div class="ledger-invest">
+          <div class="ledger-invest-label">Học phí đầu tư hôm nay</div>
+          <div><span class="ledger-invest-price">18.000.000đ</span><span class="ledger-invest-orig">22.000.000đ</span></div>
+          <div class="ledger-scarcity">Chỉ nhận tối đa 4 khoá cá nhân / năm</div>
+        </div>
+        <div class="ledger-note">*Giá trị quy đổi mang tính minh hoạ, dựa trên chi phí thực tế nếu mua lẻ từng hạng mục</div>
+      </div>
+    </div>
+    <div class="ledger-cta"><a href="dat-lich.html" class="btn-gold">Giữ Suất Cá Nhân Của Bạn</a></div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;display:block">Chương Trình Học</p>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <h2 class="h-section">Từ nền tảng đến khi bạn <em>sống được bằng nghề</em></h2>
+
+    <div class="curr-grid">
+      <div class="curr-item rv"><span class="curr-num">01</span><div><h4>Cá nhân hoá 100% lộ trình</h4><p>Chương trình xây dựng riêng theo mục tiêu, điểm mạnh và điểm yếu hiện tại của bạn — không dùng giáo trình dựng sẵn.</p></div></div>
+      <div class="curr-item rv"><span class="curr-num">02</span><div><h4>Sửa lỗi tận gốc</h4><p>Tập trung xử lý triệt để những điểm yếu cá nhân mà lớp đông không thể chạm tới.</p></div></div>
+      <div class="curr-item rv"><span class="curr-num">03</span><div><h4>Thực hành không giới hạn buổi</h4><p>Học đến khi thành thạo thật sự, không bị giới hạn bởi số buổi cố định trong giáo trình.</p></div></div>
+      <div class="curr-item rv"><span class="curr-num">04</span><div><h4>Từ cơ bản đến nâng cao</h4><p>Bao gồm toàn bộ kỹ thuật nền tảng lẫn nâng cao: xử lý da, tạo khối, mắt, môi, phong cách cá nhân.</p></div></div>
+      <div class="curr-item rv"><span class="curr-num">05</span><div><h4>Makeup thương mại & editorial</h4><p>Trang bị kỹ năng làm việc thực tế: chụp ảnh thương mại, editorial, và bridal chuyên sâu.</p></div></div>
+      <div class="curr-item rv"><span class="curr-num">06</span><div><h4>Portfolio chuyên nghiệp</h4><p>Kết thúc khoá học với bộ ảnh portfolio đầy đủ, sẵn sàng dùng để nhận khách hoặc xin việc.</p></div></div>
+    </div>
+
+    <div class="curr-perks">
+      <span class="curr-perk">Chứng chỉ Master AMI Academy</span>
+      <span class="curr-perk">Kết nối việc làm ưu tiên</span>
+      <span class="curr-perk">Hỗ trợ không giới hạn sau khoá</span>
+      <span class="curr-perk">TP.HCM &amp; Hà Nội</span>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="section-dark">
+  <div class="wrap">
+    <p class="eyebrow" style="text-align:center;display:block">Vì Sao Là AMI</p>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <h2 class="h-section">Uy tín được xây bằng <em>thời gian &amp; kết quả thật</em></h2>
+
+    <div class="cred-stats" style="margin-top:48px">
+      <div class="cred-stat"><b>7+</b><span>Năm Kinh Nghiệm</span></div>
+      <div class="cred-stat"><b>500+</b><span>Học Viên Tốt Nghiệp</span></div>
+      <div class="cred-stat"><b>6+</b><span>Khoá Học Chuyên Ngành</span></div>
+      <div class="cred-stat"><b>1</b><span>Học Viên / Khoá Cá Nhân</span></div>
+    </div>
+
+    <div class="cred-grid">
+      <div class="cred-item"><div class="cred-item-num">01</div><div><strong>Giảng dạy trực tiếp bởi Thuý Trần</strong><p>100% buổi học có sự hướng dẫn trực tiếp của chuyên gia, không giao phó cho trợ giảng.</p></div></div>
+      <div class="cred-item"><div class="cred-item-num">02</div><div><strong>Đảm bảo có thu nhập sau ra nghề</strong><p>Học viên tốt nghiệp được hỗ trợ kết nối việc làm và xây dựng thu nhập ổn định.</p></div></div>
+      <div class="cred-item"><div class="cred-item-num">03</div><div><strong>Thực hành trên người mẫu thật</strong><p>Không phải mannequin — mỗi buổi học thực hành trên người thật để sát thực tế hành nghề.</p></div></div>
+      <div class="cred-item" style="border-bottom:none"><div class="cred-item-num">04</div><div><strong>Hỗ trợ học viên trọn đời</strong><p>Sau khi ra trường, vẫn được tư vấn, hỏi đáp và cập nhật xu hướng miễn phí mãi mãi.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="padding-top:0">
+  <div class="wrap-narrow">
+    <div class="guarantee rv">
+      <div class="guarantee-badge">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#a9822e" stroke-width="1.8"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3>Cam Kết Hoàn Tiền 7 Ngày</h3>
+      <p>Nếu sau buổi học đầu tiên bạn cảm thấy chương trình không phù hợp, AMI hoàn lại 100% học phí — không cần lý do phức tạp.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:20px">
+  <div class="wrap-narrow">
+    <p class="eyebrow" style="text-align:center;display:block">Câu Hỏi Thường Gặp</p>
+    <div class="ornament"><span class="l"></span><span class="d"></span><span class="l"></span></div>
+    <div class="faq" id="faq">
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Học phí 18.000.000đ có thương lượng được không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Đây là mức đầu tư đã được ưu đãi so với giá trị thực (22.000.000đ). Vì mỗi khoá chỉ nhận 1 học viên nên AMI không áp dụng chiết khấu thêm, nhưng có hỗ trợ chia nhỏ đợt thanh toán khi cần — liên hệ tư vấn để biết chi tiết.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Tôi chưa biết gì về makeup có học được không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Được. Vì chương trình cá nhân hoá 100% theo trình độ hiện tại, lộ trình sẽ bắt đầu từ đúng nền tảng bạn đang có, dù là con số 0.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Lịch học có linh hoạt không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Có. Vì chỉ có 1 học viên/khoá, lịch học được sắp xếp hoàn toàn theo thời gian rảnh của bạn thay vì một khung giờ cố định.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Học ở đâu? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Chương trình được tổ chức tại TP. Hồ Chí Minh và Hà Nội. Địa điểm cụ thể sẽ được tư vấn khi bạn đăng ký.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="wrap-narrow">
+    <h2>Chỉ 4 suất cá nhân được nhận mỗi năm</h2>
+    <p>Đặt lịch tư vấn 1-1 miễn phí với AMI để xem bạn có phù hợp với chương trình này không.</p>
+    <a href="dat-lich.html" class="btn-dark">Đặt Lịch Tư Vấn Ngay</a>
+    <div class="final-contact">Hoặc gọi trực tiếp <strong>0979.963.369</strong> · 351 Lê Hồng Phong, TP. Nam Định</div>
+  </div>
+</div>
+
+<footer>© 2026 AMI Make Up Academy · Khoá Make Up Cá Nhân 2026 · Thứ 2 – CN: 8:00 – 20:00</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(o => {
+        o.setAttribute('data-open','false');
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!open) {
+        item.setAttribute('data-open','true');
+        btn.setAttribute('aria-expanded','true');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Scroll reveal
+  const rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    rv.forEach(el => obs.observe(el));
+  } else {
+    rv.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>

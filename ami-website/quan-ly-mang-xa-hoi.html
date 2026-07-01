@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý mạng xã hội — AMI Makeup</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root {
+    --surface-0: #f5f5f3;
+    --surface-1: #efefec;
+    --surface-2: #ffffff;
+    --text-primary: #1a1a18;
+    --text-secondary: #5a5a56;
+    --text-muted: #9a9a94;
+    --text-accent: #185fa5;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --border-accent: #378add;
+    --bg-accent: #e6f1fb;
+    --bg-danger: #fcebeb;
+    --bg-warning: #faeeda;
+    --text-danger: #a32d2d;
+    --text-warning: #854f0b;
+    --border-danger: #f09595;
+    --fill-accent: #378add;
+    --on-accent: #ffffff;
+    --radius: 8px;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-0: #1c1c1a;
+      --surface-1: #252523;
+      --surface-2: #2e2e2b;
+      --text-primary: #f0efe8;
+      --text-secondary: #a8a8a0;
+      --text-muted: #6a6a64;
+      --text-accent: #85b7eb;
+      --border: rgba(255,255,255,0.1);
+      --border-strong: rgba(255,255,255,0.18);
+      --border-accent: #85b7eb;
+      --bg-accent: #042c53;
+      --bg-danger: #501313;
+      --bg-warning: #412402;
+      --text-danger: #f09595;
+      --text-warning: #fac775;
+      --border-danger: #791f1f;
+      --fill-accent: #185fa5;
+      --on-accent: #ffffff;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--surface-0);
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
+  .app {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+  }
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.75rem;
+  }
+  .app-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fce7f3, #dbeafe);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e40af;
+    flex-shrink: 0;
+  }
+  .app-title { font-size: 20px; font-weight: 500; }
+  .app-sub { font-size: 13px; color: var(--text-muted); }
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface-1);
+    border-radius: var(--radius);
+    padding: 4px;
+    margin-bottom: 1.75rem;
+  }
+  .ntab {
+    flex: 1;
+    padding: 9px 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.15s;
+    font-family: var(--font-sans);
+  }
+  .ntab.active {
+    background: var(--surface-2);
+    color: var(--text-primary);
+    border: 0.5px solid var(--border);
+    font-weight: 500;
+  }
+  .ntab i { font-size: 16px; }
+
+  /* Stats */
+  .stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 1.25rem; }
+  .stat-card { background: var(--surface-1); border-radius: var(--radius); padding: .875rem; }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .stat-val { font-size: 20px; font-weight: 500; }
+  .sv-fb { color: var(--text-accent); }
+  .sv-tt { color: #be185d; }
+
+  /* Toolbar */
+  .toolbar { display: flex; gap: 8px; align-items: center; margin-bottom: 1rem; }
+  .search-input {
+    flex: 1; height: 36px; padding: 0 12px;
+    border-radius: var(--radius); border: 0.5px solid var(--border);
+    background: var(--surface-2); color: var(--text-primary); font-size: 14px;
+    font-family: var(--font-sans);
+  }
+  .search-input:focus { outline: none; border-color: var(--border-accent); }
+  .sub-tabs { display: flex; gap: 4px; }
+  .stab {
+    padding: 6px 14px; border-radius: var(--radius);
+    border: 0.5px solid var(--border); background: transparent;
+    font-size: 13px; color: var(--text-secondary); cursor: pointer;
+    font-family: var(--font-sans);
+  }
+  .stab.active { background: var(--bg-accent); color: var(--text-accent); border-color: var(--border-accent); }
+  .btn-add {
+    height: 36px; padding: 0 14px; border-radius: var(--radius);
+    border: 0.5px solid var(--border-accent); background: var(--bg-accent);
+    color: var(--text-accent); font-size: 13px; cursor: pointer;
+    display: flex; align-items: center; gap: 5px; white-space: nowrap;
+    font-family: var(--font-sans);
+  }
+  .btn-add:hover { background: var(--fill-accent); color: var(--on-accent); }
+
+  /* Account cards */
+  .accounts { display: flex; flex-direction: column; gap: 8px; }
+  .acc-card {
+    background: var(--surface-2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: .875rem 1.125rem;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .acc-card:hover { border-color: var(--border-strong); }
+  .avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 500; flex-shrink: 0;
+  }
+  .av-fb { background: #dbeafe; color: #1e40af; }
+  .av-tt { background: #fce7f3; color: #9d174d; }
+  .acc-info { flex: 1; min-width: 0; }
+  .acc-name { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .acc-meta { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .pbadge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; padding: 1px 7px; border-radius: 4px; font-weight: 500; }
+  .pb-fb { background: #dbeafe; color: #1e3a8a; }
+  .pb-tt { background: #fce7f3; color: #831843; }
+  .status-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-on { background: #22c55e; }
+  .dot-off { background: var(--text-muted); }
+  .acc-right { display: flex; align-items: center; gap: 8px; }
+  .followers-n { font-size: 13px; font-weight: 500; min-width: 44px; text-align: right; }
+  .followers-l { font-size: 11px; color: var(--text-muted); text-align: right; }
+  .btn-icon {
+    width: 30px; height: 30px; border-radius: var(--radius);
+    border: 0.5px solid var(--border); background: transparent;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    color: var(--text-secondary); flex-shrink: 0;
+  }
+  .btn-icon:hover { background: var(--surface-1); color: var(--text-primary); }
+  .btn-icon.danger:hover { background: var(--bg-danger); color: var(--text-danger); border-color: var(--border-danger); }
+
+  /* Calendar */
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+  .cal-header h3 { font-size: 16px; font-weight: 500; }
+  .cal-nav { display: flex; gap: 4px; }
+  .cal-nav button {
+    width: 32px; height: 32px; border-radius: var(--radius);
+    border: 0.5px solid var(--border); background: transparent; cursor: pointer;
+    color: var(--text-secondary); font-family: var(--font-sans);
+  }
+  .cal-nav button:hover { background: var(--surface-1); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 4px; margin-bottom: 1.25rem; }
+  .cal-dow { text-align: center; font-size: 11px; color: var(--text-muted); padding: 4px 0; font-weight: 500; }
+  .cal-day {
+    min-height: 72px; background: var(--surface-1); border-radius: var(--radius);
+    padding: 4px; border: 0.5px solid var(--border); cursor: pointer; transition: border-color 0.1s;
+  }
+  .cal-day:hover { border-color: var(--border-accent); }
+  .cal-day.today { border-color: var(--border-accent); background: var(--bg-accent); }
+  .cal-day.other-month { opacity: 0.4; }
+  .cal-day-num { font-size: 11px; font-weight: 500; color: var(--text-secondary); margin-bottom: 3px; }
+  .cal-day.today .cal-day-num { color: var(--text-accent); }
+  .post-pill {
+    font-size: 10px; padding: 1px 5px; border-radius: 3px; margin-bottom: 2px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
+  }
+  .pill-fb { background: #dbeafe; color: #1e3a8a; }
+  .pill-tt { background: #fce7f3; color: #831843; }
+  .pill-done { opacity: 0.5; text-decoration: line-through; }
+  .post-list { display: flex; flex-direction: column; gap: 8px; }
+  .post-item {
+    background: var(--surface-2); border: 0.5px solid var(--border);
+    border-radius: 12px; padding: .875rem 1.125rem;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .post-check { width: 16px; height: 16px; margin-top: 2px; accent-color: var(--fill-accent); cursor: pointer; flex-shrink: 0; }
+  .post-info { flex: 1; min-width: 0; }
+  .post-title { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .post-meta { font-size: 12px; color: var(--text-muted); display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* Passwords */
+  .pw-warn {
+    background: var(--bg-warning); border-radius: var(--radius);
+    padding: 10px 14px; font-size: 13px; color: var(--text-warning);
+    display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;
+  }
+  .pw-list { display: flex; flex-direction: column; gap: 10px; }
+  .pw-card { background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem 1.125rem; }
+  .pw-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+  .pw-acc-name { flex: 1; font-size: 14px; font-weight: 500; }
+  .pw-acc-sub { font-size: 12px; color: var(--text-muted); font-weight: 400; }
+  .pw-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pw-field { background: var(--surface-1); border-radius: var(--radius); padding: 8px 10px; }
+  .pw-field-label { font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+  .pw-field-val { font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px; word-break: break-all; }
+
+  /* Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 1000;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface-2); border: 0.5px solid var(--border-strong);
+    border-radius: 12px; padding: 1.5rem;
+    width: 400px; max-width: 95vw; max-height: 90vh; overflow-y: auto;
+  }
+  .modal h3 { font-size: 16px; font-weight: 500; margin-bottom: 1.125rem; }
+  .fg { margin-bottom: 10px; }
+  .fg label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 4px; }
+  .fg input, .fg select, .fg textarea {
+    width: 100%; padding: 0 12px; border-radius: var(--radius);
+    border: 0.5px solid var(--border); background: var(--surface-1);
+    color: var(--text-primary); font-size: 13px; height: 36px;
+    font-family: var(--font-sans);
+  }
+  .fg textarea { height: 72px; padding: 8px 12px; resize: vertical; }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { outline: none; border-color: var(--border-accent); }
+  .modal-footer { display: flex; gap: 8px; justify-content: flex-end; margin-top: 1.25rem; }
+  .btn-cancel {
+    height: 34px; padding: 0 14px; border-radius: var(--radius);
+    border: 0.5px solid var(--border-strong); background: transparent;
+    color: var(--text-secondary); font-size: 13px; cursor: pointer;
+    font-family: var(--font-sans);
+  }
+  .btn-cancel:hover { background: var(--surface-1); }
+  .btn-save {
+    height: 34px; padding: 0 16px; border-radius: var(--radius);
+    border: none; background: var(--fill-accent); color: var(--on-accent);
+    font-size: 13px; cursor: pointer; font-family: var(--font-sans);
+  }
+  .btn-save:hover { opacity: 0.9; }
+  .empty { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 14px; }
+  @media (max-width: 600px) {
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .pw-fields { grid-template-columns: 1fr; }
+    .cal-grid { gap: 2px; }
+    .cal-day { min-height: 52px; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-header">
+    <div class="app-logo">A</div>
+    <div>
+      <div class="app-title">Quản lý mạng xã hội</div>
+      <div class="app-sub">AMI Makeup — Facebook & TikTok</div>
+    </div>
+  </div>
+
+  <div class="nav-tabs">
+    <button class="ntab active" onclick="goPage('accounts')" id="ntab-accounts">
+      <i class="ti ti-users"></i> Tài khoản
+    </button>
+    <button class="ntab" onclick="goPage('calendar')" id="ntab-calendar">
+      <i class="ti ti-calendar"></i> Lịch đăng bài
+    </button>
+    <button class="ntab" onclick="goPage('passwords')" id="ntab-passwords">
+      <i class="ti ti-lock"></i> Mật khẩu
+    </button>
+  </div>
+
+  <!-- ACCOUNTS PAGE -->
+  <div id="page-accounts">
+    <div class="stats-grid" id="stats-grid"></div>
+    <div class="toolbar">
+      <div class="sub-tabs">
+        <button class="stab active" onclick="setTab('all')" id="stab-all">Tất cả</button>
+        <button class="stab" onclick="setTab('facebook')" id="stab-facebook">
+          <i class="ti ti-brand-facebook" style="font-size:13px;vertical-align:-1px"></i> FB
+        </button>
+        <button class="stab" onclick="setTab('tiktok')" id="stab-tiktok">
+          <i class="ti ti-brand-tiktok" style="font-size:13px;vertical-align:-1px"></i> TT
+        </button>
+      </div>
+      <input type="text" class="search-input" id="acc-search" placeholder="Tìm tài khoản..." oninput="renderAccounts()">
+      <button class="btn-add" onclick="openAccModal()"><i class="ti ti-plus"></i> Thêm</button>
+    </div>
+    <div class="accounts" id="acc-list"></div>
+  </div>
+
+  <!-- CALENDAR PAGE -->
+  <div id="page-calendar" style="display:none">
+    <div class="cal-header">
+      <h3 id="cal-month-label"></h3>
+      <div style="display:flex;gap:8px;align-items:center">
+        <div class="cal-nav">
+          <button onclick="changeMonth(-1)"><i class="ti ti-chevron-left" style="font-size:14px"></i></button>
+          <button onclick="changeMonth(1)"><i class="ti ti-chevron-right" style="font-size:14px"></i></button>
+        </div>
+        <button class="btn-add" onclick="openPostModal()"><i class="ti ti-plus"></i> Thêm bài</button>
+      </div>
+    </div>
+    <div class="cal-grid" id="cal-grid"></div>
+    <h3 style="font-size:15px;font-weight:500;margin-bottom:.75rem">Danh sách bài đăng trong tháng</h3>
+    <div class="post-list" id="post-list"></div>
+  </div>
+
+  <!-- PASSWORDS PAGE -->
+  <div id="page-passwords" style="display:none">
+    <div class="pw-warn">
+      <i class="ti ti-alert-triangle" style="font-size:18px;flex-shrink:0"></i>
+      Chỉ lưu trên thiết bị cá nhân. Không chia sẻ trang này với người khác.
+    </div>
+    <div class="toolbar">
+      <input type="text" class="search-input" id="pw-search" placeholder="Tìm tài khoản..." oninput="renderPasswords()">
+      <button class="btn-add" onclick="openPwModal()"><i class="ti ti-plus"></i> Thêm</button>
+    </div>
+    <div class="pw-list" id="pw-list"></div>
+  </div>
+</div>
+
+<!-- ACCOUNT MODAL -->
+<div class="modal-overlay" id="acc-modal">
+  <div class="modal">
+    <h3 id="acc-modal-title">Thêm tài khoản</h3>
+    <div class="fg"><label>Nền tảng</label>
+      <select id="fm-plat"><option value="facebook">Facebook</option><option value="tiktok">TikTok</option></select>
+    </div>
+    <div class="fg"><label>Tên tài khoản</label><input id="fm-name" placeholder="AMI Makeup Official"></div>
+    <div class="fg"><label>Username / Link</label><input id="fm-user" placeholder="@ami.makeup"></div>
+    <div class="fg"><label>Số người theo dõi</label><input type="number" id="fm-fol" placeholder="0"></div>
+    <div class="fg"><label>Ghi chú</label><input id="fm-note" placeholder="Trang chính, backup..."></div>
+    <div class="fg"><label>Trạng thái</label>
+      <select id="fm-status"><option value="active">Đang hoạt động</option><option value="inactive">Tạm dừng</option></select>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeAccModal()">Hủy</button>
+      <button class="btn-save" onclick="saveAcc()">Lưu tài khoản</button>
+    </div>
+  </div>
+</div>
+
+<!-- POST MODAL -->
+<div class="modal-overlay" id="post-modal">
+  <div class="modal">
+    <h3 id="post-modal-title">Thêm bài đăng</h3>
+    <div class="fg"><label>Tài khoản</label><select id="pm-acc"></select></div>
+    <div class="fg"><label>Nội dung bài đăng</label>
+      <textarea id="pm-content" placeholder="Mô tả ngắn nội dung bài..."></textarea>
+    </div>
+    <div class="fg"><label>Ngày đăng</label><input type="date" id="pm-date"></div>
+    <div class="fg"><label>Giờ đăng</label><input type="time" id="pm-time" value="08:00"></div>
+    <div class="fg"><label>Loại nội dung</label>
+      <select id="pm-type">
+        <option value="Reels/Video">Reels / Video</option>
+        <option value="Ảnh">Ảnh</option>
+        <option value="Story">Story</option>
+        <option value="Bài viết text">Bài viết text</option>
+        <option value="Livestream">Livestream</option>
+      </select>
+    </div>
+    <div class="fg"><label>Ghi chú</label><input id="pm-note" placeholder="Link Canva, caption draft..."></div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closePostModal()">Hủy</button>
+      <button class="btn-save" onclick="savePost()">Lưu bài đăng</button>
+    </div>
+  </div>
+</div>
+
+<!-- PASSWORD MODAL -->
+<div class="modal-overlay" id="pw-modal">
+  <div class="modal">
+    <h3 id="pw-modal-title">Thêm thông tin đăng nhập</h3>
+    <div class="fg"><label>Tài khoản</label><select id="wm-acc"></select></div>
+    <div class="fg"><label>Email / Số điện thoại đăng nhập</label>
+      <input id="wm-email" placeholder="email@gmail.com hoặc 0912...">
+    </div>
+    <div class="fg"><label>Mật khẩu</label><input type="password" id="wm-pw" placeholder="Nhập mật khẩu"></div>
+    <div class="fg"><label>Mã 2FA / Backup code</label><input id="wm-2fa" placeholder="Tùy chọn"></div>
+    <div class="fg"><label>Email khôi phục</label><input id="wm-recovery" placeholder="Tùy chọn"></div>
+    <div class="fg"><label>Ghi chú thêm</label>
+      <textarea id="wm-note" placeholder="SĐT xác minh, câu hỏi bảo mật, thiết bị tin cậy..."></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closePwModal()">Hủy</button>
+      <button class="btn-save" onclick="savePw()">Lưu thông tin</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const ACCOUNTS_KEY = 'ami_social_accounts';
+const POSTS_KEY = 'ami_social_posts';
+const PASSWORDS_KEY = 'ami_social_passwords';
+
+function loadData(key, defaults) {
+  try { const d = localStorage.getItem(key); return d ? JSON.parse(d) : defaults; } catch { return defaults; }
+}
+function saveData(key, data) {
+  try { localStorage.setItem(key, JSON.stringify(data)); } catch {}
+}
+
+let accounts = loadData(ACCOUNTS_KEY, [
+  {id:1,platform:'facebook',name:'AMI Makeup Official',username:'@amimakeup.official',followers:12400,note:'Trang chính',status:'active'},
+  {id:2,platform:'facebook',name:'Thuý Trần Makeup',username:'@thuytranmakeup',followers:8700,note:'Trang cá nhân',status:'active'},
+  {id:3,platform:'tiktok',name:'AMI Makeup',username:'@amimakeup',followers:31200,note:'TikTok chính',status:'active'},
+  {id:4,platform:'tiktok',name:'Thuý Trần - Dạy Makeup',username:'@thuytran.makeup',followers:5600,note:'Kênh dạy học',status:'inactive'},
+  {id:5,platform:'facebook',name:'AMI Makeup Backup',username:'@amimakeup.bk',followers:420,note:'Tài khoản dự phòng',status:'inactive'},
+]);
+let posts = loadData(POSTS_KEY, [
+  {id:1,accId:3,content:'Video hướng dẫn makeup cô dâu mùa hè',date:'2026-06-29',time:'08:00',type:'Reels/Video',note:'',done:false},
+  {id:2,accId:1,content:'Ảnh lookbook trang điểm tiệc',date:'2026-06-30',time:'10:00',type:'Ảnh',note:'Link Canva sẵn',done:false},
+  {id:3,accId:3,content:'Livestream Q&A kỹ thuật đánh mắt',date:'2026-07-02',time:'20:00',type:'Livestream',note:'',done:false},
+  {id:4,accId:2,content:'Story giới thiệu khóa học mới',date:'2026-07-03',time:'09:00',type:'Story',note:'',done:false},
+]);
+let passwords = loadData(PASSWORDS_KEY, [
+  {id:1,accId:1,email:'ami.makeup.official@gmail.com',pw:'',twofa:'Bật',recovery:'trungpr1990@gmail.com',note:''},
+  {id:2,accId:3,email:'0912345678',pw:'',twofa:'Bật',recovery:'',note:'SĐT xác minh: 0912345678'},
+]);
+
+let nextAccId = Math.max(0,...accounts.map(a=>a.id)) + 1;
+let nextPostId = Math.max(0,...posts.map(p=>p.id)) + 1;
+let nextPwId = Math.max(0,...passwords.map(p=>p.id)) + 1;
+let currentTab = 'all', editAccId = null, editPostId = null, editPwId = null;
+let calYear = new Date().getFullYear(), calMonth = new Date().getMonth();
+const pwVisible = {};
+
+const fmt = n => n >= 1000 ? (n/1000).toFixed(1) + 'K' : String(n);
+const months = ['Tháng 1','Tháng 2','Tháng 3','Tháng 4','Tháng 5','Tháng 6','Tháng 7','Tháng 8','Tháng 9','Tháng 10','Tháng 11','Tháng 12'];
+const dows = ['CN','T2','T3','T4','T5','T6','T7'];
+
+function goPage(p) {
+  ['accounts','calendar','passwords'].forEach(x => {
+    document.getElementById('page-'+x).style.display = x === p ? '' : 'none';
+    document.getElementById('ntab-'+x).classList.toggle('active', x === p);
+  });
+  if (p === 'calendar') renderCal();
+  if (p === 'passwords') renderPasswords();
+  if (p === 'accounts') renderAccounts();
+}
+
+// ---- ACCOUNTS ----
+function setTab(t) {
+  currentTab = t;
+  ['all','facebook','tiktok'].forEach(x => document.getElementById('stab-'+x).classList.toggle('active', x === t));
+  renderAccounts();
+}
+
+function renderStats() {
+  const fb = accounts.filter(a => a.platform === 'facebook');
+  const tt = accounts.filter(a => a.platform === 'tiktok');
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Tổng tài khoản</div><div class="stat-val">${accounts.length}</div></div>
+    <div class="stat-card"><div class="stat-label"><i class="ti ti-brand-facebook" style="font-size:13px;vertical-align:-1px;margin-right:3px"></i>Facebook</div><div class="stat-val sv-fb">${fb.length} tài khoản</div></div>
+    <div class="stat-card"><div class="stat-label"><i class="ti ti-brand-tiktok" style="font-size:13px;vertical-align:-1px;margin-right:3px"></i>TikTok</div><div class="stat-val sv-tt">${tt.length} tài khoản</div></div>
+  `;
+}
+
+function renderAccounts() {
+  renderStats();
+  const q = (document.getElementById('acc-search').value || '').toLowerCase();
+  const list = accounts.filter(a => {
+    if (currentTab !== 'all' && a.platform !== currentTab) return false;
+    if (q && !a.name.toLowerCase().includes(q) && !a.username.toLowerCase().includes(q)) return false;
+    return true;
+  });
+  const el = document.getElementById('acc-list');
+  if (!list.length) { el.innerHTML = '<div class="empty"><i class="ti ti-mood-empty" style="font-size:28px;display:block;margin:0 auto 8px"></i>Không tìm thấy tài khoản</div>'; return; }
+  el.innerHTML = list.map(a => `
+    <div class="acc-card">
+      <div class="avatar ${a.platform==='facebook'?'av-fb':'av-tt'}">${a.name.charAt(0)}</div>
+      <div class="acc-info">
+        <div class="acc-name">${a.name}</div>
+        <div class="acc-meta">
+          <span class="pbadge ${a.platform==='facebook'?'pb-fb':'pb-tt'}">
+            <i class="ti ti-brand-${a.platform}" style="font-size:11px"></i>
+            ${a.platform==='facebook'?'Facebook':'TikTok'}
+          </span>
+          <span>${a.username}</span>
+          ${a.note ? `<span>· ${a.note}</span>` : ''}
+        </div>
+      </div>
+      <div class="acc-right">
+        <div>
+          <div class="followers-n">${fmt(a.followers)}</div>
+          <div class="followers-l">followers</div>
+        </div>
+        <div class="status-dot ${a.status==='active'?'dot-on':'dot-off'}" title="${a.status==='active'?'Đang hoạt động':'Tạm dừng'}"></div>
+        <button class="btn-icon" onclick="openAccModal(${a.id})" aria-label="Sửa"><i class="ti ti-edit" style="font-size:14px"></i></button>
+        <button class="btn-icon danger" onclick="deleteAcc(${a.id})" aria-label="Xóa"><i class="ti ti-trash" style="font-size:14px"></i></button>
+      </div>
+    </div>`).join('');
+}
+
+function openAccModal(id = null) {
+  editAccId = id;
+  const a = id ? accounts.find(x => x.id === id) : null;
+  document.getElementById('acc-modal-title').textContent = id ? 'Chỉnh sửa tài khoản' : 'Thêm tài khoản';
+  document.getElementById('fm-plat').value = a?.platform || 'facebook';
+  document.getElementById('fm-name').value = a?.name || '';
+  document.getElementById('fm-user').value = a?.username || '';
+  document.getElementById('fm-fol').value = a?.followers || '';
+  document.getElementById('fm-note').value = a?.note || '';
+  document.getElementById('fm-status').value = a?.status || 'active';
+  document.getElementById('acc-modal').classList.add('open');
+}
+function closeAccModal() { document.getElementById('acc-modal').classList.remove('open'); }
+function saveAcc() {
+  const name = document.getElementById('fm-name').value.trim();
+  if (!name) { document.getElementById('fm-name').focus(); return; }
+  const d = { platform: document.getElementById('fm-plat').value, name, username: document.getElementById('fm-user').value.trim(), followers: parseInt(document.getElementById('fm-fol').value) || 0, note: document.getElementById('fm-note').value.trim(), status: document.getElementById('fm-status').value };
+  if (editAccId) { const i = accounts.findIndex(a => a.id === editAccId); accounts[i] = {...accounts[i], ...d}; }
+  else accounts.push({id: nextAccId++, ...d});
+  saveData(ACCOUNTS_KEY, accounts);
+  closeAccModal(); renderAccounts();
+}
+function deleteAcc(id) {
+  if (confirm('Xóa tài khoản này?')) { accounts = accounts.filter(a => a.id !== id); saveData(ACCOUNTS_KEY, accounts); renderAccounts(); }
+}
+
+// ---- CALENDAR ----
+function changeMonth(d) {
+  calMonth += d;
+  if (calMonth > 11) { calMonth = 0; calYear++; }
+  if (calMonth < 0) { calMonth = 11; calYear--; }
+  renderCal();
+}
+
+function renderCal() {
+  document.getElementById('cal-month-label').textContent = months[calMonth] + ' ' + calYear;
+  const today = new Date();
+  const startDow = new Date(calYear, calMonth, 1).getDay();
+  const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+  const daysInPrev = new Date(calYear, calMonth, 0).getDate();
+  let html = '';
+  dows.forEach(d => { html += `<div class="cal-dow">${d}</div>`; });
+  let dayCount = 1, nextCount = 1;
+  for (let i = 0; i < 42; i++) {
+    let day, cls = 'cal-day', monthOffset = 0;
+    if (i < startDow) { day = daysInPrev - startDow + i + 1; cls += ' other-month'; monthOffset = -1; }
+    else if (dayCount <= daysInMonth) {
+      day = dayCount++;
+      const isToday = today.getFullYear() === calYear && today.getMonth() === calMonth && today.getDate() === day;
+      if (isToday) cls += ' today';
+    } else { day = nextCount++; cls += ' other-month'; monthOffset = 1; }
+    const actualMonth = calMonth + monthOffset;
+    const actualYear = actualMonth < 0 ? calYear - 1 : actualMonth > 11 ? calYear + 1 : calYear;
+    const mn = ((actualMonth % 12) + 12) % 12;
+    const dateStr = `${actualYear}-${String(mn+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    const dayPosts = posts.filter(p => p.date === dateStr);
+    const pills = dayPosts.slice(0, 3).map(p => {
+      const acc = accounts.find(a => a.id === p.accId);
+      return `<span class="post-pill pill-${acc?.platform||'facebook'} ${p.done?'pill-done':''}">${p.time} ${p.content.substring(0,14)}…</span>`;
+    }).join('');
+    html += `<div class="${cls}" onclick="openPostModal(null,'${dateStr}')">
+      <div class="cal-day-num">${day}</div>${pills}
+      ${dayPosts.length > 3 ? `<span style="font-size:10px;color:var(--text-muted)">+${dayPosts.length-3} bài</span>` : ''}
+    </div>`;
+  }
+  document.getElementById('cal-grid').innerHTML = html;
+  renderPostList();
+}
+
+function renderPostList() {
+  const monthPosts = posts.filter(p => {
+    const [y, m] = p.date.split('-').map(Number);
+    return y === calYear && m === calMonth + 1;
+  }).sort((a, b) => a.date.localeCompare(b.date) || a.time.localeCompare(b.time));
+  const el = document.getElementById('post-list');
+  if (!monthPosts.length) { el.innerHTML = '<div class="empty">Chưa có bài nào trong tháng này</div>'; return; }
+  el.innerHTML = monthPosts.map(p => {
+    const acc = accounts.find(a => a.id === p.accId);
+    const pf = acc?.platform || 'facebook';
+    const [, m, d] = p.date.split('-');
+    return `<div class="post-item">
+      <input type="checkbox" class="post-check" ${p.done ? 'checked' : ''} onchange="togglePost(${p.id})" title="Đánh dấu đã đăng">
+      <div class="post-info">
+        <div class="post-title" style="${p.done ? 'text-decoration:line-through;color:var(--text-muted)' : ''}">
+          <span class="pbadge ${pf==='facebook'?'pb-fb':'pb-tt'}" style="margin-right:6px">
+            <i class="ti ti-brand-${pf}" style="font-size:11px"></i>
+          </span>${p.content}
+        </div>
+        <div class="post-meta">
+          <span><i class="ti ti-calendar" style="font-size:12px;vertical-align:-1px;margin-right:2px"></i>${d}/${m}</span>
+          <span><i class="ti ti-clock" style="font-size:12px;vertical-align:-1px;margin-right:2px"></i>${p.time}</span>
+          <span>${p.type}</span>
+          <span>${acc?.name || ''}</span>
+          ${p.note ? `<span>· ${p.note}</span>` : ''}
+        </div>
+      </div>
+      <button class="btn-icon" onclick="openPostModal(${p.id})" aria-label="Sửa"><i class="ti ti-edit" style="font-size:14px"></i></button>
+      <button class="btn-icon danger" onclick="deletePost(${p.id})" aria-label="Xóa"><i class="ti ti-trash" style="font-size:14px"></i></button>
+    </div>`;
+  }).join('');
+}
+
+function togglePost(id) { const p = posts.find(x => x.id === id); if (p) p.done = !p.done; saveData(POSTS_KEY, posts); renderCal(); }
+
+function openPostModal(id = null, defaultDate = null) {
+  editPostId = id;
+  const p = id ? posts.find(x => x.id === id) : null;
+  document.getElementById('post-modal-title').textContent = id ? 'Chỉnh sửa bài đăng' : 'Thêm bài đăng';
+  const accSel = document.getElementById('pm-acc');
+  accSel.innerHTML = accounts.map(a => `<option value="${a.id}">${a.name} (${a.platform==='facebook'?'FB':'TT'})</option>`).join('');
+  if (p) accSel.value = p.accId;
+  document.getElementById('pm-content').value = p?.content || '';
+  document.getElementById('pm-date').value = p?.date || (defaultDate || new Date().toISOString().split('T')[0]);
+  document.getElementById('pm-time').value = p?.time || '08:00';
+  document.getElementById('pm-type').value = p?.type || 'Reels/Video';
+  document.getElementById('pm-note').value = p?.note || '';
+  document.getElementById('post-modal').classList.add('open');
+}
+function closePostModal() { document.getElementById('post-modal').classList.remove('open'); }
+function savePost() {
+  const content = document.getElementById('pm-content').value.trim();
+  if (!content) { document.getElementById('pm-content').focus(); return; }
+  const d = { accId: parseInt(document.getElementById('pm-acc').value), content, date: document.getElementById('pm-date').value, time: document.getElementById('pm-time').value, type: document.getElementById('pm-type').value, note: document.getElementById('pm-note').value.trim(), done: false };
+  if (editPostId) { const i = posts.findIndex(x => x.id === editPostId); posts[i] = {...posts[i], ...d, done: posts[i].done}; }
+  else posts.push({id: nextPostId++, ...d});
+  saveData(POSTS_KEY, posts);
+  closePostModal(); renderCal();
+}
+function deletePost(id) {
+  if (confirm('Xóa bài đăng này?')) { posts = posts.filter(x => x.id !== id); saveData(POSTS_KEY, posts); renderCal(); }
+}
+
+// ---- PASSWORDS ----
+function renderPasswords() {
+  const q = (document.getElementById('pw-search').value || '').toLowerCase();
+  const list = passwords.filter(pw => {
+    const acc = accounts.find(a => a.id === pw.accId);
+    return !q || acc?.name.toLowerCase().includes(q) || pw.email.toLowerCase().includes(q);
+  });
+  const el = document.getElementById('pw-list');
+  if (!list.length) { el.innerHTML = '<div class="empty"><i class="ti ti-lock-off" style="font-size:28px;display:block;margin:0 auto 8px"></i>Chưa có thông tin đăng nhập</div>'; return; }
+  el.innerHTML = list.map(pw => {
+    const acc = accounts.find(a => a.id === pw.accId);
+    const pf = acc?.platform || 'facebook';
+    const hasPw = pw.pw && pw.pw.length > 0;
+    return `<div class="pw-card">
+      <div class="pw-card-header">
+        <div class="avatar ${pf==='facebook'?'av-fb':'av-tt'}" style="width:36px;height:36px;font-size:13px">${acc?.name.charAt(0)||'?'}</div>
+        <div style="flex:1">
+          <div class="pw-acc-name">${acc?.name||'Không xác định'}</div>
+          <div class="pw-acc-sub">${acc?.username||''}</div>
+        </div>
+        <span class="pbadge ${pf==='facebook'?'pb-fb':'pb-tt'}">${pf==='facebook'?'Facebook':'TikTok'}</span>
+        <button class="btn-icon" onclick="openPwModal(${pw.id})" aria-label="Sửa"><i class="ti ti-edit" style="font-size:14px"></i></button>
+        <button class="btn-icon danger" onclick="deletePw(${pw.id})" aria-label="Xóa"><i class="ti ti-trash" style="font-size:14px"></i></button>
+      </div>
+      <div class="pw-fields">
+        <div class="pw-field">
+          <div class="pw-field-label">Email / Số điện thoại</div>
+          <div class="pw-field-val" style="font-size:13px">${pw.email}</div>
+        </div>
+        <div class="pw-field">
+          <div class="pw-field-label">Mật khẩu</div>
+          <div class="pw-field-val" id="pwval-${pw.id}">
+            ${hasPw ? '••••••••' : '<span style="color:var(--text-muted);font-weight:400">Chưa lưu</span>'}
+            ${hasPw ? `<button onclick="togglePw(${pw.id})" style="border:none;background:transparent;cursor:pointer;padding:0;color:var(--text-muted)" aria-label="Hiện/ẩn mật khẩu"><i class="ti ti-eye" id="pw-eye-${pw.id}" style="font-size:14px"></i></button>` : ''}
+          </div>
+        </div>
+        ${pw.twofa ? `<div class="pw-field"><div class="pw-field-label">2FA / Backup</div><div class="pw-field-val">${pw.twofa}</div></div>` : ''}
+        ${pw.recovery ? `<div class="pw-field"><div class="pw-field-label">Email khôi phục</div><div class="pw-field-val" style="font-size:12px">${pw.recovery}</div></div>` : ''}
+        ${pw.note ? `<div class="pw-field" style="grid-column:1/-1"><div class="pw-field-label">Ghi chú</div><div class="pw-field-val" style="font-size:12px;font-weight:400">${pw.note}</div></div>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function togglePw(id) {
+  const pw = passwords.find(x => x.id === id);
+  if (!pw || !pw.pw) return;
+  pwVisible[id] = !pwVisible[id];
+  const val = document.getElementById('pwval-'+id);
+  const icon = document.getElementById('pw-eye-'+id);
+  if (pwVisible[id]) {
+    val.childNodes[0].textContent = pw.pw + ' ';
+    if (icon) { icon.className = 'ti ti-eye-off'; icon.style.fontSize = '14px'; }
+  } else {
+    val.childNodes[0].textContent = '•••••••• ';
+    if (icon) { icon.className = 'ti ti-eye'; icon.style.fontSize = '14px'; }
+  }
+}
+
+function openPwModal(id = null) {
+  editPwId = id;
+  const pw = id ? passwords.find(x => x.id === id) : null;
+  document.getElementById('pw-modal-title').textContent = id ? 'Chỉnh sửa thông tin đăng nhập' : 'Thêm thông tin đăng nhập';
+  const sel = document.getElementById('wm-acc');
+  sel.innerHTML = accounts.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+  if (pw) sel.value = pw.accId;
+  document.getElementById('wm-email').value = pw?.email || '';
+  document.getElementById('wm-pw').value = pw?.pw || '';
+  document.getElementById('wm-2fa').value = pw?.twofa || '';
+  document.getElementById('wm-recovery').value = pw?.recovery || '';
+  document.getElementById('wm-note').value = pw?.note || '';
+  document.getElementById('pw-modal').classList.add('open');
+}
+function closePwModal() { document.getElementById('pw-modal').classList.remove('open'); }
+function savePw() {
+  const email = document.getElementById('wm-email').value.trim();
+  if (!email) { document.getElementById('wm-email').focus(); return; }
+  const d = { accId: parseInt(document.getElementById('wm-acc').value), email, pw: document.getElementById('wm-pw').value, twofa: document.getElementById('wm-2fa').value.trim(), recovery: document.getElementById('wm-recovery').value.trim(), note: document.getElementById('wm-note').value.trim() };
+  if (editPwId) { const i = passwords.findIndex(x => x.id === editPwId); passwords[i] = {...passwords[i], ...d}; }
+  else passwords.push({id: nextPwId++, ...d});
+  saveData(PASSWORDS_KEY, passwords);
+  closePwModal(); renderPasswords();
+}
+function deletePw(id) {
+  if (confirm('Xóa thông tin đăng nhập này?')) { passwords = passwords.filter(x => x.id !== id); saveData(PASSWORDS_KEY, passwords); renderPasswords(); }
+}
+
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(el => {
+  el.addEventListener('click', e => { if (e.target === el) el.classList.remove('open'); });
+});
+
+renderAccounts();
+</script>
+</body>
+</html>

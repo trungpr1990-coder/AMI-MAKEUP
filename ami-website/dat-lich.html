@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Đặt Lịch Makeup — AMI Make Up Academy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Montserrat',sans-serif;background:#f4f4f4;color:#222;min-height:100vh}
@@ -12,7 +12,7 @@
 
     /* Header */
     .bk-header{background:#000;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-    .bk-logo{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:.18em;color:#fff;line-height:1}
+    .bk-logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:20px;letter-spacing:0;color:#fff;line-height:1}
     .bk-logo span{font-size:9px;letter-spacing:.35em;color:#666;display:block;text-transform:uppercase}
     .bk-hotline{text-align:right}
     .bk-hotline p{color:#666;font-size:10px;letter-spacing:.08em}
@@ -22,7 +22,7 @@
     .bk-hero{background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 60%,#0a0a0a 100%);padding:32px 20px;text-align:center;position:relative;overflow:hidden}
     .bk-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,0,0,.13) 0%,transparent 70%)}
     .bk-hero-inner{position:relative;z-index:2}
-    .bk-hero h1{font-family:'Bebas Neue',sans-serif;font-size:40px;letter-spacing:.12em;color:#fff;margin-bottom:6px}
+    .bk-hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;line-height:1.25;letter-spacing:-.01em;color:#fff;margin-bottom:6px}
     .bk-hero h1 span{color:#e00}
     .bk-hero p{color:#777;font-size:12px;letter-spacing:.05em}
     .bk-steps{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}
@@ -69,8 +69,7 @@
     .wedding-banner h3{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#e00;margin-bottom:5px}
     .wedding-banner p{font-size:12px;color:#888;line-height:1.7}
 
-    .day-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:4px}
-    @media(max-width:600px){.day-cards{grid-template-columns:1fr}}
+    .day-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:4px}
 
     .day-card{border:2px solid #e5e5e5;overflow:hidden;transition:all .2s}
     .day-card.active{border-color:#e00}
@@ -133,6 +132,9 @@
     .deposit-box{background:#0a0a0a;color:#fff;padding:18px;margin-bottom:14px;border-left:4px solid #e00}
     .deposit-box h3{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e00;margin-bottom:8px}
     .deposit-box p{font-size:12px;color:#888;line-height:1.7;margin-bottom:6px}
+    .deposit-qr{display:flex;justify-content:center;margin:14px 0}
+    .deposit-qr img{width:190px;max-width:100%;border-radius:4px;box-shadow:0 4px 18px rgba(0,0,0,.45)}
+    .deposit-qr-hint{text-align:center;font-size:10px;color:#666;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
     .deposit-bank{background:#111;border:1px solid #1e1e1e;padding:12px;margin-top:10px}
     .bank-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #1a1a1a}
     .bank-row:last-child{border-bottom:none}
@@ -150,7 +152,7 @@
     #success-screen{display:none}
     .success-hero{background:#000;text-align:center;padding:36px 20px;margin-bottom:20px}
     .success-hero .check{font-size:50px;margin-bottom:10px}
-    .success-hero h2{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:.1em;color:#fff;margin-bottom:6px}
+    .success-hero h2{font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px;line-height:1.3;letter-spacing:-.01em;color:#fff;margin-bottom:6px}
     .success-hero p{color:#777;font-size:12px}
 
     .sm-card{border:1px solid #eee;overflow:hidden;margin-bottom:14px}
@@ -250,6 +252,30 @@
             <input type="text" id="f-address" placeholder="VD: Quận 1, TP.HCM" required />
           </div>
         </div>
+        <div class="fr fr1">
+          <div class="fg">
+            <label>Link Google Maps <span class="hint">(nếu có, giúp AMI tìm địa điểm chính xác hơn)</span></label>
+            <input type="url" id="f-maps-link" placeholder="Dán link Google Maps vị trí của bạn tại đây..." />
+          </div>
+        </div>
+        <div class="fr">
+          <div class="fg">
+            <label>Bạn nhắn tin cho AMI từ đâu <span class="req">*</span></label>
+            <select id="f-contact-channel" required>
+              <option value="">— Chọn kênh —</option>
+              <option value="Zalo">Zalo</option>
+              <option value="Facebook Messenger">Facebook Messenger</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Gọi điện / SMS">Gọi điện / SMS</option>
+              <option value="Đến trực tiếp cửa hàng">Đến trực tiếp cửa hàng</option>
+              <option value="Khác">Khác</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Tên hiển thị lúc nhắn tin <span class="hint">(nếu khác họ tên trên)</span></label>
+            <input type="text" id="f-contact-name" placeholder="VD: tên Zalo/Facebook bạn dùng để nhắn" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -316,7 +342,7 @@
               <div class="toggle-wrap">
                 <span id="lbl-dam">Tắt</span>
                 <label class="toggle" onclick="event.stopPropagation()">
-                  <input type="checkbox" id="chk-dam" onchange="toggleDay('dam')" />
+                  <input type="checkbox" id="chk-dam" onchange="applyToggle('dam')" />
                   <span class="toggle-slider"></span>
                 </label>
               </div>
@@ -364,7 +390,7 @@
               <div class="toggle-wrap">
                 <span id="lbl-an">Tắt</span>
                 <label class="toggle" onclick="event.stopPropagation()">
-                  <input type="checkbox" id="chk-an" onchange="toggleDay('an')" />
+                  <input type="checkbox" id="chk-an" onchange="applyToggle('an')" />
                   <span class="toggle-slider"></span>
                 </label>
               </div>
@@ -412,7 +438,7 @@
               <div class="toggle-wrap">
                 <span id="lbl-cuoi">Tắt</span>
                 <label class="toggle" onclick="event.stopPropagation()">
-                  <input type="checkbox" id="chk-cuoi" onchange="toggleDay('cuoi')" />
+                  <input type="checkbox" id="chk-cuoi" onchange="applyToggle('cuoi')" />
                   <span class="toggle-slider"></span>
                 </label>
               </div>
@@ -470,11 +496,16 @@
         <!-- ✏️ SỬA: Thông tin ngân hàng thực tế -->
         <div class="deposit-box">
           <h3>Thông tin chuyển khoản</h3>
-          <p>Chuyển khoản đặt cọc để giữ lịch. AMI sẽ xác nhận sau khi nhận ảnh chứng minh.</p>
+          <p>Quét mã QR bên dưới để chuyển khoản đặt cọc nhanh, hoặc chuyển thủ công theo thông tin tài khoản. AMI sẽ xác nhận sau khi nhận ảnh chứng minh.</p>
+          <div class="deposit-qr">
+            <img src="images/qr-chuyen-khoan-crop.jpg" alt="Mã QR chuyển khoản VietQR - MB Bank - AMI Make Up" />
+          </div>
+          <div class="deposit-qr-hint">📱 Mở app ngân hàng / MoMo / Zalopay để quét</div>
           <div class="deposit-bank">
-            <div class="bank-row"><div class="bank-label">Ngân hàng</div><div class="bank-value">Vietcombank</div></div>
-            <div class="bank-row"><div class="bank-label">Số tài khoản</div><div class="bank-value" id="bank-stk">1234567890</div></div>
-            <div class="bank-row"><div class="bank-label">Chủ tài khoản</div><div class="bank-value" id="bank-name">AMI MAKE UP ACADEMY</div></div>
+            <!-- ✏️ SỬA: kiểm tra lại đúng tên đầy đủ chủ tài khoản trên mã QR -->
+            <div class="bank-row"><div class="bank-label">Ngân hàng</div><div class="bank-value">MB Bank</div></div>
+            <div class="bank-row"><div class="bank-label">Số tài khoản</div><div class="bank-value" id="bank-stk">3419966868</div></div>
+            <div class="bank-row"><div class="bank-label">Chủ tài khoản</div><div class="bank-value" id="bank-name">HỘ KINH DOANH AMI MAKEUP VÀ ...</div></div>
             <div class="bank-row"><div class="bank-label">Nội dung CK</div><div class="bank-value" id="bank-content">ĐẶT CỌC - [TÊN] - [NGÀY]</div></div>
           </div>
         </div>
@@ -635,19 +666,12 @@
   }
 
   // ── Day card toggle ──
+  // Header (div) click: checkbox wasn't clicked directly, so flip it manually.
   function toggleDay(key) {
     const chk = document.getElementById('chk-'+key);
-    if (!chk.checked) { chk.checked = true; } else { chk.checked = !chk.checked; }
+    chk.checked = !chk.checked;
     applyToggle(key);
   }
-
-  // Called from checkbox onchange (no flip needed)
-  document.querySelectorAll('.toggle input').forEach(chk => {
-    chk.addEventListener('change', () => {
-      const key = chk.id.replace('chk-','');
-      applyToggle(key);
-    });
-  });
 
   function applyToggle(key) {
     const chk = document.getElementById('chk-'+key);
@@ -655,13 +679,6 @@
     const lbl = document.getElementById('lbl-'+key);
     card.classList.toggle('active', chk.checked);
     lbl.textContent = chk.checked ? 'Bật' : 'Tắt';
-  }
-
-  // Click header = flip checkbox (don't double-flip)
-  function toggleDay(key) {
-    const chk = document.getElementById('chk-'+key);
-    chk.checked = !chk.checked;
-    applyToggle(key);
   }
 
   // ── Non-wedding date slots ──
@@ -714,10 +731,17 @@
     const name    = document.getElementById('f-name').value.trim();
     const phone   = document.getElementById('f-phone').value.trim();
     const address = document.getElementById('f-address').value.trim();
+    const mapsLink = document.getElementById('f-maps-link').value.trim();
+    const contactChannel = document.getElementById('f-contact-channel').value;
+    const contactName = document.getElementById('f-contact-name').value.trim();
     const service = document.getElementById('f-service').value;
 
     if (!name || !phone || !address) {
       alert('⚠️ Vui lòng điền Họ tên, SĐT và Địa chỉ');
+      return;
+    }
+    if (!contactChannel) {
+      alert('⚠️ Vui lòng chọn kênh bạn nhắn tin cho AMI');
       return;
     }
     if (!service) {
@@ -780,6 +804,8 @@
       ${email?`<div class="sm-row"><span class="sm-label">Email</span><span class="sm-val">${email}</span></div>`:''}
       ${dob?`<div class="sm-row"><span class="sm-label">Ngày sinh</span><span class="sm-val">${fmtDate(dob)}</span></div>`:''}
       <div class="sm-row"><span class="sm-label">Địa chỉ</span><span class="sm-val">${address}</span></div>
+      ${mapsLink?`<div class="sm-row"><span class="sm-label">Google Maps</span><span class="sm-val"><a href="${mapsLink}" target="_blank" style="color:#e00">Xem bản đồ ↗</a></span></div>`:''}
+      <div class="sm-row"><span class="sm-label">Nhắn tin từ</span><span class="sm-val">${contactChannel}${contactName?' — '+contactName:''}</span></div>
       <div class="sm-row"><span class="sm-label">Dịch vụ</span><span class="sm-val">${service}</span></div>
       ${note?`<div class="sm-row"><span class="sm-label">Ghi chú</span><span class="sm-val">${note}</span></div>`:''}
     `;

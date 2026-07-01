@@ -3,1391 +3,805 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AMI Make Up Academy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@700&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
+  <title>AMI Make Up Academy – Đào Tạo Make Up Artist Chuyên Nghiệp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230c0c0c'/><text x='16' y='22' font-family='serif' font-size='18' fill='%23c9a84c' text-anchor='middle'>A</text></svg>" />
   <style>
-    /* =============================================
-       HƯỚNG DẪN CHỈNH SỬA:
-       - Tìm phần có chú thích "✏️ SỬA:" để thay nội dung
-       - Tìm phần có chú thích "🖼️ ẢNH:" để thêm hình ảnh
-       - Thay src="images/xxx.jpg" bằng đường dẫn ảnh thật
-       ============================================= */
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: 'Montserrat', sans-serif;
-      background: #fff;
-      color: #222;
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --dark: #0c0c0c;
+      --dark2: #161616;
+      --dark3: #222;
+      --cream: #f9f5f0;
+      --text: #222;
+      --muted: #888;
+      --step-3: clamp(1.8rem, 1.4rem + 1.5vw, 2.8rem);
+      --step-4: clamp(2.4rem, 1.8rem + 2.2vw, 4rem);
+      --step-5: clamp(3rem, 2rem + 3.5vw, 6rem);
     }
-
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: var(--text); -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    ::selection { background: var(--gold); color: #fff; }
 
-    /* ---- TOPBAR ---- */
-    .topbar {
-      background: #111;
-      padding: 7px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .topbar-left { color: #aaa; font-size: 12px; }
+    /* ORNAMENT */
+    .ornament { display: flex; align-items: center; gap: 16px; margin: 0 auto 36px; max-width: 320px; }
+    .ornament-line { flex: 1; height: 1px; background: var(--gold); opacity: 0.5; }
+    .ornament-diamond { width: 8px; height: 8px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; }
+
+    /* TOPBAR */
+    .topbar { background: var(--dark); padding: 7px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .topbar-left { color: #aaa; font-size: 11px; letter-spacing: 0.05em; }
     .topbar-left a { color: #aaa; }
     .topbar-social { display: flex; gap: 8px; }
-    .soc {
-      width: 26px; height: 26px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      color: #fff; font-size: 13px; font-weight: 700;
-    }
+    .soc { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #fff; transition: transform 0.2s; }
+    .soc:hover { transform: scale(1.15); }
     .soc-fb { background: #1877f2; }
     .soc-yt { background: #ff0000; }
-    .soc-tw { background: #1da1f2; }
-    .soc-ig { background: #c13584; }
-    .soc-pt { background: #e60023; }
+    .soc-ig { background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+    .soc-tt { background: #010101; border: 1px solid #333; }
+    .soc-zl { background: #0190f3; }
 
-    /* ---- HEADER ---- */
-    .header {
-      background: #000;
-      padding: 14px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .logo { display: flex; align-items: center; gap: 14px; }
-    /* 🖼️ ẢNH: Logo — đặt file logo.png vào thư mục images/ */
-    .logo-img {
-      width: 60px; height: 60px; object-fit: contain;
-      display: none; /* Bỏ "display:none" khi đã có ảnh logo */
-    }
-    .logo-text .name {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 38px;
-      letter-spacing: 0.18em;
-      color: #fff;
-      line-height: 1;
-    }
-    .logo-text .sub {
-      font-size: 10px;
-      letter-spacing: 0.4em;
-      color: #ccc;
-      text-transform: uppercase;
-      margin-top: 2px;
-    }
-    .header-right {
-      display: flex; align-items: center; gap: 20px;
-      color: #fff; font-size: 11px; letter-spacing: 0.1em;
-    }
-    .cart-btn {
-      display: flex; align-items: center; gap: 6px;
-      border: 1px solid #444; padding: 6px 14px;
-      color: #fff; font-size: 11px; letter-spacing: 0.12em;
-      cursor: pointer;
-    }
+    /* HEADER */
+    .header { background: var(--dark); padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e1e1e; }
+    .logo { display: flex; align-items: center; gap: 16px; }
+    .logo-monogram { width: 64px; height: 64px; border: 1.5px solid var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0; }
+    .logo-monogram span:first-child { font-family: 'Playfair Display', serif; font-size: 28px; color: var(--gold); line-height: 1; }
+    .logo-monogram span:last-child { font-size: 7px; letter-spacing: 0.3em; color: var(--gold); opacity: 0.7; }
+    .logo-text .name { font-family: 'Playfair Display', serif; font-size: 28px; color: #fff; letter-spacing: 0.08em; line-height: 1; }
+    .logo-text .name em { font-style: italic; color: var(--gold); }
+    .logo-text .sub { font-size: 9px; letter-spacing: 0.45em; color: #888; text-transform: uppercase; margin-top: 5px; }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .header-phone { color: var(--gold); font-size: 13px; font-weight: 600; letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px; }
+    .cart-btn { display: flex; align-items: center; gap: 6px; border: 1px solid #3a3a3a; padding: 7px 16px; color: #ccc; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: border-color 0.2s; }
+    .cart-btn:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* ---- NAV ---- */
-    nav {
-      background: #fff;
-      border-bottom: 1px solid #eee;
-      display: flex;
-      justify-content: center;
-      padding: 0 40px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    }
-    nav a {
-      color: #222;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      padding: 16px 16px;
-      border-bottom: 2px solid transparent;
-      display: block;
-    }
-    nav a:hover, nav a.active {
-      color: #000;
-      border-bottom-color: #000;
-    }
+    /* NAV */
+    nav { background: #fff; border-bottom: 1px solid #eee; display: flex; justify-content: center; position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .nav-inner { display: flex; align-items: center; max-width: 1200px; width: 100%; }
+    nav a { color: #333; font-size: 10.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 17px 15px; border-bottom: 2px solid transparent; white-space: nowrap; transition: color 0.2s, border-color 0.2s; position: relative; }
+    nav a:hover, nav a.active { color: var(--dark); border-bottom-color: var(--gold); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 220px; border: 1px solid #eee; border-top: 2px solid var(--gold); box-shadow: 0 8px 24px rgba(0,0,0,0.1); z-index: 300; }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 10px 18px; border-bottom: 1px solid #f5f5f5; border-bottom-color: #f5f5f5 !important; color: #444; font-size: 10px; letter-spacing: 0.12em; }
+    .nav-dropdown-menu a:hover { background: var(--cream); color: var(--dark); }
 
-    /* ---- HERO BANNER ---- */
-    .hero {
-      background: #000;
-      position: relative;
-      overflow: hidden;
-      min-height: 480px;
-      display: flex;
-      align-items: center;
-    }
-    /* Slideshow banner — nhiều ảnh tự động đổi */
-    .hero-bg {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.45;
-      transition: background-image 0s;
-    }
-    .hero-slide {
-      position: absolute; inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transition: opacity 1.2s ease-in-out;
-    }
-    .hero-slide.active { opacity: 0.45; }
+    /* HERO */
+    .hero { position: relative; overflow: hidden; min-height: 640px; display: flex; align-items: center; justify-content: center; background: var(--dark); }
+    .hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.3s ease-in-out; }
+    .hero-slide.active { opacity: 1; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%); z-index: 1; }
+    .hero-content { position: relative; z-index: 2; text-align: center; padding: 80px 40px; max-width: 900px; }
+    .hero-label { font-size: 10px; letter-spacing: 0.5em; color: var(--gold); text-transform: uppercase; margin-bottom: 16px; display: block; }
+    .hero-h1 { font-family: 'Playfair Display', serif; font-size: var(--step-5); color: #fff; line-height: 1.05; margin-bottom: 10px; }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-script { font-family: 'Dancing Script', cursive; font-size: clamp(20px, 3vw, 32px); color: rgba(255,255,255,0.85); margin-bottom: 32px; display: block; }
+    .hero-courses { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 36px; }
+    .hero-course-pill { border: 1px solid rgba(201,168,76,0.6); padding: 6px 16px; color: #fff; font-size: 9.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; transition: all 0.2s; }
+    .hero-course-pill:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+    .hero-cta-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-gold { background: var(--gold); color: var(--dark); padding: 13px 32px; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s; font-family: 'Montserrat', sans-serif; display: inline-block; }
+    .btn-gold:hover { background: var(--gold-light); }
+    .btn-outline-gold { border: 1.5px solid rgba(201,168,76,0.7); color: #fff; padding: 13px 32px; font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; background: none; cursor: pointer; transition: all 0.2s; font-family: 'Montserrat', sans-serif; display: inline-block; }
+    .btn-outline-gold:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+    .hero-arrow { position: absolute; top: 50%; z-index: 10; transform: translateY(-50%); background: rgba(0,0,0,0.3); color: #fff; border: none; width: 46px; height: 80px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+    .hero-arrow:hover { background: rgba(201,168,76,0.7); }
+    .hero-arrow-prev { left: 0; }
+    .hero-arrow-next { right: 0; }
+    .hero-dots { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 10; }
+    .hero-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.3); border: none; cursor: pointer; transition: all 0.3s; }
+    .hero-dot.active { background: var(--gold); transform: scale(1.3); }
 
-    /* Chấm điều hướng slideshow */
-    .hero-dots {
-      position: absolute; bottom: 16px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; gap: 8px; z-index: 10;
-    }
-    .hero-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,0.35);
-      cursor: pointer; border: none;
-      transition: background .3s, transform .3s;
-    }
-    .hero-dot.active {
-      background: #e00;
-      transform: scale(1.3);
-    }
+    /* CTA BAR */
+    .cta-bar { background: var(--dark2); padding: 14px 48px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e1e1e; }
+    .cta-label { color: #fff; font-size: 13px; font-style: italic; font-weight: 600; letter-spacing: 0.06em; }
+    .cta-label span { color: var(--gold); }
+    .cta-phones { display: flex; gap: 36px; }
+    .cta-phone { color: #fff; font-size: 13.5px; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 7px; }
+    .cta-phone-icon { color: var(--gold); }
 
-    /* Nút trái / phải */
-    .hero-arrow {
-      position: absolute; top: 50%; z-index: 10;
-      transform: translateY(-50%);
-      background: rgba(0,0,0,0.35); color: #fff;
-      border: none; font-size: 22px; cursor: pointer;
-      width: 40px; height: 60px;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s;
-    }
-    .hero-arrow:hover { background: rgba(200,0,0,0.6); }
-    .hero-arrow-prev { left: 12px; }
-    .hero-arrow-next { right: 12px; }
-    /* Tia đỏ neon trang trí */
-    .hero-rays {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      pointer-events: none;
-    }
-    .hero-inner {
-      position: relative; z-index: 2;
-      width: 100%; max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 40px;
-      display: grid;
-      grid-template-columns: 200px 200px 1fr 200px;
-      gap: 12px;
-      align-items: end;
-    }
-    /* 🖼️ ẢNH: 3 ảnh trong hero — thay src bên dưới */
-    .hero-photo {
-      height: 320px; overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-photo-placeholder {
-      /* Hiện khi chưa có ảnh */
-      width: 100%; height: 100%;
-      background: #1a1a1a;
-      display: flex; align-items: center; justify-content: center;
-      color: #444; font-size: 12px; letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .hero-text {
-      padding-bottom: 12px;
-      padding-left: 20px;
-    }
-    .hero-label {
-      font-size: 10px; letter-spacing: 0.35em;
-      color: #e00; text-transform: uppercase; margin-bottom: 8px;
-    }
-    /* ✏️ SỬA: Tiêu đề hero banner */
-    .hero-h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 72px;
-      color: #fff;
-      letter-spacing: 0.04em;
-      line-height: 0.95;
-      margin-bottom: 10px;
-    }
-    /* ✏️ SỬA: Dòng chữ script nghiêng */
-    .hero-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 28px;
-      color: #fff;
-      opacity: 0.9;
-    }
-
-    /* ---- CTA BAR ---- */
-    .cta-bar {
-      background: #222;
-      padding: 13px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    /* ✏️ SỬA: Text và số điện thoại */
-    .cta-label {
-      color: #fff; font-size: 13px;
-      font-weight: 700; font-style: italic; letter-spacing: 0.08em;
-    }
-    .cta-phones { display: flex; gap: 32px; }
-    .cta-phone {
-      color: #fff; font-size: 13px;
-      font-weight: 700; letter-spacing: 0.05em;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .cta-phone::before {
-      content: '📞';
-      font-size: 12px;
-    }
-
-    /* ---- SECTION CHUNG ---- */
-    .section { padding: 48px 40px; }
-    .section-center { text-align: center; }
-    .section-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 32px; letter-spacing: 0.12em;
-      color: #111; text-align: center;
-      margin-bottom: 32px;
-    }
+    /* SECTION */
+    .section { padding: 72px 48px; }
+    .section-dark { background: var(--dark); }
+    .section-cream { background: var(--cream); }
+    .section-title { font-family: 'Playfair Display', serif; font-size: var(--step-3); color: var(--dark); text-align: center; margin-bottom: 12px; line-height: 1.2; }
+    .section-title em { font-style: italic; color: var(--gold); }
     .section-title-white { color: #fff; }
+    .section-sub { text-align: center; color: var(--muted); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 40px; }
+    .section-sub-white { color: rgba(255,255,255,0.4); }
 
-    .btn-outline {
-      border: 1.5px solid #111;
-      color: #111; background: none;
-      padding: 12px 28px;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      cursor: pointer; font-family: 'Montserrat', sans-serif;
-    }
-    .btn-outline:hover { background: #111; color: #fff; }
-    .btn-solid {
-      border: 1.5px solid #111;
-      color: #fff; background: #111;
-      padding: 12px 28px;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      cursor: pointer; font-family: 'Montserrat', sans-serif;
-    }
-    .btn-solid:hover { background: #333; }
-    .btn-outline-white {
-      border: 1.5px solid rgba(255,255,255,0.5);
-      color: #fff; background: none;
-      padding: 12px 28px;
-      font-size: 11px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      cursor: pointer; font-family: 'Montserrat', sans-serif;
-    }
-    .btn-row { display: flex; gap: 12px; justify-content: center; margin-top: 28px; }
-
-    /* ---- KHOÁ HỌC ---- */
-    .courses-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .course-card {
-      border: 1px solid #e8e8e8;
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-    }
-    .course-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-    /* 🖼️ ẢNH: Ảnh thumbnail khoá học — thay src trong mỗi .course-thumb */
-    .course-thumb {
-      height: 180px; overflow: hidden; position: relative;
-      background: #f0f0f0;
-    }
-    .course-thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .course-overlay {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      background: rgba(0,0,0,0.62);
-      color: #fff; font-size: 10px; font-weight: 700;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 10px;
-      line-height: 1.4;
-    }
-    .course-body { padding: 12px; }
+    /* COURSES */
+    .courses-tabs { display: flex; justify-content: center; gap: 0; margin: 0 auto 32px; border: 1px solid #ddd; max-width: 360px; }
+    .courses-tab { flex: 1; text-align: center; padding: 10px 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; color: #888; background: none; border: none; border-right: 1px solid #ddd; transition: all 0.2s; font-family: 'Montserrat', sans-serif; }
+    .courses-tab:last-child { border-right: none; }
+    .courses-tab.active, .courses-tab:hover { background: var(--dark); color: #fff; }
+    .courses-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .course-card { border: 1px solid #ebebeb; overflow: hidden; transition: box-shadow 0.25s, transform 0.25s; background: #fff; }
+    .course-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-3px); }
+    .course-thumb { position: relative; padding-top: 177.78%; overflow: hidden; background: #f0f0f0; }
+    .course-thumb img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s; }
+    .course-card:hover .course-thumb img { transform: scale(1.04); }
+    .course-badge { position: absolute; top: 8px; left: 0; background: var(--gold); color: var(--dark); font-size: 8px; font-weight: 700; letter-spacing: 0.12em; padding: 3px 10px; text-transform: uppercase; z-index: 2; }
+    .course-body { padding: 10px 12px 14px; }
+    .course-name { font-family: 'Playfair Display', serif; font-size: 13px; color: var(--dark); font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
     .course-price { color: #c00; font-size: 15px; font-weight: 700; }
-    .course-old { color: #aaa; font-size: 11px; text-decoration: line-through; }
-    .course-desc { font-size: 11px; color: #666; margin-top: 5px; line-height: 1.5; }
+    .course-old { color: #bbb; font-size: 10.5px; text-decoration: line-through; margin-left: 6px; }
+    .course-desc { font-size: 10.5px; color: #777; margin-top: 5px; line-height: 1.55; }
+    .course-cta { display: block; margin-top: 10px; background: var(--dark); color: #fff; font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-align: center; padding: 8px; transition: background 0.2s; }
+    .course-cta:hover { background: var(--gold); color: var(--dark); }
 
-    /* ---- 10 UY TÍN ---- */
-    .utin {
-      background: #111;
-      padding: 60px 40px;
-      text-align: center;
-    }
-    /* 🖼️ ẢNH: Background section "10 điều uy tín" */
-    .utin-bg {
-      position: absolute; inset: 0;
-      background-image: url('images/utin-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.12;
-    }
+    /* 10 UY TÍN */
+    .utin { background: var(--dark); padding: 80px 48px; text-align: center; position: relative; overflow: hidden; }
+    .utin-bg { position: absolute; inset: 0; background-image: url('images/IMG_9936.JPG'); background-size: cover; background-position: center; opacity: 0.07; }
     .utin-inner { position: relative; z-index: 2; }
-    .utin-script {
-      font-family: 'Dancing Script', cursive;
-      font-size: 42px; color: #fff; margin-bottom: 8px;
-    }
-    .utin-sub {
-      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: #888; margin-bottom: 32px;
-    }
-    .utin-nums {
-      display: flex; justify-content: center; gap: 8px;
-      margin-bottom: 32px;
-      border-top: 1px solid #2a2a2a;
-      border-bottom: 1px solid #2a2a2a;
-      padding: 16px 0;
-    }
-    .utin-num {
-      width: 40px; height: 40px;
-      border: 1px solid #e00;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 18px; color: #e00;
-    }
-    /* ✏️ SỬA: 10 điều uy tín — thay nội dung từng điểm */
-    .utin-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0; max-width: 800px; margin: 0 auto;
-    }
-    .utin-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 12px 16px;
-      border-bottom: 1px solid #1e1e1e;
-      text-align: left;
-    }
-    .utin-item-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px; color: #e00; flex-shrink: 0; line-height: 1;
-    }
-    .utin-item-text { font-size: 12px; color: #bbb; line-height: 1.6; }
+    .utin-super { font-size: 9.5px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 10px; }
+    .utin-title { font-family: 'Playfair Display', serif; font-size: var(--step-3); color: #fff; margin-bottom: 8px; }
+    .utin-title em { font-style: italic; color: var(--gold); }
+    .utin-nums { display: flex; justify-content: center; gap: 6px; margin: 28px auto; max-width: 620px; border-top: 1px solid #2a2a2a; border-bottom: 1px solid #2a2a2a; padding: 16px 0; }
+    .utin-num { width: 38px; height: 38px; border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 16px; color: var(--gold); }
+    .utin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; max-width: 820px; margin: 0 auto; border: 1px solid #1e1e1e; }
+    .utin-item { display: flex; align-items: flex-start; gap: 12px; padding: 16px 20px; border-bottom: 1px solid #1e1e1e; border-right: 1px solid #1e1e1e; text-align: left; }
+    .utin-item:nth-child(even) { border-right: none; }
+    .utin-item-num { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--gold); flex-shrink: 0; line-height: 1; }
+    .utin-item-text { font-size: 11.5px; color: rgba(255,255,255,0.75); line-height: 1.65; }
+    .utin-item-text strong { color: #fff; display: block; margin-bottom: 3px; }
 
-    /* ---- DỊCH VỤ ---- */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-    .svc-card {
-      height: 280px; position: relative; overflow: hidden;
-      cursor: pointer;
-    }
-    .svc-card:hover .svc-img { transform: scale(1.04); }
-    /* 🖼️ ẢNH: Ảnh dịch vụ — thay src trong .svc-img img */
-    .svc-img {
-      width: 100%; height: 100%;
-      transition: transform 0.4s;
-      background: #1a1a1a;
-    }
-    .svc-img img { width: 100%; height: 100%; object-fit: cover; }
-    .svc-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 50%);
-    }
-    .svc-label {
-      position: absolute; bottom: 0; left: 0; right: 0;
-      padding: 16px;
-      color: #fff; font-size: 11px; font-weight: 700;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.2);
-      background: rgba(0,0,0,0.45);
-    }
+    /* DỊCH VỤ */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .service-card { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+    .service-card img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.6s; }
+    .service-card:hover img { transform: scale(1.06); }
+    .service-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.1) 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 28px 24px; }
+    .service-num { font-family: 'Playfair Display', serif; font-size: 48px; color: rgba(201,168,76,0.3); line-height: 1; margin-bottom: 8px; }
+    .service-title { font-family: 'Playfair Display', serif; font-size: 20px; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .service-desc { font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.65; }
+    .service-link { margin-top: 14px; display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 
-    /* ---- ABOUT ---- */
-    .about {
-      background: #000;
-      padding: 60px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .about-glitter {
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 45%;
-      background: radial-gradient(ellipse at left center, #4a001533 0%, transparent 70%);
-    }
-    /* 🖼️ ẢNH: Ảnh bên phải section About */
-    .about-inner {
-      position: relative; z-index: 2;
-      display: grid; grid-template-columns: 1fr 380px;
-      gap: 48px; align-items: center;
-      max-width: 1100px; margin: 0 auto;
-    }
-    .about-photo {
-      height: 380px; overflow: hidden;
-      border: 1px solid #333;
-    }
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .about-text { text-align: center; }
-    .about-eyebrow {
-      font-size: 10px; letter-spacing: 0.3em; color: #888;
-      text-transform: uppercase; margin-bottom: 8px;
-    }
-    .about-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px; letter-spacing: 0.15em;
-      color: #fff; margin-bottom: 20px;
-    }
-    /* ✏️ SỬA: Nội dung giới thiệu */
-    .about-body {
-      font-size: 13px; color: #999;
-      line-height: 1.9;
-    }
+    /* GIỚI THIỆU */
+    .about-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .about-image { width: 100%; aspect-ratio: 3/4; overflow: hidden; position: relative; }
+    .about-image img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; }
+    .about-badge { position: absolute; bottom: -24px; right: -24px; width: 120px; height: 120px; background: var(--gold); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+    .about-badge-num { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--dark); line-height: 1; }
+    .about-badge-text { font-size: 8.5px; font-weight: 700; letter-spacing: 0.2em; color: var(--dark); }
+    .about-overline { font-size: 9.5px; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 12px; }
+    .about-title { font-family: 'Playfair Display', serif; font-size: var(--step-3); color: var(--dark); margin-bottom: 20px; line-height: 1.25; }
+    .about-title em { font-style: italic; color: var(--gold); }
+    .about-mission { font-family: 'Playfair Display', serif; font-style: italic; font-size: 17px; color: #555; border-left: 3px solid var(--gold); padding-left: 20px; margin: 24px 0; line-height: 1.7; }
+    .about-body { font-size: 13px; color: #555; line-height: 1.85; }
+    .about-image-wrap { position: relative; }
 
-    /* ---- STATS ---- */
-    .stats {
-      background: #000;
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      border-top: 1px solid #1e1e1e;
-    }
-    .stat {
-      padding: 28px 20px; text-align: center;
-      border-right: 1px solid #1e1e1e;
-    }
-    .stat:last-child { border-right: none; }
-    /* ✏️ SỬA: Số liệu thống kê */
-    .stat-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 40px; color: #fff; letter-spacing: 0.05em;
-    }
-    .stat-lbl {
-      font-size: 10px; letter-spacing: 0.2em;
-      color: #555; text-transform: uppercase; margin-top: 4px;
-    }
+    /* ĐỘI NGŨ */
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .team-card { text-align: center; }
+    .team-photo { width: 100%; aspect-ratio: 3/4; overflow: hidden; margin-bottom: 16px; }
+    .team-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.5s; }
+    .team-card:hover .team-photo img { transform: scale(1.04); }
+    .team-name { font-family: 'Playfair Display', serif; font-size: 17px; color: var(--dark); margin-bottom: 5px; }
+    .team-role { font-size: 9.5px; letter-spacing: 0.25em; color: var(--gold); text-transform: uppercase; font-weight: 600; }
 
-    /* ---- GALLERY ---- */
-    .gallery-section { background: #000; padding: 40px 0; }
-    .gallery-title {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 28px; letter-spacing: 0.14em;
-      color: #fff; text-align: center; margin-bottom: 24px;
-    }
-    /* 🖼️ ẢNH: Gallery ảnh tone makeup — thêm ảnh vào .gallery-grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 3px;
-    }
-    .gal-item {
-      height: 220px; overflow: hidden;
-      background: #111; cursor: pointer;
-    }
-    .gal-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .gal-item:hover img { transform: scale(1.05); }
-    .gal-placeholder {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      color: #333; font-size: 11px; letter-spacing: 0.1em;
-    }
-    .gallery-more { text-align: center; margin-top: 24px; }
+    /* THỐNG KÊ */
+    .stats-wrap { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 960px; margin: 0 auto; border: 1px solid #2a2a2a; }
+    .stat-item { text-align: center; padding: 44px 20px; border-right: 1px solid #2a2a2a; }
+    .stat-item:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(38px, 5vw, 64px); color: var(--gold); line-height: 1; display: block; }
+    .stat-unit { font-size: 22px; color: var(--gold); }
+    .stat-label { font-size: 10px; letter-spacing: 0.25em; color: rgba(255,255,255,0.5); text-transform: uppercase; margin-top: 10px; display: block; }
 
-    /* ---- FORM ĐĂNG KÝ ---- */
-    .form-section { background: #fff; padding: 60px 40px; }
-    .form-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 12px; max-width: 700px; margin: 0 auto;
-    }
-    .form-grid input,
-    .form-grid select,
-    .form-grid textarea {
-      border: 1px solid #ddd;
-      font-size: 13px; padding: 12px 14px;
-      width: 100%; font-family: 'Montserrat', sans-serif;
-      outline: none; color: #222;
-    }
-    .form-grid input:focus,
-    .form-grid select:focus,
-    .form-grid textarea:focus { border-color: #111; }
-    .form-grid .full { grid-column: 1 / -1; }
-    .form-grid textarea { height: 100px; resize: none; }
-    .form-submit {
-      text-align: center; margin-top: 16px;
-    }
-    .form-submit button {
-      background: #000; color: #fff; border: none;
-      padding: 14px 48px; font-size: 11px;
-      font-weight: 700; letter-spacing: 0.25em;
-      text-transform: uppercase; cursor: pointer;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .form-submit button:hover { background: #222; }
+    /* FORM */
+    .register-wrap { max-width: 800px; margin: 0 auto; text-align: center; }
+    .register-form { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 40px; }
+    .register-form input, .register-form select, .register-form textarea { padding: 13px 16px; border: 1px solid #ddd; font-family: 'Montserrat', sans-serif; font-size: 12px; color: var(--text); background: #fff; width: 100%; outline: none; transition: border-color 0.2s; }
+    .register-form input:focus, .register-form select:focus, .register-form textarea:focus { border-color: var(--gold); }
+    .register-form .full { grid-column: 1 / -1; }
+    .register-submit { grid-column: 1 / -1; background: var(--dark); color: #fff; padding: 15px 40px; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; border: none; cursor: pointer; font-family: 'Montserrat', sans-serif; transition: background 0.2s; }
+    .register-submit:hover { background: var(--gold); color: var(--dark); }
 
-    /* ---- TIN TỨC ---- */
-    .news-section { padding: 48px 40px; background: #fff; border-top: 1px solid #eee; }
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-    }
-    .news-card { border: 1px solid #eee; overflow: hidden; cursor: pointer; }
-    .news-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-    /* 🖼️ ẢNH: Ảnh tin tức — thay src trong mỗi .news-thumb img */
-    .news-thumb { height: 160px; overflow: hidden; background: #f5f5f5; }
-    .news-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+    .gallery-item { overflow: hidden; aspect-ratio: 3/4; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.5s; }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    /* TIN TỨC */
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .news-card { border: 1px solid #ebebeb; overflow: hidden; }
+    .news-thumb { aspect-ratio: 4/3; overflow: hidden; }
+    .news-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; transition: transform 0.4s; }
     .news-card:hover .news-thumb img { transform: scale(1.04); }
-    .news-body { padding: 14px; }
-    .news-tag {
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-      color: #c00; font-weight: 700; margin-bottom: 6px;
-    }
-    .news-title { font-size: 12px; font-weight: 500; line-height: 1.5; color: #222; margin-bottom: 8px; }
-    .news-date { font-size: 10px; color: #aaa; }
+    .news-body { padding: 18px; }
+    .news-date { font-size: 10px; color: var(--gold); letter-spacing: 0.2em; margin-bottom: 8px; }
+    .news-title { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--dark); line-height: 1.4; margin-bottom: 10px; }
+    .news-excerpt { font-size: 11.5px; color: #777; line-height: 1.7; }
+    .news-more { display: inline-block; margin-top: 12px; font-size: 9px; font-weight: 700; letter-spacing: 0.28em; color: var(--dark); text-transform: uppercase; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
 
-    /* ---- FOOTER ---- */
-    footer {
-      background: #111;
-      padding: 48px 40px 24px;
-      color: #666;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr;
-      gap: 40px; margin-bottom: 32px;
-    }
-    .footer-logo {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 30px; letter-spacing: 0.22em; color: #fff; line-height: 1;
-    }
-    .footer-logo-sub {
-      font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase;
-      color: #444; margin-top: 2px; margin-bottom: 16px;
-    }
-    .footer-desc { font-size: 12px; color: #555; line-height: 1.8; margin-bottom: 16px; }
-    .footer-contact {
-      display: flex; gap: 8px; margin-bottom: 8px;
-      font-size: 12px; color: #555; align-items: flex-start;
-    }
-    .footer-contact .ic { color: #e00; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
-    .footer-bank {
-      background: #0a0a0a; border: 1px solid #1e1e1e;
-      padding: 12px; margin-top: 14px; font-size: 11px; color: #555; line-height: 1.7;
-    }
-    .footer-bank strong {
-      color: #777; display: block;
-      font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px;
-    }
-    .footer-social { display: flex; gap: 8px; margin-top: 16px; }
-    footer h4 {
-      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
-      color: #fff; font-weight: 700;
-      margin-bottom: 14px; padding-bottom: 8px;
-      border-bottom: 1px solid #1e1e1e;
-    }
-    footer ul { list-style: none; padding: 0; }
-    footer li { font-size: 12px; color: #555; margin-bottom: 8px; }
-    footer a { color: #555; }
-    footer a:hover { color: #fff; }
-    .footer-bottom {
-      border-top: 1px solid #1a1a1a;
-      padding-top: 16px;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-copy { font-size: 10px; color: #333; letter-spacing: 0.1em; text-transform: uppercase; }
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid #1e1e1e; }
+    .footer-top { padding: 64px 48px 40px; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; }
+    .footer-logo-text { font-family: 'Playfair Display', serif; font-size: 22px; color: #fff; margin-bottom: 6px; }
+    .footer-logo-sub { font-size: 8.5px; letter-spacing: 0.4em; color: #555; text-transform: uppercase; margin-bottom: 18px; }
+    .footer-desc { font-size: 12px; color: #666; line-height: 1.8; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 8px; }
+    .footer-col-title { font-size: 9.5px; letter-spacing: 0.35em; color: var(--gold); text-transform: uppercase; font-weight: 700; margin-bottom: 18px; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 10px; }
+    .footer-links a { font-size: 11.5px; color: #777; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: #666; line-height: 1.6; margin-bottom: 12px; }
+    .footer-contact-icon { color: var(--gold); flex-shrink: 0; }
+    .footer-bank { margin-top: 16px; padding: 14px 16px; border: 1px solid #2a2a2a; background: #111; }
+    .footer-bank-label { font-size: 9px; letter-spacing: 0.3em; color: #555; margin-bottom: 6px; }
+    .footer-bank-info { font-size: 11.5px; color: #aaa; line-height: 1.7; }
+    .footer-divider { height: 1px; background: #1a1a1a; }
+    .footer-bottom { padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-copy { font-size: 10.5px; color: #555; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a { font-size: 10.5px; color: #555; transition: color 0.2s; }
+    .footer-bottom-links a:hover { color: var(--gold); }
 
-    /* ---- FLOATING CONTACT ---- */
-    .float-bar {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: #222; z-index: 999;
-      padding: 10px 40px;
-      display: flex; align-items: center; justify-content: space-between;
+    /* FLOAT */
+    .float-btns { position: fixed; right: 20px; bottom: 80px; display: flex; flex-direction: column; gap: 10px; z-index: 999; }
+    .float-btn { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; box-shadow: 0 4px 16px rgba(0,0,0,0.2); transition: transform 0.2s; font-weight: 700; color: #fff; }
+    .float-btn:hover { transform: scale(1.12); }
+    .float-fb { background: #1877f2; }
+    .float-zl { background: #0190f3; }
+    .float-ph { background: var(--gold); color: var(--dark); }
+    .float-top { position: fixed; right: 20px; bottom: 20px; z-index: 999; width: 44px; height: 44px; background: var(--dark); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; border: 1.5px solid #333; transition: background 0.2s; }
+    .float-top:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .courses-grid { grid-template-columns: repeat(2,1fr); }
+      .services-grid, .team-grid, .news-grid { grid-template-columns: repeat(2,1fr); }
+      .about-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .about-badge { display: none; }
+      .stats-wrap { grid-template-columns: repeat(2,1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: repeat(3,1fr); }
     }
-    .float-label {
-      color: #fff; font-size: 12px; font-weight: 700;
-      font-style: italic; letter-spacing: 0.08em;
+    @media (max-width: 640px) {
+      .topbar, .header, .cta-bar, .section { padding-left: 20px; padding-right: 20px; }
+      .courses-grid, .services-grid, .team-grid, .news-grid, .stats-wrap { grid-template-columns: 1fr; }
+      .register-form { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-h1 { font-size: 42px; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      .utin-grid { grid-template-columns: 1fr; }
+      .utin-item { border-right: none !important; }
     }
-    .float-phones { display: flex; gap: 28px; }
-    .float-phone {
-      color: #fff; font-size: 13px; font-weight: 700; letter-spacing: 0.05em;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; animation: none !important; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ============================================================
-       TOPBAR
-       ✏️ SỬA: Giờ làm việc, số điện thoại, link mạng xã hội
-  ============================================================ -->
-  <div class="topbar">
-    <div class="topbar-left">
-      📞 Hotline: <a href="tel:0909123456">0909 123 456</a>
-      &nbsp;|&nbsp;
-      🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <a href="tel:0327355595">☎ 0327.355.595</a>
+    &nbsp;|&nbsp;
+    <a href="mailto:ami.makeup.academy@gmail.com">ami.makeup.academy@gmail.com</a>
+    &nbsp;|&nbsp;
+    351 Lê Hồng Phong, TP. Nam Định
+  </div>
+  <div class="topbar-social">
+    <a href="#" class="soc soc-fb" title="Facebook">f</a>
+    <a href="#" class="soc soc-yt" title="YouTube">▶</a>
+    <a href="#" class="soc soc-ig" title="Instagram">✦</a>
+    <a href="#" class="soc soc-tt" title="TikTok">♪</a>
+    <a href="#" class="soc soc-zl" title="Zalo">Z</a>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">
+    <div class="logo-monogram">
+      <span>A</span>
+      <span>MI</span>
     </div>
-    <div class="topbar-social">
-      <!-- ✏️ SỬA: Thay href bằng link trang mạng xã hội của bạn -->
-      <a href="https://facebook.com/" target="_blank" class="soc soc-fb">f</a>
-      <a href="https://youtube.com/" target="_blank" class="soc soc-yt">▶</a>
-      <a href="https://twitter.com/" target="_blank" class="soc soc-tw">𝕏</a>
-      <a href="https://instagram.com/" target="_blank" class="soc soc-ig">📷</a>
-      <a href="https://pinterest.com/" target="_blank" class="soc soc-pt">P</a>
+    <div class="logo-text">
+      <div class="name"><em>AMI</em> Make Up</div>
+      <div class="sub">Academy · Đào Tạo Chuyên Nghiệp · Nam Định</div>
     </div>
   </div>
-
-  <!-- ============================================================
-       HEADER
-       🖼️ ẢNH: Đặt file logo vào images/logo.png rồi bỏ display:none
-       ✏️ SỬA: Tên thương hiệu, slogan
-  ============================================================ -->
-  <div class="header">
-    <div class="logo">
-      <img src="images/logo.png" alt="AMI Logo" class="logo-img" />
-      <div class="logo-text">
-        <div class="name">AMI</div>              <!-- ✏️ SỬA: Tên thương hiệu -->
-        <div class="sub">Make &nbsp;Up &nbsp;Academy</div>  <!-- ✏️ SỬA: Slogan -->
-      </div>
-    </div>
-    <div class="header-right">
-      <button class="cart-btn">🛒 GIỎ HÀNG (0)</button>
+  <div class="header-actions">
+    <div class="header-phone">☎ 0327.355.595</div>
+    <div class="cart-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/></svg>
+      Giỏ hàng (0)
     </div>
   </div>
+</header>
 
-  <nav id="main-nav"></nav>
-  <script src="nav.js"></script>
-
-  <!-- ============================================================
-       HERO BANNER
-       🖼️ ẢNH: images/banner.jpg — ảnh nền banner chính
-       🖼️ ẢNH: images/hero-1.jpg, hero-2.jpg, hero-3.jpg — 3 ảnh trong khung
-       ✏️ SỬA: Tiêu đề, dòng chữ script
-  ============================================================ -->
-  <section class="hero" id="hero-section">
-    <!--
-      🖼️ ẢNH SLIDESHOW: Thêm ảnh bìa tại đây.
-      Mỗi dòng là một ảnh — thêm bao nhiêu cũng được.
-      Chỉ cần thêm thêm dòng: 'images/banner4.jpg',
-    -->
-    <script>
-    const HERO_SLIDES = [
-      'images/banner.jpg',
-      'images/banner2.jpg',
-      'images/banner3.jpg',
-    ];
-    </script>
-
-    <!-- Nút trái / phải -->
-    <button class="hero-arrow hero-arrow-prev" onclick="heroMove(-1)">&#8249;</button>
-    <button class="hero-arrow hero-arrow-next" onclick="heroMove(1)">&#8250;</button>
-
-    <!-- Chấm điều hướng -->
-    <div class="hero-dots" id="hero-dots"></div>
-
-    <!-- Tia đỏ neon trang trí — KHÔNG CẦN SỬA -->
-    <svg class="hero-rays" viewBox="0 0 1200 500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id="r1" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#cc0000" stop-opacity="0"/>
-          <stop offset="40%" stop-color="#ff2200" stop-opacity="0.95"/>
-          <stop offset="100%" stop-color="#ff2200" stop-opacity="0"/>
-        </linearGradient>
-        <linearGradient id="r2" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#880000" stop-opacity="0"/>
-          <stop offset="50%" stop-color="#ff0000" stop-opacity="0.6"/>
-          <stop offset="100%" stop-color="#ff0000" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-      <line x1="350" y1="0" x2="1200" y2="340" stroke="url(#r1)" stroke-width="2.5"/>
-      <line x1="370" y1="0" x2="1200" y2="300" stroke="url(#r2)" stroke-width="1.2"/>
-      <line x1="330" y1="10" x2="1200" y2="400" stroke="url(#r1)" stroke-width="3.5"/>
-      <line x1="310" y1="0" x2="1100" y2="500" stroke="url(#r2)" stroke-width="1.8"/>
-      <line x1="300" y1="20" x2="1050" y2="500" stroke="url(#r1)" stroke-width="1"/>
-      <ellipse cx="650" cy="250" rx="200" ry="100" fill="#88000012"/>
-    </svg>
-
-    <div class="hero-inner">
-      <!-- Ảnh trái 1 -->
-      <div class="hero-photo">
-        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
-        <img src="images/hero-1.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="hero-photo-placeholder" style="display:none">Ảnh 1</div>
-      </div>
-
-      <!-- Ảnh trái 2 -->
-      <div class="hero-photo">
-        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
-        <img src="images/hero-2.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="hero-photo-placeholder" style="display:none">Ảnh 2</div>
-      </div>
-
-      <!-- Chữ giữa -->
-      <div class="hero-text">
-        <div class="hero-label">AMI Make Up Academy</div>  <!-- ✏️ SỬA -->
-        <div class="hero-h1">MAKE UP PRO<br/>2026</div>   <!-- ✏️ SỬA -->
-        <div class="hero-script">Basic To Advanced 2026</div>  <!-- ✏️ SỬA -->
-      </div>
-
-      <!-- Ảnh phải -->
-      <div class="hero-photo">
-        <!-- 🖼️ ẢNH: Thay src thành ảnh của bạn -->
-        <img src="images/hero-3.jpg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="hero-photo-placeholder" style="display:none">Ảnh 3</div>
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="active">Trang chủ</a>
+    <a href="gioi-thieu.html">Giới thiệu</a>
+    <div class="nav-dropdown">
+      <a href="dich-vu.html">Dịch vụ ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="dich-vu.html">Make up Cô Dâu</a>
+        <a href="dich-vu.html">Make up Kỷ Yếu</a>
+        <a href="dich-vu.html">Make up Sự Kiện & Party</a>
       </div>
     </div>
-  </section>
+    <div class="nav-dropdown">
+      <a href="khoa-hoc.html">Khóa học ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="khoa-hoc-chi-tiet.html">Makeup Chuyên Nghiệp</a>
+        <a href="khoa-hoc-chi-tiet.html">Makeup Nâng Cao</a>
+        <a href="khoa-hoc-chi-tiet.html">Makeup Cá Nhân 3 Buổi</a>
+        <a href="khoa-hoc-chi-tiet.html">Makeup Cá Nhân VIP 5 Buổi</a>
+      </div>
+    </div>
+    <a href="san-pham.html">Sản phẩm</a>
+    <a href="tin-tuc.html">Tin tức</a>
+    <a href="tuyen-dung.html">Tuyển dụng</a>
+    <a href="lien-he.html">Liên hệ</a>
+    <a href="dat-lich.html" style="color:var(--gold);margin-left:auto;font-weight:700">📅 Đặt lịch</a>
+  </div>
+</nav>
 
-  <!-- CTA Bar -->
-  <div class="cta-bar">
-    <div class="cta-label">TƯ VẤN TRỰC TUYẾN 24/7</div>  <!-- ✏️ SỬA -->
-    <div class="cta-phones">
-      <div class="cta-phone">0979.963.369</div>  <!-- ✏️ SỬA: Số điện thoại -->
-      <div class="cta-phone">0888.646.886</div>  <!-- ✏️ SỬA: Số điện thoại -->
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-slide active" style="background-image:url('images/IMG_9936.JPG')"></div>
+  <div class="hero-slide" style="background-image:url('images/IMG_9501.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('images/IMG_8399.JPG')"></div>
+  <div class="hero-slide" style="background-image:url('images/IMG_5284.jpeg')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">Trung Tâm Đào Tạo Make Up Chuyên Nghiệp · Nam Định</span>
+    <h1 class="hero-h1"><em>AMI</em><br>Make Up<br>Academy</h1>
+    <span class="hero-script">Nghệ thuật trang điểm — Vươn tới cái đẹp</span>
+    <div class="hero-courses">
+      <a href="khoa-hoc-chi-tiet.html" class="hero-course-pill">Makeup Chuyên Nghiệp</a>
+      <a href="khoa-hoc-chi-tiet.html" class="hero-course-pill">Makeup Nâng Cao</a>
+      <a href="khoa-hoc-chi-tiet.html" class="hero-course-pill">Makeup Cá Nhân 3 Buổi</a>
+      <a href="khoa-hoc-chi-tiet.html" class="hero-course-pill">Makeup Cá Nhân VIP 5 Buổi</a>
+    </div>
+    <div class="hero-cta-group">
+      <a href="dat-lich.html" class="btn-gold">Đăng Ký Giữ Xuất Học</a>
+      <a href="dich-vu.html" class="btn-outline-gold">Đặt Trước Dịch Vụ</a>
     </div>
   </div>
+  <button class="hero-arrow hero-arrow-prev" onclick="heroSlide(-1)">&#8249;</button>
+  <button class="hero-arrow hero-arrow-next" onclick="heroSlide(1)">&#8250;</button>
+  <div class="hero-dots" id="heroDots"></div>
+</section>
 
-  <!-- ============================================================
-       KHOÁ HỌC
-       🖼️ ẢNH: images/course-1.jpg ... course-8.jpg
-       ✏️ SỬA: Tên khoá, giá, mô tả
-       👉 Thêm/xoá .course-card để thêm/bớt khoá học
-  ============================================================ -->
-  <section class="section" id="khoa-hoc">
-    <div class="section-title">KHÓA HỌC NỔI BẬT</div>  <!-- ✏️ SỬA -->
-    <div class="courses-grid">
-
-      <!-- Khoá 1 -->
-      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=1'" style="cursor:pointer">
-        <div class="course-thumb">
-          <img src="images/course-1.jpg" alt="" onerror="this.style.display='none'" />
-          <div class="course-overlay">Khoá Học Make Up Pro 2026<br>Dành Cho Người Mới Bắt Đầu</div>
-        </div>
-        <div class="course-body">
-          <div class="course-price">5.500.000đ</div>
-          <div class="course-old">7.000.000đ</div>
-          <div class="course-desc">Khoá học cơ bản toàn diện, phù hợp người mới bắt đầu</div>
-        </div>
-      </div>
-
-      <!-- Khoá 2 -->
-      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=2'" style="cursor:pointer">
-        <div class="course-thumb">
-          <img src="images/course-2.jpg" alt="" onerror="this.style.display='none'" />
-          <div class="course-overlay">Khoá Make Up Nâng Cao<br>Cấp Tốc Sài Gòn 2026</div>
-        </div>
-        <div class="course-body">
-          <div class="course-price">12.000.000đ</div>
-          <div class="course-old">15.000.000đ</div>
-          <div class="course-desc">6 - 4 | 7 Phú Nhuận | Thành Phố Hồ Chí Minh</div>
-        </div>
-      </div>
-
-      <!-- Khoá 3 -->
-      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=3'" style="cursor:pointer">
-        <div class="course-thumb">
-          <img src="images/course-3.jpg" alt="" onerror="this.style.display='none'" />
-          <div class="course-overlay">Khoá Make Up Nâng Cao<br>Cấp Tốc Hà Nội 2026</div>
-        </div>
-        <div class="course-body">
-          <div class="course-price">12.000.000đ</div>
-          <div class="course-old">15.000.000đ</div>
-          <div class="course-desc">Giảng dạy 3 ngày · 1 day training · 3 layout</div>
-        </div>
-      </div>
-
-      <!-- Khoá 4 -->
-      <div class="course-card" onclick="window.location='khoa-hoc-chi-tiet.html?id=4'" style="cursor:pointer">
-        <div class="course-thumb">
-          <img src="images/course-4.jpg" alt="" onerror="this.style.display='none'" />
-          <div class="course-overlay">Khoá Make Up Cá Nhân<br>Welcome To AMI Academy</div>
-        </div>
-        <div class="course-body">
-          <div class="course-price">18.000.000đ</div>
-          <div class="course-old">22.000.000đ</div>
-          <div class="course-desc">Trợ giảng kèm, hỗ trợ 100% makeup artist</div>
-        </div>
-      </div>
-
-    </div>
-    <div class="btn-row">
-      <button class="btn-outline" onclick="window.location='khoa-hoc.html'">Xem tất cả các khóa học</button>
-      <button class="btn-solid" onclick="window.location='khoa-hoc.html'">Đăng ký giữ xuất học</button>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       10 ĐIỀU UY TÍN
-       ✏️ SỬA: Tiêu đề và từng điểm uy tín
-  ============================================================ -->
-  <section class="utin" style="position:relative">
-    <div class="utin-bg"></div>
-    <div class="utin-inner">
-      <div class="utin-script">10 Điều uy tín</div>  <!-- ✏️ SỬA -->
-      <div class="utin-sub">Khiến bạn nhất định phải trở thành học viên tại AMI Make Up Academy</div>  <!-- ✏️ SỬA -->
-      <div class="utin-nums">
-        <div class="utin-num">1</div><div class="utin-num">2</div><div class="utin-num">3</div>
-        <div class="utin-num">4</div><div class="utin-num">5</div><div class="utin-num">6</div>
-        <div class="utin-num">7</div><div class="utin-num">8</div><div class="utin-num">9</div>
-        <div class="utin-num">10</div>
-      </div>
-      <div class="utin-grid">
-        <!-- ✏️ SỬA: 10 điều uy tín — thay nội dung từng dòng -->
-        <div class="utin-item"><div class="utin-item-num">01</div><div class="utin-item-text">Không chỉ đào tạo kiến thức, học viên còn được trang bị tư duy thẩm mỹ chuyên sâu</div></div>
-        <div class="utin-item"><div class="utin-item-num">02</div><div class="utin-item-text">Giảng viên là chuyên gia với 10+ năm kinh nghiệm thực chiến trong ngành</div></div>
-        <div class="utin-item"><div class="utin-item-num">03</div><div class="utin-item-text">Lớp học nhỏ, tỉ lệ giảng viên – học viên đảm bảo chất lượng 1-1</div></div>
-        <div class="utin-item"><div class="utin-item-num">04</div><div class="utin-item-text">Cơ sở vật chất hiện đại, trang thiết bị cao cấp chuyên nghiệp</div></div>
-        <div class="utin-item"><div class="utin-item-num">05</div><div class="utin-item-text">Chứng chỉ được công nhận, hỗ trợ giới thiệu việc làm sau khoá học</div></div>
-        <div class="utin-item"><div class="utin-item-num">06</div><div class="utin-item-text">Thực hành trên mô hình người thật ngay từ những buổi học đầu tiên</div></div>
-        <div class="utin-item"><div class="utin-item-num">07</div><div class="utin-item-text">Chương trình học được cập nhật liên tục theo xu hướng quốc tế mới nhất</div></div>
-        <div class="utin-item"><div class="utin-item-num">08</div><div class="utin-item-text">Hỗ trợ tư vấn và giải đáp sau khi tốt nghiệp không giới hạn thời gian</div></div>
-        <div class="utin-item"><div class="utin-item-num">09</div><div class="utin-item-text">Học viên được tham gia các buổi workshop, show diễn thực tế</div></div>
-        <div class="utin-item"><div class="utin-item-num">10</div><div class="utin-item-text">Cộng đồng alumni rộng lớn, kết nối cơ hội nghề nghiệp sau khoá học</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       DỊCH VỤ
-       🖼️ ẢNH: images/service-1.jpg, service-2.jpg, service-3.jpg
-       ✏️ SỬA: Tên dịch vụ
-  ============================================================ -->
-  <section class="section" id="dich-vu">
-    <div class="section-title">DỊCH VỤ MAKE UP</div>
-    <div class="services-grid">
-
-      <div class="svc-card">
-        <div class="svc-img">
-          <!-- 🖼️ ẢNH: Thay src -->
-          <img src="images/service-1.jpg" alt="Make Up Ngày Cưới" onerror="this.parentElement.style.background='#1a1a1a'" />
-        </div>
-        <div class="svc-overlay"></div>
-        <div class="svc-label">Make Up Ngày Cưới</div>  <!-- ✏️ SỬA -->
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-img">
-          <img src="images/service-2.jpg" alt="Make Up Kỷ Yếu" onerror="this.parentElement.style.background='#1a1a1a'" />
-        </div>
-        <div class="svc-overlay"></div>
-        <div class="svc-label">Make Up Kỷ Yếu</div>
-      </div>
-
-      <div class="svc-card">
-        <div class="svc-img">
-          <img src="images/service-3.jpg" alt="" onerror="this.parentElement.style.background='#1a1a1a'" />
-        </div>
-        <div class="svc-overlay"></div>
-        <div class="svc-label">Make Up Sự Kiện, Sinh Nhật,<br>Party, Chụp Hình Thời Trang</div>  <!-- ✏️ SỬA -->
-      </div>
-
-    </div>
-    <div class="btn-row">
-      <button class="btn-outline">Xem tất cả dịch vụ</button>
-      <button class="btn-solid">Đặt trước dịch vụ</button>
-    </div>
-  </section>
-
-  <!-- ============================================================
-       GIỚI THIỆU
-       🖼️ ẢNH: images/about.jpg
-       ✏️ SỬA: Nội dung giới thiệu
-  ============================================================ -->
-  <section class="about" id="gioi-thieu">
-    <div class="about-glitter"></div>
-    <div class="about-inner">
-      <div class="about-text">
-        <div class="about-eyebrow">About Us</div>
-        <div class="about-title">AMI MAKEUP ACADEMY</div>  <!-- ✏️ SỬA -->
-        <p class="about-body">
-          <!-- ✏️ SỬA: Nội dung giới thiệu về thương hiệu của bạn -->
-          AMI Makeup Academy — Học viện thương hiệu Make Up chuyên nghiệp được thành lập trên sự uy tín và kinh nghiệm đào tạo nhiều năm. Chúng tôi kiến tạo nên nguồn đam mê học hỏi và phá bỏ giới hạn sáng tạo trong nghệ thuật trang điểm tới các học viên. Sau nhiều năm không ngừng nỗ lực mang cái đẹp đi muôn phương, AMI đã trở thành sự lựa chọn hàng đầu và là cái tên đóng góp không nhỏ trong sự phát triển chung của ngành makeup Việt Nam.
-        </p>
-      </div>
-      <div class="about-photo">
-        <!-- 🖼️ ẢNH: Thay src -->
-        <img src="images/about.jpg" alt="AMI Academy" onerror="this.style.display='none'" />
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <div class="stats">
-    <!-- ✏️ SỬA: Số liệu -->
-    <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Năm kinh nghiệm</div></div>
-    <div class="stat"><div class="stat-num">33.000+</div><div class="stat-lbl">Học viên</div></div>
-    <div class="stat"><div class="stat-num">30+</div><div class="stat-lbl">Nhân sự</div></div>
-    <div class="stat"><div class="stat-num">8+</div><div class="stat-lbl">Kênh truyền thông</div></div>
+<!-- CTA BAR -->
+<div class="cta-bar">
+  <div class="cta-label">Tư vấn miễn phí — <span>Gọi ngay hotline</span></div>
+  <div class="cta-phones">
+    <a href="tel:0327355595" class="cta-phone"><span class="cta-phone-icon">☎</span> 0327.355.595</a>
+    <a href="tel:0911148995" class="cta-phone"><span class="cta-phone-icon">☎</span> 0911.148.995</a>
   </div>
+</div>
 
-  <!-- ============================================================
-       GALLERY — TONE MAKEUP & KIỂU TÓC
-       🖼️ ẢNH: Thêm ảnh vào gallery-grid, sao chép .gal-item
-  ============================================================ -->
-  <section class="gallery-section" id="gallery">
-    <div class="gallery-title">TONE MAKEUP &amp; KIỂU TÓC 2026</div>  <!-- ✏️ SỬA -->
-    <div class="gallery-grid">
-      <!-- 🖼️ ẢNH: Thêm/thay ảnh — sao chép .gal-item để thêm ô -->
-      <div class="gal-item"><img src="images/gallery-1.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 1</div></div>
-      <div class="gal-item"><img src="images/gallery-2.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 2</div></div>
-      <div class="gal-item"><img src="images/gallery-3.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 3</div></div>
-      <div class="gal-item"><img src="images/gallery-4.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 4</div></div>
-      <div class="gal-item"><img src="images/gallery-5.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 5</div></div>
-      <div class="gal-item"><img src="images/gallery-6.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 6</div></div>
-      <div class="gal-item"><img src="images/gallery-7.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 7</div></div>
-      <div class="gal-item"><img src="images/gallery-8.jpg" alt="" /><div class="gal-placeholder" style="display:none">Ảnh gallery 8</div></div>
+<!-- KHOÁ HỌC -->
+<section class="section" id="courses">
+  <p class="section-sub">Chương trình giảng dạy</p>
+  <h2 class="section-title">Các Khóa Đào Tạo <em>Make Up</em></h2>
+  <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  <div class="courses-tabs">
+    <button class="courses-tab active" onclick="filterCourses('all',this)">Tất cả</button>
+    <button class="courses-tab" onclick="filterCourses('offline',this)">Offline</button>
+    <button class="courses-tab" onclick="filterCourses('online',this)">Online</button>
+  </div>
+  <div class="courses-grid">
+    <div class="course-card" data-cat="offline">
+      <div class="course-thumb">
+        <img src="images/IMG_9937.JPG" alt="Makeup Chuyên Nghiệp" loading="lazy" />
+        <div class="course-badge">Cao cấp</div>
+      </div>
+      <div class="course-body">
+        <div class="course-name">Makeup Chuyên Nghiệp</div>
+        <span class="course-price">20.000.000đ</span><span class="course-old">25.000.000đ</span>
+        <p class="course-desc">Lộ trình A–Z trở thành MUA chuyên nghiệp, đi làm ngay sau khoá.</p>
+        <a href="khoa-hoc-chi-tiet.html" class="course-cta">Xem chi tiết</a>
+      </div>
     </div>
-    <div class="gallery-more">
-      <button class="btn-outline-white" style="margin-top:0">XEM THÊM</button>
+    <div class="course-card" data-cat="offline">
+      <div class="course-thumb">
+        <img src="images/IMG_9938.JPG" alt="Makeup Nâng Cao" loading="lazy" />
+        <div class="course-badge">Phổ biến</div>
+      </div>
+      <div class="course-body">
+        <div class="course-name">Makeup Nâng Cao</div>
+        <span class="course-price">5.000.000đ</span><span class="course-old">7.000.000đ</span>
+        <p class="course-desc">Hoàn thiện kỹ thuật, cập nhật xu hướng mới nhất cho MUA đã có nền tảng.</p>
+        <a href="khoa-hoc-chi-tiet.html" class="course-cta">Xem chi tiết</a>
+      </div>
     </div>
-  </section>
+    <div class="course-card" data-cat="offline">
+      <div class="course-thumb">
+        <img src="images/IMG_8399.JPG" alt="Makeup Cá Nhân 3 Buổi" loading="lazy" />
+      </div>
+      <div class="course-body">
+        <div class="course-name">Makeup Cá Nhân 3 Buổi</div>
+        <span class="course-price">2.000.000đ</span><span class="course-old">2.500.000đ</span>
+        <p class="course-desc">Tự trang điểm đẹp trong 3 buổi — dành cho người mới bắt đầu.</p>
+        <a href="khoa-hoc-chi-tiet.html" class="course-cta">Xem chi tiết</a>
+      </div>
+    </div>
+    <div class="course-card" data-cat="offline">
+      <div class="course-thumb">
+        <img src="images/IMG_8400.JPG" alt="Makeup Cá Nhân VIP 5 Buổi" loading="lazy" />
+        <div class="course-badge">VIP</div>
+      </div>
+      <div class="course-body">
+        <div class="course-name">Makeup Cá Nhân VIP 5 Buổi</div>
+        <span class="course-price">3.000.000đ</span><span class="course-old">3.500.000đ</span>
+        <p class="course-desc">5 buổi chuyên sâu, tư vấn tone màu & phong cách riêng cho từng người.</p>
+        <a href="khoa-hoc-chi-tiet.html" class="course-cta">Xem chi tiết</a>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:36px">
+    <a href="khoa-hoc.html" class="btn-gold">Xem Toàn Bộ Khoá Học</a>
+  </div>
+</section>
 
-  <!-- ============================================================
-       FORM ĐĂNG KÝ
-       ✏️ SỬA: Tiêu đề form, các option khoá học
-  ============================================================ -->
-  <section class="form-section" id="dang-ky">
-    <div class="section-title">ĐĂNG KÝ TƯ VẤN MIỄN PHÍ</div>
-    <div class="form-grid">
-      <input type="text" placeholder="Họ và tên *" required />
-      <input type="tel" placeholder="Số điện thoại *" required />
-      <input type="email" placeholder="Email" />
-      <input type="text" placeholder="Địa chỉ" />
-      <!-- ✏️ SỬA: Danh sách khoá học trong dropdown -->
-      <select class="full">
-        <option value="">— Chọn khoá học quan tâm —</option>
-        <option>Khoá Học Make Up Pro 2026</option>
-        <option>Khoá Make Up Nâng Cao Cấp Tốc Sài Gòn</option>
-        <option>Khoá Make Up Nâng Cao Cấp Tốc Hà Nội</option>
-        <option>Khoá Make Up Cá Nhân</option>
-        <option>Khoá Online Xử Lý Kỹ Thuật Nền</option>
-        <option>Khoá Hairstylist</option>
-        <!-- ➕ Thêm khoá học mới vào đây -->
+<!-- 10 UY TÍN -->
+<section class="utin" id="uyin">
+  <div class="utin-bg"></div>
+  <div class="utin-inner">
+    <p class="utin-super">Cam kết — Tín nhiệm — Chất lượng</p>
+    <h2 class="utin-title">10 Điều <em>Uy Tín</em> Của AMI</h2>
+    <div class="ornament" style="margin-bottom:0"><div class="ornament-line" style="opacity:0.35"></div><div class="ornament-diamond"></div><div class="ornament-line" style="opacity:0.35"></div></div>
+    <div class="utin-nums">
+      <div class="utin-num">0</div><div class="utin-num">1</div>
+      <div class="utin-num">0</div><div class="utin-num">&nbsp;</div>
+      <div class="utin-num">Đ</div><div class="utin-num">I</div><div class="utin-num">Ề</div><div class="utin-num">U</div>
+    </div>
+    <div class="utin-grid">
+      <div class="utin-item"><div class="utin-item-num">01</div><div class="utin-item-text"><strong>Đào tạo tư duy thẩm mỹ đa chiều</strong>Không chỉ dạy kỹ thuật — học viên được trang bị tư duy thẩm mỹ và nhãn quan nghề nghiệp từ đầu.</div></div>
+      <div class="utin-item"><div class="utin-item-num">02</div><div class="utin-item-text"><strong>Giảng dạy trực tiếp bởi Thuý Trần</strong>100% buổi học có sự hướng dẫn trực tiếp của chuyên gia, không giao phó cho trợ giảng.</div></div>
+      <div class="utin-item"><div class="utin-item-num">03</div><div class="utin-item-text"><strong>Lớp học nhỏ, tối đa 8 học viên</strong>Giới hạn sĩ số để đảm bảo mỗi học viên được chú ý, sửa lỗi và hỗ trợ cá nhân hoá.</div></div>
+      <div class="utin-item"><div class="utin-item-num">04</div><div class="utin-item-text"><strong>Đảm bảo có thu nhập sau ra nghề</strong>100% học viên tốt nghiệp được hỗ trợ kết nối việc làm và xây dựng thu nhập ổn định.</div></div>
+      <div class="utin-item"><div class="utin-item-num">05</div><div class="utin-item-text"><strong>Thực hành trên người mẫu thật</strong>Mỗi buổi học ít nhất 70% thực hành — trên người mẫu thật, không phải mannequin.</div></div>
+      <div class="utin-item"><div class="utin-item-num">06</div><div class="utin-item-text"><strong>Hỗ trợ học viên trọn đời</strong>Sau khi ra trường, học viên vẫn được tư vấn, hỏi đáp và cập nhật xu hướng miễn phí mãi mãi.</div></div>
+      <div class="utin-item"><div class="utin-item-num">07</div><div class="utin-item-text"><strong>Giáo trình cập nhật theo xu hướng</strong>Chương trình được làm mới hàng năm theo xu hướng quốc tế — không dạy kiến thức lỗi thời.</div></div>
+      <div class="utin-item"><div class="utin-item-num">08</div><div class="utin-item-text"><strong>Chứng chỉ được công nhận</strong>Cấp chứng chỉ nghề có giá trị, hỗ trợ xây dựng hồ sơ chuyên nghiệp trên mạng xã hội.</div></div>
+      <div class="utin-item"><div class="utin-item-num">09</div><div class="utin-item-text"><strong>Cộng đồng học viên AMI</strong>Gia nhập cộng đồng makeup artist — kết nối, chia sẻ cơ hội và phát triển cùng nhau.</div></div>
+      <div class="utin-item" style="border-bottom:none"><div class="utin-item-num">10</div><div class="utin-item-text"><strong>Hoàn tiền nếu không hài lòng</strong>Chính sách hoàn tiền 100% trong 7 ngày đầu nếu học viên không hài lòng với chất lượng.</div></div>
+    </div>
+    <div style="margin-top:40px"><a href="dat-lich.html" class="btn-gold">Đăng Ký Ngay Hôm Nay</a></div>
+  </div>
+</section>
+
+<!-- DỊCH VỤ -->
+<section class="section section-cream" id="services">
+  <p class="section-sub">Chuyên nghiệp — Tận tâm — Đúng hẹn</p>
+  <h2 class="section-title">Dịch Vụ <em>Make Up</em></h2>
+  <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="images/IMG_8401.JPG" alt="Make up Cô Dâu" loading="lazy" />
+      <div class="service-overlay">
+        <div class="service-num">01</div>
+        <div class="service-title">Make Up Cô Dâu</div>
+        <p class="service-desc">Làm đẹp cho ngày trọng đại nhất — tôn lên vẻ đẹp tự nhiên và cá tính riêng của mỗi cô dâu.</p>
+        <a href="dich-vu.html" class="service-link">Đặt lịch ngay →</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="images/IMG_8402.JPG" alt="Make up Kỷ Yếu" loading="lazy" />
+      <div class="service-overlay">
+        <div class="service-num">02</div>
+        <div class="service-title">Make Up Kỷ Yếu</div>
+        <p class="service-desc">Lưu giữ kỷ niệm học đường với gương mặt rạng rỡ, phong cách trẻ trung và tươi sáng.</p>
+        <a href="dich-vu.html" class="service-link">Đặt lịch ngay →</a>
+      </div>
+    </div>
+    <div class="service-card">
+      <img src="images/IMG_8403.JPG" alt="Make up Sự Kiện" loading="lazy" />
+      <div class="service-overlay">
+        <div class="service-num">03</div>
+        <div class="service-title">Make Up Sự Kiện &amp; Party</div>
+        <p class="service-desc">Toả sáng tại mọi sự kiện — sinh nhật, tiệc công ty, chụp hình thời trang, gala dinner.</p>
+        <a href="dich-vu.html" class="service-link">Đặt lịch ngay →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GIỚI THIỆU -->
+<section class="section" id="about">
+  <div class="about-wrap">
+    <div class="about-image-wrap reveal">
+      <div class="about-image">
+        <img src="images/IMG_9501.jpg" alt="Thuý Trần — Founder AMI" loading="lazy" />
+        <div class="about-badge">
+          <div class="about-badge-num">7+</div>
+          <div class="about-badge-text">Năm Kinh Nghiệm</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.15s">
+      <p class="about-overline">Về chúng tôi</p>
+      <h2 class="about-title">AMI Make Up <em>Academy</em><br>— Nam Định</h2>
+      <blockquote class="about-mission">"Sứ mệnh của nghệ thuật là vươn tới cái đẹp — và mỗi khuôn mặt đều xứng đáng được toả sáng."</blockquote>
+      <p class="about-body">AMI Make Up Academy được thành lập bởi <strong>Thuý Trần</strong> — makeup artist &amp; giảng viên với nhiều năm kinh nghiệm trong ngành. Với triết lý đào tạo lấy học viên làm trung tâm, AMI không chỉ dạy kỹ thuật mà còn trang bị tư duy thẩm mỹ, năng lực nghề nghiệp và tinh thần tự tin cho mỗi học viên.</p>
+      <p class="about-body" style="margin-top:14px">Toạ lạc tại <strong>351 Lê Hồng Phong, TP. Nam Định</strong>, AMI là địa chỉ đào tạo makeup uy tín hàng đầu tỉnh — nơi hàng trăm học viên đã bước ra nghề và gây dựng sự nghiệp thành công.</p>
+      <div style="margin-top:28px"><a href="gioi-thieu.html" class="btn-gold">Tìm Hiểu Thêm</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ĐỘI NGŨ -->
+<section class="section section-cream" id="team">
+  <p class="section-sub">Đội ngũ chuyên gia</p>
+  <h2 class="section-title">Những Người <em>Đứng Sau</em> AMI</h2>
+  <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-photo"><img src="images/IMG_9013.JPG" alt="Thuý Trần" loading="lazy" /></div>
+      <div class="team-name">Thuý Trần</div>
+      <div class="team-role">Founder &amp; Master Make-Up Artist</div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.1s">
+      <div class="team-photo"><img src="images/IMG_9014.JPG" alt="Hương Linh" loading="lazy" /></div>
+      <div class="team-name">Hương Linh</div>
+      <div class="team-role">Giảng Viên — Bridal Specialist</div>
+    </div>
+    <div class="team-card reveal" style="transition-delay:0.2s">
+      <div class="team-photo"><img src="images/IMG_9015.JPG" alt="Mai Anh" loading="lazy" /></div>
+      <div class="team-name">Mai Anh</div>
+      <div class="team-role">Trợ Giảng &amp; Tư Vấn Viên</div>
+    </div>
+  </div>
+</section>
+
+<!-- THỐNG KÊ -->
+<section class="section section-dark" id="stats">
+  <p class="section-sub section-sub-white">Những con số biết nói</p>
+  <h2 class="section-title section-title-white" style="margin-bottom:48px">Hành Trình <em>Của AMI</em></h2>
+  <div class="stats-wrap">
+    <div class="stat-item">
+      <span class="stat-num" data-target="7">0</span><span class="stat-unit">+</span>
+      <span class="stat-label">Năm Kinh Nghiệm</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span>
+      <span class="stat-label">Học Viên Tốt Nghiệp</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="6">0</span><span class="stat-unit">+</span>
+      <span class="stat-label">Khóa Học Chuyên Ngành</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-target="5">0</span><span class="stat-unit">+</span>
+      <span class="stat-label">Kênh Truyền Thông</span>
+    </div>
+  </div>
+</section>
+
+<!-- FORM ĐĂNG KÝ -->
+<section class="section" id="register">
+  <div class="register-wrap">
+    <p class="section-sub">Tư vấn miễn phí — Không áp lực</p>
+    <h2 class="section-title">Đăng Ký <em>Tư Vấn</em> Khóa Học</h2>
+    <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    <form class="register-form" onsubmit="handleFormSubmit(event)">
+      <input type="text" name="name" placeholder="Họ và tên *" required />
+      <input type="tel" name="phone" placeholder="Số điện thoại *" required />
+      <input type="email" name="email" placeholder="Email" />
+      <select name="course">
+        <option value="">-- Chọn khóa học quan tâm --</option>
+        <option>Makeup Chuyên Nghiệp (20.000.000đ)</option>
+        <option>Makeup Nâng Cao (5.000.000đ)</option>
+        <option>Makeup Cá Nhân 3 Buổi (2.000.000đ)</option>
+        <option>Makeup Cá Nhân VIP 5 Buổi (3.000.000đ)</option>
       </select>
-      <textarea class="full" placeholder="Ghi chú thêm (nếu có)..."></textarea>
+      <textarea name="note" class="full" placeholder="Ghi chú thêm (thời gian học, câu hỏi...)" rows="3"></textarea>
+      <button type="submit" class="register-submit">Gửi Thông Tin Đăng Ký</button>
+    </form>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section section-dark" id="gallery">
+  <p class="section-sub section-sub-white">Portfolio &amp; Tác phẩm</p>
+  <h2 class="section-title section-title-white" style="margin-bottom:40px">Tone Makeup &amp; Phong Cách <em>2025</em></h2>
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="images/IMG_9936.JPG" alt="Gallery 1" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_9937.JPG" alt="Gallery 2" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_9938.JPG" alt="Gallery 3" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_9939.JPG" alt="Gallery 4" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_8399.JPG" alt="Gallery 5" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_8400.JPG" alt="Gallery 6" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_8401.JPG" alt="Gallery 7" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_8402.JPG" alt="Gallery 8" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_5284.jpeg" alt="Gallery 9" loading="lazy"/></div>
+    <div class="gallery-item"><img src="images/IMG_5287.jpeg" alt="Gallery 10" loading="lazy"/></div>
+  </div>
+  <div style="text-align:center;margin-top:36px">
+    <a href="#" class="btn-outline-gold">Xem Thêm Tác Phẩm Trên Facebook</a>
+  </div>
+</section>
+
+<!-- TIN TỨC -->
+<section class="section" id="news">
+  <p class="section-sub">Kiến thức &amp; cảm hứng</p>
+  <h2 class="section-title">Tin Tức &amp; <em>Blog</em></h2>
+  <div class="ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  <div class="news-grid">
+    <div class="news-card reveal">
+      <div class="news-thumb"><img src="images/IMG_9501.jpg" alt="News 1" loading="lazy"/></div>
+      <div class="news-body">
+        <div class="news-date">28 Tháng 6, 2025</div>
+        <h3 class="news-title">Xu Hướng Bridal Makeup 2025 — Nét Đẹp Tự Nhiên Lên Ngôi</h3>
+        <p class="news-excerpt">Mùa cưới 2025 chứng kiến sự trở lại mạnh mẽ của phong cách makeup tự nhiên, trong trẻo...</p>
+        <a href="tin-tuc.html" class="news-more">Đọc tiếp →</a>
+      </div>
     </div>
-    <div class="form-submit">
-      <button type="submit">GỬI ĐĂNG KÝ</button>
+    <div class="news-card reveal" style="transition-delay:0.1s">
+      <div class="news-thumb"><img src="images/IMG_9502.jpg" alt="News 2" loading="lazy"/></div>
+      <div class="news-body">
+        <div class="news-date">15 Tháng 6, 2025</div>
+        <h3 class="news-title">5 Kỹ Thuật Che Khuyết Điểm Mà Mọi Makeup Artist Cần Biết</h3>
+        <p class="news-excerpt">Che khuyết điểm là nền tảng của mọi bài makeup đẹp — đây là 5 bí quyết từ chuyên gia AMI...</p>
+        <a href="tin-tuc.html" class="news-more">Đọc tiếp →</a>
+      </div>
     </div>
-  </section>
-
-  <!-- ============================================================
-       TIN TỨC
-       🖼️ ẢNH: images/news-1.jpg ... news-4.jpg
-       ✏️ SỬA: Tiêu đề, tag, ngày tháng từng bài
-       👉 Sao chép .news-card để thêm bài viết
-  ============================================================ -->
-  <section class="news-section" id="tin-tuc">
-    <div class="section-title">TIN TỨC</div>
-    <div class="news-grid">
-
-      <div class="news-card">
-        <div class="news-thumb">
-          <img src="images/news-1.jpg" alt="" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-tag">Kỹ thuật</div>  <!-- ✏️ SỬA -->
-          <div class="news-title">10 bước trang điểm cô dâu chuẩn salon cho ngày cưới hoàn hảo</div>  <!-- ✏️ SỬA -->
-          <div class="news-date">15/06/2026</div>  <!-- ✏️ SỬA -->
-        </div>
+    <div class="news-card reveal" style="transition-delay:0.2s">
+      <div class="news-thumb"><img src="images/IMG_8561.JPG" alt="News 3" loading="lazy"/></div>
+      <div class="news-body">
+        <div class="news-date">02 Tháng 6, 2025</div>
+        <h3 class="news-title">Học Viên AMI — Từ Tay Ngang Đến Makeup Artist Chuyên Nghiệp</h3>
+        <p class="news-excerpt">Câu chuyện truyền cảm hứng của học viên Ngọc Mai — từ con số 0 đến thu nhập ổn định mỗi tháng...</p>
+        <a href="tin-tuc.html" class="news-more">Đọc tiếp →</a>
       </div>
-
-      <div class="news-card">
-        <div class="news-thumb">
-          <img src="images/news-2.jpg" alt="" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-tag">Xu hướng</div>
-          <div class="news-title">Xu hướng màu son 2026: tông cam đất và hồng đất lên ngôi</div>
-          <div class="news-date">10/06/2026</div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-thumb">
-          <img src="images/news-3.jpg" alt="" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-tag">Chăm sóc da</div>
-          <div class="news-title">Cách phục hồi da sau makeup để luôn căng bóng khỏe mạnh</div>
-          <div class="news-date">05/06/2026</div>
-        </div>
-      </div>
-
-      <div class="news-card">
-        <div class="news-thumb">
-          <img src="images/news-4.jpg" alt="" onerror="this.style.display='none'" />
-        </div>
-        <div class="news-body">
-          <div class="news-tag">Câu chuyện</div>
-          <div class="news-title">Từ tay ngang đến makeup artist chuyên nghiệp — hành trình 6 tháng</div>
-          <div class="news-date">01/06/2026</div>
-        </div>
-      </div>
-
     </div>
-    <div class="btn-row">
-      <button class="btn-outline">Xem tất cả tin tức</button>
-    </div>
-  </section>
+  </div>
+  <div style="text-align:center;margin-top:36px">
+    <a href="tin-tuc.html" class="btn-gold">Xem Tất Cả Bài Viết</a>
+  </div>
+</section>
 
-  <!-- ============================================================
-       FOOTER
-       ✏️ SỬA: Địa chỉ, phone, email, tài khoản ngân hàng
-       ✏️ SỬA: Link mạng xã hội
-  ============================================================ -->
-  <footer>
-    <div class="footer-grid">
-
-      <div>
-        <div class="footer-logo">AMI</div>  <!-- ✏️ SỬA -->
-        <div class="footer-logo-sub">Make Up Academy</div>
-        <p class="footer-desc">
-          <!-- ✏️ SỬA -->
-          Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam với hơn 10 năm kinh nghiệm và 33.000+ học viên tin tưởng.
-        </p>
-        <!-- ✏️ SỬA: Thông tin liên hệ -->
-        <div class="footer-contact"><span class="ic">📍</span><span>123 Đường ABC, Quận 1, TP. Hồ Chí Minh</span></div>
-        <div class="footer-contact"><span class="ic">📞</span><span>0979.963.369 — 0888.646.886</span></div>
-        <div class="footer-contact"><span class="ic">✉️</span><span>info@amimakeupacademy.vn</span></div>
-        <div class="footer-contact"><span class="ic">🌐</span><span>www.amimakeupacademy.vn</span></div>
-        <!-- ✏️ SỬA: Thông tin tài khoản ngân hàng -->
-        <div class="footer-bank">
-          <strong>Tài khoản đóng phí</strong>
-          AMI MAKE UP ACADEMY · STK: 1234567890 · Ngân hàng Vietcombank
-        </div>
-        <!-- ✏️ SỬA: Link mạng xã hội -->
-        <div class="footer-social">
-          <a href="https://facebook.com/" class="soc soc-fb" target="_blank">f</a>
-          <a href="https://youtube.com/" class="soc soc-yt" target="_blank">▶</a>
-          <a href="https://twitter.com/" class="soc soc-tw" target="_blank">𝕏</a>
-          <a href="https://instagram.com/" class="soc soc-ig" target="_blank">📷</a>
-          <a href="https://pinterest.com/" class="soc soc-pt" target="_blank">P</a>
-        </div>
-      </div>
-
-      <div>
-        <h4>Khóa học</h4>
-        <ul>
-          <!-- ✏️ SỬA: Danh sách khoá học -->
-          <li><a href="#">Khoá Make Up Pro 2026</a></li>
-          <li><a href="#">Make Up Nâng Cao Cấp Tốc SG</a></li>
-          <li><a href="#">Make Up Nâng Cao Cấp Tốc HN</a></li>
-          <li><a href="#">Make Up Cá Nhân</a></li>
-          <li><a href="#">Make Up Nâng Cao Pro HN</a></li>
-          <li><a href="#">Khoá Online Xử Lý Nền</a></li>
-          <li><a href="#">Khoá Online Trang Điểm Mắt</a></li>
-          <li><a href="#">Khoá Hairstylist</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4>Dịch vụ</h4>
-        <ul>
-          <!-- ✏️ SỬA: Danh sách dịch vụ -->
-          <li><a href="#">Make Up Ngày Cưới</a></li>
-          <li><a href="#">Make Up Kỷ Yếu</a></li>
-          <li><a href="#">Make Up Sự Kiện</a></li>
-          <li><a href="#">Make Up Sinh Nhật / Party</a></li>
-          <li><a href="#">Chụp Hình Thời Trang</a></li>
-        </ul>
-        <h4 style="margin-top: 24px">Liên kết</h4>
-        <ul>
-          <li><a href="#">Về chúng tôi</a></li>
-          <li><a href="#">Tin tức</a></li>
-          <li><a href="#">Tuyển dụng</a></li>
-          <li><a href="#">Liên hệ</a></li>
-        </ul>
-      </div>
-
-    </div>
-
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 AMI Make Up Academy · All rights reserved</div>  <!-- ✏️ SỬA -->
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo-text"><em style="font-style:italic;color:var(--gold)">AMI</em> Make Up Academy</div>
+      <div class="footer-logo-sub">Đào Tạo Make Up Artist Chuyên Nghiệp · Nam Định</div>
+      <p class="footer-desc">Trung tâm đào tạo makeup uy tín tại Nam Định — nơi biến đam mê thành sự nghiệp, nơi mỗi học viên đều được toả sáng.</p>
       <div class="footer-social">
         <a href="#" class="soc soc-fb">f</a>
-        <a href="#" class="soc soc-ig">📷</a>
         <a href="#" class="soc soc-yt">▶</a>
+        <a href="#" class="soc soc-ig">✦</a>
+        <a href="#" class="soc soc-tt">♪</a>
+        <a href="#" class="soc soc-zl">Z</a>
       </div>
     </div>
-  </footer>
-
-  <!-- FLOATING BAR -->
-  <div class="float-bar">
-    <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>  <!-- ✏️ SỬA -->
-    <div class="float-phones">
-      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>  <!-- ✏️ SỬA -->
-      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>  <!-- ✏️ SỬA -->
+    <div>
+      <div class="footer-col-title">Khóa Học</div>
+      <ul class="footer-links">
+        <li><a href="khoa-hoc-chi-tiet.html">Makeup Chuyên Nghiệp</a></li>
+        <li><a href="khoa-hoc-chi-tiet.html">Makeup Nâng Cao</a></li>
+        <li><a href="khoa-hoc-chi-tiet.html">Makeup Cá Nhân 3 Buổi</a></li>
+        <li><a href="khoa-hoc-chi-tiet.html">Makeup Cá Nhân VIP 5 Buổi</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Dịch Vụ &amp; Khác</div>
+      <ul class="footer-links">
+        <li><a href="dich-vu.html">Make up Cô Dâu</a></li>
+        <li><a href="dich-vu.html">Make up Kỷ Yếu</a></li>
+        <li><a href="dich-vu.html">Make up Sự Kiện</a></li>
+        <li><a href="gioi-thieu.html">Giới thiệu</a></li>
+        <li><a href="tin-tuc.html">Tin tức</a></li>
+        <li><a href="tuyen-dung.html">Tuyển dụng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Liên Hệ</div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span>351 Lê Hồng Phong, TP. Nam Định</div>
+      <div class="footer-contact-item">
+        <span class="footer-contact-icon">☎</span>
+        <div><a href="tel:0327355595" style="color:#aaa">0327.355.595</a><br><a href="tel:0911148995" style="color:#aaa">0911.148.995</a></div>
+      </div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">✉</span><a href="mailto:ami.makeup.academy@gmail.com" style="color:#aaa">ami.makeup.academy@gmail.com</a></div>
+      <div class="footer-bank">
+        <div class="footer-bank-label">THANH TOÁN HỌC PHÍ</div>
+        <div class="footer-bank-info">THUÝ TRẦN<br>STK: <strong style="color:#ccc">1234567890</strong><br>Vietcombank — CN Nam Định</div>
+      </div>
     </div>
   </div>
-
-  <div style="height: 50px"></div>
-
-  <!-- ============================================================
-       ADMIN PANEL — Chế độ quản trị
-  ============================================================ -->
-
-  <!-- Nút mở admin — góc dưới phải -->
-  <button id="admin-toggle" title="Quản trị viên" style="
-    position:fixed; bottom:60px; right:16px; z-index:9999;
-    width:44px; height:44px; border-radius:50%;
-    background:#000; color:#fff; border:2px solid #fff;
-    font-size:18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.4);
-  ">🔑</button>
-
-  <!-- Thanh công cụ admin -->
-  <div id="admin-bar" style="
-    display:none; position:fixed; top:0; left:0; right:0; z-index:99999;
-    background:#c00; color:#fff; padding:10px 20px;
-    display:none; align-items:center; justify-content:space-between;
-    font-family:'Montserrat',sans-serif; font-size:13px; font-weight:700;
-    box-shadow:0 2px 8px rgba(0,0,0,0.3);
-  ">
-    <span>🛠️ CHẾ ĐỘ QUẢN TRỊ — Click vào ẢNH để thay | Click vào CHỮ để sửa</span>
-    <div style="display:flex;gap:10px">
-      <button onclick="adminSave()" style="background:#fff;color:#c00;border:none;padding:7px 18px;font-weight:700;cursor:pointer;font-size:12px;letter-spacing:0.1em">💾 LƯU</button>
-      <button onclick="adminExit()" style="background:transparent;color:#fff;border:2px solid #fff;padding:7px 18px;font-weight:700;cursor:pointer;font-size:12px;letter-spacing:0.1em">✕ THOÁT</button>
+  <div class="footer-divider"></div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 AMI Make Up Academy · Thuý Trần · Nam Định</div>
+    <div class="footer-bottom-links">
+      <a href="#">Chính sách bảo mật</a>
+      <a href="#">Điều khoản sử dụng</a>
+      <a href="lien-he.html">Liên hệ</a>
     </div>
   </div>
+</footer>
 
-  <!-- Input file ẩn để chọn ảnh -->
-  <input type="file" id="img-picker" accept="image/*" style="display:none" />
+<!-- FLOAT BUTTONS -->
+<div class="float-btns">
+  <a href="#" class="float-btn float-fb" title="Chat Facebook">f</a>
+  <a href="#" class="float-btn float-zl" title="Zalo">Z</a>
+  <a href="tel:0327355595" class="float-btn float-ph" title="Gọi ngay">☎</a>
+</div>
+<button class="float-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Lên đầu trang">↑</button>
 
-  <style>
-    /* Hiệu ứng khi admin mode */
-    body.admin-mode [data-editable] {
-      outline: 2px dashed #ff0 !important;
-      outline-offset: 2px;
-      cursor: text !important;
-      min-height: 20px;
-    }
-    body.admin-mode [data-editable]:hover {
-      outline-color: #fff !important;
-      background: rgba(255,255,0,0.08) !important;
-    }
-    body.admin-mode .img-wrap {
-      position: relative !important;
-      cursor: pointer !important;
-    }
-    body.admin-mode .img-wrap::after {
-      content: '📷 Nhấn để thay ảnh';
-      position: absolute; inset: 0;
-      background: rgba(0,0,0,0.55);
-      color: #fff; font-size: 13px; font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: 0.05em;
-      opacity: 0;
-      transition: opacity 0.2s;
-    }
-    body.admin-mode .img-wrap:hover::after { opacity: 1; }
-    body.admin-mode { padding-top: 46px; }
-  </style>
+<script>
+  /* Hero Slideshow */
+  const slides = document.querySelectorAll('.hero-slide');
+  const dotsEl = document.getElementById('heroDots');
+  let cur = 0, timer;
+  slides.forEach((_,i) => {
+    const d = document.createElement('button');
+    d.className = 'hero-dot' + (i===0?' active':'');
+    d.onclick = () => goSlide(i);
+    dotsEl.appendChild(d);
+  });
+  function goSlide(n) {
+    slides[cur].classList.remove('active');
+    dotsEl.children[cur].classList.remove('active');
+    cur = (n + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    dotsEl.children[cur].classList.add('active');
+    clearInterval(timer); timer = setInterval(() => goSlide(cur+1), 5000);
+  }
+  function heroSlide(dir) { goSlide(cur+dir); }
+  timer = setInterval(() => goSlide(cur+1), 5000);
 
-  <script>
-    // ── SLIDESHOW BANNER ──
-    (function initSlideshow() {
-      const hero = document.getElementById('hero-section');
-      const dotsWrap = document.getElementById('hero-dots');
-      if (!hero || !HERO_SLIDES || HERO_SLIDES.length === 0) return;
-
-      // Tạo các lớp slide
-      const slides = HERO_SLIDES.map(url => {
-        const d = document.createElement('div');
-        d.className = 'hero-slide';
-        d.style.backgroundImage = "url('" + url + "')";
-        hero.insertBefore(d, hero.firstChild);
-        return d;
-      });
-
-      // Tạo chấm điều hướng
-      HERO_SLIDES.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'hero-dot';
-        dot.onclick = () => goTo(i);
-        dotsWrap.appendChild(dot);
-      });
-
-      let current = 0;
-      let timer;
-
-      function goTo(idx) {
-        slides[current].classList.remove('active');
-        dotsWrap.children[current].classList.remove('active');
-        current = (idx + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dotsWrap.children[current].classList.add('active');
-        clearInterval(timer);
-        timer = setInterval(() => goTo(current + 1), 5000);
-      }
-
-      window.heroMove = function(dir) { goTo(current + dir); };
-
-      // Bắt đầu
-      goTo(0);
-    })();
-
-    const ADMIN_PASS = '1234'; // ✏️ SỬA: Đổi mật khẩu quản trị tại đây
-
-    let currentImgTarget = null;
-    let isAdmin = false;
-
-    // ── Khởi động: nạp dữ liệu đã lưu ──
-    window.addEventListener('DOMContentLoaded', () => {
-      loadSaved();
-      wrapImages();
-      markEditable();
+  /* Course Filter */
+  function filterCourses(cat, btn) {
+    document.querySelectorAll('.courses-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.course-card').forEach(c => {
+      c.style.display = (cat==='all'||c.dataset.cat===cat) ? '' : 'none';
     });
+  }
 
-    // ── Đánh dấu các phần tử có thể sửa chữ ──
-    function markEditable() {
-      const selectors = [
-        '.hero-label', '.hero-h1', '.hero-script',
-        '.cta-label', '.cta-phone',
-        '.section-title', '.course-overlay', '.course-price', '.course-old', '.course-desc',
-        '.utin-script', '.utin-sub', '.utin-item-text',
-        '.svc-label',
-        '.about-eyebrow', '.about-title', '.about-body',
-        '.stat-num', '.stat-lbl',
-        '.gallery-title',
-        '.news-tag', '.news-title', '.news-date',
-        '.footer-logo', '.footer-logo-sub', '.footer-desc',
-        '.footer-contact span', '.footer-bank',
-        '.footer-copy', '.logo-text .name', '.logo-text .sub',
-        '.float-label', '.float-phone',
-      ];
-      selectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach((el, i) => {
-          el.setAttribute('data-editable', sel.replace(/[^a-z0-9]/gi,'') + i);
-        });
-      });
-    }
+  /* Scroll Reveal */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-    // ── Bọc ảnh bằng wrapper để click thay ──
-    function wrapImages() {
-      const imgSelectors = [
-        '.hero-photo img', '.course-thumb img', '.svc-img img',
-        '.about-photo img', '.gal-item img', '.news-thumb img', '.logo-img'
-      ];
-      imgSelectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach(img => {
-          if (!img.parentElement.classList.contains('img-wrap')) {
-            const wrap = document.createElement('div');
-            wrap.className = 'img-wrap';
-            wrap.style.cssText = 'width:100%;height:100%;position:relative;';
-            img.parentNode.insertBefore(wrap, img);
-            wrap.appendChild(img);
-            wrap.addEventListener('click', () => {
-              if (!isAdmin) return;
-              currentImgTarget = img;
-              document.getElementById('img-picker').click();
-            });
-          }
-        });
-      });
-    }
-
-    // ── Chọn ảnh mới ──
-    document.getElementById('img-picker').addEventListener('change', function() {
-      if (!this.files[0] || !currentImgTarget) return;
-      const reader = new FileReader();
-      reader.onload = e => {
-        currentImgTarget.src = e.target.result;
-        currentImgTarget.style.display = 'block';
-        // Ẩn placeholder nếu có
-        const next = currentImgTarget.nextElementSibling;
-        if (next && next.classList.contains('hero-photo-placeholder')) next.style.display = 'none';
-        if (next && next.classList.contains('gal-placeholder')) next.style.display = 'none';
-      };
-      reader.readAsDataURL(this.files[0]);
-      this.value = '';
+  /* Stats Counter */
+  const statObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting || e.target.dataset.counted) return;
+      e.target.dataset.counted = '1';
+      const target = +e.target.dataset.target;
+      let cur = 0;
+      const interval = setInterval(() => {
+        cur = Math.min(cur + Math.ceil(target/60), target);
+        e.target.textContent = cur.toLocaleString('vi');
+        if(cur >= target) clearInterval(interval);
+      }, 16);
     });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num[data-target]').forEach(n => statObserver.observe(n));
 
-    // ── Bật admin mode ──
-    document.getElementById('admin-toggle').addEventListener('click', () => {
-      if (isAdmin) { adminExit(); return; }
-      const pass = prompt('Nhập mật khẩu quản trị:');
-      if (pass !== ADMIN_PASS) {
-        if (pass !== null) alert('❌ Sai mật khẩu!');
-        return;
-      }
-      adminEnter();
-    });
-
-    function adminEnter() {
-      isAdmin = true;
-      document.body.classList.add('admin-mode');
-      const bar = document.getElementById('admin-bar');
-      bar.style.display = 'flex';
-      document.getElementById('admin-toggle').textContent = '✕';
-      // Bật contenteditable cho chữ
-      document.querySelectorAll('[data-editable]').forEach(el => {
-        el.contentEditable = 'true';
-      });
-    }
-
-    function adminExit() {
-      isAdmin = false;
-      document.body.classList.remove('admin-mode');
-      document.getElementById('admin-bar').style.display = 'none';
-      document.getElementById('admin-toggle').textContent = '🔑';
-      document.querySelectorAll('[data-editable]').forEach(el => {
-        el.contentEditable = 'false';
-      });
-    }
-
-    // ── Lưu tất cả thay đổi vào localStorage ──
-    function adminSave() {
-      const data = {};
-
-      // Lưu nội dung chữ
-      document.querySelectorAll('[data-editable]').forEach(el => {
-        const key = el.getAttribute('data-editable');
-        data['text_' + key] = el.innerHTML;
-      });
-
-      // Lưu ảnh (base64)
-      const imgSelectors = [
-        '.hero-photo img', '.course-thumb img', '.svc-img img',
-        '.about-photo img', '.gal-item img', '.news-thumb img'
-      ];
-      imgSelectors.forEach(sel => {
-        document.querySelectorAll(sel).forEach((img, i) => {
-          const key = sel.replace(/[^a-z0-9]/gi,'') + i;
-          if (img.src && img.src.startsWith('data:')) {
-            data['img_' + key] = img.src;
-          }
-        });
-      });
-
-      localStorage.setItem('ami_website_data', JSON.stringify(data));
-      alert('✅ Đã lưu! Trang sẽ nhớ thay đổi của bạn ngay cả khi tắt trình duyệt.');
-    }
-
-    // ── Nạp dữ liệu đã lưu ──
-    function loadSaved() {
-      const raw = localStorage.getItem('ami_website_data');
-      if (!raw) return;
-      const data = JSON.parse(raw);
-
-      // Nạp chữ
-      document.querySelectorAll('[data-editable]').forEach(el => {
-        const key = 'text_' + el.getAttribute('data-editable');
-        if (data[key] !== undefined) el.innerHTML = data[key];
-      });
-
-      // Nạp ảnh — chạy sau khi wrap
-      setTimeout(() => {
-        const imgSelectors = [
-          '.hero-photo img', '.course-thumb img', '.svc-img img',
-          '.about-photo img', '.gal-item img', '.news-thumb img'
-        ];
-        imgSelectors.forEach(sel => {
-          document.querySelectorAll(sel).forEach((img, i) => {
-            const key = 'img_' + sel.replace(/[^a-z0-9]/gi,'') + i;
-            if (data[key]) {
-              img.src = data[key];
-              img.style.display = 'block';
-            }
-          });
-        });
-      }, 100);
-    }
-  </script>
-
+  /* Form Submit */
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.register-submit');
+    btn.textContent = '✓ Đã nhận — Sẽ liên hệ bạn sớm nhất!';
+    btn.style.background = '#2a7a2a';
+    setTimeout(() => { btn.textContent = 'Gửi Thông Tin Đăng Ký'; btn.style.background=''; e.target.reset(); }, 4000);
+  }
+</script>
 </body>
 </html>

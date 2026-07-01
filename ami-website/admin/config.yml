@@ -1,0 +1,124 @@
+backend:
+  name: github
+  repo: trungpr1990-coder/AMI-MAKEUP
+  branch: main
+
+media_folder: ami-website/images
+public_folder: /images
+
+locale: vi
+
+collections:
+  - name: "hinh-anh"
+    label: "🖼️ Hình Ảnh"
+    label_singular: "Hình ảnh"
+    folder: "ami-website/images"
+    create: false
+    media_folder: ""
+    public_folder: ""
+    description: "Upload và quản lý toàn bộ hình ảnh website"
+    fields:
+      - { label: "Tên", name: "title", widget: "string" }
+
+  - name: "trang-chu"
+    label: "🏠 Trang Chủ"
+    files:
+      - label: "Nội dung trang chủ"
+        name: "index"
+        file: "ami-website/data/trang-chu.json"
+        fields:
+          - label: "Ảnh hero (banner đầu trang)"
+            name: "hero_images"
+            widget: "list"
+            max: 3
+            fields:
+              - { label: "Ảnh", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+              - { label: "Tiêu đề", name: "title", widget: "string" }
+              - { label: "Mô tả ngắn", name: "subtitle", widget: "string" }
+          - label: "Ảnh giới thiệu (about)"
+            name: "about_image"
+            widget: "image"
+            media_folder: "/ami-website/images"
+            public_folder: "/images"
+          - label: "Ảnh bộ sưu tập (gallery)"
+            name: "gallery"
+            widget: "list"
+            max: 8
+            fields:
+              - { label: "Ảnh", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+              - { label: "Mô tả", name: "alt", widget: "string" }
+
+  - name: "dich-vu"
+    label: "💄 Dịch Vụ"
+    files:
+      - label: "Danh sách dịch vụ"
+        name: "dich-vu"
+        file: "ami-website/data/dich-vu.json"
+        fields:
+          - label: "Dịch vụ"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Tên dịch vụ", name: "name", widget: "string" }
+              - { label: "Mô tả", name: "description", widget: "text" }
+              - { label: "Ảnh", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+              - { label: "Giá", name: "price", widget: "string" }
+
+  - name: "khoa-hoc"
+    label: "📚 Khoá Học"
+    files:
+      - label: "Danh sách khoá học"
+        name: "khoa-hoc"
+        file: "ami-website/data/khoa-hoc.json"
+        fields:
+          - label: "Khoá học"
+            name: "courses"
+            widget: "list"
+            fields:
+              - { label: "Tên khoá", name: "name", widget: "string" }
+              - { label: "Mô tả", name: "description", widget: "text" }
+              - { label: "Ảnh", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+              - { label: "Học phí", name: "price", widget: "string" }
+              - { label: "Thời gian", name: "duration", widget: "string" }
+
+  - name: "tin-tuc"
+    label: "📰 Tin Tức"
+    folder: "ami-website/data/tin-tuc"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - { label: "Ảnh bìa", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+      - { label: "Ngày đăng", name: "date", widget: "datetime" }
+      - { label: "Nội dung", name: "body", widget: "markdown" }
+
+  - name: "san-pham"
+    label: "🛍️ Sản Phẩm"
+    files:
+      - label: "Danh sách sản phẩm"
+        name: "san-pham"
+        file: "ami-website/data/san-pham.json"
+        fields:
+          - label: "Sản phẩm"
+            name: "products"
+            widget: "list"
+            fields:
+              - { label: "Tên sản phẩm", name: "name", widget: "string" }
+              - { label: "Ảnh", name: "image", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+              - { label: "Giá", name: "price", widget: "string" }
+              - { label: "Mô tả", name: "description", widget: "text" }
+
+  - name: "cai-dat"
+    label: "⚙️ Cài Đặt Chung"
+    files:
+      - label: "Thông tin cơ bản"
+        name: "general"
+        file: "ami-website/data/cai-dat.json"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image", media_folder: "/ami-website/images", public_folder: "/images" }
+          - { label: "Tên academy", name: "academy_name", widget: "string", default: "AMI Make Up Academy" }
+          - { label: "Địa chỉ", name: "address", widget: "string" }
+          - { label: "Số điện thoại", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Facebook URL", name: "facebook", widget: "string" }
+          - { label: "Zalo", name: "zalo", widget: "string" }
