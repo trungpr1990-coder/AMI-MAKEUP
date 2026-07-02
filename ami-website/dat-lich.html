@@ -6,183 +6,201 @@
   <title>Đặt Lịch Makeup — AMI Make Up Academy</title>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
+    :root{
+      --pink:#e8558a;
+      --pink-dark:#d6336c;
+      --pink-deep:#c2255c;
+      --pink-soft:#ffe8f0;
+      --pink-bg:#fff5f8;
+      --line:#f3d7e2;
+      --text:#40343a;
+      --muted:#9b8a92;
+    }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Montserrat',sans-serif;background:#f4f4f4;color:#222;min-height:100vh}
+    body{font-family:'Montserrat',sans-serif;background:#fffafc;color:var(--text);min-height:100vh;font-size:15px;line-height:1.6}
     a{text-decoration:none;color:inherit}
+    img{max-width:100%}
 
     /* Header */
-    .bk-header{background:#000;padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
-    .bk-logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:20px;letter-spacing:0;color:#fff;line-height:1}
-    .bk-logo span{font-size:9px;letter-spacing:.35em;color:#666;display:block;text-transform:uppercase}
+    .bk-header{background:#fff;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .bk-logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:22px;letter-spacing:0;color:var(--pink-deep);line-height:1}
+    .bk-logo span{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.32em;color:#c9a1b2;display:block;text-transform:uppercase;margin-top:3px}
     .bk-hotline{text-align:right}
-    .bk-hotline p{color:#666;font-size:10px;letter-spacing:.08em}
-    .bk-hotline strong{color:#e00;font-size:14px;display:block;margin-top:2px}
+    .bk-hotline p{color:var(--muted);font-size:12px;letter-spacing:.05em}
+    .bk-hotline strong{color:var(--pink-dark);font-size:17px;display:block;margin-top:2px}
 
     /* Hero */
-    .bk-hero{background:linear-gradient(135deg,#0a0a0a 0%,#1a0000 60%,#0a0a0a 100%);padding:32px 20px;text-align:center;position:relative;overflow:hidden}
-    .bk-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,0,0,.13) 0%,transparent 70%)}
+    .bk-hero{background:linear-gradient(135deg,#ffe4ef 0%,#fff6f9 55%,#ffeef5 100%);padding:40px 20px 34px;text-align:center;position:relative;overflow:hidden}
     .bk-hero-inner{position:relative;z-index:2}
-    .bk-hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:28px;line-height:1.25;letter-spacing:-.01em;color:#fff;margin-bottom:6px}
-    .bk-hero h1 span{color:#e00}
-    .bk-hero p{color:#777;font-size:12px;letter-spacing:.05em}
-    .bk-steps{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:20px}
-    .bk-step{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);padding:7px 13px;color:#bbb;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
-    .bk-step-n{background:#e00;color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+    .bk-hero h1{font-family:'Unbounded',sans-serif;font-weight:800;font-size:32px;line-height:1.25;letter-spacing:-.01em;color:var(--text);margin-bottom:8px}
+    .bk-hero h1 span{color:var(--pink-dark)}
+    .bk-hero p{color:#8a6b78;font-size:15px}
+    .bk-steps{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:22px}
+    .bk-step{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:30px;padding:8px 16px;color:#a25a77;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;box-shadow:0 3px 10px -6px rgba(214,51,108,.35)}
+    .bk-step-n{background:var(--pink);color:#fff;width:21px;height:21px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
 
     /* Layout */
     .bk-body{max-width:820px;margin:0 auto;padding:28px 14px 80px}
 
     /* Card */
-    .fc{background:#fff;border:1px solid #e5e5e5;margin-bottom:18px;overflow:hidden}
-    .fc-title{background:#000;color:#fff;padding:13px 18px;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-    .fc-body{padding:18px}
+    .fc{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:20px;overflow:hidden;box-shadow:0 10px 30px -22px rgba(214,51,108,.4)}
+    .fc-title{background:linear-gradient(90deg,var(--pink-soft),#fff);color:var(--pink-deep);padding:15px 20px;font-size:15px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+    .fc-body{padding:20px}
 
     /* Form fields */
-    .fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
     .fr3{grid-template-columns:1fr 1fr 1fr}
     .fr1{grid-template-columns:1fr}
     @media(max-width:560px){.fr,.fr3{grid-template-columns:1fr}}
     .fg{display:flex;flex-direction:column}
-    .fg label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#555;margin-bottom:5px}
-    .fg label .req{color:#e00}
-    .fg label .hint{font-weight:400;color:#bbb;font-size:9px;letter-spacing:0;text-transform:none}
-    .fg input,.fg select,.fg textarea{border:1px solid #ddd;padding:10px 13px;font-size:13px;font-family:'Montserrat',sans-serif;color:#222;outline:none;transition:border-color .2s;background:#fff;width:100%}
-    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:#000}
-    .fg input::placeholder,.fg textarea::placeholder{color:#ccc}
-    .fg textarea{resize:vertical;min-height:75px}
-    .fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='%23aaa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center}
+    .fg label{font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;margin-bottom:6px}
+    .fg label .req{color:var(--pink-dark)}
+    .fg label .hint{font-weight:400;color:#bfaab4;font-size:11.5px;letter-spacing:0;text-transform:none}
+    .fg input,.fg select,.fg textarea{border:1.5px solid #eadde3;border-radius:10px;padding:12px 14px;font-size:15px;font-family:'Montserrat',sans-serif;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;width:100%}
+    .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--pink);box-shadow:0 0 0 3px rgba(232,85,138,.15)}
+    .fg input::placeholder,.fg textarea::placeholder{color:#cdbcc4}
+    .fg textarea{resize:vertical;min-height:85px}
+    .fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d6336c' stroke-width='1.8' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+
+    /* ── NƠI MAKEUP ── */
+    .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+    @media(max-width:560px){.loc-grid{grid-template-columns:1fr}}
+    .loc-card{border:2px solid #eadde3;border-radius:14px;padding:18px 16px;text-align:center;cursor:pointer;transition:all .2s;user-select:none;position:relative;background:#fff}
+    .loc-card:hover{border-color:var(--pink);background:var(--pink-bg)}
+    .loc-card.selected{border-color:var(--pink-dark);background:var(--pink-soft)}
+    .loc-card.selected::after{content:'✓';position:absolute;top:10px;right:12px;width:22px;height:22px;border-radius:50%;background:var(--pink-dark);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+    .loc-card h4{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
+    .loc-card.selected h4{color:var(--pink-deep)}
+    .loc-card p{font-size:13px;color:var(--muted);line-height:1.5}
 
     /* ── SERVICE SELECTOR ── */
-    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:4px}
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:4px}
     @media(max-width:560px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-    .svc-card{border:2px solid #e5e5e5;padding:13px 10px;text-align:center;cursor:pointer;transition:all .2s;user-select:none;position:relative}
-    .svc-card:hover{border-color:#ccc;background:#fafafa}
-    .svc-card.selected{border-color:#e00;background:#fff5f5}
-    .svc-card.selected::after{content:'✓';position:absolute;top:5px;right:8px;font-size:10px;color:#e00;font-weight:700}
-    .svc-card .svc-icon{font-size:22px;margin-bottom:5px}
-    .svc-card .svc-name{font-size:10px;font-weight:700;letter-spacing:.05em;color:#333;line-height:1.4}
-    .svc-card.selected .svc-name{color:#c00}
+    .svc-card{border:2px solid #eadde3;border-radius:14px;overflow:hidden;text-align:center;cursor:pointer;transition:all .2s;user-select:none;position:relative;background:#fff}
+    .svc-card:hover{border-color:var(--pink);transform:translateY(-3px);box-shadow:0 12px 24px -14px rgba(214,51,108,.45)}
+    .svc-card.selected{border-color:var(--pink-dark);background:var(--pink-soft);box-shadow:0 12px 24px -12px rgba(214,51,108,.5)}
+    .svc-card.selected::after{content:'✓';position:absolute;top:8px;right:8px;width:24px;height:24px;border-radius:50%;background:var(--pink-dark);color:#fff;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+    .svc-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+    .svc-name{font-size:13.5px;font-weight:700;color:var(--text);line-height:1.4;padding:10px 8px 12px}
+    .svc-card.selected .svc-name{color:var(--pink-deep)}
+    .svc-sub{font-size:11px;color:var(--muted);font-weight:400;display:block}
 
     /* ── WEDDING FLOW ── */
-    .wedding-banner{background:#000;border-left:4px solid #e00;padding:14px 16px;margin-bottom:16px;display:none}
+    .wedding-banner{background:var(--pink-soft);border-left:4px solid var(--pink-dark);border-radius:0 12px 12px 0;padding:15px 18px;margin-bottom:16px;display:none}
     .wedding-banner.show{display:block}
-    .wedding-banner h3{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#e00;margin-bottom:5px}
-    .wedding-banner p{font-size:12px;color:#888;line-height:1.7}
+    .wedding-banner h3{font-size:14px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:5px}
+    .wedding-banner p{font-size:13.5px;color:#8a6b78;line-height:1.7}
 
-    .day-cards{display:flex;flex-direction:column;gap:12px;margin-bottom:4px}
+    .day-cards{display:flex;flex-direction:column;gap:14px;margin-bottom:4px}
 
-    .day-card{border:2px solid #e5e5e5;overflow:hidden;transition:all .2s}
-    .day-card.active{border-color:#e00}
+    .day-card{border:2px solid #eadde3;border-radius:14px;overflow:hidden;transition:all .2s}
+    .day-card.active{border-color:var(--pink-dark)}
 
-    .day-card-header{padding:12px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;background:#f9f9f9;transition:background .2s}
-    .day-card.active .day-card-header{background:#000}
-    .day-card-header-left{display:flex;align-items:center;gap:8px}
-    .day-tag{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;padding:2px 7px;border:1px solid #ddd}
-    .day-card.active .day-tag{background:#e00;color:#fff;border-color:#e00}
-    .day-card-title{font-size:12px;font-weight:700;letter-spacing:.05em;color:#333}
+    .day-card-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none;background:var(--pink-bg);transition:background .2s}
+    .day-card.active .day-card-header{background:var(--pink)}
+    .day-card-header-left{display:flex;align-items:center;gap:10px}
+    .day-tag{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#a25a77;padding:3px 9px;border:1px solid var(--line);border-radius:20px;background:#fff}
+    .day-card.active .day-tag{background:#fff;color:var(--pink-deep);border-color:#fff}
+    .day-card-title{font-size:15px;font-weight:700;letter-spacing:.02em;color:var(--text)}
     .day-card.active .day-card-title{color:#fff}
 
     /* Toggle switch */
-    .toggle-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0}
-    .toggle-wrap span{font-size:9px;color:#aaa;letter-spacing:.08em;text-transform:uppercase}
-    .day-card.active .toggle-wrap span{color:#888}
-    .toggle{position:relative;width:36px;height:20px;flex-shrink:0}
+    .toggle-wrap{display:flex;align-items:center;gap:7px;flex-shrink:0}
+    .toggle-wrap span{font-size:11px;color:#b39aa5;letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+    .day-card.active .toggle-wrap span{color:#ffd7e5}
+    .toggle{position:relative;width:40px;height:22px;flex-shrink:0}
     .toggle input{opacity:0;width:0;height:0;position:absolute}
-    .toggle-slider{position:absolute;inset:0;background:#ddd;border-radius:20px;cursor:pointer;transition:background .2s}
-    .toggle input:checked+.toggle-slider{background:#e00}
-    .toggle-slider::before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s}
-    .toggle input:checked+.toggle-slider::before{transform:translateX(16px)}
+    .toggle-slider{position:absolute;inset:0;background:#e5d5dc;border-radius:22px;cursor:pointer;transition:background .2s}
+    .toggle input:checked+.toggle-slider{background:var(--pink-deep)}
+    .toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+    .toggle input:checked+.toggle-slider::before{transform:translateX(18px)}
 
-    .day-card-body{padding:14px;display:none}
+    .day-card-body{padding:16px;display:none;background:#fff}
     .day-card.active .day-card-body{display:block}
 
     /* People breakdown per day */
-    .people-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
-    .people-box{background:#f8f8f8;border:1px solid #eee;padding:8px 10px;text-align:center}
-    .people-box label{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#888;display:block;margin-bottom:4px}
-    .people-box input{border:none;border-bottom:2px solid #ddd;background:transparent;text-align:center;font-size:18px;font-weight:700;color:#222;font-family:'Montserrat',sans-serif;width:100%;outline:none;padding:2px 0}
-    .people-box input:focus{border-bottom-color:#e00}
-    .people-box.codau label{color:#c00}
-    .people-box.codau input{color:#e00}
+    .people-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+    @media(max-width:560px){.people-row{grid-template-columns:1fr}}
+    .people-box{background:var(--pink-bg);border:1px solid var(--line);border-radius:12px;padding:12px 10px;text-align:center}
+    .people-box label{font-size:12px;font-weight:700;letter-spacing:.04em;color:#8a6b78;display:block;margin-bottom:5px}
+    .people-box input{border:none;border-bottom:2px solid #e5cdd8;background:transparent;text-align:center;font-size:22px;font-weight:700;color:var(--text);font-family:'Montserrat',sans-serif;width:100%;outline:none;padding:2px 0}
+    .people-box input:focus{border-bottom-color:var(--pink-dark)}
+    .people-box.codau label{color:var(--pink-deep)}
+    .people-box.codau input{color:var(--pink-dark)}
 
     /* Regular date slots (non-wedding) */
-    .date-slot{border:1px solid #eee;padding:14px;margin-bottom:10px;background:#fafafa;position:relative}
+    .date-slot{border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:12px;background:var(--pink-bg);position:relative}
     .date-slot-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-    .date-slot-lbl{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e00}
-    .btn-rm-slot{background:none;border:1px solid #ddd;color:#999;font-size:10px;padding:3px 9px;cursor:pointer;font-family:inherit;font-weight:600;transition:all .2s}
-    .btn-rm-slot:hover{background:#fee;color:#c00;border-color:#fcc}
-    .btn-add-slot{background:#000;color:#fff;border:none;padding:11px 20px;font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;font-family:inherit;width:100%;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:7px}
-    .btn-add-slot:hover{background:#222}
+    .date-slot-lbl{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pink-deep)}
+    .btn-rm-slot{background:#fff;border:1px solid var(--line);border-radius:8px;color:#b39aa5;font-size:12px;padding:4px 11px;cursor:pointer;font-family:inherit;font-weight:600;transition:all .2s}
+    .btn-rm-slot:hover{background:#ffe3e9;color:var(--pink-deep);border-color:#f0b7c8}
+    .btn-add-slot{background:var(--pink);color:#fff;border:none;border-radius:10px;padding:13px 20px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:inherit;width:100%;transition:background .2s}
+    .btn-add-slot:hover{background:var(--pink-dark)}
 
     /* Upload */
-    .upload-zone{border:2px dashed #ddd;padding:22px 16px;text-align:center;cursor:pointer;transition:all .2s;position:relative;background:#fafafa}
-    .upload-zone:hover{border-color:#000;background:#f5f5f5}
+    .upload-zone{border:2px dashed #eec3d4;border-radius:14px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s;position:relative;background:var(--pink-bg)}
+    .upload-zone:hover{border-color:var(--pink-dark);background:var(--pink-soft)}
     .upload-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-    .upload-icon{font-size:30px;margin-bottom:7px}
-    .upload-zone p{font-size:12px;color:#888;margin-bottom:3px}
-    .upload-zone .upload-hint{font-size:10px;color:#ccc}
-    .preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:7px;margin-top:10px}
+    .upload-ic{width:44px;height:44px;margin:0 auto 8px;display:block}
+    .upload-zone p{font-size:14px;color:#8a6b78;margin-bottom:3px;font-weight:600}
+    .upload-zone .upload-hint{font-size:12px;color:#c4aeb8}
+    .preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-top:12px}
     .preview-item{position:relative}
-    .preview-item img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #eee;display:block}
-    .remove-img{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.7);color:#fff;border:none;width:20px;height:20px;border-radius:50%;font-size:10px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-    .upload-label{font-size:10px;color:#aaa;margin-top:5px;text-align:center}
-    .upload-count{display:inline-block;background:#e00;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;margin-left:5px;border-radius:10px}
+    .preview-item img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);border-radius:10px;display:block}
+    .remove-img{position:absolute;top:4px;right:4px;background:rgba(194,37,92,.85);color:#fff;border:none;width:22px;height:22px;border-radius:50%;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+    .upload-label{font-size:12px;color:var(--muted);margin-top:6px;text-align:center}
+    .upload-count{display:inline-block;background:var(--pink-dark);color:#fff;font-size:11px;font-weight:700;padding:1px 8px;margin-left:5px;border-radius:10px}
 
     /* Deposit box */
-    .deposit-box{background:#0a0a0a;color:#fff;padding:18px;margin-bottom:14px;border-left:4px solid #e00}
-    .deposit-box h3{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#e00;margin-bottom:8px}
-    .deposit-box p{font-size:12px;color:#888;line-height:1.7;margin-bottom:6px}
-    .deposit-qr{display:flex;justify-content:center;margin:14px 0}
-    .deposit-qr img{width:190px;max-width:100%;border-radius:4px;box-shadow:0 4px 18px rgba(0,0,0,.45)}
-    .deposit-qr-hint{text-align:center;font-size:10px;color:#666;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
-    .deposit-bank{background:#111;border:1px solid #1e1e1e;padding:12px;margin-top:10px}
-    .bank-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #1a1a1a}
-    .bank-row:last-child{border-bottom:none}
-    .bank-label{font-size:9px;color:#555;letter-spacing:.1em;text-transform:uppercase}
-    .bank-value{font-size:12px;color:#fff;font-weight:700}
+    .deposit-box{background:#fff;border:2px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+    .deposit-box h3{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:8px;text-align:center}
+    .deposit-box p{font-size:13.5px;color:#8a6b78;line-height:1.7;margin-bottom:6px;text-align:center}
+    .deposit-qr{display:flex;justify-content:center;margin:14px 0 6px}
+    .deposit-qr img{width:220px;max-width:100%;border-radius:12px;box-shadow:0 10px 28px -14px rgba(214,51,108,.45)}
+    .deposit-qr-hint{text-align:center;font-size:12.5px;color:#a25a77;letter-spacing:.04em;margin-top:10px;font-weight:600}
 
     /* Notes box */
-    .note-box{background:#fffdf0;border:1px solid #f0d020;padding:12px 14px;margin-bottom:16px;font-size:12px;color:#555;line-height:1.8}
+    .note-box{background:#fff8e1;border:1px solid #ffd54f;border-radius:12px;padding:14px 18px;margin-bottom:18px;font-size:14px;color:#6d5b3f;line-height:1.8}
 
     /* Submit */
-    .btn-submit{width:100%;background:#e00;color:#fff;border:none;padding:17px;font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:background .2s;margin-top:6px}
-    .btn-submit:hover{background:#c00}
+    .btn-submit{width:100%;background:linear-gradient(135deg,var(--pink),var(--pink-dark));color:#fff;border:none;border-radius:14px;padding:18px;font-size:16px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:8px;box-shadow:0 14px 30px -14px rgba(214,51,108,.6)}
+    .btn-submit:hover{transform:translateY(-2px);box-shadow:0 18px 36px -12px rgba(214,51,108,.7)}
 
     /* ── SUCCESS ── */
     #success-screen{display:none}
-    .success-hero{background:#000;text-align:center;padding:36px 20px;margin-bottom:20px}
-    .success-hero .check{font-size:50px;margin-bottom:10px}
-    .success-hero h2{font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px;line-height:1.3;letter-spacing:-.01em;color:#fff;margin-bottom:6px}
-    .success-hero p{color:#777;font-size:12px}
+    .success-hero{background:linear-gradient(135deg,#ffe4ef,#fff6f9);text-align:center;padding:44px 20px;margin-bottom:22px}
+    .success-check{width:66px;height:66px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;box-shadow:0 10px 26px -12px rgba(214,51,108,.5)}
+    .success-hero h2{font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;line-height:1.3;letter-spacing:-.01em;color:var(--pink-deep);margin-bottom:8px}
+    .success-hero p{color:#8a6b78;font-size:14px}
 
-    .sm-card{border:1px solid #eee;overflow:hidden;margin-bottom:14px}
-    .sm-title{background:#111;color:#fff;padding:11px 14px;font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-    .sm-body{padding:14px}
-    .sm-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f5f5f5;gap:10px}
+    .sm-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:16px;background:#fff}
+    .sm-title{background:linear-gradient(90deg,var(--pink-soft),#fff);color:var(--pink-deep);padding:13px 16px;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:1px solid var(--line)}
+    .sm-body{padding:16px}
+    .sm-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #faeef3;gap:10px}
     .sm-row:last-child{border-bottom:none}
-    .sm-label{font-size:10px;color:#999;text-transform:uppercase;letter-spacing:.08em;flex-shrink:0}
-    .sm-val{font-size:12px;color:#222;font-weight:600;text-align:right}
+    .sm-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;flex-shrink:0;padding-top:2px}
+    .sm-val{font-size:14.5px;color:var(--text);font-weight:600;text-align:right}
 
     /* Day summary card */
-    .day-summary{border:1px solid #eee;margin-bottom:10px;overflow:hidden}
-    .day-summary-header{padding:10px 14px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
-    .day-summary-header .badge{font-size:9px;padding:2px 8px;font-weight:700;letter-spacing:.1em}
+    .day-summary{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+    .day-summary-header{padding:11px 14px;font-size:13px;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:#fff}
+    .day-summary-header .badge{font-size:11px;padding:3px 10px;font-weight:700;letter-spacing:.06em;border-radius:20px;text-transform:uppercase}
     .badge-dam{background:#8b5cf6;color:#fff}
     .badge-an{background:#f59e0b;color:#fff}
-    .badge-cuoi{background:#e00;color:#fff}
-    .badge-other{background:#222;color:#fff}
-    .day-summary-body{padding:10px 14px;background:#fafafa;display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .day-summary-body span{font-size:11px;color:#555}
-    .day-summary-body strong{font-size:11px;color:#222;font-weight:700}
+    .badge-cuoi{background:var(--pink-dark);color:#fff}
+    .badge-other{background:#6b5560;color:#fff}
+    .day-summary-body{padding:11px 14px;background:var(--pink-bg);display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .day-summary-body span{font-size:13px;color:#8a6b78}
+    .day-summary-body strong{font-size:13px;color:var(--text);font-weight:700}
 
-    .success-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:7px;margin-top:10px}
-    .success-imgs img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid #eee}
+    .success-imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;margin-top:10px}
+    .success-imgs img{width:100%;aspect-ratio:1;object-fit:cover;border:1px solid var(--line);border-radius:10px}
 
-    .btn-print{background:#000;color:#fff;border:none;padding:13px 24px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:inherit;margin-right:8px}
-    .btn-back{background:none;border:2px solid #000;color:#000;padding:11px 22px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-family:inherit}
-    .btn-zalo{background:#0068ff;color:#fff;display:inline-flex;align-items:center;gap:7px;padding:13px 20px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;margin-top:10px}
+    .btn-print{background:var(--pink-dark);color:#fff;border:none;border-radius:10px;padding:13px 24px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:inherit;margin-right:8px}
+    .btn-back{background:none;border:2px solid var(--pink-dark);border-radius:10px;color:var(--pink-dark);padding:11px 22px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-family:inherit}
+    .btn-zalo{background:#0068ff;color:#fff;display:inline-flex;align-items:center;gap:7px;border-radius:10px;padding:13px 20px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;margin-top:12px}
 
-    .bk-footer{text-align:center;padding:18px;color:#aaa;font-size:10px}
+    .bk-footer{text-align:center;padding:20px;color:#c4aeb8;font-size:12px}
   </style>
 </head>
 <body>
@@ -195,7 +213,7 @@
   <div class="bk-hotline">
     <p>Hotline tư vấn</p>
     <!-- ✏️ SỬA số điện thoại -->
-    <strong>📞 0979.963.369</strong>
+    <strong>0327.355.595</strong>
   </div>
 </div>
 
@@ -224,7 +242,7 @@
 
     <!-- BƯỚC 1: Thông tin khách hàng -->
     <div class="fc">
-      <div class="fc-title">👤 Bước 1 — Thông tin khách hàng</div>
+      <div class="fc-title">Bước 1 — Thông tin khách hàng</div>
       <div class="fc-body">
         <div class="fr">
           <div class="fg">
@@ -254,22 +272,34 @@
             <input type="email" id="f-email" placeholder="email@gmail.com" />
           </div>
         </div>
-        <div class="fr fr1">
-          <div class="fg">
-            <label>Ngày sinh</label>
-            <input type="date" id="f-dob" />
+
+        <div class="fg" style="margin-bottom:8px">
+          <label>Nơi makeup <span class="req">*</span></label>
+        </div>
+        <div class="loc-grid">
+          <div class="loc-card" data-loc="store" onclick="selectLocation(this)">
+            <h4>Tại cửa hàng AMI</h4>
+            <!-- ✏️ SỬA địa chỉ cửa hàng -->
+            <p>351 Lê Hồng Phong, TP. Nam Định</p>
+          </div>
+          <div class="loc-card" data-loc="home" onclick="selectLocation(this)">
+            <h4>Makeup tận nơi</h4>
+            <p>AMI đến địa chỉ của bạn</p>
           </div>
         </div>
-        <div class="fr fr1">
-          <div class="fg">
-            <label>Địa chỉ / Khu vực <span class="req">*</span></label>
-            <input type="text" id="f-address" placeholder="VD: Quận 1, TP.HCM" required />
+
+        <div id="address-block" style="display:none">
+          <div class="fr fr1">
+            <div class="fg">
+              <label>Địa chỉ của bạn <span class="req">*</span></label>
+              <input type="text" id="f-address" placeholder="VD: Số 91 Mỹ Xá, TP. Nam Định" />
+            </div>
           </div>
-        </div>
-        <div class="fr fr1">
-          <div class="fg">
-            <label>Link Google Maps <span class="hint">(nếu có, giúp AMI tìm địa điểm chính xác hơn)</span></label>
-            <input type="url" id="f-maps-link" placeholder="Dán link Google Maps vị trí của bạn tại đây..." />
+          <div class="fr fr1" style="margin-bottom:0">
+            <div class="fg">
+              <label>Link Google Maps <span class="hint">(nếu có, giúp AMI tìm địa điểm chính xác hơn)</span></label>
+              <input type="url" id="f-maps-link" placeholder="Dán link Google Maps vị trí của bạn tại đây..." />
+            </div>
           </div>
         </div>
       </div>
@@ -277,37 +307,37 @@
 
     <!-- BƯỚC 2: Chọn dịch vụ -->
     <div class="fc">
-      <div class="fc-title">💄 Bước 2 — Chọn loại dịch vụ <span style="color:#e00">*</span></div>
+      <div class="fc-title">Bước 2 — Chọn loại dịch vụ <span style="color:#e8558a">*</span></div>
       <div class="fc-body">
         <div class="svc-grid" id="svc-grid">
           <div class="svc-card" data-svc="wedding" onclick="selectService(this)">
-            <div class="svc-icon">👰</div>
+            <img class="svc-img" src="images/svc-codau.jpg" alt="Makeup cô dâu" loading="lazy" />
             <div class="svc-name">Makeup Cô Dâu</div>
           </div>
           <div class="svc-card" data-svc="other" onclick="selectService(this)">
-            <div class="svc-icon">🎓</div>
+            <img class="svc-img" src="images/svc-kyyeu.jpg" alt="Makeup kỷ yếu" loading="lazy" />
             <div class="svc-name">Make Up Kỷ Yếu</div>
           </div>
           <div class="svc-card" data-svc="other" onclick="selectService(this)">
-            <div class="svc-icon">🎉</div>
+            <img class="svc-img" src="images/svc-sukien.jpg" alt="Makeup sự kiện, tiệc, sinh nhật" loading="lazy" />
             <div class="svc-name">Sự Kiện / Tiệc / Sinh Nhật</div>
           </div>
           <div class="svc-card" data-svc="other" onclick="selectService(this)">
-            <div class="svc-icon">📸</div>
+            <img class="svc-img" src="images/svc-chuphinh.jpg" alt="Makeup chụp hình thời trang" loading="lazy" />
             <div class="svc-name">Chụp Hình Thời Trang</div>
           </div>
           <div class="svc-card" data-svc="other" onclick="selectService(this)">
-            <div class="svc-icon">✨</div>
+            <img class="svc-img" src="images/svc-dichoi.jpg" alt="Makeup đi chơi, dạo phố" loading="lazy" />
             <div class="svc-name">Make Up Đi Chơi / Dạo Phố</div>
           </div>
           <div class="svc-card" data-svc="other" onclick="selectService(this)">
-            <div class="svc-icon">💬</div>
-            <div class="svc-name">Dịch vụ khác<br><span style="font-size:9px;color:#aaa;font-weight:400">(ghi rõ ở ghi chú)</span></div>
+            <img class="svc-img" src="images/svc-khac.jpg" alt="Dịch vụ makeup khác" loading="lazy" />
+            <div class="svc-name">Dịch vụ khác<span class="svc-sub">(ghi rõ ở ghi chú)</span></div>
           </div>
         </div>
         <input type="hidden" id="f-service" />
 
-        <div class="fr fr1" style="margin-top:12px;margin-bottom:0">
+        <div class="fr fr1" style="margin-top:14px;margin-bottom:0">
           <div class="fg">
             <label>Ghi chú thêm về dịch vụ</label>
             <textarea id="f-note" placeholder="VD: Cô dâu da dầu cần make up lâu trôi, muốn phong cách nhẹ nhàng tự nhiên..."></textarea>
@@ -318,12 +348,12 @@
 
     <!-- BƯỚC 3A: Ngày (wedding mode) -->
     <div class="fc" id="section-wedding" style="display:none">
-      <div class="fc-title">📅 Bước 3 — Chọn ngày makeup</div>
+      <div class="fc-title">Bước 3 — Chọn ngày makeup</div>
       <div class="fc-body">
 
         <div class="wedding-banner show">
           <h3>Gói Cưới — Bật ngày nào cần makeup</h3>
-          <p>Mỗi ngày bạn cần điền riêng: ngày cụ thể, giờ bắt đầu, địa điểm và số lượng từng người. AMI sẽ sắp xếp artist phù hợp cho từng buổi.</p>
+          <p>Mỗi ngày bạn cần điền riêng: ngày cụ thể, giờ bắt đầu và số lượng từng người. AMI sẽ sắp xếp artist phù hợp cho từng buổi.</p>
         </div>
 
         <div class="day-cards">
@@ -333,7 +363,7 @@
             <div class="day-card-header" onclick="toggleDay('dam')">
               <div class="day-card-header-left">
                 <span class="day-tag">Ngày 1</span>
-                <span class="day-card-title">🌸 Dạm Ngõ</span>
+                <span class="day-card-title">Dạm Ngõ</span>
               </div>
               <div class="toggle-wrap">
                 <span id="lbl-dam">Tắt</span>
@@ -344,7 +374,7 @@
               </div>
             </div>
             <div class="day-card-body">
-              <div class="fr fr3" style="margin-bottom:10px">
+              <div class="fr" style="margin-bottom:10px">
                 <div class="fg">
                   <label>Ngày <span class="req">*</span></label>
                   <input type="date" id="dam-date" min="" />
@@ -353,23 +383,19 @@
                   <label>Giờ bắt đầu <span class="req">*</span></label>
                   <input type="time" id="dam-time" />
                 </div>
-                <div class="fg">
-                  <label>Địa điểm</label>
-                  <input type="text" id="dam-place" placeholder="Nhà / Studio / Khách sạn..." />
-                </div>
               </div>
-              <label style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;display:block;margin-bottom:6px">Số người makeup buổi này</label>
+              <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
               <div class="people-row">
                 <div class="people-box codau">
-                  <label>💍 Cô dâu</label>
+                  <label>Cô dâu</label>
                   <input type="number" id="dam-codau" value="1" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👩 Mẹ cô dâu</label>
+                  <label>Mẹ cô dâu</label>
                   <input type="number" id="dam-me" value="0" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👥 Người nhà</label>
+                  <label>Người nhà</label>
                   <input type="number" id="dam-nguoinha" value="0" min="0" max="20" />
                 </div>
               </div>
@@ -381,7 +407,7 @@
             <div class="day-card-header" onclick="toggleDay('an')">
               <div class="day-card-header-left">
                 <span class="day-tag">Ngày 2</span>
-                <span class="day-card-title">🌺 Ăn Hỏi</span>
+                <span class="day-card-title">Ăn Hỏi</span>
               </div>
               <div class="toggle-wrap">
                 <span id="lbl-an">Tắt</span>
@@ -392,7 +418,7 @@
               </div>
             </div>
             <div class="day-card-body">
-              <div class="fr fr3" style="margin-bottom:10px">
+              <div class="fr" style="margin-bottom:10px">
                 <div class="fg">
                   <label>Ngày <span class="req">*</span></label>
                   <input type="date" id="an-date" min="" />
@@ -401,23 +427,19 @@
                   <label>Giờ bắt đầu <span class="req">*</span></label>
                   <input type="time" id="an-time" />
                 </div>
-                <div class="fg">
-                  <label>Địa điểm</label>
-                  <input type="text" id="an-place" placeholder="Nhà / Studio / Khách sạn..." />
-                </div>
               </div>
-              <label style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;display:block;margin-bottom:6px">Số người makeup buổi này</label>
+              <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
               <div class="people-row">
                 <div class="people-box codau">
-                  <label>💍 Cô dâu</label>
+                  <label>Cô dâu</label>
                   <input type="number" id="an-codau" value="1" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👩 Mẹ cô dâu</label>
+                  <label>Mẹ cô dâu</label>
                   <input type="number" id="an-me" value="0" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👥 Người nhà</label>
+                  <label>Người nhà</label>
                   <input type="number" id="an-nguoinha" value="0" min="0" max="20" />
                 </div>
               </div>
@@ -429,7 +451,7 @@
             <div class="day-card-header" onclick="toggleDay('cuoi')">
               <div class="day-card-header-left">
                 <span class="day-tag">Ngày 3</span>
-                <span class="day-card-title">👰 Ngày Cưới</span>
+                <span class="day-card-title">Ngày Cưới</span>
               </div>
               <div class="toggle-wrap">
                 <span id="lbl-cuoi">Tắt</span>
@@ -440,7 +462,7 @@
               </div>
             </div>
             <div class="day-card-body">
-              <div class="fr fr3" style="margin-bottom:10px">
+              <div class="fr" style="margin-bottom:10px">
                 <div class="fg">
                   <label>Ngày <span class="req">*</span></label>
                   <input type="date" id="cuoi-date" min="" />
@@ -449,23 +471,19 @@
                   <label>Giờ bắt đầu <span class="req">*</span></label>
                   <input type="time" id="cuoi-time" />
                 </div>
-                <div class="fg">
-                  <label>Địa điểm</label>
-                  <input type="text" id="cuoi-place" placeholder="Nhà / Studio / Khách sạn..." />
-                </div>
               </div>
-              <label style="font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#555;display:block;margin-bottom:6px">Số người makeup buổi này</label>
+              <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
               <div class="people-row">
                 <div class="people-box codau">
-                  <label>💍 Cô dâu</label>
+                  <label>Cô dâu</label>
                   <input type="number" id="cuoi-codau" value="1" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👩 Mẹ cô dâu</label>
+                  <label>Mẹ cô dâu</label>
                   <input type="number" id="cuoi-me" value="0" min="0" max="20" />
                 </div>
                 <div class="people-box">
-                  <label>👥 Người nhà</label>
+                  <label>Người nhà</label>
                   <input type="number" id="cuoi-nguoinha" value="0" min="0" max="20" />
                 </div>
               </div>
@@ -478,38 +496,30 @@
 
     <!-- BƯỚC 3B: Ngày (non-wedding mode) -->
     <div class="fc" id="section-other" style="display:none">
-      <div class="fc-title">📅 Bước 3 — Ngày & Giờ Makeup</div>
+      <div class="fc-title">Bước 3 — Ngày &amp; Giờ Makeup</div>
       <div class="fc-body">
         <div id="date-slots"></div>
-        <button type="button" class="btn-add-slot" onclick="addDateSlot()">➕ Thêm ngày khác</button>
+        <button type="button" class="btn-add-slot" onclick="addDateSlot()">+ Thêm ngày khác</button>
       </div>
     </div>
 
     <!-- BƯỚC 4: Đặt cọc -->
     <div class="fc">
-      <div class="fc-title">💳 Bước 4 — Đặt cọc giữ lịch</div>
+      <div class="fc-title">Bước 4 — Đặt cọc giữ lịch</div>
       <div class="fc-body">
-        <!-- ✏️ SỬA: Thông tin ngân hàng thực tế -->
         <div class="deposit-box">
-          <h3>Thông tin chuyển khoản</h3>
-          <p>Quét mã QR bên dưới để chuyển khoản đặt cọc nhanh, hoặc chuyển thủ công theo thông tin tài khoản. AMI sẽ xác nhận sau khi nhận ảnh chứng minh.</p>
+          <h3>Quét mã QR để đặt cọc</h3>
+          <p>Quét mã QR bên dưới bằng app ngân hàng / MoMo / ZaloPay để chuyển khoản đặt cọc giữ lịch. AMI sẽ xác nhận sau khi nhận ảnh chứng minh.</p>
           <div class="deposit-qr">
             <img src="images/qr-chuyen-khoan-crop.jpg" alt="Mã QR chuyển khoản VietQR - MB Bank - AMI Make Up" />
           </div>
-          <div class="deposit-qr-hint">📱 Mở app ngân hàng / MoMo / Zalopay để quét</div>
-          <div class="deposit-bank">
-            <!-- ✏️ SỬA: kiểm tra lại đúng tên đầy đủ chủ tài khoản trên mã QR -->
-            <div class="bank-row"><div class="bank-label">Ngân hàng</div><div class="bank-value">MB Bank</div></div>
-            <div class="bank-row"><div class="bank-label">Số tài khoản</div><div class="bank-value" id="bank-stk">3419966868</div></div>
-            <div class="bank-row"><div class="bank-label">Chủ tài khoản</div><div class="bank-value" id="bank-name">HỘ KINH DOANH AMI MAKEUP VÀ ...</div></div>
-            <div class="bank-row"><div class="bank-label">Nội dung CK</div><div class="bank-value" id="bank-content">ĐẶT CỌC - [TÊN] - [NGÀY]</div></div>
-          </div>
+          <div class="deposit-qr-hint">MB Bank · 3419966868 · HỘ KINH DOANH AMI MAKEUP</div>
         </div>
         <div class="fg">
           <label>Upload ảnh chụp màn hình chuyển khoản <span class="req">*</span></label>
           <div class="upload-zone" id="zone-deposit">
             <input type="file" id="f-deposit-img" accept="image/*" onchange="handleUpload(this,'preview-deposit','count-deposit','deposit')" />
-            <div class="upload-icon">🧾</div>
+            <svg class="upload-ic" viewBox="0 0 24 24" fill="none" stroke="#d6336c" stroke-width="1.6"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M3 17l5-4 4 3 4-4 5 5"/></svg>
             <p>Nhấn hoặc kéo ảnh vào đây</p>
             <div class="upload-hint">JPG, PNG — tối đa 10MB</div>
           </div>
@@ -521,15 +531,15 @@
 
     <!-- BƯỚC 5: Ảnh tham khảo -->
     <div class="fc">
-      <div class="fc-title">🖼️ Bước 5 — Ảnh tham khảo (không bắt buộc)</div>
+      <div class="fc-title">Bước 5 — Ảnh tham khảo (không bắt buộc)</div>
       <div class="fc-body">
-        <p style="font-size:12px;color:#777;margin-bottom:14px;line-height:1.8">Gửi ảnh makeup và kiểu tóc bạn thích để AMI hiểu phong cách của bạn. Có thể gửi nhiều ảnh từ nhiều nguồn.</p>
+        <p style="font-size:14px;color:#8a6b78;margin-bottom:14px;line-height:1.8">Gửi ảnh makeup và kiểu tóc bạn thích để AMI hiểu phong cách của bạn. Có thể gửi nhiều ảnh từ nhiều nguồn.</p>
         <div class="fr" style="margin-bottom:0">
           <div class="fg">
             <label>Ảnh layout makeup mẫu</label>
             <div class="upload-zone">
               <input type="file" accept="image/*" multiple onchange="handleUpload(this,'preview-makeup','count-makeup','makeup')" />
-              <div class="upload-icon">💄</div>
+              <svg class="upload-ic" viewBox="0 0 24 24" fill="none" stroke="#d6336c" stroke-width="1.6"><path d="M12 3c-4.5 0-8 3.2-8 7.5S7.5 18 12 18h.5V21l4-3.5c2.7-1.3 4.5-3.9 4.5-7C21 6.2 16.5 3 12 3z"/><circle cx="8.5" cy="10.5" r="1" fill="#d6336c"/><circle cx="12" cy="10.5" r="1" fill="#d6336c"/><circle cx="15.5" cy="10.5" r="1" fill="#d6336c"/></svg>
               <p>Ảnh makeup mẫu bạn thích</p>
               <div class="upload-hint">Chọn nhiều ảnh cùng lúc</div>
             </div>
@@ -540,7 +550,7 @@
             <label>Ảnh kiểu tóc mẫu</label>
             <div class="upload-zone">
               <input type="file" accept="image/*" multiple onchange="handleUpload(this,'preview-hair','count-hair','hair')" />
-              <div class="upload-icon">💇</div>
+              <svg class="upload-ic" viewBox="0 0 24 24" fill="none" stroke="#d6336c" stroke-width="1.6"><circle cx="12" cy="9" r="4.5"/><path d="M7.5 9c-1.5 3-2.5 8-2.5 11M16.5 9c1.5 3 2.5 8 2.5 11M12 13.5V21"/></svg>
               <p>Ảnh kiểu tóc bạn muốn</p>
               <div class="upload-hint">Chọn nhiều ảnh cùng lúc</div>
             </div>
@@ -551,7 +561,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn-submit">✅ GỬI ĐƠN ĐẶT LỊCH</button>
+    <button type="submit" class="btn-submit">GỬI ĐƠN ĐẶT LỊCH</button>
 
   </form>
 </div>
@@ -559,7 +569,9 @@
 <!-- SUCCESS SCREEN -->
 <div id="success-screen">
   <div class="success-hero">
-    <div class="check">✅</div>
+    <div class="success-check">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d6336c" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
+    </div>
     <h2>ĐẶT LỊCH THÀNH CÔNG!</h2>
     <p>Cảm ơn bạn đã tin tưởng AMI Make Up Academy</p>
   </div>
@@ -567,45 +579,45 @@
   <div style="max-width:820px;margin:0 auto;padding:0 14px">
 
     <div class="note-box">
-      📱 AMI sẽ liên hệ xác nhận qua <strong>Zalo / điện thoại trong 2 giờ</strong>. Vui lòng chụp màn hình trang này để lưu lại.
+      AMI sẽ liên hệ xác nhận qua <strong>Zalo / điện thoại trong 2 giờ</strong>. Vui lòng chụp màn hình trang này để lưu lại.
     </div>
 
     <div class="sm-card">
-      <div class="sm-title">👤 Thông tin khách hàng</div>
+      <div class="sm-title">Thông tin khách hàng</div>
       <div class="sm-body" id="sum-personal"></div>
     </div>
 
     <div class="sm-card">
-      <div class="sm-title">📅 Chi tiết từng ngày makeup</div>
+      <div class="sm-title">Chi tiết từng ngày makeup</div>
       <div class="sm-body" id="sum-days"></div>
     </div>
 
     <div class="sm-card">
-      <div class="sm-title">🧾 Ảnh đặt cọc</div>
+      <div class="sm-title">Ảnh đặt cọc</div>
       <div class="sm-body"><div class="success-imgs" id="sum-deposit"></div></div>
     </div>
 
     <div class="sm-card" id="sm-ref-card">
-      <div class="sm-title">🖼️ Ảnh tham khảo</div>
+      <div class="sm-title">Ảnh tham khảo</div>
       <div class="sm-body">
-        <p style="font-size:10px;color:#aaa;margin-bottom:6px">MAKEUP MẪU:</p>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:6px">MAKEUP MẪU:</p>
         <div class="success-imgs" id="sum-makeup"></div>
-        <p style="font-size:10px;color:#aaa;margin:10px 0 6px">KIỂU TÓC MẪU:</p>
+        <p style="font-size:12px;color:var(--muted);margin:10px 0 6px">KIỂU TÓC MẪU:</p>
         <div class="success-imgs" id="sum-hair"></div>
       </div>
     </div>
 
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:6px">
-      <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
+      <button class="btn-print" onclick="window.print()">In / Lưu PDF</button>
       <button class="btn-back" onclick="resetForm()">← Đặt lịch khác</button>
     </div>
     <!-- ✏️ SỬA link Zalo -->
     <br>
-    <a href="https://zalo.me/0979963369" target="_blank" class="btn-zalo">💬 Chat Zalo với AMI để hỏi thêm</a>
+    <a href="https://zalo.me/0327355595" target="_blank" class="btn-zalo">Chat Zalo với AMI để hỏi thêm</a>
   </div>
 </div>
 
-<div class="bk-footer">© 2026 AMI Make Up Academy &nbsp;·&nbsp; 📞 0979.963.369 &nbsp;·&nbsp; Thứ 2 – CN: 8:00 – 20:00</div>
+<div class="bk-footer">© 2026 AMI Make Up Academy &nbsp;·&nbsp; 0327.355.595 &nbsp;·&nbsp; Thứ 2 – CN: 8:00 – 20:00</div>
 
 <script>
   // ── Lưu ảnh ──
@@ -636,13 +648,25 @@
     document.getElementById(map[key]).textContent = files[key].filter(Boolean).length;
   }
 
+  // ── Nơi makeup ──
+  let currentLoc = ''; // 'store' | 'home'
+
+  function selectLocation(el) {
+    document.querySelectorAll('.loc-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    currentLoc = el.dataset.loc;
+    document.getElementById('address-block').style.display = currentLoc === 'home' ? '' : 'none';
+  }
+
   // ── Service selector ──
   let currentMode = '';
 
   function selectService(el) {
     document.querySelectorAll('.svc-card').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-    document.getElementById('f-service').value = el.querySelector('.svc-name').textContent.trim().replace(/\s+/g,' ');
+    // Chỉ lấy tên chính, bỏ dòng phụ chú (svc-sub)
+    const nameEl = el.querySelector('.svc-name');
+    document.getElementById('f-service').value = (nameEl.childNodes[0].textContent || nameEl.textContent).trim().replace(/\s+/g,' ');
 
     const mode = el.dataset.svc;
     currentMode = mode;
@@ -687,13 +711,12 @@
     const first = slotCount === 1;
     s.innerHTML = `
       <div class="date-slot-hdr">
-        <div class="date-slot-lbl">📅 Ngày ${slotCount}</div>
+        <div class="date-slot-lbl">Ngày ${slotCount}</div>
         ${!first ? `<button type="button" class="btn-rm-slot" onclick="rmSlot(${slotCount})">✕ Xoá</button>` : ''}
       </div>
-      <div class="fr fr3" style="margin-bottom:10px">
+      <div class="fr" style="margin-bottom:10px">
         <div class="fg"><label>Ngày makeup ${first?'<span class="req">*</span>':''}</label><input type="date" id="s-date-${slotCount}" min="${today()}" /></div>
         <div class="fg"><label>Giờ bắt đầu ${first?'<span class="req">*</span>':''}</label><input type="time" id="s-time-${slotCount}" /></div>
-        <div class="fg"><label>Địa điểm</label><input type="text" id="s-place-${slotCount}" placeholder="Tại studio / Tại nhà..." /></div>
       </div>
       <div class="fr" style="margin-bottom:0">
         <div class="fg">
@@ -714,7 +737,7 @@
     if (s) s.remove();
     document.querySelectorAll('.date-slot').forEach((s,i) => {
       const l = s.querySelector('.date-slot-lbl');
-      if (l) l.textContent = '📅 Ngày '+(i+1);
+      if (l) l.textContent = 'Ngày '+(i+1);
     });
   }
 
@@ -725,8 +748,6 @@
     e.preventDefault();
 
     const phone   = document.getElementById('f-phone').value.trim();
-    const address = document.getElementById('f-address').value.trim();
-    const mapsLink = document.getElementById('f-maps-link').value.trim();
     const contactChannel = document.getElementById('f-contact-channel').value;
     const contactName = document.getElementById('f-contact-name').value.trim();
     const name = contactName;
@@ -736,10 +757,28 @@
       alert('⚠️ Vui lòng chọn kênh nhắn tin và điền tên hiển thị lúc nhắn tin');
       return;
     }
-    if (!phone || !address) {
-      alert('⚠️ Vui lòng điền SĐT và Địa chỉ');
+    if (!phone) {
+      alert('⚠️ Vui lòng điền số điện thoại');
       return;
     }
+    if (!currentLoc) {
+      alert('⚠️ Vui lòng chọn nơi makeup (tại cửa hàng hoặc tận nơi)');
+      return;
+    }
+
+    // Nơi makeup → một nguồn duy nhất, dùng chung cho mọi ngày
+    // ✏️ SỬA địa chỉ cửa hàng
+    const homeAddress = document.getElementById('f-address').value.trim();
+    const mapsLink = currentLoc === 'home' ? document.getElementById('f-maps-link').value.trim() : '';
+    if (currentLoc === 'home' && !homeAddress) {
+      alert('⚠️ Vui lòng điền địa chỉ để AMI đến makeup tận nơi');
+      return;
+    }
+    const locationText = currentLoc === 'store'
+      ? 'Tại cửa hàng AMI — 351 Lê Hồng Phong, TP. Nam Định'
+      : 'Tận nơi: ' + homeAddress;
+    const placeShort = currentLoc === 'store' ? 'Tại cửa hàng AMI' : homeAddress;
+
     if (!service) {
       alert('⚠️ Vui lòng chọn loại dịch vụ (Bước 2)');
       return;
@@ -749,9 +788,9 @@
     const days = [];
     if (currentMode === 'wedding') {
       const weddingDays = [
-        { key:'dam',  label:'Dạm Ngõ',    badge:'badge-dam',  icon:'🌸' },
-        { key:'an',   label:'Ăn Hỏi',     badge:'badge-an',   icon:'🌺' },
-        { key:'cuoi', label:'Ngày Cưới',   badge:'badge-cuoi', icon:'👰' },
+        { key:'dam',  label:'Dạm Ngõ',    badge:'badge-dam' },
+        { key:'an',   label:'Ăn Hỏi',     badge:'badge-an' },
+        { key:'cuoi', label:'Ngày Cưới',   badge:'badge-cuoi' },
       ];
       weddingDays.forEach(w => {
         if (!document.getElementById('chk-'+w.key).checked) return;
@@ -759,9 +798,9 @@
         const time = document.getElementById(w.key+'-time').value;
         if (!date || !time) { alert('⚠️ Vui lòng điền ngày và giờ cho buổi '+w.label); throw ''; }
         days.push({
-          label: w.label, badge: w.badge, icon: w.icon,
+          label: w.label, badge: w.badge,
           date, time,
-          place: document.getElementById(w.key+'-place').value,
+          place: placeShort,
           codau: +document.getElementById(w.key+'-codau').value||0,
           me:    +document.getElementById(w.key+'-me').value||0,
           nh:    +document.getElementById(w.key+'-nguoinha').value||0,
@@ -776,11 +815,10 @@
         const n = i+1;
         const date  = s.querySelector('[id^="s-date-"]')?.value;
         const time  = s.querySelector('[id^="s-time-"]')?.value;
-        const place = s.querySelector('[id^="s-place-"]')?.value||'';
         const qty   = +s.querySelector('[id^="s-qty-"]')?.value||1;
         const snote = s.querySelector('[id^="s-note-"]')?.value||'';
         if (!date || !time) { alert('⚠️ Vui lòng điền ngày và giờ cho Ngày '+n); throw ''; }
-        days.push({ label:'Ngày '+n, badge:'badge-other', icon:'📅', date, time, place, qty, snote });
+        days.push({ label:'Ngày '+n, badge:'badge-other', date, time, place: placeShort, qty, snote });
       });
     }
 
@@ -790,7 +828,6 @@
     }
 
     // Build summary
-    const dob = document.getElementById('f-dob').value;
     const email = document.getElementById('f-email').value;
     const note = document.getElementById('f-note').value;
 
@@ -799,9 +836,8 @@
       <div class="sm-row"><span class="sm-label">Kênh nhắn tin</span><span class="sm-val">${contactChannel}</span></div>
       <div class="sm-row"><span class="sm-label">SĐT</span><span class="sm-val">${phone}</span></div>
       ${email?`<div class="sm-row"><span class="sm-label">Email</span><span class="sm-val">${email}</span></div>`:''}
-      ${dob?`<div class="sm-row"><span class="sm-label">Ngày sinh</span><span class="sm-val">${fmtDate(dob)}</span></div>`:''}
-      <div class="sm-row"><span class="sm-label">Địa chỉ</span><span class="sm-val">${address}</span></div>
-      ${mapsLink?`<div class="sm-row"><span class="sm-label">Google Maps</span><span class="sm-val"><a href="${mapsLink}" target="_blank" style="color:#e00">Xem bản đồ ↗</a></span></div>`:''}
+      <div class="sm-row"><span class="sm-label">Nơi makeup</span><span class="sm-val">${locationText}</span></div>
+      ${mapsLink?`<div class="sm-row"><span class="sm-label">Google Maps</span><span class="sm-val"><a href="${mapsLink}" target="_blank" style="color:#d6336c">Xem bản đồ ↗</a></span></div>`:''}
       <div class="sm-row"><span class="sm-label">Dịch vụ</span><span class="sm-val">${service}</span></div>
       ${note?`<div class="sm-row"><span class="sm-label">Ghi chú</span><span class="sm-val">${note}</span></div>`:''}
     `;
@@ -809,22 +845,20 @@
     document.getElementById('sum-days').innerHTML = days.map(d => {
       const isWedding = d.codau !== undefined;
       const bodyRows = isWedding ? `
-        <span>📍 Địa điểm</span><strong>${d.place||'—'}</strong>
-        <span>💍 Cô dâu</span><strong>${d.codau} người</strong>
-        <span>👩 Mẹ cô dâu</span><strong>${d.me} người</strong>
-        <span>👥 Người nhà</span><strong>${d.nh} người</strong>
-        <span>🧮 Tổng cộng</span><strong style="color:#e00">${d.codau+d.me+d.nh} người</strong>
+        <span>Cô dâu</span><strong>${d.codau} người</strong>
+        <span>Mẹ cô dâu</span><strong>${d.me} người</strong>
+        <span>Người nhà</span><strong>${d.nh} người</strong>
+        <span>Tổng cộng</span><strong style="color:#d6336c">${d.codau+d.me+d.nh} người</strong>
       ` : `
-        <span>📍 Địa điểm</span><strong>${d.place||'—'}</strong>
-        <span>👥 Số người</span><strong style="color:#e00">${d.qty} người</strong>
-        ${d.snote ? `<span>📝 Ghi chú</span><strong>${d.snote}</strong>` : ''}
+        <span>Số người</span><strong style="color:#d6336c">${d.qty} người</strong>
+        ${d.snote ? `<span>Ghi chú</span><strong>${d.snote}</strong>` : ''}
       `;
       return `
         <div class="day-summary">
           <div class="day-summary-header">
-            <span class="badge ${d.badge}">${d.icon} ${d.label}</span>
-            <strong style="font-size:13px">${fmtDate(d.date)}</strong>
-            <span style="font-size:12px;color:#888">⏰ ${d.time}</span>
+            <span class="badge ${d.badge}">${d.label}</span>
+            <strong style="font-size:14px">${fmtDate(d.date)}</strong>
+            <span style="font-size:13px;color:#8a6b78">${d.time}</span>
           </div>
           <div class="day-summary-body">${bodyRows}</div>
         </div>`;
@@ -833,9 +867,9 @@
     document.getElementById('sum-deposit').innerHTML =
       files.deposit.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('');
     document.getElementById('sum-makeup').innerHTML =
-      files.makeup.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('') || '<p style="color:#bbb;font-size:11px">Không có ảnh</p>';
+      files.makeup.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('') || '<p style="color:#c4aeb8;font-size:12px">Không có ảnh</p>';
     document.getElementById('sum-hair').innerHTML =
-      files.hair.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('') || '<p style="color:#bbb;font-size:11px">Không có ảnh</p>';
+      files.hair.filter(Boolean).map(f=>`<img src="${f.src}" />`).join('') || '<p style="color:#c4aeb8;font-size:12px">Không có ảnh</p>';
 
     // ── Ghi vào Lark Base: mỗi ngày làm 1 dòng riêng để lọc/xem tổng quan lịch, tránh trùng lịch ──
     const orderCode = 'AMI' + Date.now();
@@ -843,7 +877,7 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        orderCode, name, phone, email, dob, address, mapsLink, contactChannel, contactName,
+        orderCode, name, phone, email, address: locationText, mapsLink, contactChannel, contactName,
         service, note, days,
         depositImages: files.deposit.filter(Boolean),
         makeupImages: files.makeup.filter(Boolean),
@@ -865,6 +899,9 @@
   function resetForm() {
     document.getElementById('booking-form').reset();
     document.querySelectorAll('.svc-card').forEach(c=>c.classList.remove('selected'));
+    document.querySelectorAll('.loc-card').forEach(c=>c.classList.remove('selected'));
+    currentLoc='';
+    document.getElementById('address-block').style.display='none';
     document.getElementById('f-service').value = '';
     document.getElementById('section-wedding').style.display='none';
     document.getElementById('section-other').style.display='none';
@@ -887,16 +924,10 @@
     window.scrollTo(0,0);
   }
 
-  // Auto-fill nội dung CK
-  document.getElementById('f-contact-name').addEventListener('input',function(){
-    document.getElementById('bank-content').textContent='ĐẶT CỌC - '+(this.value.toUpperCase()||'[TÊN]')+' - [NGÀY]';
-  });
-
   // Init non-wedding slot
   addDateSlot();
 </script>
 
 <script src="nav.js"></script>
-<script src="admin.js"></script>
 </body>
 </html>
