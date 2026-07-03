@@ -32,7 +32,7 @@ export async function onRequestPost(context) {
     const baseFields = {
       'Mã đơn': orderCode,
       'Họ và tên': body.contactName || body.name || '',
-      'Địa chỉ': body.address || '',
+      'Nơi makeup': body.address || '',
       'Dịch vụ': body.service || '',
       'Ghi chú dịch vụ': body.note || '',
       'Trạng thái': 'Mới',
@@ -46,7 +46,7 @@ export async function onRequestPost(context) {
     if (makeupTokens.length) baseFields['Ảnh makeup mẫu'] = makeupTokens.map(t => ({ file_token: t }));
     if (hairTokens.length) baseFields['Ảnh kiểu tóc mẫu'] = hairTokens.map(t => ({ file_token: t }));
 
-    // Mỗi ngày làm là 1 dòng riêng — để lọc/sắp xếp theo "Ngày làm" xem tổng quan lịch, tránh trùng lịch
+    // Mỗi ngày làm là 1 dòng riêng — để lọc/sắp xếp theo "Ngày makeup" xem tổng quan lịch, tránh trùng lịch
     const records = days.map(d => {
       const fields = { ...baseFields };
       if (d.label) fields['Buổi'] = d.label;
@@ -54,7 +54,7 @@ export async function onRequestPost(context) {
       if (d.date && d.time) {
         // +07:00 = giờ Việt Nam — nếu không ghi rõ offset, JS sẽ hiểu là UTC và lệch 7 tiếng khi Lark hiển thị
         const ts = new Date(`${d.date}T${d.time}:00+07:00`).getTime();
-        if (!isNaN(ts)) fields['Ngày làm'] = ts;
+        if (!isNaN(ts)) fields['Ngày makeup'] = ts;
       }
       if (d.codau !== undefined) {
         const parts = [];
