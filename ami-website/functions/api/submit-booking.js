@@ -56,10 +56,15 @@ export async function onRequestPost(context) {
         const ts = new Date(`${d.date}T${d.time}:00+07:00`).getTime();
         if (!isNaN(ts)) fields['Ngày làm'] = ts;
       }
-      const soNguoi = d.codau !== undefined
-        ? (+d.codau || 0) + (+d.me || 0) + (+d.nh || 0)
-        : +d.qty || 0;
-      if (soNguoi) fields['Số người'] = soNguoi;
+      if (d.codau !== undefined) {
+        const parts = [];
+        if (+d.codau) parts.push(`${+d.codau} Cô dâu`);
+        if (+d.me) parts.push(`${+d.me} Mẹ cô dâu`);
+        if (+d.nh) parts.push(`${+d.nh} Người nhà`);
+        if (parts.length) fields['Số người'] = parts.join(' · ');
+      } else if (+d.qty) {
+        fields['Số người'] = `${+d.qty} người`;
+      }
       return { fields };
     });
 
