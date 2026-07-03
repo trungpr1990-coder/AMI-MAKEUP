@@ -756,6 +756,11 @@
     }
   });
 
+  // ── Bấm vào ô số người (Cô dâu/Mẹ cô dâu/Người nhà...) thì bôi đen số cũ, gõ số mới đè lên luôn, tránh gõ thành 01/010 ──
+  document.addEventListener('focusin', e => {
+    if (e.target.matches('input[type="number"]')) e.target.select();
+  });
+
   function rmSlot(id) {
     const s = document.getElementById('slot-'+id);
     if (s) s.remove();
