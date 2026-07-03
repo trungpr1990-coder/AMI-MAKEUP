@@ -381,7 +381,7 @@
                 </div>
                 <div class="fg">
                   <label>Giờ bắt đầu <span class="req">*</span></label>
-                  <input type="time" id="dam-time" />
+                  <select id="dam-time"></select>
                 </div>
               </div>
               <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
@@ -425,7 +425,7 @@
                 </div>
                 <div class="fg">
                   <label>Giờ bắt đầu <span class="req">*</span></label>
-                  <input type="time" id="an-time" />
+                  <select id="an-time"></select>
                 </div>
               </div>
               <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
@@ -469,7 +469,7 @@
                 </div>
                 <div class="fg">
                   <label>Giờ bắt đầu <span class="req">*</span></label>
-                  <input type="time" id="cuoi-time" />
+                  <select id="cuoi-time"></select>
                 </div>
               </div>
               <label style="font-size:13px;font-weight:700;letter-spacing:.04em;color:#6b5560;display:block;margin-bottom:6px">Số người makeup buổi này</label>
@@ -716,7 +716,7 @@
       </div>
       <div class="fr" style="margin-bottom:10px">
         <div class="fg"><label>Ngày makeup ${first?'<span class="req">*</span>':''}</label><input type="date" id="s-date-${slotCount}" min="${today()}" /></div>
-        <div class="fg"><label>Giờ bắt đầu ${first?'<span class="req">*</span>':''}</label><input type="time" id="s-time-${slotCount}" /></div>
+        <div class="fg"><label>Giờ bắt đầu ${first?'<span class="req">*</span>':''}</label><select id="s-time-${slotCount}"></select></div>
       </div>
       <div class="fr" style="margin-bottom:0">
         <div class="fg">
@@ -730,7 +730,31 @@
       </div>
     `;
     c.appendChild(s);
+    initTime24('s-time-'+slotCount);
   }
+
+  // ── Chọn giờ 24h gộp trong 1 khung (không SA/CH) ──
+  function initTime24(selectId) {
+    const sel = document.getElementById(selectId);
+    if (!sel) return;
+    let opts = '<option value="">-- Chọn giờ --</option>';
+    for (let h = 0; h < 24; h++) {
+      for (const m of ['00','15','30','45']) {
+        const v = String(h).padStart(2,'0') + ':' + m;
+        opts += `<option value="${v}">${v}</option>`;
+      }
+    }
+    sel.innerHTML = opts;
+  }
+  ['dam-time','an-time','cuoi-time'].forEach(initTime24);
+
+  // ── Bấm vào khung ngày là mở lịch luôn, không cần trúng icon ──
+  document.addEventListener('click', e => {
+    const el = e.target.closest('input[type="date"]');
+    if (el && typeof el.showPicker === 'function') {
+      try { el.showPicker(); } catch (_) {}
+    }
+  });
 
   function rmSlot(id) {
     const s = document.getElementById('slot-'+id);
