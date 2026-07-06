@@ -1,0 +1,39 @@
+name: YouTube Auto Post
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # mỗi 5 phút (giới hạn tối thiểu của GitHub Actions)
+  workflow_dispatch: {}      # cho phép bấm chạy tay từ tab Actions
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: automation/youtube-autopost
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Cài dependencies
+        run: npm ci
+
+      - name: Ghi credentials từ GitHub Secrets
+        run: |
+          mkdir -p .secrets
+          printf '%s' "$GOOGLE_CLIENT_SECRET_JSON" > .secrets/client_secret.json
+          printf '%s' "$YOUTUBE_TOKEN_JSON" > .secrets/youtube-token.json
+        env:
+          GOOGLE_CLIENT_SECRET_JSON: ${{ secrets.GOOGLE_CLIENT_SECRET_JSON }}
+          YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
+
+      - name: Quét Lark Base và đăng video đến hạn
+        run: node scan-and-post.js
+        env:
+          LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+          LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+          YT_BASE_TOKEN: ${{ secrets.YT_BASE_TOKEN }}
+          YT_TABLE_ID: ${{ secrets.YT_TABLE_ID }}

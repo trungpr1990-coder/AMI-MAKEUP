@@ -8,6 +8,11 @@ qr_*.png
 # Large data / temp files
 *.json
 !CLAUDE.md
+!automation/**/package.json
+!automation/**/package-lock.json
+
+# Không bao giờ commit secrets thật (chỉ code, secrets nạp qua GitHub Secrets)
+automation/**/.secrets/
 
 # Node
 node_modules/
