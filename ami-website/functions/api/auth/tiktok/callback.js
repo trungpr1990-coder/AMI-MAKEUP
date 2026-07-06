@@ -1,5 +1,5 @@
-
-// redeploy-trigger 2026-07-06// Cloudflare Pages Function — nhận callback OAuth từ TikTok sau khi chủ tài khoản
+// Cloudflare Pages Function – nhận callback OAuth từ TikTok sau khi chủ tài khoản
+// redeploy-trigger 2026-07-06
 // cho phép ứng dụng "Ami Makeup Auto Post" đăng bài thay mặt họ.
 //
 // Cần cấu hình các biến môi trường trong Cloudflare Pages (Settings > Environment variables):
