@@ -1,12 +1,15 @@
-// scan-and-post.js — Quét bảng "Lịch đăng YouTube", đăng video đến hạn, cập nhật trạng thái.
-// Chạy định kỳ qua GitHub Actions (cron). Có lockfile chống chạy chồng (khi chạy local).
+// scan-and-post.js — Quét bảng "Đăng YouTube" (Lark Base), đăng video đến hạn lên YouTube.
+// Chạy trên GitHub Actions (cron 30 phút) hoặc chạy tay `node scan-and-post.js [--dry-run]`.
+// Chống chạy chồng: dùng `concurrency` của GitHub Actions (workflow yml), KHÔNG dùng lockfile cục bộ
+// — khớp kiến trúc hệ thống đăng Reel Facebook (mỗi lần chạy CI là 1 container mới, không có state cũ).
+'use strict';
 const fs = require('fs');
 const path = require('path');
 const cfg = require('./config');
 const lark = require('./lark');
 const { uploadVideo } = require('./youtube');
 
-const LOCK = path.join(__dirname, '.post.lock');
+const DRY = process.argv.includes('--dry-run');
 
 function log(msg) {
   const line = `[${new Date().toISOString()}] ${msg}`;
@@ -17,25 +20,12 @@ function log(msg) {
 // Field "Ngày giờ đăng": OpenAPI trả DateTime dạng epoch ms (number). Cũng chấp nhận chuỗi
 // "2026-06-17 10:00" (giờ địa phương) cho tương thích. Rỗng → null (đăng ngay).
 function parseLocal(val) {
-  if (typeof val === 'number' && val > 0) return new Date(val); // DateTime field → epoch ms
+  if (typeof val === 'number' && val > 0) return new Date(val);
   if (!val || typeof val !== 'string') return null;
   const m = val.trim().match(/^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?/);
   if (!m) return null;
   return new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +(m[6] || 0));
 }
-
-function acquireLock() {
-  try {
-    if (fs.existsSync(LOCK)) {
-      const age = Date.now() - fs.statSync(LOCK).mtimeMs;
-      if (age < 30 * 60 * 1000) return false; // lock còn hiệu lực (<30 phút)
-      fs.unlinkSync(LOCK); // lock cũ kẹt → bỏ
-    }
-    fs.writeFileSync(LOCK, String(process.pid));
-    return true;
-  } catch (_) { return false; }
-}
-function releaseLock() { try { fs.unlinkSync(LOCK); } catch (_) {} }
 
 function cleanup(files) {
   for (const f of files) { try { if (f && fs.existsSync(f)) fs.unlinkSync(f); } catch (_) {} }
@@ -45,16 +35,15 @@ async function processOne(rec) {
   const tmpFiles = [];
   const title = rec.get(cfg.FIELDS.tieuDe) || 'Video';
   try {
-    // 1) Khóa record: chuyển "Đang đăng"
+    if (DRY) { log(`[DRY] Sẽ đăng: "${title}"`); return { ok: true }; }
+
     await lark.updateRecord(rec.record_id, { [cfg.FIELDS.trangThai]: cfg.STATUS.dang });
 
-    // 2) Lấy video
     const vids = rec.attachments(cfg.FIELDS.video);
     if (!vids.length) throw new Error('Chưa đính kèm Video trong record.');
     const videoPath = await lark.downloadAttachment(rec.record_id, vids[0].file_token, cfg.TMP_DIR, vids[0].name);
     tmpFiles.push(videoPath);
 
-    // 3) Thumbnail (tùy chọn)
     let thumbnailPath = null;
     const thumbs = rec.attachments(cfg.FIELDS.thumbnail);
     if (thumbs.length) {
@@ -62,7 +51,6 @@ async function processOne(rec) {
       tmpFiles.push(thumbnailPath);
     }
 
-    // 4) Metadata
     const tags = String(rec.get(cfg.FIELDS.tags) || '').split(',').map((s) => s.trim()).filter(Boolean);
     const loai = rec.sel(cfg.FIELDS.loai);
     let description = rec.get(cfg.FIELDS.moTa) || '';
@@ -70,16 +58,14 @@ async function processOne(rec) {
       description = (description ? description + '\n\n' : '') + '#Shorts';
     }
     const cheDo = rec.sel(cfg.FIELDS.cheDo);
-    const privacyStatus = cfg.PRIVACY_MAP[cheDo] || 'public';
+    const privacyStatus = cfg.PRIVACY_MAP[cheDo] || 'private'; // an toàn: không chọn Chế độ -> Riêng tư, KHÔNG mặc định public
     const playlistId = (rec.get(cfg.FIELDS.playlist) || '').trim() || null;
-    const channelName = rec.sel(cfg.FIELDS.kenh) || ''; // cột "Kênh": rỗng = kênh mặc định
+    const channelName = rec.sel(cfg.FIELDS.kenh) || '';
 
     log(`Đang đăng: "${title}" (${loai || 'Video dài'}, ${privacyStatus}${channelName ? ', kênh: ' + channelName : ''})`);
 
-    // 5) Upload (đúng kênh theo cột "Kênh")
     const out = await uploadVideo({ videoPath, title, description, tags, privacyStatus, thumbnailPath, playlistId, channelName });
 
-    // 6) Ghi kết quả
     await lark.updateRecord(rec.record_id, {
       [cfg.FIELDS.trangThai]: cfg.STATUS.xong,
       [cfg.FIELDS.linkVideo]: out.url,
@@ -90,12 +76,14 @@ async function processOne(rec) {
   } catch (e) {
     const msg = (e && e.message) ? e.message : String(e);
     const quota = /quota/i.test(msg) || /403/.test(msg);
-    try {
-      await lark.updateRecord(rec.record_id, {
-        [cfg.FIELDS.trangThai]: cfg.STATUS.loi,
-        [cfg.FIELDS.ghiChuLoi]: msg.slice(0, 500),
-      });
-    } catch (_) {}
+    if (!DRY) {
+      try {
+        await lark.updateRecord(rec.record_id, {
+          [cfg.FIELDS.trangThai]: cfg.STATUS.loi,
+          [cfg.FIELDS.ghiChuLoi]: msg.slice(0, 500),
+        });
+      } catch (_) {}
+    }
     log(`❌ LỖI khi đăng "${title}": ${msg}`);
     return { ok: false, quota };
   } finally {
@@ -104,34 +92,29 @@ async function processOne(rec) {
 }
 
 async function main() {
-  if (!acquireLock()) { log('Có tiến trình khác đang chạy — bỏ lượt này.'); return; }
-  try {
-    const all = await lark.listRecords();
-    const now = Date.now();
-    // RESPECT_SCHEDULE=false ("Đăng ngay") → đăng mọi dòng "Chờ đăng" bất kể lịch. Mặc định true.
-    const respectSchedule = process.env.RESPECT_SCHEDULE !== 'false';
-    const due = all.filter((r) => {
-      if (r.sel(cfg.FIELDS.trangThai) !== cfg.STATUS.cho) return false;
-      if (!respectSchedule) return true; // đăng ngay, bỏ qua "Ngày giờ đăng"
-      const t = parseLocal(r.get(cfg.FIELDS.ngayGio));
-      return t === null ? true : t.getTime() <= now; // rỗng = đăng ngay
-    }).sort((a, b) => {
-      const ta = parseLocal(a.get(cfg.FIELDS.ngayGio)); const tb = parseLocal(b.get(cfg.FIELDS.ngayGio));
-      return (ta ? ta.getTime() : 0) - (tb ? tb.getTime() : 0); // cũ nhất trước
-    });
+  const all = await lark.listRecords();
+  const now = Date.now();
 
-    if (!due.length) { log('Không có video đến hạn.'); return; }
-    log(`Có ${due.length} video đến hạn.`);
+  const due = all.filter((r) => {
+    if (cfg.RECORD_ID) return r.record_id === cfg.RECORD_ID; // nút "Run workflow" bấm 1 dòng cụ thể
+    if (r.sel(cfg.FIELDS.trangThai) !== cfg.STATUS.cho) return false;
+    if (!cfg.RESPECT_SCHEDULE) return true;
+    const t = parseLocal(r.get(cfg.FIELDS.ngayGio));
+    if (t === null) return true; // rỗng = đăng ở lần quét tới
+    // Cron tự động: chỉ đăng khi ĐÃ tới giờ hẹn. Chạy tay (không phải cron): đăng ngay không cần chờ giờ.
+    return cfg.SCHEDULE_MODE ? t.getTime() <= now : true;
+  }).sort((a, b) => {
+    const ta = parseLocal(a.get(cfg.FIELDS.ngayGio)); const tb = parseLocal(b.get(cfg.FIELDS.ngayGio));
+    return (ta ? ta.getTime() : 0) - (tb ? tb.getTime() : 0);
+  });
 
-    for (const rec of due) {
-      const res = await processOne(rec);
-      if (res.quota) { log('⚠️ Chạm quota YouTube — dừng, để dành cho lượt sau.'); break; }
-    }
-  } catch (e) {
-    log('LỖI tổng: ' + (e.message || e));
-  } finally {
-    releaseLock();
+  if (!due.length) { log('Không có video đến hạn.'); return; }
+  log(`Có ${due.length} video đến hạn.`);
+
+  for (const rec of due) {
+    const res = await processOne(rec);
+    if (res.quota) { log('⚠️ Chạm quota YouTube — dừng, để dành cho lượt sau.'); break; }
   }
 }
 
-main();
+main().catch((e) => { console.error('LỖI tổng:', e.message || e); process.exit(1); });
