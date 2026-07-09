@@ -44,6 +44,7 @@ jobs:
 
       - name: AI viết Tiêu đề từ video (nếu còn trống)
         working-directory: automation/youtube-autopost
+        continue-on-error: true   # lỗi bước này (vd thiếu ANTHROPIC_API_KEY) KHÔNG được chặn việc đăng video ở bước sau
         env:
           LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
           LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
