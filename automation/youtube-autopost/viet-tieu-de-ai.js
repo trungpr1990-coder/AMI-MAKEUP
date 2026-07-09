@@ -37,14 +37,17 @@ const BRAND_VOICE = `Viết như Thuý Trần — Makeup Artist & giảng viên 
 - KHÔNG tự ý nhắc tên người/địa điểm/chi tiết không thấy rõ trong khung hình`;
 
 // Trích 1 khung hình từ video bằng ffmpeg (thử giây 1, rơi về giây 0 nếu video quá ngắn).
+// Ném lỗi kèm stderr thật của ffmpeg ở lần thử cuối để dễ chẩn đoán (thay vì nuốt lỗi im lặng).
 function extractFrame(videoPath, outPath) {
+  let lastErr = null;
   for (const ss of ['00:00:01', '00:00:00']) {
     try {
-      execFileSync('ffmpeg', ['-y', '-ss', ss, '-i', videoPath, '-frames:v', '1', '-q:v', '2', outPath], { stdio: 'pipe' });
-      if (fs.existsSync(outPath) && fs.statSync(outPath).size > 0) return true;
-    } catch (_) { /* thử mốc thời gian tiếp theo */ }
+      execFileSync('ffmpeg', ['-y', '-ss', ss, '-i', videoPath, '-frames:v', '1', '-q:v', '2', outPath], { stdio: ['ignore', 'pipe', 'pipe'] });
+      if (fs.existsSync(outPath) && fs.statSync(outPath).size > 0) return;
+    } catch (e) { lastErr = e; }
   }
-  return false;
+  const stderr = lastErr ? (lastErr.stderr ? lastErr.stderr.toString().slice(-500) : String(lastErr.message || lastErr)) : 'không rõ';
+  throw new Error('ffmpeg trích khung hình thất bại: ' + stderr);
 }
 
 function imageContentBlock(filePath) {
@@ -84,6 +87,15 @@ async function titleFromFrame(framePath) {
 
 async function main() {
   log(`Bắt đầu quét bảng "Đăng YouTube" để AI viết Tiêu đề${DRY ? ' [DRY-RUN]' : ''}...`);
+  if (!DRY) {
+    try {
+      const v = execFileSync('ffmpeg', ['-version'], { stdio: ['ignore', 'pipe', 'pipe'] }).toString().split('\n')[0];
+      log(`  ffmpeg: ${v}`);
+    } catch (e) {
+      log(`  ⚠️ Không tìm thấy ffmpeg trong PATH — bỏ qua bước AI viết Tiêu đề (${String(e.message || e)}).`);
+      return;
+    }
+  }
   const rows = await lark.listRecords();
   const candidates = rows.filter((r) => {
     const tieuDe = r.get(cfg.FIELDS.tieuDe).trim();
@@ -101,7 +113,10 @@ async function main() {
     const framePath = path.join(tmpDir, rec.record_id + '.jpg');
     try {
       await lark.downloadAttachment(rec.record_id, vid.file_token, tmpDir, vid.name);
-      if (!extractFrame(videoPath, framePath)) throw new Error('Không trích được khung hình từ video.');
+      const vsize = fs.existsSync(videoPath) ? fs.statSync(videoPath).size : 0;
+      log(`  … ${rec.record_id}: đã tải video (${vsize} bytes), đang trích khung hình...`);
+      if (!vsize) throw new Error('File video tải về rỗng (0 byte).');
+      extractFrame(videoPath, framePath);
       const { title, description, tags } = await titleFromFrame(framePath);
       await lark.updateRecord(rec.record_id, {
         [cfg.FIELDS.tieuDe]: (title || '').trim().slice(0, 100),
