@@ -42,6 +42,16 @@ jobs:
           GOOGLE_CLIENT_SECRET_JSON: ${{ secrets.GOOGLE_CLIENT_SECRET_JSON }}
           YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN_JSON }}
 
+      - name: AI viết Tiêu đề từ video (nếu còn trống)
+        working-directory: automation/youtube-autopost
+        env:
+          LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+          LARK_APP_SECRET: ${{ secrets.LARK_APP_SECRET }}
+          YT_BASE_TOKEN: ${{ secrets.YT_BASE_TOKEN }}
+          YT_TABLE_ID: ${{ secrets.YT_TABLE_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node viet-tieu-de-ai.js
+
       - name: Quét Lark Base và đăng video đến hạn
         working-directory: automation/youtube-autopost
         env:
