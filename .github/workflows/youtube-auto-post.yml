@@ -32,6 +32,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Cài ffmpeg (trích khung hình video cho bước AI viết Tiêu đề)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
       - name: Ghi credentials YouTube từ GitHub Secrets
         working-directory: automation/youtube-autopost
         run: |
