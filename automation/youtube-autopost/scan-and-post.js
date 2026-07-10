@@ -58,7 +58,7 @@ async function processOne(rec) {
       description = (description ? description + '\n\n' : '') + '#Shorts';
     }
     const cheDo = rec.sel(cfg.FIELDS.cheDo);
-    const privacyStatus = cfg.PRIVACY_MAP[cheDo] || 'private'; // an toàn: không chọn Chế độ -> Riêng tư, KHÔNG mặc định public
+    const privacyStatus = cfg.PRIVACY_MAP[cheDo] || 'public'; // không chọn Chế độ -> mặc định Công khai (theo yêu cầu)
     const playlistId = (rec.get(cfg.FIELDS.playlist) || '').trim() || null;
     const channelName = rec.sel(cfg.FIELDS.kenh) || '';
 
