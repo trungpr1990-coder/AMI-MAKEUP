@@ -66,8 +66,7 @@ module.exports = {
   // --- điều khiển chạy (khớp kiểu với hệ thống đăng Reel Facebook) ---
   // RECORD_ID: nút "Run workflow" bấm 1 dòng cụ thể → chỉ đăng đúng record đó, bỏ qua lịch.
   RECORD_ID: (process.env.RECORD_ID || '').trim(),
-  // SCHEDULE_MODE=true khi GitHub cron tự chạy; false khi bấm tay từ tab Actions.
-  SCHEDULE_MODE: process.env.SCHEDULE_MODE === 'true',
+  // "Ngày giờ đăng" luôn được tôn trọng dù chạy cron hay bấm tay — không có cách bypass hàng loạt.
   RESPECT_SCHEDULE: process.env.RESPECT_SCHEDULE !== 'false',
 
   // --- thư mục tạm tải video ---

@@ -64,9 +64,8 @@ jobs:
           YT_BASE_TOKEN: ${{ secrets.YT_BASE_TOKEN }}
           YT_TABLE_ID: ${{ secrets.YT_TABLE_ID }}
           RECORD_ID: ${{ inputs.record_id }}
-          SCHEDULE_MODE: ${{ github.event_name == 'schedule' }}
         run: |
           ARGS=""
           if [ "${{ inputs.dry_run }}" = "true" ]; then ARGS="--dry-run"; fi
-          echo "Chạy: node scan-and-post.js $ARGS  (SCHEDULE_MODE=$SCHEDULE_MODE)"
+          echo "Chạy: node scan-and-post.js $ARGS"
           node scan-and-post.js $ARGS

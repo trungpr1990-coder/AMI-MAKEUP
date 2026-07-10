@@ -101,8 +101,9 @@ async function main() {
     if (!cfg.RESPECT_SCHEDULE) return true;
     const t = parseLocal(r.get(cfg.FIELDS.ngayGio));
     if (t === null) return true; // rỗng = đăng ở lần quét tới
-    // Cron tự động: chỉ đăng khi ĐÃ tới giờ hẹn. Chạy tay (không phải cron): đăng ngay không cần chờ giờ.
-    return cfg.SCHEDULE_MODE ? t.getTime() <= now : true;
+    // Luôn tôn trọng "Ngày giờ đăng", dù chạy cron hay bấm tay "Run workflow" —
+    // chỉ RECORD_ID (chọn đúng 1 dòng) mới được phép bỏ qua lịch (đã xử lý ở nhánh trên).
+    return t.getTime() <= now;
   }).sort((a, b) => {
     const ta = parseLocal(a.get(cfg.FIELDS.ngayGio)); const tb = parseLocal(b.get(cfg.FIELDS.ngayGio));
     return (ta ? ta.getTime() : 0) - (tb ? tb.getTime() : 0);
