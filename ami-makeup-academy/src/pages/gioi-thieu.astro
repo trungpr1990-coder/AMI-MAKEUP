@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Giới Thiệu — AMI Makeup Academy" description="Tìm hiểu về AMI Makeup Academy và giảng viên Thuý Trần — 8+ năm kinh nghiệm makeup chuyên nghiệp tại Nam Định.">
+
+  <!-- Header -->
+  <div class="bg-ink py-20 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <span class="section-label justify-center flex">Về Chúng Tôi</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-semibold text-white">Giới Thiệu</h1>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <img src="/images/IMG_8117.JPG" alt="Thuý Trần - Giảng viên AMI" class="w-full h-[500px] object-cover" loading="eager" />
+          <div class="absolute -bottom-6 -right-6 bg-gold text-white p-6 hidden md:block">
+            <div class="font-serif text-4xl font-bold">8+</div>
+            <div class="text-white/80 text-xs tracking-widest uppercase mt-1">Năm Kinh Nghiệm</div>
+          </div>
+        </div>
+        <div>
+          <span class="section-label">Câu Chuyện AMI</span>
+          <h2 class="section-title mb-6">Từ Đam Mê Đến<br/><em class="text-gold not-italic">Học Viện</em></h2>
+          <div class="space-y-4 text-zinc-600 leading-relaxed">
+            <p>AMI Makeup Academy được thành lập bởi Thuý Trần — một makeup artist với hơn 8 năm kinh nghiệm, từng thực hiện hàng trăm bộ ảnh cô dâu và phục vụ hàng nghìn khách hàng tại Nam Định và các tỉnh lân cận.</p>
+            <p>Tên <strong class="text-ink">AMI</strong> trong tiếng Pháp có nghĩa là "người bạn" — bởi Thuý tin rằng makeup không chỉ là nghề, mà còn là cách giúp mỗi người tìm thấy vẻ đẹp tự tin nhất của bản thân.</p>
+            <p>Với triết lý "thực hành là nền tảng", AMI duy trì lớp học nhỏ (tối đa 6-8 học viên), đảm bảo mỗi học viên được quan tâm và hướng dẫn cá nhân hóa — điều mà các trung tâm lớn khó làm được.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instructor -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="section-label">Giảng Viên</span>
+        <h2 class="section-title">Thuý Trần</h2>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <div class="lg:col-span-1">
+          <img src="/images/IMG_9013.JPG" alt="Thuý Trần" class="w-full h-80 object-cover" loading="lazy" />
+        </div>
+        <div class="lg:col-span-2 flex flex-col justify-center">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-5 mb-10">
+            {[
+              ['8+', 'Năm Kinh Nghiệm'],
+              ['500+', 'Học Viên'],
+              ['1000+', 'Khách Makeup'],
+              ['50+', 'Cô Dâu/Năm'],
+            ].map(([num, label]) => (
+              <div class="text-center border border-zinc-100 p-5">
+                <div class="font-serif text-3xl font-bold text-gold">{num}</div>
+                <div class="text-zinc-400 text-xs tracking-widest uppercase mt-2">{label}</div>
+              </div>
+            ))}
+          </div>
+          <div class="space-y-3 text-zinc-600 text-sm leading-relaxed">
+            <p>✓ Makeup Artist chuyên nghiệp với 8+ năm kinh nghiệm</p>
+            <p>✓ Chuyên gia makeup cô dâu — hơn 50 cô dâu/năm</p>
+            <p>✓ Đào tạo hơn 500 học viên trên khắp cả nước</p>
+            <p>✓ Kinh nghiệm đào tạo tại Nam Định, Hà Nội, TP.HCM</p>
+            <p>✓ Tư duy đào tạo hiện đại: thực hành, cá nhân hóa, bền vững</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-24 bg-ink text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="section-label">Giá Trị Cốt Lõi</span>
+        <h2 class="font-serif text-4xl font-semibold">Chúng Tôi Tin Vào</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          ['Chất Lượng', 'Không chạy theo số lượng. Mỗi học viên là một đầu tư dài hạn — chúng tôi đảm bảo bạn ra trường với kỹ năng thật sự.'],
+          ['Cá Nhân Hóa', 'Mỗi người có đặc điểm khác nhau. AMI dạy bạn cách makeup phù hợp với khuôn mặt, tông da và phong cách của riêng bạn.'],
+          ['Cộng Đồng', 'Tốt nghiệp AMI không phải là kết thúc — bạn trở thành thành viên của cộng đồng AMI, được hỗ trợ dài hạn.'],
+        ].map(([title, desc]) => (
+          <div class="border border-zinc-700 p-8 hover:border-gold transition-colors">
+            <div class="w-8 h-[2px] bg-gold mb-6"></div>
+            <h3 class="font-serif text-2xl font-semibold mb-4">{title}</h3>
+            <p class="text-zinc-400 leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gold text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="font-serif text-3xl font-semibold text-white mb-4">Muốn Tham Gia AMI?</h2>
+      <p class="text-white/80 mb-8">Xem các khoá học hoặc liên hệ để được tư vấn trực tiếp.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/khoa-hoc" class="bg-white text-gold font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-cream transition-colors">Xem Khóa Học</a>
+        <a href="/lien-he" class="border-2 border-white text-white font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-white hover:text-gold transition-colors">Liên Hệ</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

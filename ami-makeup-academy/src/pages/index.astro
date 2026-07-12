@@ -1,0 +1,278 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { courses } from '../data/courses';
+
+const galleryImages = [
+  '/images/IMG_2922.JPG',
+  '/images/IMG_4846.jpeg',
+  '/images/IMG_4850.jpeg',
+  '/images/IMG_5284.jpeg',
+  '/images/IMG_8117.JPG',
+  '/images/IMG_8399.JPG',
+  '/images/IMG_8561.JPG',
+  '/images/IMG_9013.JPG',
+  '/images/IMG_9501.jpg',
+];
+
+const stats = [
+  { num: '500+', label: 'Học Viên Tốt Nghiệp' },
+  { num: '8+', label: 'Năm Kinh Nghiệm' },
+  { num: '98%', label: 'Hài Lòng Sau Khoá' },
+  { num: '50+', label: 'Học Viên Có Việc Làm' },
+];
+
+const services = [
+  { icon: '💍', title: 'Makeup Cô Dâu', desc: 'Trọn gói ngày cưới — từ thử đến ngày thật. Đẹp từ sáng đến tối.' },
+  { icon: '🎓', title: 'Makeup Kỷ Yếu', desc: 'Lưu giữ khoảnh khắc đẹp nhất thời học sinh — tự nhiên, tươi tắn.' },
+  { icon: '✨', title: 'Makeup Đi Tiệc', desc: 'Nổi bật trong mọi buổi tiệc — sang trọng và phù hợp không gian.' },
+  { icon: '📸', title: 'Makeup Chụp Ảnh', desc: 'Tối ưu cho ống kính — đẹp cả ngoài trời lẫn studio chuyên nghiệp.' },
+  { icon: '🌸', title: 'Makeup Cá Nhân', desc: 'Giúp bạn tự tin mỗi ngày với look phù hợp gương mặt và phong cách.' },
+  { icon: '🎉', title: 'Makeup Sự Kiện', desc: 'MC, người mẫu, diễn viên — makeup chuẩn ánh đèn sân khấu.' },
+];
+
+const testimonials = [
+  {
+    name: 'Nguyễn Thu Hương',
+    role: 'Makeup Artist',
+    text: 'Sau khoá học tại AMI, mình đã tự tin nhận show wedding. Cô Thuý dạy rất chi tiết, tận tâm. Học xong là có thể làm việc ngay!',
+    img: '/images/IMG_8117.JPG',
+  },
+  {
+    name: 'Trần Minh Châu',
+    role: 'Học viên khoá Pro 2025',
+    text: 'Môi trường học thân thiện, lớp nhỏ nên được chú ý nhiều. Kỹ thuật được dạy rất bài bản từ cơ bản đến nâng cao.',
+    img: '/images/IMG_9013.JPG',
+  },
+  {
+    name: 'Lê Phương Linh',
+    role: 'Freelance MUA',
+    text: 'Mình đã học qua nhiều nơi nhưng AMI là nơi mình học được nhiều nhất. Cô Thuý chia sẻ kinh nghiệm thực chiến rất quý giá.',
+    img: '/images/IMG_4846.jpeg',
+  },
+];
+---
+
+<BaseLayout>
+  <!-- ═══════════════════════ HERO ═══════════════════════ -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden bg-ink">
+    <!-- Background image collage -->
+    <div class="absolute inset-0 grid grid-cols-3 opacity-30">
+      <div class="overflow-hidden"><img src="/images/IMG_4846.jpeg" alt="" class="w-full h-full object-cover" loading="eager" /></div>
+      <div class="overflow-hidden"><img src="/images/IMG_8399.JPG" alt="" class="w-full h-full object-cover" loading="eager" /></div>
+      <div class="overflow-hidden"><img src="/images/IMG_9013.JPG" alt="" class="w-full h-full object-cover" loading="eager" /></div>
+    </div>
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 bg-gradient-to-r from-ink via-ink/90 to-ink/50"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-24">
+      <div class="max-w-2xl">
+        <span class="section-label animate-fade-up">Học Viện Makeup Chuyên Nghiệp</span>
+        <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl font-semibold text-white leading-tight mb-6 animate-fade-up animate-delay-1">
+          Biến Đam Mê<br />
+          <span class="text-gold italic">Thành Nghề Nghiệp</span>
+        </h1>
+        <p class="text-zinc-300 text-lg leading-relaxed mb-10 animate-fade-up animate-delay-2">
+          AMI Makeup Academy — nơi đào tạo makeup chuyên nghiệp uy tín tại Nam Định. Lớp nhỏ, học thực hành, có việc làm ngay sau khoá.
+        </p>
+        <div class="flex flex-wrap gap-4 animate-fade-up animate-delay-3">
+          <a href="/khoa-hoc" class="btn-gold">Xem Khóa Học</a>
+          <a href="/gallery" class="btn-outline">Xem Portfolio</a>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="mt-14 flex flex-wrap gap-6 animate-fade-up animate-delay-3">
+          {stats.map(s => (
+            <div class="text-center md:text-left">
+              <div class="font-serif text-3xl font-bold text-gold">{s.num}</div>
+              <div class="text-zinc-400 text-xs tracking-widest uppercase mt-1">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-500 text-xs tracking-widest uppercase">
+      <span>Cuộn xuống</span>
+      <div class="w-[1px] h-8 bg-gradient-to-b from-zinc-500 to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ SERVICES ═══════════════════════ -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <span class="section-label">Dịch Vụ</span>
+        <h2 class="section-title">Chúng Tôi Có Thể Làm Đẹp Cho Bạn</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s, i) => (
+          <a href="/dich-vu" class="group bg-white p-8 border border-zinc-100 hover:border-gold/40 card-hover">
+            <div class="text-3xl mb-5">{s.icon}</div>
+            <h3 class="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-gold transition-colors">{s.title}</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed">{s.desc}</p>
+            <div class="mt-5 text-gold text-xs font-semibold tracking-widest uppercase flex items-center gap-2">
+              Tìm hiểu thêm
+              <svg class="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ FEATURED COURSES ═══════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-4">
+        <div>
+          <span class="section-label">Khóa Học Nổi Bật</span>
+          <h2 class="section-title">Chương Trình Đào Tạo</h2>
+        </div>
+        <a href="/khoa-hoc" class="btn-outline self-start md:self-auto">Tất Cả Khóa Học</a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {courses.map(course => (
+          <a href={`/khoa-hoc/${course.slug}`} class="group block border border-zinc-100 overflow-hidden card-hover">
+            <!-- Thumbnail -->
+            <div class="relative h-56 overflow-hidden bg-zinc-100">
+              <img
+                src={course.hinh}
+                alt={course.ten}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {course.badge && (
+                <span class="absolute top-3 left-3 bg-gold text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">{course.badge}</span>
+              )}
+            </div>
+            <!-- Body -->
+            <div class="p-5">
+              <div class="text-[9px] text-zinc-400 font-semibold tracking-widest uppercase mb-2">{course.the}</div>
+              <h3 class="font-serif text-base font-semibold text-ink leading-snug mb-3 group-hover:text-gold transition-colors">{course.ten}</h3>
+              <p class="text-zinc-500 text-xs leading-relaxed mb-4 line-clamp-2">{course.mo_ta_ngan}</p>
+              <div class="flex items-center justify-between pt-3 border-t border-zinc-100">
+                <div>
+                  <span class="text-gold font-bold text-lg">{course.gia}</span>
+                  <span class="text-zinc-300 text-xs line-through ml-2">{course.gia_goc}</span>
+                </div>
+                <span class="text-ink text-xs font-semibold group-hover:text-gold transition-colors">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ WHY AMI ═══════════════════════ -->
+  <section class="py-24 bg-ink text-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="section-label">Tại Sao Chọn AMI</span>
+          <h2 class="font-serif text-4xl md:text-5xl font-semibold leading-tight mb-8">
+            Học Tại AMI —<br />
+            <span class="text-gold italic">Khác Biệt Từ Ngày Đầu</span>
+          </h2>
+          <div class="space-y-5">
+            {[
+              ['01', 'Lớp học nhỏ', 'Tối đa 6-8 học viên/lớp. Bạn được chú ý và hướng dẫn cá nhân hóa.'],
+              ['02', 'Giảng viên thực chiến', 'Thuý Trần — MUA với 8+ năm kinh nghiệm làm đẹp cho hàng ngàn khách.'],
+              ['03', '100% thực hành', 'Không học lý thuyết suông. Mỗi buổi học là thực hành trên người thật.'],
+              ['04', 'Hỗ trợ sau khoá', 'Tham gia cộng đồng AMI, được tư vấn và hỗ trợ việc làm sau khi tốt nghiệp.'],
+            ].map(([num, title, desc]) => (
+              <div class="flex gap-5 group">
+                <div class="font-serif text-gold text-2xl font-bold w-8 shrink-0 leading-none mt-1">{num}</div>
+                <div>
+                  <h4 class="font-semibold text-white mb-1 group-hover:text-gold transition-colors">{title}</h4>
+                  <p class="text-zinc-400 text-sm leading-relaxed">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div class="mt-10">
+            <a href="/gioi-thieu" class="btn-gold">Về AMI Academy</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <img src="/images/IMG_8561.JPG" alt="Học viên AMI" class="w-full h-64 object-cover" loading="lazy" />
+          <img src="/images/IMG_5284.jpeg" alt="Học viên AMI" class="w-full h-64 object-cover mt-6" loading="lazy" />
+          <img src="/images/IMG_9017.JPG" alt="Học viên AMI" class="w-full h-48 object-cover" loading="lazy" />
+          <img src="/images/IMG_2922.JPG" alt="Học viên AMI" class="w-full h-48 object-cover mt-6" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ GALLERY PREVIEW ═══════════════════════ -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label">Portfolio</span>
+        <h2 class="section-title">Tác Phẩm Của Học Viên</h2>
+        <p class="text-zinc-500 mt-4 max-w-xl mx-auto">Những tác phẩm này được thực hiện bởi chính học viên AMI sau khoá học. Đó là minh chứng tốt nhất cho chất lượng đào tạo.</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3">
+        {galleryImages.slice(0, 6).map((img, i) => (
+          <div class="group relative overflow-hidden bg-zinc-100 aspect-square">
+            <img src={img} alt={`Portfolio AMI ${i + 1}`} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            <div class="absolute inset-0 bg-ink/0 group-hover:bg-ink/30 transition-colors duration-300"></div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/gallery" class="btn-dark">Xem Toàn Bộ Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ TESTIMONIALS ═══════════════════════ -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="section-label">Học Viên Nói Gì</span>
+        <h2 class="section-title">Cảm Nhận Thực Tế</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {testimonials.map(t => (
+          <div class="bg-cream p-8 relative">
+            <div class="font-serif text-5xl text-gold/30 absolute top-4 right-6 leading-none">"</div>
+            <p class="text-zinc-600 text-sm leading-relaxed mb-6 relative z-10">"{t.text}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full overflow-hidden bg-zinc-200 shrink-0">
+                <img src={t.img} alt={t.name} class="w-full h-full object-cover" loading="lazy" />
+              </div>
+              <div>
+                <div class="font-semibold text-ink text-sm">{t.name}</div>
+                <div class="text-zinc-400 text-xs">{t.role}</div>
+              </div>
+              <div class="ml-auto flex text-gold text-sm">★★★★★</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ CTA BANNER ═══════════════════════ -->
+  <section class="py-20 bg-gold">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <h2 class="font-serif text-4xl md:text-5xl font-semibold text-white mb-4">
+        Bắt Đầu Hành Trình Của Bạn
+      </h2>
+      <p class="text-white/80 text-lg mb-8">
+        Liên hệ ngay để được tư vấn khoá học phù hợp — miễn phí, không áp lực.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="tel:0912345678" class="bg-white text-gold font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-cream transition-colors">
+          Gọi: 0912 345 678
+        </a>
+        <a href="/lien-he" class="border-2 border-white text-white font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-white hover:text-gold transition-colors">
+          Liên Hệ Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

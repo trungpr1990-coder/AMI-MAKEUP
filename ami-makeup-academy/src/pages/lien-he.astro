@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Liên Hệ — AMI Makeup Academy" description="Liên hệ AMI Makeup Academy để được tư vấn khóa học và dịch vụ makeup. Địa chỉ: 351 Lê Hồng Phong, TP. Nam Định.">
+
+  <!-- Header -->
+  <div class="bg-ink py-20 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <span class="section-label justify-center flex">Liên Hệ Chúng Tôi</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-semibold text-white">Liên Hệ</h1>
+      <p class="text-zinc-400 mt-4">Chúng tôi luôn sẵn sàng hỗ trợ bạn — 7 ngày trong tuần, 8:00 – 20:00.</p>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="bg-cream border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-6 py-3 text-xs text-zinc-400">
+      <a href="/" class="hover:text-gold transition-colors">Trang Chủ</a>
+      <span class="mx-2">/</span>
+      <span class="text-zinc-600">Liên Hệ</span>
+    </div>
+  </div>
+
+  <!-- Contact section -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+        <!-- Info -->
+        <div class="space-y-8">
+          <div>
+            <h2 class="font-serif text-3xl font-semibold text-ink mb-6">Thông Tin Liên Hệ</h2>
+            <div class="space-y-5">
+              {[
+                ['📍', 'Địa Chỉ', '351 Lê Hồng Phong, TP. Nam Định'],
+                ['📞', 'Điện Thoại', '0912 345 678'],
+                ['✉', 'Email', 'ami.makeup.academy@gmail.com'],
+                ['🕐', 'Giờ Làm Việc', 'Thứ 2 – Chủ Nhật: 8:00 – 20:00'],
+              ].map(([icon, label, value]) => (
+                <div class="flex gap-4">
+                  <span class="text-gold text-xl shrink-0 w-7">{icon}</span>
+                  <div>
+                    <div class="text-[10px] text-zinc-400 tracking-widest uppercase font-semibold mb-1">{label}</div>
+                    <div class="text-zinc-700">{value}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Social CTA -->
+          <div class="bg-white border border-zinc-100 p-7">
+            <h3 class="font-serif text-xl font-semibold text-ink mb-5">Liên Hệ Nhanh</h3>
+            <div class="space-y-3">
+              <a href="https://zalo.me/0123456789" target="_blank" class="flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 transition-colors group">
+                <div class="w-10 h-10 bg-[#0068FF] rounded-full flex items-center justify-center">
+                  <span class="text-white text-xs font-bold">Z</span>
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-ink">Chat Zalo</div>
+                  <div class="text-xs text-zinc-400">Phản hồi trong vòng 30 phút</div>
+                </div>
+                <svg class="w-4 h-4 text-zinc-300 ml-auto group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <a href="https://facebook.com/amimakeupacademy" target="_blank" class="flex items-center gap-4 p-4 bg-blue-50 hover:bg-blue-100 transition-colors group">
+                <div class="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center">
+                  <span class="text-white text-xs font-bold">f</span>
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-ink">Facebook Page</div>
+                  <div class="text-xs text-zinc-400">AMI Makeup Academy</div>
+                </div>
+                <svg class="w-4 h-4 text-zinc-300 ml-auto group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <a href="tel:0912345678" class="flex items-center gap-4 p-4 bg-zinc-50 hover:bg-zinc-100 transition-colors group">
+                <div class="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                  <span class="text-white text-lg">📞</span>
+                </div>
+                <div>
+                  <div class="font-semibold text-sm text-ink">Gọi Trực Tiếp</div>
+                  <div class="text-xs text-zinc-400">0912 345 678</div>
+                </div>
+                <svg class="w-4 h-4 text-zinc-300 ml-auto group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="space-y-6">
+          <h2 class="font-serif text-3xl font-semibold text-ink">Địa Chỉ Trên Bản Đồ</h2>
+          <div class="overflow-hidden border border-zinc-200 h-80">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3726.5!2d106.1667!3d20.4333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s351+L%C3%AA+H%E1%BB%93ng+Phong%2C+Nam+%C4%90%E1%BB%8Bnh!5e0!3m2!1svi!2svn!4v1"
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Bản đồ AMI Makeup Academy"
+            ></iframe>
+          </div>
+          <div class="bg-white border border-zinc-100 p-5">
+            <h3 class="font-semibold text-ink mb-3 text-sm">Hướng Dẫn Đến AMI</h3>
+            <p class="text-zinc-500 text-sm leading-relaxed">
+              AMI Makeup Academy tọa lạc tại 351 Lê Hồng Phong, trung tâm TP. Nam Định. Gần chợ Rồng, dễ tìm, có chỗ gửi xe thuận tiện.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

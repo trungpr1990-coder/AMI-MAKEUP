@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { courses } from '../data/courses';
+---
+
+<BaseLayout title="Khóa Học — AMI Makeup Academy" description="Các khóa học makeup chuyên nghiệp tại AMI Makeup Academy: Makeup cơ bản, nâng cao, makeup cô dâu, makeup cá nhân.">
+
+  <!-- Page Header -->
+  <div class="bg-ink py-20 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <span class="section-label justify-center flex">Chương Trình Đào Tạo</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-semibold text-white leading-tight">
+        Khóa Học
+      </h1>
+      <p class="text-zinc-400 mt-4 leading-relaxed">
+        Các khoá học được thiết kế bài bản, từ cơ bản đến chuyên sâu — phù hợp cho mọi cấp độ.
+      </p>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="bg-cream border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-6 py-3">
+      <nav class="text-xs text-zinc-400" aria-label="breadcrumb">
+        <a href="/" class="hover:text-gold transition-colors">Trang Chủ</a>
+        <span class="mx-2">/</span>
+        <span class="text-zinc-600">Khóa Học</span>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Courses Grid -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {courses.map(course => (
+          <a href={`/khoa-hoc/${course.slug}`} class="group flex flex-col md:flex-row bg-white border border-zinc-100 overflow-hidden card-hover">
+            <div class="relative w-full md:w-64 h-64 md:h-auto shrink-0 overflow-hidden bg-zinc-100">
+              <img
+                src={course.hinh}
+                alt={course.ten}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              {course.badge && (
+                <span class="absolute top-3 left-3 bg-gold text-white text-[9px] font-bold tracking-widest uppercase px-2.5 py-1">{course.badge}</span>
+              )}
+            </div>
+            <div class="p-7 flex flex-col justify-between flex-1">
+              <div>
+                <div class="text-[9px] text-gold font-semibold tracking-widest uppercase mb-2">{course.the}</div>
+                <h2 class="font-serif text-xl font-semibold text-ink mb-3 group-hover:text-gold transition-colors leading-snug">{course.ten}</h2>
+                <p class="text-zinc-500 text-sm leading-relaxed mb-5">{course.mo_ta_ngan}</p>
+                <div class="grid grid-cols-2 gap-2 text-xs mb-5">
+                  <div class="flex items-center gap-2 text-zinc-500">
+                    <span class="text-gold">⏱</span> {course.thoi_luong}
+                  </div>
+                  <div class="flex items-center gap-2 text-zinc-500">
+                    <span class="text-gold">📅</span> {course.buoi_hoc}
+                  </div>
+                  <div class="flex items-center gap-2 text-zinc-500">
+                    <span class="text-gold">👥</span> {course.so_hoc_vien}
+                  </div>
+                  <div class="flex items-center gap-2 text-zinc-500">
+                    <span class="text-gold">📍</span> {course.dia_diem}
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-between pt-4 border-t border-zinc-100">
+                <div>
+                  <span class="text-gold font-bold text-xl">{course.gia}</span>
+                  <span class="text-zinc-300 text-xs line-through ml-2">{course.gia_goc}</span>
+                </div>
+                <span class="btn-dark text-xs py-2.5 px-5">Chi Tiết →</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Mini -->
+  <section class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-12">
+        <span class="section-label">Câu Hỏi Thường Gặp</span>
+        <h2 class="section-title">Bạn Đang Thắc Mắc?</h2>
+      </div>
+      <div class="space-y-4" id="faq">
+        {[
+          ['Tôi không có kinh nghiệm có học được không?', 'Hoàn toàn được! Khoá Make Up Pro 2026 được thiết kế cho người mới bắt đầu từ con số 0.'],
+          ['Lớp học có bao nhiêu người?', 'AMI giới hạn tối đa 6-8 học viên/lớp để đảm bảo mỗi học viên được hướng dẫn cá nhân hóa.'],
+          ['Học xong có chứng chỉ không?', 'Có. Mỗi khoá học đều cấp chứng chỉ hoàn thành do AMI Makeup Academy cấp phát.'],
+          ['Học phí có được trả góp không?', 'Có hỗ trợ trả góp 2-3 lần. Liên hệ AMI để được tư vấn phương án phù hợp.'],
+        ].map(([q, a]) => (
+          <details class="border border-zinc-200 group">
+            <summary class="flex justify-between items-center p-5 cursor-pointer list-none font-medium text-ink hover:text-gold transition-colors">
+              {q}
+              <svg class="w-4 h-4 shrink-0 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <div class="px-5 pb-5 text-zinc-500 text-sm leading-relaxed">{a}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-gold text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="font-serif text-3xl font-semibold text-white mb-4">Chưa Biết Chọn Khoá Nào?</h2>
+      <p class="text-white/80 mb-8">Liên hệ AMI để được tư vấn khoá học phù hợp với mục tiêu của bạn — hoàn toàn miễn phí.</p>
+      <a href="/lien-he" class="bg-white text-gold font-semibold text-sm tracking-widest uppercase px-8 py-4 hover:bg-cream transition-colors inline-block">Tư Vấn Miễn Phí</a>
+    </div>
+  </section>
+</BaseLayout>

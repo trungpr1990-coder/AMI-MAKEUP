@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Máy Tính Chiến Lược Phễu Sản Phẩm — Về đích doanh số</title>
+<meta name="description" content="Thiết kế thang giá trị 4 tầng (đầu phễu · dẫn · dòng tiền · hi-end), nhiều phễu, nhập lead + tỷ lệ chuyển đổi → ra doanh thu, lợi nhuận và số lead cần để đạt mục tiêu.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Máy Tính Chiến Lược Phễu Sản Phẩm">
+<meta property="og:description" content="Nhập mục tiêu + lead + tỷ lệ chuyển đổi → ra kết quả cần đạt theo từng tầng sản phẩm.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Ctext y=%22.9em%22 font-size=%2290%22%3E%F0%9F%AA%9C%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --paper:#F4EFE6; --surface:#FBF8F2; --surface-2:#F0E9DB; --surface-3:#EBE3D3;
+    --ink:#211E18; --muted:#6F6857; --faint:#938B78; --line:#E2DACB; --line-strong:#D3C9B4;
+    --accent:#9A6B12; --accent-soft:#EFE3C6;
+    --scale:#15703F; --scale-bg:#E5F0E7; --scale-line:#BEDDC6;
+    --stop:#A32B22; --stop-bg:#F7E6E2;
+    --warn:#8A6A12; --warn-bg:#F6EED6; --warn-line:#E4D6a8;
+    /* tier accents */
+    --t-front:#2E7D9A; --t-lead:#7A5AA8; --t-cash:#1F7A4D; --t-hiend:#A8791C;
+    --shadow:0 1px 2px rgba(33,30,24,.05), 0 8px 28px -14px rgba(33,30,24,.22);
+    --radius:14px;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,"Helvetica Neue",Arial,sans-serif;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --paper:#16150F; --surface:#211F17; --surface-2:#1A190F; --surface-3:#26241a;
+      --ink:#F0EBDE; --muted:#A39A85; --faint:#7E7663; --line:#332F24; --line-strong:#413B2C;
+      --accent:#D4A03A; --accent-soft:#2E260F;
+      --scale:#4FCB86; --scale-bg:#12271C; --scale-line:#234a34;
+      --stop:#F0705E; --stop-bg:#2B1512;
+      --warn:#E0B14A; --warn-bg:#241D0F; --warn-line:#4a3c1c;
+      --t-front:#5FB4D1; --t-lead:#B79AE0; --t-cash:#4FCB86; --t-hiend:#D4A03A;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 32px -14px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#16150F; --surface:#211F17; --surface-2:#1A190F; --surface-3:#26241a;
+    --ink:#F0EBDE; --muted:#A39A85; --faint:#7E7663; --line:#332F24; --line-strong:#413B2C;
+    --accent:#D4A03A; --accent-soft:#2E260F;
+    --scale:#4FCB86; --scale-bg:#12271C; --scale-line:#234a34;
+    --stop:#F0705E; --stop-bg:#2B1512;
+    --warn:#E0B14A; --warn-bg:#241D0F; --warn-line:#4a3c1c;
+    --t-front:#5FB4D1; --t-lead:#B79AE0; --t-cash:#4FCB86; --t-hiend:#D4A03A;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 32px -14px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --paper:#F4EFE6; --surface:#FBF8F2; --surface-2:#F0E9DB; --surface-3:#EBE3D3;
+    --ink:#211E18; --muted:#6F6857; --faint:#938B78; --line:#E2DACB; --line-strong:#D3C9B4;
+    --accent:#9A6B12; --accent-soft:#EFE3C6;
+    --scale:#15703F; --scale-bg:#E5F0E7; --scale-line:#BEDDC6;
+    --stop:#A32B22; --stop-bg:#F7E6E2;
+    --warn:#8A6A12; --warn-bg:#F6EED6; --warn-line:#E4D6a8;
+    --t-front:#2E7D9A; --t-lead:#7A5AA8; --t-cash:#1F7A4D; --t-hiend:#A8791C;
+    --shadow:0 1px 2px rgba(33,30,24,.05), 0 8px 28px -14px rgba(33,30,24,.22);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:var(--sans); background:var(--paper); color:var(--ink);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{padding:clamp(16px,3.5vw,40px) clamp(12px,3.5vw,30px)}
+  .shell{max-width:1180px;margin:0 auto}
+
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);margin:0 0 9px;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--accent);border-radius:2px}
+  h1{font-size:clamp(25px,4.4vw,40px);line-height:1.05;font-weight:800;letter-spacing:-.02em;margin:0 0 9px;text-wrap:balance}
+  .lede{color:var(--muted);max-width:66ch;margin:0 0 22px;font-size:clamp(13.5px,1.6vw,15px)}
+  .lede b{color:var(--ink);font-weight:600}
+
+  /* ===== control bar ===== */
+  .controls{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 18px;box-shadow:var(--shadow);margin-bottom:16px}
+  .ctl{display:flex;flex-direction:column;gap:6px}
+  .ctl > span{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--faint)}
+  .money,.numwrap{position:relative;display:flex;align-items:center}
+  .money .unit{position:absolute;right:12px;font-family:var(--mono);color:var(--faint);font-size:12.5px;pointer-events:none}
+  input.inp{font-family:var(--mono);font-weight:600;color:var(--ink);background:var(--surface-2);
+    border:1.5px solid var(--line-strong);border-radius:9px;font-variant-numeric:tabular-nums;
+    transition:border-color .15s,box-shadow .15s}
+  input.inp:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  #goal{font-size:18px;padding:10px 40px 10px 12px;width:210px}
+  .seg{display:inline-flex;background:var(--surface-2);border:1.5px solid var(--line-strong);border-radius:9px;padding:3px;gap:3px}
+  .seg button{border:none;background:transparent;color:var(--muted);font-family:var(--sans);font-size:12.5px;font-weight:600;
+    padding:7px 12px;border-radius:6px;cursor:pointer;white-space:nowrap;transition:all .15s}
+  .seg button[aria-pressed="true"]{background:var(--accent);color:var(--surface)}
+  :root[data-theme="dark"] .seg button[aria-pressed="true"]{color:#16150F}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .seg button[aria-pressed="true"]{color:#16150F}}
+  .seg button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+  .mode-hint{font-size:11.5px;color:var(--faint);flex-basis:100%;margin-top:-4px;font-style:italic}
+
+  /* ===== summary ===== */
+  .summary{position:sticky;top:0;z-index:20;background:var(--surface);border:1.5px solid var(--accent);
+    border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow);margin-bottom:20px}
+  .sum-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+  @media (max-width:720px){.sum-grid{grid-template-columns:repeat(2,1fr)}}
+  .sum-cell{background:var(--surface);padding:11px 13px}
+  .sum-cell .k{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .sum-cell .v{font-family:var(--mono);font-size:clamp(16px,2.6vw,21px);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+  .v.pos{color:var(--scale)} .v.neg{color:var(--stop)}
+  .goalbar-wrap{margin-top:14px}
+  .goalbar-head{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px;color:var(--muted);flex-wrap:wrap;gap:4px}
+  .goalbar-head b{font-family:var(--mono);color:var(--ink)}
+  .goalbar{height:14px;border-radius:8px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden;position:relative}
+  .goalbar-fill{height:100%;border-radius:8px 0 0 8px;background:var(--scale);transition:width .35s ease,background .35s;min-width:0}
+  .reverse{margin-top:13px;padding:12px 14px;border-radius:10px;background:var(--accent-soft);border:1px solid var(--line-strong);
+    font-size:13px;line-height:1.55;color:var(--ink)}
+  .reverse b{font-family:var(--mono);color:var(--accent);font-weight:800}
+  .reverse.bad{background:var(--stop-bg);border-color:var(--stop)}
+
+  /* ===== funnels ===== */
+  .funnels{display:flex;flex-direction:column;gap:18px}
+  .funnel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  .funnel-head{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end;padding:15px 17px;background:var(--surface-3);border-bottom:1px solid var(--line)}
+  .funnel-head .fname{flex:1;min-width:180px}
+  .funnel-head label{display:block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--faint);margin-bottom:5px}
+  .funnel-head input.inp{padding:9px 11px}
+  .funnel-head input[data-f="name"]{font-family:var(--sans);font-size:16px;font-weight:700;width:100%}
+  .funnel-head .fnum{width:130px}
+  .funnel-head .money input.inp{padding-right:34px;width:100%}
+  .btn-del-funnel{margin-left:auto;align-self:center;background:transparent;border:1px solid var(--line-strong);color:var(--muted);
+    border-radius:8px;padding:7px 11px;font-size:12px;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+  .btn-del-funnel:hover{border-color:var(--stop);color:var(--stop)}
+
+  .tier{border-bottom:1px solid var(--line);padding:13px 17px}
+  .tier:last-of-type{border-bottom:none}
+  .tier-head{display:flex;align-items:baseline;gap:9px;margin-bottom:10px;flex-wrap:wrap}
+  .tier-chip{font-size:11px;font-weight:800;letter-spacing:.03em;padding:3px 9px;border-radius:6px;color:#fff;white-space:nowrap}
+  .tier-front .tier-chip{background:var(--t-front)} .tier-lead .tier-chip{background:var(--t-lead)}
+  .tier-cash .tier-chip{background:var(--t-cash)} .tier-hiend .tier-chip{background:var(--t-hiend)}
+  .tier-hint{font-size:12px;color:var(--faint)}
+  .tier-sub{margin-left:auto;font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .tier-sub b{color:var(--ink)}
+
+  .prod{display:flex;flex-wrap:wrap;gap:8px 10px;align-items:flex-end;padding:9px 0;border-top:1px dashed var(--line)}
+  .prod:first-child{border-top:none}
+  .fld{display:flex;flex-direction:column;gap:3px}
+  .fld > label{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--faint)}
+  .fld input.inp{padding:8px 10px;font-size:13.5px}
+  .fld.f-name{flex:1;min-width:150px} .fld.f-name input{width:100%;font-family:var(--sans);font-weight:600}
+  .fld.f-price{width:130px} .fld.f-price .money input{padding-right:30px;width:100%}
+  .fld.f-cr{width:82px} .fld.f-margin{width:82px} .fld.f-cr input,.fld.f-margin input{width:100%}
+  .p-res{flex:1;min-width:130px;font-family:var(--mono);font-size:12px;color:var(--muted);align-self:center;
+    padding-bottom:2px;font-variant-numeric:tabular-nums;line-height:1.4}
+  .p-res b{color:var(--ink);font-weight:700}
+  .btn-del-prod{align-self:center;background:transparent;border:none;color:var(--faint);font-size:20px;line-height:1;
+    cursor:pointer;padding:2px 6px;border-radius:6px}
+  .btn-del-prod:hover{color:var(--stop);background:var(--stop-bg)}
+  .btn-add-prod{margin-top:9px;background:transparent;border:1px dashed var(--line-strong);color:var(--muted);
+    border-radius:8px;padding:7px 12px;font-size:12.5px;cursor:pointer;font-family:var(--sans)}
+  .btn-add-prod:hover{border-color:var(--accent);color:var(--accent)}
+
+  .funnel-foot{display:flex;flex-wrap:wrap;gap:14px 26px;padding:13px 17px;background:var(--surface-2);border-top:1px solid var(--line)}
+  .foot-cell{display:flex;flex-direction:column;gap:2px}
+  .foot-cell .k{font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--faint)}
+  .foot-cell .v{font-family:var(--mono);font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+
+  .add-funnel{margin-top:18px;width:100%;background:var(--surface);border:1.5px dashed var(--line-strong);color:var(--muted);
+    border-radius:var(--radius);padding:15px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+  .add-funnel:hover{border-color:var(--accent);color:var(--accent)}
+
+  input:focus-visible{outline:none}
+  button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  footer{margin-top:30px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:12px;line-height:1.6;max-width:78ch}
+  footer b{color:var(--muted)} footer a{color:var(--accent)}
+  .note{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:10px;padding:11px 14px;font-size:12.5px;color:var(--ink);margin-bottom:18px;line-height:1.5}
+  .note b{color:var(--warn)}
+
+  /* ---- action bar (Xuất PDF / MD) ---- */
+  .actionbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+  .ab-btn{font-family:var(--sans);font-size:13.5px;font-weight:700;cursor:pointer;background:var(--surface);color:var(--ink);
+    border:1.5px solid var(--line-strong);border-radius:10px;padding:9px 15px;box-shadow:var(--shadow);transition:border-color .15s,color .15s}
+  .ab-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .ab-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .ab-hint{font-size:11.5px;color:var(--faint)}
+
+  /* ---- print ---- */
+  @media print{
+    html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    html,body,.wrap{background:#fff!important;color:#000!important}
+    .wrap{padding:0!important}
+    .actionbar,.ab-hint,.btn-del-funnel,.btn-add-prod,.btn-del-prod,.add-funnel,.mode-hint{display:none!important}
+    .controls,.summary,.funnel,.funnel-head,.tier,.funnel-foot{background:#fff!important;box-shadow:none!important;border-color:#ccc!important}
+    .summary{position:static!important;border-color:#999!important}
+    input.inp{background:#fff!important;border:1px solid #ccc!important;color:#000!important}
+    .sum-cell .v,.foot-cell .v,.tier-sub b,.p-res b{color:#000!important}
+    .v.pos{color:#15703F!important} .v.neg{color:#A32B22!important}
+    .funnel,.tier{break-inside:avoid}
+    a[href]{color:#000!important;text-decoration:none!important}
+  }
+  @page{margin:1.3cm}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="shell">
+  <p class="eyebrow">Bộ Não thứ 2 · Công cụ ra tiền</p>
+  <h1>Máy Tính Chiến Lược Phễu Sản Phẩm</h1>
+  <p class="lede">Xếp sản phẩm vào <b>thang giá trị 4 tầng</b> (Đầu phễu → Dẫn → Dòng tiền → Hi-end), nhập lead + tỷ lệ chuyển đổi + giá → ra <b>doanh thu & lợi nhuận từng tầng</b>, tổng hợp mọi phễu, và <b>số lead cần</b> để chạm mục tiêu. Dùng 1 phễu = 1 thang; thêm phễu = nhiều phễu độc lập.</p>
+
+  <div class="note">⚠️ Số đang hiển thị là <b>ví dụ mẫu</b> để Sếp thấy cách chạy — sửa thẳng theo sản phẩm & số thật của mình. Thêm/bớt sản phẩm, thêm/bớt phễu tuỳ ý.</div>
+
+  <div class="actionbar">
+    <button type="button" id="btn-pdf" class="ab-btn">📄 Xuất PDF</button>
+    <button type="button" id="btn-md" class="ab-btn">⬇️ Xuất Markdown</button>
+    <button type="button" id="btn-reset" class="ab-btn">↺ Đặt lại mẫu</button>
+    <span class="ab-hint">Xuất toàn bộ phễu theo số đang hiển thị: PDF để in/lưu, Markdown (.md) để lưu vào vault. Số bạn nhập được tự lưu trên trình duyệt này, không mất khi tải lại trang.</span>
+  </div>
+
+  <!-- control bar -->
+  <div class="controls">
+    <div class="ctl">
+      <span>🎯 Mục tiêu / tháng</span>
+      <div class="money"><input class="inp m-in" id="goal" type="text" inputmode="numeric" value="1.000.000.000"><span class="unit">đ</span></div>
+    </div>
+    <div class="ctl">
+      <span>Mục tiêu tính theo</span>
+      <div class="seg" id="seg-metric" role="group" aria-label="Mục tiêu tính theo">
+        <button data-metric="revenue" aria-pressed="true">Doanh thu</button>
+        <button data-metric="profit" aria-pressed="false">Lợi nhuận</button>
+      </div>
+    </div>
+    <div class="ctl">
+      <span>Mô hình chuyển đổi</span>
+      <div class="seg" id="seg-mode" role="group" aria-label="Mô hình chuyển đổi">
+        <button data-mode="parallel" aria-pressed="true">Song song</button>
+        <button data-mode="sequential" aria-pressed="false">Tuần tự (upsell)</button>
+      </div>
+    </div>
+    <p class="mode-hint" id="mode-hint"></p>
+  </div>
+
+  <!-- summary -->
+  <div class="summary">
+    <div class="sum-grid">
+      <div class="sum-cell"><div class="k">Tổng doanh thu</div><div class="v" id="s-rev">—</div></div>
+      <div class="sum-cell"><div class="k">Tổng lợi nhuận ròng</div><div class="v" id="s-net">—</div></div>
+      <div class="sum-cell"><div class="k">Tổng chi phí ads</div><div class="v" id="s-ad">—</div></div>
+      <div class="sum-cell"><div class="k">Tổng lead đang nhập</div><div class="v" id="s-leads">—</div></div>
+    </div>
+    <div class="goalbar-wrap">
+      <div class="goalbar-head"><span id="goal-label">Tiến độ doanh thu so mục tiêu</span><span><b id="goal-pct">0%</b></span></div>
+      <div class="goalbar" role="progressbar" aria-label="Tiến độ mục tiêu"><div class="goalbar-fill" id="goal-fill" style="width:0%"></div></div>
+    </div>
+    <div class="reverse" id="reverse">—</div>
+  </div>
+
+  <div class="funnels" id="funnels"></div>
+  <button class="add-funnel" id="add-funnel">+ Thêm phễu mới</button>
+
+  <footer>
+    <b>Nguồn tư duy:</b> thang giá trị / value ladder — chị Nhung Lê ("Thay vì 1 sản phẩm ra 1 triệu đô, tạo ra 50 funnel nhỏ"). ·
+    <b>Công cụ anh em:</b> <a href="https://may-tinh-ngan-sach-qc.pages.dev">Máy tính Ngân sách QC — SCALE hay DỪNG</a> (tính cho 1 sản phẩm). ·
+    Đây là công cụ lập kế hoạch, không hứa kết quả — số thật lấy từ trình quản lý quảng cáo. ·
+    Dữ liệu tự lưu trên trình duyệt này (localStorage), không gửi đi đâu cả.
+  </footer>
+</div></div>
+
+<script>
+(function(){
+  var fmt = new Intl.NumberFormat('vi-VN');
+  var digits = function(s){ return (s==null?'':(''+s)).replace(/[^\d]/g,''); };
+  var groupDots = function(s){ return s.replace(/\B(?=(\d{3})+(?!\d))/g,'.'); };
+  var money = function(n){ return fmt.format(Math.round(n))+'đ'; };
+  var moneyShort = function(n){
+    n=Math.round(n);
+    if(Math.abs(n)>=1e9) return (n/1e9).toLocaleString('vi-VN',{maximumFractionDigits:2})+' tỷ';
+    if(Math.abs(n)>=1e6) return (n/1e6).toLocaleString('vi-VN',{maximumFractionDigits:1})+' tr';
+    return fmt.format(n)+'đ';
+  };
+  var num1 = function(n){ return n.toLocaleString('vi-VN',{minimumFractionDigits:0,maximumFractionDigits:1}); };
+  var pf = function(s){ return parseFloat((s==null?'':(''+s)).replace(',','.'))||0; };
+  var mval = function(el){ return Number(digits(el.value))||0; };
+
+  var TIERS = [
+    {key:'front', cls:'tier-front', label:'ĐẦU PHỄU',        hint:'Rẻ — hút & lọc khách'},
+    {key:'lead',  cls:'tier-lead',  label:'SẢN PHẨM DẪN',    hint:'Dẫn dắt, tạo niềm tin'},
+    {key:'cash',  cls:'tier-cash',  label:'SẢN PHẨM DÒNG TIỀN', hint:'Chủ lực, nuôi dòng tiền'},
+    {key:'hiend', cls:'tier-hiend', label:'HI-END',          hint:'Cao cấp, lãi lớn'}
+  ];
+
+  var MODE_HINTS = {
+    parallel:'Song song: % chuyển đổi của mỗi sản phẩm tính trên TỔNG LEAD của phễu. Hợp khi nhiều sản phẩm cùng chào tới tệp lead.',
+    sequential:'Tuần tự: % tầng sau tính trên số khách ĐÃ MUA tầng trước (bậc thang upsell). Hợp khi mỗi tầng ~1 sản phẩm dẫn khách lên cao dần.'
+  };
+
+  var state = { mode:'parallel', metric:'revenue' };
+  var STORAGE_KEY = 'bnt-pheu-v2-state';
+
+  // ---------- seed data (ví dụ mẫu) ----------
+  var SEED = [{
+    name:'Phễu mẫu — Sếp sửa lại', leads:'5.000', cpl:'60.000',
+    tiers:{
+      front:[{n:'SP mồi 200k (ebook/mini course)', p:'200.000', cr:'8', m:'40'}],
+      lead:[{n:'SP dẫn 2tr (khoá nền tảng)', p:'2.000.000', cr:'2', m:'50'}],
+      cash:[{n:'SP dòng tiền 10tr (khoá chính)', p:'10.000.000', cr:'0,6', m:'55'}],
+      hiend:[{n:'SP hi-end 50tr (coaching 1-1)', p:'50.000.000', cr:'0,15', m:'60'}]
+    }
+  }];
+
+  var funnelsEl = document.getElementById('funnels');
+
+  // ---------- persistence (localStorage) ----------
+  function serializeFunnels(){
+    var out=[];
+    funnelsEl.querySelectorAll('.funnel').forEach(function(fEl){
+      var f={
+        name: fEl.querySelector('[data-f="name"]').value,
+        leads: fEl.querySelector('[data-f="leads"]').value,
+        cpl: fEl.querySelector('[data-f="cpl"]').value,
+        tiers:{}
+      };
+      TIERS.forEach(function(t){
+        var tEl = fEl.querySelector('.tier[data-tier="'+t.key+'"]');
+        f.tiers[t.key] = Array.prototype.map.call(tEl.querySelectorAll('.prod'), function(pEl){
+          return {
+            n: pEl.querySelector('[data-p="name"]').value,
+            p: pEl.querySelector('[data-p="price"]').value,
+            cr: pEl.querySelector('[data-p="cr"]').value,
+            m: pEl.querySelector('[data-p="margin"]').value
+          };
+        });
+      });
+      out.push(f);
+    });
+    return out;
+  }
+  function saveState(){
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        goal: document.getElementById('goal').value,
+        mode: state.mode,
+        metric: state.metric,
+        funnels: serializeFunnels()
+      }));
+    }catch(e){}
+  }
+  function loadState(){
+    try{
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return null;
+      var s = JSON.parse(raw);
+      if(!s || !s.funnels || !s.funnels.length) return null;
+      return s;
+    }catch(e){ return null; }
+  }
+
+  function esc(s){ return (s==null?'':(''+s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function prodHTML(p){
+    p=p||{n:'',p:'',cr:'',m:''};
+    return '<div class="prod">'
+      + '<div class="fld f-name"><label>Tên sản phẩm</label><input class="inp" data-p="name" type="text" value="'+esc(p.n)+'" placeholder="Tên SP"></div>'
+      + '<div class="fld f-price"><label>Giá bán</label><div class="money"><input class="inp m-in" data-p="price" type="text" inputmode="numeric" value="'+esc(p.p)+'"><span class="unit">đ</span></div></div>'
+      + '<div class="fld f-cr"><label>CR %</label><input class="inp" data-p="cr" type="text" inputmode="decimal" value="'+esc(p.cr)+'"></div>'
+      + '<div class="fld f-margin"><label>Biên LN %</label><input class="inp" data-p="margin" type="text" inputmode="decimal" value="'+esc(p.m)+'"></div>'
+      + '<div class="p-res"></div>'
+      + '<button class="btn-del-prod" data-act="del-prod" title="Xoá sản phẩm" aria-label="Xoá sản phẩm">×</button>'
+      + '</div>';
+  }
+
+  function tierHTML(t, prods){
+    var rows = (prods&&prods.length?prods:[null]).map(prodHTML).join('');
+    return '<div class="tier '+t.cls+'" data-tier="'+t.key+'">'
+      + '<div class="tier-head"><span class="tier-chip">'+t.label+'</span><span class="tier-hint">'+t.hint+'</span>'
+      + '<span class="tier-sub"></span></div>'
+      + '<div class="prods">'+rows+'</div>'
+      + '<button class="btn-add-prod" data-act="add-prod">+ Thêm sản phẩm vào tầng này</button>'
+      + '</div>';
+  }
+
+  function funnelHTML(f){
+    f=f||{name:'Phễu mới',leads:'',cpl:'',tiers:{}};
+    var tiers = TIERS.map(function(t){ return tierHTML(t, (f.tiers||{})[t.key]); }).join('');
+    return '<section class="funnel">'
+      + '<div class="funnel-head">'
+      + '<div class="fname"><label>Tên phễu / sản phẩm chủ lực</label><input class="inp" data-f="name" type="text" value="'+esc(f.name)+'"></div>'
+      + '<div class="fnum"><label>Lead vào / tháng</label><input class="inp m-in" data-f="leads" type="text" inputmode="numeric" value="'+esc(f.leads)+'"></div>'
+      + '<div class="fnum"><label>CPL (chi phí/lead)</label><div class="money"><input class="inp m-in" data-f="cpl" type="text" inputmode="numeric" value="'+esc(f.cpl)+'"><span class="unit">đ</span></div></div>'
+      + '<button class="btn-del-funnel" data-act="del-funnel">Xoá phễu</button>'
+      + '</div>'
+      + tiers
+      + '<div class="funnel-foot">'
+      + '<div class="foot-cell"><span class="k">Doanh thu phễu</span><span class="v f-rev">—</span></div>'
+      + '<div class="foot-cell"><span class="k">Lãi gộp</span><span class="v f-gross">—</span></div>'
+      + '<div class="foot-cell"><span class="k">Chi phí ads</span><span class="v f-ad">—</span></div>'
+      + '<div class="foot-cell"><span class="k">Lãi ròng phễu</span><span class="v f-net">—</span></div>'
+      + '</div>'
+      + '</section>';
+  }
+
+  // ---------- compute ----------
+  function compute(){
+    var goal = mval(document.getElementById('goal'));
+    var mode = state.mode;
+    var totRev=0, totGross=0, totAd=0, totLeads=0;
+
+    funnelsEl.querySelectorAll('.funnel').forEach(function(fEl){
+      var leads = mval(fEl.querySelector('[data-f="leads"]'));
+      var cpl   = mval(fEl.querySelector('[data-f="cpl"]'));
+      var base  = leads;
+      var fRev=0, fGross=0;
+
+      fEl.querySelectorAll('.tier').forEach(function(tEl){
+        var tRev=0, tGross=0, tCust=0, hasProd=false;
+        tEl.querySelectorAll('.prod').forEach(function(pEl){
+          hasProd=true;
+          var price = mval(pEl.querySelector('[data-p="price"]'));
+          var cr    = pf(pEl.querySelector('[data-p="cr"]').value)/100;
+          var mg    = pf(pEl.querySelector('[data-p="margin"]').value)/100;
+          var cust  = base*cr;
+          var rev   = cust*price;
+          var gross = rev*mg;
+          tRev+=rev; tGross+=gross; tCust+=cust;
+          pEl.querySelector('.p-res').innerHTML = '<b>'+num1(cust)+'</b> khách · <b>'+moneyShort(rev)+'</b>'+(price>0&&mg>0?' · lãi '+moneyShort(gross):'');
+        });
+        tEl.querySelector('.tier-sub').innerHTML = hasProd
+          ? '<b>'+num1(tCust)+'</b> khách · DT <b>'+moneyShort(tRev)+'</b>'
+          : '';
+        fRev+=tRev; fGross+=tGross;
+        // next base for sequential
+        if(mode==='sequential' && hasProd){ base = Math.min(tCust, base); }
+      });
+
+      var fAd  = leads*cpl;
+      var fNet = fGross - fAd;
+      fEl.querySelector('.f-rev').textContent   = money(fRev);
+      fEl.querySelector('.f-gross').textContent = money(fGross);
+      fEl.querySelector('.f-ad').textContent    = money(fAd);
+      var netEl = fEl.querySelector('.f-net');
+      netEl.textContent = money(fNet);
+      netEl.className = 'v f-net '+(fNet>=0?'pos':'neg');
+
+      totRev+=fRev; totGross+=fGross; totAd+=fAd; totLeads+=leads;
+    });
+
+    var totNet = totGross - totAd;
+
+    // summary cells
+    document.getElementById('s-rev').textContent  = money(totRev);
+    var sNet=document.getElementById('s-net');
+    sNet.textContent = money(totNet); sNet.className='v '+(totNet>=0?'pos':'neg');
+    document.getElementById('s-ad').textContent   = money(totAd);
+    document.getElementById('s-leads').textContent= fmt.format(Math.round(totLeads));
+
+    // goal progress (theo metric đang chọn)
+    var cur = state.metric==='revenue' ? totRev : totNet;
+    var pct = goal>0 ? cur/goal*100 : 0;
+    document.getElementById('goal-label').textContent =
+      'Tiến độ '+(state.metric==='revenue'?'doanh thu':'lợi nhuận')+' so mục tiêu ('+moneyShort(goal)+')';
+    document.getElementById('goal-pct').textContent = num1(Math.max(pct,0))+'%';
+    var fill=document.getElementById('goal-fill');
+    fill.style.width = Math.max(0,Math.min(pct,100))+'%';
+    fill.style.background = pct>=100?'var(--scale)':(pct>=50?'var(--warn)':'var(--stop)');
+
+    // reverse: cần bao nhiêu lead để đạt mục tiêu
+    var rev=document.getElementById('reverse');
+    rev.classList.remove('bad');
+    var metricName = state.metric==='revenue'?'doanh thu':'lợi nhuận';
+    if(cur>0 && goal>0){
+      var k = goal/cur;
+      var leadsNeed = totLeads*k;
+      if(k<=1){
+        rev.innerHTML='✅ Với cơ cấu hiện tại, Sếp <b>đã vượt</b> mục tiêu '+metricName+'. '
+          +'Chỉ cần <b>'+fmt.format(Math.round(totLeads*k))+' lead</b> là đủ chạm '+moneyShort(goal)+' (đang nhập '+fmt.format(Math.round(totLeads))+').';
+      } else {
+        rev.innerHTML='👉 Để đạt <b>'+moneyShort(goal)+'</b> '+metricName+' cần <b>×'+k.toLocaleString('vi-VN',{maximumFractionDigits:2})+'</b> quy mô hiện tại → '
+          +'tổng <b>'+fmt.format(Math.round(leadsNeed))+' lead</b>/tháng '
+          +'(đang '+fmt.format(Math.round(totLeads))+', cần thêm '+fmt.format(Math.round(leadsNeed-totLeads))+'). '
+          +(totAd>0?'Ngân sách ads ≈ <b>'+moneyShort(totAd*k)+'</b>/tháng.':'');
+      }
+    } else if(state.metric==='profit' && cur<=0){
+      rev.classList.add('bad');
+      rev.innerHTML='🛑 Đang <b>lỗ</b> (lợi nhuận ròng ≤ 0) — tăng lead sẽ tăng lỗ. Phải tối ưu CR / giá / CPL trước khi scale.';
+    } else {
+      rev.innerHTML='Nhập lead, giá và tỷ lệ chuyển đổi để tính số lead cần đạt mục tiêu.';
+    }
+
+    saveState();
+  }
+
+  // ---------- money live-format ----------
+  function bindMoney(root){
+    root.querySelectorAll('.m-in').forEach(function(el){
+      if(el._bound) return; el._bound=true;
+      el.addEventListener('input', function(){
+        var d=digits(el.value); el.value = d?groupDots(d):'';
+      });
+    });
+  }
+
+  // ---------- events (delegation) ----------
+  funnelsEl.addEventListener('input', compute);
+  funnelsEl.addEventListener('click', function(e){
+    var btn=e.target.closest('[data-act]'); if(!btn) return;
+    var act=btn.getAttribute('data-act');
+    if(act==='del-funnel'){
+      if(funnelsEl.querySelectorAll('.funnel').length<=1){ alert('Cần giữ tối thiểu 1 phễu.'); return; }
+      btn.closest('.funnel').remove();
+    } else if(act==='add-prod'){
+      var prods=btn.closest('.tier').querySelector('.prods');
+      prods.insertAdjacentHTML('beforeend', prodHTML(null));
+      bindMoney(prods);
+    } else if(act==='del-prod'){
+      var wrap=btn.closest('.prods');
+      if(wrap.querySelectorAll('.prod').length<=1){ btn.closest('.prod').querySelectorAll('input').forEach(function(i){i.value='';}); }
+      else btn.closest('.prod').remove();
+    }
+    compute();
+  });
+
+  document.getElementById('add-funnel').addEventListener('click', function(){
+    funnelsEl.insertAdjacentHTML('beforeend', funnelHTML({name:'Phễu mới',leads:'1.000',cpl:'60.000',tiers:{}}));
+    bindMoney(funnelsEl);
+    compute();
+  });
+
+  // segmented controls
+  document.getElementById('seg-mode').addEventListener('click', function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    state.mode=b.getAttribute('data-mode');
+    this.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    document.getElementById('mode-hint').textContent = MODE_HINTS[state.mode];
+    compute();
+  });
+  document.getElementById('seg-metric').addEventListener('click', function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    state.metric=b.getAttribute('data-metric');
+    this.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x===b?'true':'false'); });
+    compute();
+  });
+
+  // goal money format
+  document.getElementById('goal').addEventListener('input', function(){
+    var d=digits(this.value); this.value=d?groupDots(d):''; compute();
+  });
+
+  // ---------- init ----------
+  var saved = loadState();
+  var initialFunnels = saved ? saved.funnels : SEED;
+  initialFunnels.forEach(function(f){ funnelsEl.insertAdjacentHTML('beforeend', funnelHTML(f)); });
+  bindMoney(document);
+  if(saved){
+    document.getElementById('goal').value = saved.goal || '1.000.000.000';
+    state.mode = saved.mode==='sequential' ? 'sequential' : 'parallel';
+    state.metric = saved.metric==='profit' ? 'profit' : 'revenue';
+    document.querySelectorAll('#seg-mode button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-mode')===state.mode?'true':'false'); });
+    document.querySelectorAll('#seg-metric button').forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-metric')===state.metric?'true':'false'); });
+  }
+  document.getElementById('mode-hint').textContent = MODE_HINTS[state.mode];
+  compute();
+
+  document.getElementById('btn-reset').addEventListener('click', function(){
+    if(!confirm('Đặt lại về ví dụ mẫu? Toàn bộ số liệu bạn đã nhập sẽ mất.')) return;
+    try{ localStorage.removeItem(STORAGE_KEY); }catch(e){}
+    location.reload();
+  });
+
+  // ---- Xuất PDF / Markdown ----
+  document.getElementById('btn-pdf').addEventListener('click', function(){ window.print(); });
+  document.getElementById('btn-md').addEventListener('click', exportMD);
+  function today(){ var d=new Date(); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function txt(id){ var e=document.getElementById(id); return e?e.textContent.trim().replace(/\|/g,'/'):''; }
+  function download(name, content){
+    var blob=new Blob([content],{type:'text/markdown;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  }
+  function iv(el){ return el?el.value:''; }
+  function exportMD(){
+    var goal=document.getElementById('goal').value;
+    var metricName = state.metric==='revenue'?'Doanh thu':'Lợi nhuận';
+    var modeName = state.mode==='parallel'?'Song song (từ tổng lead)':'Tuần tự (upsell bậc thang)';
+    var md='# Chiến Lược Phễu Sản Phẩm\n\n';
+    md+='> Xuất ngày '+today()+' · Mục tiêu **'+goal+'đ** '+metricName.toLowerCase()+'/tháng · Mô hình chuyển đổi: '+modeName+'\n\n';
+    md+='## Tổng hợp\n\n| Chỉ số | Giá trị |\n|---|---|\n';
+    md+='| Tổng doanh thu | '+txt('s-rev')+' |\n';
+    md+='| Tổng lợi nhuận ròng | '+txt('s-net')+' |\n';
+    md+='| Tổng chi phí ads | '+txt('s-ad')+' |\n';
+    md+='| Tổng lead đang nhập | '+txt('s-leads')+' |\n';
+    md+='| Tiến độ mục tiêu | '+txt('goal-pct')+' |\n\n';
+    md+='> '+txt('reverse')+'\n\n';
+    var fi=0;
+    funnelsEl.querySelectorAll('.funnel').forEach(function(fEl){
+      fi++;
+      var name=iv(fEl.querySelector('[data-f="name"]'))||('Phễu '+fi);
+      var leads=iv(fEl.querySelector('[data-f="leads"]'));
+      var cpl=iv(fEl.querySelector('[data-f="cpl"]'));
+      md+='## Phễu '+fi+': '+name+'\n\n- Lead vào/tháng: **'+leads+'** · CPL: '+cpl+'đ\n\n';
+      TIERS.forEach(function(t){
+        var tEl=fEl.querySelector('.tier[data-tier="'+t.key+'"]');
+        var sub=tEl.querySelector('.tier-sub').textContent.trim();
+        md+='### '+t.label+(sub?' — '+sub:'')+'\n\n| Sản phẩm | Giá | CR% | Biên LN% | Kết quả |\n|---|---|---|---|---|\n';
+        tEl.querySelectorAll('.prod').forEach(function(pEl){
+          var pn=iv(pEl.querySelector('[data-p="name"]'))||'(chưa đặt tên)';
+          var pp=iv(pEl.querySelector('[data-p="price"]'));
+          var pc=iv(pEl.querySelector('[data-p="cr"]'));
+          var pm=iv(pEl.querySelector('[data-p="margin"]'));
+          var pr=pEl.querySelector('.p-res').textContent.trim().replace(/\|/g,'/');
+          md+='| '+pn+' | '+pp+'đ | '+pc+' | '+pm+' | '+pr+' |\n';
+        });
+        md+='\n';
+      });
+      md+='**Tổng phễu:** DT '+fEl.querySelector('.f-rev').textContent+' · Lãi gộp '+fEl.querySelector('.f-gross').textContent
+        +' · Ads '+fEl.querySelector('.f-ad').textContent+' · Lãi ròng '+fEl.querySelector('.f-net').textContent+'\n\n';
+    });
+    md+='---\nNguồn tư duy: thang giá trị / value ladder — chị Nhung Lê. Công cụ lập kế hoạch, không hứa kết quả.\n';
+    download('chien-luoc-pheu-'+today()+'.md', md);
+  }
+})();
+</script>
+</body>
+</html>

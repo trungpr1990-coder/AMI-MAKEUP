@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = [
+  {
+    title: '5 Kỹ Thuật Makeup Cô Dâu Không Bao Giờ Lỗi Mốt',
+    excerpt: 'Những kỹ thuật makeup cô dâu kinh điển luôn đẹp, dù xu hướng có thay đổi thế nào.',
+    date: '2026-06-15',
+    category: 'Kỹ Thuật',
+    img: '/images/IMG_4846.jpeg',
+  },
+  {
+    title: 'Làm Thế Nào Để Makeup Bền Suốt Ngày Cưới?',
+    excerpt: 'Bí quyết để lớp makeup không lem, không nhòe, bền từ sáng đến tối — ngay cả khi khóc.',
+    date: '2026-06-01',
+    category: 'Mẹo Hay',
+    img: '/images/IMG_8399.JPG',
+  },
+  {
+    title: 'Xu Hướng Makeup 2026: Clean & Dewy Skin',
+    excerpt: 'Skin care làm nền cho makeup — xu hướng "no makeup makeup" và dewy skin đang chiếm ưu thế 2026.',
+    date: '2026-05-20',
+    category: 'Xu Hướng',
+    img: '/images/IMG_9013.JPG',
+  },
+  {
+    title: 'Tại Sao Lớp Học Nhỏ Lại Quan Trọng Trong Đào Tạo Makeup?',
+    excerpt: 'Lớp học ít người giúp bạn học nhanh hơn, được chú ý nhiều hơn — và kết quả tốt hơn.',
+    date: '2026-05-10',
+    category: 'Đào Tạo',
+    img: '/images/IMG_5284.jpeg',
+  },
+  {
+    title: 'Tổng Kết Khoá Học AMI Tháng 5/2026',
+    excerpt: 'Những học viên xuất sắc của khoá học tháng 5 — và những khoảnh khắc đáng nhớ.',
+    date: '2026-05-30',
+    category: 'Tin Tức',
+    img: '/images/SLI00416.jpeg',
+  },
+  {
+    title: 'Chọn Màu Son Phù Hợp Với Tông Da',
+    excerpt: 'Hướng dẫn chọn màu son phù hợp với từng tông da — warm, cool, neutral.',
+    date: '2026-04-25',
+    category: 'Mẹo Hay',
+    img: '/images/IMG_2922.JPG',
+  },
+];
+---
+
+<BaseLayout title="Tin Tức & Tips Makeup — AMI Makeup Academy" description="Blog tips makeup, xu hướng làm đẹp 2026, tin tức từ AMI Makeup Academy.">
+
+  <!-- Header -->
+  <div class="bg-ink py-20 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <span class="section-label justify-center flex">Blog & Kiến Thức</span>
+      <h1 class="font-serif text-5xl md:text-6xl font-semibold text-white">Tin Tức</h1>
+      <p class="text-zinc-400 mt-4">Tips makeup, xu hướng 2026 và tin tức từ AMI Academy</p>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="bg-cream border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-6 py-3 text-xs text-zinc-400">
+      <a href="/" class="hover:text-gold transition-colors">Trang Chủ</a>
+      <span class="mx-2">/</span>
+      <span class="text-zinc-600">Tin Tức</span>
+    </div>
+  </div>
+
+  <!-- Posts -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Featured post -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 bg-white border border-zinc-100 mb-8 overflow-hidden card-hover">
+        <div class="h-72 lg:h-auto overflow-hidden">
+          <img src={posts[0].img} alt={posts[0].title} class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="eager" />
+        </div>
+        <div class="p-10 flex flex-col justify-center">
+          <span class="text-gold text-[9px] font-semibold tracking-widest uppercase mb-3">{posts[0].category}</span>
+          <h2 class="font-serif text-3xl font-semibold text-ink mb-4 leading-tight">{posts[0].title}</h2>
+          <p class="text-zinc-500 leading-relaxed mb-6">{posts[0].excerpt}</p>
+          <div class="flex items-center justify-between">
+            <time class="text-xs text-zinc-400">{new Date(posts[0].date).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' })}</time>
+            <span class="text-gold text-sm font-semibold">Đọc Thêm →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid posts -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {posts.slice(1).map(post => (
+          <article class="bg-white border border-zinc-100 overflow-hidden card-hover group">
+            <div class="h-48 overflow-hidden">
+              <img src={post.img} alt={post.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+            </div>
+            <div class="p-6">
+              <span class="text-gold text-[9px] font-semibold tracking-widest uppercase mb-2 block">{post.category}</span>
+              <h3 class="font-serif text-lg font-semibold text-ink mb-3 leading-snug group-hover:text-gold transition-colors">{post.title}</h3>
+              <p class="text-zinc-500 text-sm leading-relaxed mb-4 line-clamp-2">{post.excerpt}</p>
+              <div class="flex items-center justify-between pt-3 border-t border-zinc-100">
+                <time class="text-xs text-zinc-400">{new Date(post.date).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit', year: 'numeric' })}</time>
+                <span class="text-gold text-xs font-semibold">Đọc →</span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

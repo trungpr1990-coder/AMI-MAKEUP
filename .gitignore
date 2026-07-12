@@ -4,12 +4,16 @@
 auth_qr.png
 lark-config-qr*.png
 qr_*.png
+*-auth-qr*.png
+*-qr.png
+*qr*.png
 
 # Large data / temp files
 *.json
 !CLAUDE.md
 
 # Không bao giờ commit secrets thật (chỉ code, secrets nạp qua GitHub Secrets)
+.secrets/
 automation/**/.secrets/
 automation/**/run.log
 
@@ -25,3 +29,4 @@ Thumbs.db
 output/
 .dev.vars
 .wrangler/
+logs/

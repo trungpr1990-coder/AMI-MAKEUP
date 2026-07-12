@@ -4,14 +4,21 @@
 
 ## Hồ Sơ Chủ Nhân
 
-**Tên:** Thuý Trần (sinh năm 1995)
-**Nghề nghiệp:** Makeup Artist & Giảng viên đào tạo makeup
-**Địa điểm:** 351 Lê Hồng Phong, TP. Nam Định
+**Thuý Trần** (sinh năm 1995) — một mình đảm nhiệm toàn bộ công việc, không có đội/người hỗ trợ khác
+- **Email:** trungpr1990@gmail.com
+- **Điạ điểm:** 351 Lê Hồng Phong, TP. Nam Định
+- **Nghề:** Makeup Artist & Giảng viên đào tạo makeup
+- **Vai trò:** Chuyên môn makeup, đứng lớp giảng dạy, tư vấn khách hàng, quay/dựng video, viết content, marketing, chạy quảng cáo, vận hành hệ thống, tài chính
+- **Nói chuyện với Claude:** Trực tiếp, một mình, cho mọi việc — từ makeup chuyên sâu đến content, marketing, vận hành
 
 **Lĩnh vực hoạt động:**
 - Đào tạo makeup cá nhân, makeup đi tiệc, makeup cô dâu
 - Xây dựng hệ thống đào tạo online
-- Học tập liên tục: kinh doanh, marketing, bán hàng, quản trị doanh nghiệp, phát triển bản thân, xây dựng đội nhóm
+- Học tập: kinh doanh, marketing, bán hàng, quản trị doanh nghiệp; tiêu hóa thành phễu, content, video
+
+**Mong muốn tối thượng:**
+- **Tự do tài chính.** Không còn coi "nghề makeup" là bản sắc cố định — hiểu ra "mình không là ai nên có thể là bất kỳ ai", nên không vướng bận vào một nghề. Chuyển từ *làm nghề* sang *kinh doanh nghề*: nghề/lĩnh vực nào có cơ hội kiếm tiền thì làm, miễn phù hợp với **tứ trụ**: tài chính — mối quan hệ — sức khoẻ — nội tâm.
+- **Định hướng năm 2026:** trước mắt tập trung kinh doanh makeup cá nhân, chưa mở rộng sang nghề khác.
 
 **Mục tiêu sống:**
 - Cuộc sống hạnh phúc, cân bằng: gia đình — sức khỏe — công việc — tài chính

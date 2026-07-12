@@ -5,12 +5,18 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 ## Sources (Tài liệu gốc)
 
 - [[sources/2026-06-20-nha-may-pheu]] — Giáo trình "Nhà máy phễu" — Hệ thống thu lead tự động (added 2026-06-24)
+- [[sources/2026-06-30-kinh-doanh-marketing-ai]] — Buổi học: Kinh doanh, Marketing, AI — Reverse Engineering + LVC + BMC + Bóng tối-Ánh sáng (added 2026-06-30)
+- [[sources/2026-06-30-noi-tam-lanh-dao]] — Buổi học: Nội tâm & Lãnh đạo — Sĩ thân, 6 Chữ Đồng, Quản trị nhận thức, Buông-Dừng-Thôi-Dứt (added 2026-06-30)
+- [[sources/2026-07-11-he-thong-1000-khach-hang-tiem-nang]] — Infographic: Xây hệ thống 1.000 khách hàng tiềm năng đầu tiên — mục tiêu lead trước doanh thu, tính ngược CPL từ LVC, creative-trước-target-sau, định vị người dẫn đầu (added 2026-07-11)
+- [[sources/2026-07-11-cong-thuc-video-marketing-ami]] — Buổi trao đổi ChatGPT 106 trang: 25 công thức video, phương pháp đào Insight, chiến lược Makeup Cá Nhân AMI (customer avatar, insight map, brand message, phễu, 50 ý tưởng video) (added 2026-07-11)
+- [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]] — Bộ 28 SOP vận hành AMI Makeup Academy (dạng thẻ AI): chiến lược → khách hàng/insight → content/video → bán hàng/phễu/ads → vận hành lớp học → chăm sóc học viên → nhân sự (added 2026-07-11)
 
 ## Entities (Nền tảng & công cụ)
 
 - [[entities/cloudflare]] — Nền tảng CDN, DNS, Worker miễn phí
 - [[entities/lark]] — Nền tảng quản lý dữ liệu, email, tích hợp
 - [[entities/claude-code]] — AI tool tạo nội dung & code
+- [[entities/ami-makeup-academy]] — Thương hiệu AMI: địa chỉ/hotline thật, giá khoá chuyên nghiệp thật (25tr/KM 20tr khoá makeup, 10tr khoá tóc) — đã sửa dữ liệu placeholder/demo cũ nhầm là của Hằng Thu (cập nhật 2026-07-12)
 
 ## Concepts (Khái niệm chính)
 
@@ -19,10 +25,28 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[concepts/lark-cli-tich-hop]] — lark-cli + tích hợp Claude-Lark
 - [[concepts/cloudflare-worker]] — Backend tự động 24/7
 - [[concepts/nurture-campaign]] — 10 ngày email nurture
+- [[concepts/2026-06-30-case-study-lanh-dao]] — 4 case study thực tế về lãnh đạo & quản trị
+- [[concepts/2026-06-30-insights-va-cheat-sheet]] — Insights sâu sắc & ghi chú nhanh để áp dụng ngay
+- [[concepts/dang-reel-facebook-tu-dong]] — Hệ thống tự động đăng Reel Facebook từ Lark Base (skill `đăng-reel-facebook`)
+- [[concepts/2026-07-03-dang-bai-da-nen-tang]] — Đăng bài tự động đa nền tảng (Facebook+Instagram+TikTok) từ Lark Base + AI viết content (added 2026-07-03)
+
+## Analyses (analyses/) — Phân tích, tổng hợp, trả lời câu hỏi
+
+- [[analyses/2026-07-11-quy-trinh-insight-va-content-ami]] — Hợp nhất mọi tài liệu insight/content AMI thành 1 quy trình dùng thật: tìm insight (3 nguồn thật có sẵn + đào mới 5 tầng) → lên kế hoạch (nhiệt độ/mục tiêu/trụ cột) → viết & sản xuất (framework + Hút-Dẫn-Chốt) → duyệt/đăng/đo lường (added 2026-07-11)
+- [[nang-luc/2026-07-11-cong-thuc-tong-quat-insight-content-makeup]] — Công thức 7 bước điền-vào-chỗ-trống, áp dụng cho MỌI vấn đề makeup (cô dâu/cá nhân/chuyên nghiệp): vấn đề→insight→nhiệt độ→mục tiêu→framework→Hút-Dẫn-Chốt→lọc trước đăng (added 2026-07-11)
 
 ## Trí Tuệ (tri-tue/) — Kiến thức, tư duy, framework
 
 - [[tri-tue/2026-06-24-kien-truc-nam-may-pheu]] — Kiến trúc 4 mảnh + tư duy setup 1 lần vs per-campaign
+- [[tri-tue/2026-06-30-tu-duy-kinh-doanh-dao-nguoc]] — Reverse Engineering, Business Model Canvas, triết lý Bóng tối-Ánh sáng
+
+## Tâm Thái (tam-thai/) — Tinh thần, cảm xúc, thái độ
+
+- [[tam-thai/2026-06-30-an-vui-va-ky-thuat-buong]] — An vui vs Khoái lạc, Tham Tưởng, kỹ thuật Buông-Dừng-Thôi-Dứt, mô hình Tâm-Tánh-Tình
+
+## Phẩm Chất (pham-chat/) — Đức hạnh, giá trị cốt lõi
+
+- [[pham-chat/2026-06-30-si-than-va-y-niem-vi-nguoi]] — Buông Sĩ thân, Ý niệm Vì Người, Bao chứa, Tích Phước
 
 ## Nhân Cách (nhan-cach/) — Uy tín, ranh giới, nguyên tắc bàn giao
 
@@ -35,10 +59,40 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 ## Năng Lực (nang-luc/) — Kỹ năng, quy trình, thực thi
 
 - [[nang-luc/2026-06-24-ten-buoc-dung-pheu]] — 10 bước dựng phễu, phân vai AI vs người vận hành
+- [[nang-luc/2026-06-29-ami-website-trang-thai]] — AMI Website: hạ tầng Cloudflare (project `ami-website`), redesign trang đặt lịch, kết nối Lark Base (updated 2026-07-02)
+- [[nang-luc/2026-06-30-pheu-va-lvc]] — Phễu sản phẩm, LVC, ứng dụng AI tự động hóa marketing & vận hành
+- [[nang-luc/2026-06-30-quan-tri-nhan-thuc-6-dong]] — Quản trị nhận thức vs hành vi, mô hình 6 Chữ Đồng, lộ trình 4 giai đoạn
+- [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]] — 10 Bóng tối & Ánh sáng khách hàng makeup — dùng cho content, email, sales
+- [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami-simple]] — Phễu makeup cá nhân AMI: 3 bước (Trải nghiệm → Thường xuyên → Gói năm), LVC, doanh thu 30-45M/tháng
+- [[nang-luc/2026-07-02-cach-tao-noi-dung-video-co-giong-dieu-tu-nhien]] — Kỹ thuật prompt engineering & copywriting để tạo video marketing có giọng thân thiện, dễ gần (added 2026-07-02)
+- [[nang-luc/out-2026-07-04-huong-dan-dang-facebook-tu-dong]] — Hướng dẫn dùng hệ thống đăng bài Facebook tự động qua GitHub Actions (mentor_club_app, học từ Mentor Camp) (added 2026-07-04)
+- [[nang-luc/out-2026-07-08-quy-trinh-tao-video-ami]] — Quy trình tạo video 7 bước (Insight → Nhiệt độ thị trường → Framework → Hút-Dẫn-Chốt → Quay dựng → Đăng đo lường), có sẵn ngân hàng insight ghép từ 10 nỗi đau khách hàng AMI (added 2026-07-08)
+- [[nang-luc/out-2026-07-10-may-tinh-chien-luoc-pheu-san-pham]] — Công cụ HTML: xếp sản phẩm vào thang giá trị 4 tầng (Đầu phễu/Dẫn/Dòng tiền/Hi-end), nhập lead+CR%+giá → doanh thu/lợi nhuận từng tầng, tổng hợp nhiều phễu, số lead cần đạt mục tiêu — tự lưu localStorage, deploy tại https://may-tinh-pheu.pages.dev (added 2026-07-10, fixed+deployed 2026-07-11)
+- [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] — Nỗi đau khách học makeup cá nhân cào từ hội nhóm Facebook + TikTok: sợ không kèm 1:1, giá không minh bạch, sợ không có năng khiếu (ẩn dưới dạng "mặt đẹp sẵn"), muốn học theo khuyết điểm riêng (added 2026-07-10)
+- [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-chuyen-nghiep]] — Nỗi đau người học makeup để hành nghề: sợ thị trường bão hoà, so sánh học phí giữa các thương hiệu lớn (Hạnh Lâm, Hằng Thu, TiNa, Hiwon), lo học xong không xin được việc/không thích nghi thực tế (added 2026-07-10)
+- [[nang-luc/2026-07-11-chien-luoc-quang-cao-va-dinh-vi]] — Chiến lược quảng cáo creative-trước-target-sau + định vị người dẫn đầu (5 tiêu chí, nguyên tắc không dính vào danh) (added 2026-07-11)
+- [[nang-luc/out-2026-07-11-sop-buoi-trai-nghiem-mien-phi]] — SOP buổi trải nghiệm makeup miễn phí 15km quanh cửa hàng: logistics, cơ chế lọc 25-35 đăng ký → 10-15 người đến, timeline 4 tuần, kịch bản 90 phút (added 2026-07-11)
+- [[nang-luc/2026-07-11-cong-thuc-video-va-phuong-phap-insight]] — 25 công thức video, phương pháp đào Insight (5 tầng, 5 tại sao, 8 nhu cầu gốc), thị trường lạnh-ấm-nóng, Hút-Dẫn-Chốt, quy trình 6 bước — dùng chung mọi dòng AMI (added 2026-07-11)
+- [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] — Chiến lược riêng dòng Makeup Cá Nhân: cấu trúc khóa Basic/VIP thật, customer avatar, insight map, định vị "AMI Personal Beauty" (đề xuất), phễu marketing, 50 ý tưởng video (added 2026-07-11)
+- [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]] — Hồ sơ doanh nghiệp AMI đủ 10 mảng: câu chuyện gốc/tầm nhìn, chi tiết gói sản phẩm, đội ngũ thật (chồng hỗ trợ phụ + 2 học viên đồng hành), doanh thu mục tiêu 50tr/tháng, giá khoá chuyên nghiệp thật 20-25tr (đã sửa bảng giá sai nhầm là của Hằng Thu), hotline đã xác nhận đúng 0327.355.595 (added 2026-07-09, updated 2026-07-12)
+- [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]] — Khung giọng điệu thương hiệu AMI Makeup đầy đủ (cốt lõi, hình ảnh con người, cách nói, ngôn ngữ nên dùng/tránh, công thức nội dung, tỷ lệ giọng 60/30/10) — nháp có cấu trúc, chưa chốt chính thức (added 2026-07-12)
+- [[nang-luc/out-2026-07-11-may-tinh-ngan-sach-quang-cao]] — Công cụ HTML: nhập AOV/CPL/CR%/biên LN/ngân sách ads → tự tính ngưỡng hoà vốn, ROAS, phán quyết SCALE/DỪNG, test 200k, số funnel cần chạy để đạt mục tiêu lãi (phục dựng theo mẫu ngansach.alita.vn, công thức nguồn chị Nhung Lê — Nhóm Lửa 09/07) — deploy tại https://may-tinh-ngan-sach.pages.dev (added 2026-07-11, deployed 2026-07-11)
+- [[nang-luc/2026-07-11-sop-chien-luoc-va-dinh-vi-ami]] — SOP01,02,19,23: hướng kinh doanh (chọn Makeup Cá Nhân), định vị thương hiệu, nghiên cứu thị trường/đối thủ, thương hiệu cá nhân Founder Thuý Trần (added 2026-07-11)
+- [[nang-luc/2026-07-11-sop-san-pham-va-giao-trinh-ami]] — SOP03,18,20,26: cấu trúc khóa Basic/VIP, hệ sinh thái 5 tầng, giá theo giá trị thay đổi, giáo trình đào tạo 5 tầng (added 2026-07-11)
+- [[nang-luc/2026-07-11-sop-khach-hang-va-insight-ami]] — SOP04,05: chân dung khách hàng (22-40 tuổi, 3 tầng nỗi đau, 5 rào cản), quy trình đào insight (công thức Sự thật+Cảm xúc+Mâu thuẫn) (added 2026-07-11)
+- [[nang-luc/2026-07-11-sop-content-video-marketing-ami]] — SOP06-11: chiến lược content, 5 dạng video, sản xuất video 5 giai đoạn, kiểm soát giọng thương hiệu, đo lường/tối ưu, kế hoạch 30 ngày (added 2026-07-11)
+- [[nang-luc/2026-07-11-sop-ban-hang-pheu-ads-ami]] — SOP12,21,22: tư vấn bán hàng (giá trị→niềm tin→chi phí), phễu lạnh/ấm/nóng, nguyên tắc chạy Ads (added 2026-07-11)
+- [[nang-luc/2026-07-11-sop-van-hanh-hoc-vien-nhan-su-ami]] — SOP13-17,27,30: onboarding, vận hành buổi học, đánh giá học viên, chăm sóc sau khóa/cộng đồng, case study, đào tạo giáo viên, tuyển dụng nhân sự (added 2026-07-11)
+- [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]] — ĐÃ CHỐT: hợp nhất SOP02 + đề xuất "AMI Personal Beauty" thành 1 bản định vị/thông điệp chính thức, giữ tên "AMI Makeup Academy" (added 2026-07-11)
+- [[nang-luc/2026-07-12-phan-tich-tuyen-noi-dung-tho-makeup]] — Phân tích 50 bài Fanpage đối thủ Thỏ Makeup (Hà Nội): 6 tuyến nội dung + bảng đầy đủ 11 vấn đề/mong muốn suy ra từng bài, xếp theo mức tương tác = mức quan tâm thật (added 2026-07-12, mở rộng 2026-07-12)
+- [[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]] — Phân tích thị trường/đối thủ AMI vs 5 đối thủ thật (Thỏ MakeUp 481K, Hiền Mew 231K, Phương Kòi 192K, Phạm Quỳnh Chi 170K, Gạo Nâu 25K) qua 13 đầu mục: điểm mạnh/yếu 2 bên, tệp khách, thông điệp, khoảng trống, ánh sáng/bóng tối, ngách, định vị khác biệt, nhóm content — phát hiện quan trọng: tagline AMI trùng lõi với Hiền Mew (added 2026-07-12)
+- [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]] — Hồ sơ khách hàng mục tiêu chuyên sâu dòng Makeup Cá Nhân: cấu trúc file mẫu Hằng China (chân dung, 4 phân khúc, đau-sướng, JTBD, VoC, hành trình, phản đối, đối thủ, offer/content) + lý do chiến lược ưu tiên dòng này + Phần VII Value Proposition Canvas (Osterwalder — Customer Profile/Value Map/Fit Analysis) — 100% dữ liệu thật AMI, có 5 testimonial thật tìm được (updated 2026-07-12)
+- [[nang-luc/out-2026-07-12-danh-sach-group-cong-dong-makeup]] — Danh sách group/cộng đồng Facebook makeup + bảng vấn đề suy ra từ quy mô/tên nhóm (tự học sai cách, sợ chọn nhầm chỗ uy tín, matching khách-thợ, Nam Định chưa có group riêng) (added 2026-07-12, mở rộng 2026-07-12)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 
 - [[vat-chat/2026-06-24-ha-tang-cloudflare-lark-domain]] — Hạ tầng, tài sản, credential, chi phí
+- [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]] — Công thức doanh thu, mô hình lợi nhuận ưu tiên, quy trình lập kế hoạch 3 bước
 
 ---
 
