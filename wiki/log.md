@@ -429,3 +429,12 @@ Append-only record of all ingest, query, and maintenance operations.
 - File PDF: [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]].pdf (cùng thư mục với bản .md)
 - Pages updated: [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]]
 - Mâu thuẫn: none
+
+## [2026-07-12] build | Hệ thống backup tự động vault lên GitHub
+- Yêu cầu: bảo vệ toàn bộ vault khỏi mất dữ liệu, tự động không cần nhớ backup tay
+- Đã cài: Scheduled Task Windows "SecondBrain GitHub Backup" (mỗi 2 giờ, LogonType Interactive) chạy `scripts/github-auto-backup.ps1` — git add → commit → pull --rebase --autostash → push lên repo `AMI-MAKEUP`
+- Đã test 2 lần thủ công: 1 lần có thay đổi thật (push OK, commit `4de59c5`), 1 lần cây sạch (bỏ qua đúng). Còn tồn: chưa xác minh 100% tự kích hoạt đúng lịch 2h/lần khi chạy nền thật
+- Saved as: [[vat-chat/2026-07-12-backup-tu-dong-github]]
+- Pages updated: [[index]]
+- Mâu thuẫn: none
+- Lưu ý: entry này ghi bù — hệ thống được cài ở phiên làm việc trước, bị bỏ sót chưa ghi log/Lark Base lúc đó, nay bổ sung theo đúng quy tắc thường trực ở [[reference-crm-thuy-thuy-base-token]]

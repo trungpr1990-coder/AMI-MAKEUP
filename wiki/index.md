@@ -93,6 +93,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 
 - [[vat-chat/2026-06-24-ha-tang-cloudflare-lark-domain]] — Hạ tầng, tài sản, credential, chi phí
 - [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]] — Công thức doanh thu, mô hình lợi nhuận ưu tiên, quy trình lập kế hoạch 3 bước
+- [[vat-chat/2026-07-12-backup-tu-dong-github]] — Scheduled Task backup vault lên GitHub mỗi 2 giờ (added 2026-07-12)
 
 ---
 
