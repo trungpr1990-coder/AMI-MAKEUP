@@ -438,3 +438,12 @@ Append-only record of all ingest, query, and maintenance operations.
 - Pages updated: [[index]]
 - Mâu thuẫn: none
 - Lưu ý: entry này ghi bù — hệ thống được cài ở phiên làm việc trước, bị bỏ sót chưa ghi log/Lark Base lúc đó, nay bổ sung theo đúng quy tắc thường trực ở [[reference-crm-thuy-thuy-base-token]]
+
+## [2026-07-12] run | Kích hoạt lần đầu skill "Gợi ý xu hướng Douyin" — quét mẹo makeup cá nhân
+- Yêu cầu: cào video Douyin về makeup cá nhân/mẹo trang điểm đang nhiều lượt xem, nhiều tương tác
+- Skill đã tồn tại từ 2026-07-04 nhưng chưa từng chạy thật (config.local.json thiếu BASE_TOKEN) — đã điền BASE_TOKEN thật (`Wtn8bQ4sLanhfWsHrZ9jmbmypeH`, cùng Base hệ thống "Đăng Reel"), đổi KEYWORDS sang tập trung mẹo/tip makeup cá nhân thay vì cô dâu (`化妆技巧`, `化妆教程`, `日常化妆`, `新手化妆` — bỏ `新娘化妆` cô dâu vì không khớp định hướng 2026 chỉ làm makeup cá nhân)
+- Chạy thật (không chỉ dry-run): quét 2 từ khoá `化妆教程` (tutorial) và `日常化妆` (daily makeup) qua Apify Douyin Search Scraper, sort `most_liked`, 1 tuần gần nhất — chỉ lấy hashtag + số liệu lượt thích, KHÔNG tải video/ảnh bìa/caption gốc (đúng nguyên tắc bản quyền của skill)
+- Ghi 2 dòng số liệu vào bảng "Ý tưởng Douyin" (Base `Wtn8bQ4sLanhfWsHrZ9jmbmypeH`, table `tblsvd7sgGlxpT3s`): "化妆教程" (234.612 lượt thích, hashtag hot: tutorial người mới, biến hình khuôn mặt vuông/tròn, makeup giờ học sáng sớm), "日常化妆" (242.803 lượt thích, hashtag hot: makeup hàng ngày kiểu Hàn, format vừa trang điểm vừa tâm sự/immersive)
+- Đã tự viết 2 ý tưởng quay video GỐC (không dịch/mô tả video gốc) dựa theo xu hướng hashtag, ghi vào cột "Ý tưởng quay video gốc": (1) "Trang điểm 5 phút cho buổi sáng vội" — kèm mẹo chọn tông theo khuôn mặt vuông/tròn; (2) "Vừa trang điểm đi làm vừa tám chuyện nghề" — format immersive/talk-through, kèm mẹo giữ lớp nền bền
+- Đã kiểm tra bảng "Công cụ AI" (Base CRM `O2qIbEaIYabXEGsW6Dzjs0LCpZg`, table `tbliXt0oEV91oBhJ`) — đã có sẵn dòng mô tả skill này từ trước, không cần thêm dòng mới
+- Mâu thuẫn: none
