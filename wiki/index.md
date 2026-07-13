@@ -10,6 +10,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[sources/2026-07-11-he-thong-1000-khach-hang-tiem-nang]] — Infographic: Xây hệ thống 1.000 khách hàng tiềm năng đầu tiên — mục tiêu lead trước doanh thu, tính ngược CPL từ LVC, creative-trước-target-sau, định vị người dẫn đầu (added 2026-07-11)
 - [[sources/2026-07-11-cong-thuc-video-marketing-ami]] — Buổi trao đổi ChatGPT 106 trang: 25 công thức video, phương pháp đào Insight, chiến lược Makeup Cá Nhân AMI (customer avatar, insight map, brand message, phễu, 50 ý tưởng video) (added 2026-07-11)
 - [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]] — Bộ 28 SOP vận hành AMI Makeup Academy (dạng thẻ AI): chiến lược → khách hàng/insight → content/video → bán hàng/phễu/ads → vận hành lớp học → chăm sóc học viên → nhân sự (added 2026-07-11)
+- [[sources/hoangminhhoaoffical/index]] — Chỉ mục 40 video sưu tầm kênh Hoàng Minh Hoá (kinh doanh studio), phân theo 9 chủ đề — nguồn thô chưa consolidate (added 2026-07-13)
+- [[sources/longguru/index]] — Chỉ mục 37 video sưu tầm kênh @longguru (Phạm Thành Long — kinh doanh, tư duy, bán hàng), phân theo 9 chủ đề — thu thập 2026-07-11 nhưng sót ở kho thô ngoài wiki, phát hiện lại và nạp vào 2026-07-13
 
 ## Entities (Nền tảng & công cụ)
 
@@ -34,6 +36,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 
 - [[analyses/2026-07-11-quy-trinh-insight-va-content-ami]] — Hợp nhất mọi tài liệu insight/content AMI thành 1 quy trình dùng thật: tìm insight (3 nguồn thật có sẵn + đào mới 5 tầng) → lên kế hoạch (nhiệt độ/mục tiêu/trụ cột) → viết & sản xuất (framework + Hút-Dẫn-Chốt) → duyệt/đăng/đo lường (added 2026-07-11)
 - [[nang-luc/2026-07-11-cong-thuc-tong-quat-insight-content-makeup]] — Công thức 7 bước điền-vào-chỗ-trống, áp dụng cho MỌI vấn đề makeup (cô dâu/cá nhân/chuyên nghiệp): vấn đề→insight→nhiệt độ→mục tiêu→framework→Hút-Dẫn-Chốt→lọc trước đăng (added 2026-07-11)
+- [[analyses/base-structure-crm-thuys-makeup]] — Phân tích cấu trúc Base CRM Thúy Thúy (Lark Wiki + Multi-table Base) và cách các bảng kết nối với nhau
 
 ## Trí Tuệ (tri-tue/) — Kiến thức, tư duy, framework
 
@@ -47,6 +50,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 ## Phẩm Chất (pham-chat/) — Đức hạnh, giá trị cốt lõi
 
 - [[pham-chat/2026-06-30-si-than-va-y-niem-vi-nguoi]] — Buông Sĩ thân, Ý niệm Vì Người, Bao chứa, Tích Phước
+- [[pham-chat/2026-tong-hop-pham-chat]] — Trang tổng hợp khoang Phẩm Chất: đức hạnh, kỷ luật, giá trị cốt lõi
 
 ## Nhân Cách (nhan-cach/) — Uy tín, ranh giới, nguyên tắc bàn giao
 
@@ -64,6 +68,9 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/2026-06-30-quan-tri-nhan-thuc-6-dong]] — Quản trị nhận thức vs hành vi, mô hình 6 Chữ Đồng, lộ trình 4 giai đoạn
 - [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]] — 10 Bóng tối & Ánh sáng khách hàng makeup — dùng cho content, email, sales
 - [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami-simple]] — Phễu makeup cá nhân AMI: 3 bước (Trải nghiệm → Thường xuyên → Gói năm), LVC, doanh thu 30-45M/tháng
+- [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami]] — Bản nháp phễu makeup cá nhân AMI đầy đủ hơn (khác giá với bản `-simple` ở trên — 2 bản chưa được Thuý chốt 1, xem ghi chú ở [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]])
+- [[nang-luc/2026-suu-tam-kien-thuc]] — Khoang Năng Lực: hệ thống sưu tầm & xử lý tri thức từ YouTube (yt-dlp + PowerShell + phân loại 9 chủ đề) — xem thêm [[sources/2026-suu-tam-kien-thuc-skill]]
+- [[nang-luc/out-2026-07-02-sop-training-ai-thuytran-makeup]] — SOP huấn luyện AI hiểu và viết đúng giọng thương hiệu Thuý Trần Makeup (DNA thương hiệu, câu hứa, quy tắc viết)
 - [[nang-luc/2026-07-02-cach-tao-noi-dung-video-co-giong-dieu-tu-nhien]] — Kỹ thuật prompt engineering & copywriting để tạo video marketing có giọng thân thiện, dễ gần (added 2026-07-02)
 - [[nang-luc/out-2026-07-04-huong-dan-dang-facebook-tu-dong]] — Hướng dẫn dùng hệ thống đăng bài Facebook tự động qua GitHub Actions (mentor_club_app, học từ Mentor Camp) (added 2026-07-04)
 - [[nang-luc/out-2026-07-08-quy-trinh-tao-video-ami]] — Quy trình tạo video 7 bước (Insight → Nhiệt độ thị trường → Framework → Hút-Dẫn-Chốt → Quay dựng → Đăng đo lường), có sẵn ngân hàng insight ghép từ 10 nỗi đau khách hàng AMI (added 2026-07-08)

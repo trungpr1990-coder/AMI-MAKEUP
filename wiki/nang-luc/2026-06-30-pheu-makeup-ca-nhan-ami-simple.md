@@ -8,6 +8,8 @@ updated: 2026-06-30
 sources: []
 ---
 
+> Có 1 bản nháp khác đầy đủ hơn nhưng lệch giá: [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami]] — 2 bản chưa được Thuý chốt 1, xem ghi chú tại [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]].
+
 ## Sơ đồ Phễu Makeup Cá nhân
 
 ```

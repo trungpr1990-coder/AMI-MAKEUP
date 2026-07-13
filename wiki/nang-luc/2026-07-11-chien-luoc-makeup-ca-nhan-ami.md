@@ -10,7 +10,7 @@ sources: [out-2026-07-08-cong-thuc-video-marketing-ami.pdf]
 
 ## Bối cảnh
 
-AMI có 3 dòng: (1) Makeup dịch vụ — chủ yếu cô dâu, (2) Đào tạo Makeup Chuyên nghiệp, (3) Đào tạo Makeup Cá nhân. Trong buổi trao đổi này, Thuý xác nhận **ưu tiên phát triển dòng Makeup Cá Nhân** — khớp với [[project-dinh-huong-2026]] (năm 2026 tập trung kinh doanh makeup cá nhân).
+AMI có 3 dòng: (1) Makeup dịch vụ — chủ yếu cô dâu, (2) Đào tạo Makeup Chuyên nghiệp, (3) Đào tạo Makeup Cá nhân. Trong buổi trao đổi này, Thuý xác nhận **ưu tiên phát triển dòng Makeup Cá Nhân** — khớp với bộ nhớ *project-dinh-huong-2026* (năm 2026 tập trung kinh doanh makeup cá nhân).
 
 ## Thông tin thật do Thuý xác nhận trực tiếp (không phải đề xuất của ChatGPT)
 
@@ -20,7 +20,7 @@ AMI có 3 dòng: (1) Makeup dịch vụ — chủ yếu cô dâu, (2) Đào tạ
 |---|---|---|
 | Hình thức | Nhóm 3-6 người, 2 giáo viên dạy | Học 1-1 trực tiếp với Thuý Trần |
 | Thời lượng | 3 buổi × 1.5-2 tiếng | Tương tự, cá nhân hóa theo tone mong muốn |
-| Giá | 2.000.000đ/3 buổi | 3.000.000đ (theo [[project-ami-so-lieu-thuc-te]]) |
+| Giá | 2.000.000đ/3 buổi | 3.000.000đ (theo bộ nhớ *project-ami-so-lieu-thuc-te*) |
 | Nội dung | Buổi 1-2: hiểu khuôn mặt/da, chọn layout phù hợp. Buổi 3: chọn kiểu tóc phù hợp khuôn mặt | Giống Basic + tặng giáo trình + video online xem lại |
 | Cam kết | Học xong tự makeup được cho chính mình | Giống Basic |
 | Hỗ trợ sau khóa | Hỗ trợ thêm 1 buổi nếu khó khăn + hỗ trợ nhắn tin online | Tặng thêm 1 buổi nếu chưa tự tin, có trợ giảng support |
@@ -138,4 +138,4 @@ Bước 5: Chốt lịch
 - [ ] 50 ý tưởng video có cần viết kịch bản đầy đủ (theo khung ở [[nang-luc/2026-07-11-cong-thuc-video-va-phuong-phap-insight]]) hay chỉ giữ làm ngân hàng ý tưởng
 
 ## Liên kết
-[[sources/2026-07-11-cong-thuc-video-marketing-ami]], [[nang-luc/2026-07-11-cong-thuc-video-va-phuong-phap-insight]], [[nang-luc/out-2026-07-08-quy-trinh-tao-video-ami]], [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], [[project-ami-so-lieu-thuc-te]], [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami-simple]]
+[[sources/2026-07-11-cong-thuc-video-marketing-ami]], [[nang-luc/2026-07-11-cong-thuc-video-va-phuong-phap-insight]], [[nang-luc/out-2026-07-08-quy-trinh-tao-video-ami]], [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], bộ nhớ *project-ami-so-lieu-thuc-te*, [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami-simple]]

@@ -74,4 +74,4 @@ Nguyên tắc: content đối thủ tiếp cận/tương tác cao chứng tỏ *
 ## Notes
 
 - Dữ liệu chỉ gồm metric công khai (like/share/view) — không có comment count/follower count do actor Apify dùng không trả về.
-- Đây là quan sát đối thủ tham khảo, không phải insight khách hàng của AMI — không dùng thay cho ngân hàng insight thật ở [[reference-crm-thuy-thuy-base-token]].
+- Đây là quan sát đối thủ tham khảo, không phải insight khách hàng của AMI — không dùng thay cho ngân hàng insight thật ở bộ nhớ *reference-crm-thuy-thuy-base-token*.

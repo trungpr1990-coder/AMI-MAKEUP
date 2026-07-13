@@ -69,4 +69,4 @@ Nguyên tắc mở rộng: **Chất lượng → Niềm tin → Hệ thống →
 
 ## Liên kết
 
-[[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[project-ami-so-lieu-thuc-te]], [[nang-luc/out-2026-07-10-may-tinh-chien-luoc-pheu-san-pham]], [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]], [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]
+[[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], bộ nhớ *project-ami-so-lieu-thuc-te*, [[nang-luc/out-2026-07-10-may-tinh-chien-luoc-pheu-san-pham]], [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]], [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]

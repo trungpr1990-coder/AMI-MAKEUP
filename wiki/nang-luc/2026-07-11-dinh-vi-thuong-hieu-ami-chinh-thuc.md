@@ -58,4 +58,4 @@ Không còn — bản định vị này đã chốt đầy đủ (tên thương 
 
 ## Liên kết
 
-[[nang-luc/2026-07-11-sop-chien-luoc-va-dinh-vi-ami]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[project-dinh-huong-2026]], [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]
+[[nang-luc/2026-07-11-sop-chien-luoc-va-dinh-vi-ami]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], bộ nhớ *project-dinh-huong-2026*, [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]

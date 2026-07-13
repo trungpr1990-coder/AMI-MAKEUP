@@ -26,7 +26,8 @@ sources: [suu-tam-kien-thuc/SKILL.md]
 → [[concepts/suu-tam-kien-thuc-workflow]]
 
 ### Nguồn đang theo dõi
-- **@longguru** — kênh kinh doanh/tư duy tiếng Việt (mặc định)
+- **@longguru** (Phạm Thành Long) — kênh kinh doanh/tư duy tiếng Việt (mặc định) — đã sưu tầm 37 video, xem [[sources/longguru/index]]
+- **@hoangminhhoaoffical** — đã sưu tầm 40 video, xem [[sources/hoangminhhoaoffical/index]]
 - Thêm kênh: chỉnh `C:\Users\Admin\Desktop\suu-tam-kien-thuc\sources.txt`
 
 ### Kết quả đầu ra

@@ -12,7 +12,7 @@ sources: [Sop AMI.md]
 
 3 nhóm sản phẩm AMI: Makeup cô dâu / Đào tạo makeup chuyên nghiệp / Đào tạo makeup cá nhân. Đánh giá theo 5 tiêu chí (quy mô thị trường, khả năng tạo content, khả năng xây thương hiệu, khả năng mở rộng, khả năng tạo doanh thu lâu dài) → chọn **Makeup Cá Nhân** làm trọng tâm giai đoạn hiện tại.
 
-> Khớp quyết định đã chốt ở [[project-dinh-huong-2026]] — năm 2026 tập trung kinh doanh makeup cá nhân, chưa mở rộng nghề khác.
+> Khớp quyết định đã chốt ở bộ nhớ *project-dinh-huong-2026* — năm 2026 tập trung kinh doanh makeup cá nhân, chưa mở rộng nghề khác.
 
 Vai trò từng sản phẩm trong hệ sinh thái (không loại bỏ sản phẩm khác, chỉ phân vai):
 - **Makeup cá nhân** → sản phẩm thu hút khách mới, cánh cửa đầu tiên
@@ -71,4 +71,4 @@ Bản đồ định vị 2 trục: Kỹ thuật ↔ Cảm xúc, Đại trà ↔ 
 
 ## Liên kết
 
-[[project-dinh-huong-2026]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/2026-07-11-chien-luoc-quang-cao-va-dinh-vi]], [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]
+bộ nhớ *project-dinh-huong-2026*, [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/2026-07-11-chien-luoc-quang-cao-va-dinh-vi]], [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]]

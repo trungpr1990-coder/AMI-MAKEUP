@@ -447,3 +447,76 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã tự viết 2 ý tưởng quay video GỐC (không dịch/mô tả video gốc) dựa theo xu hướng hashtag, ghi vào cột "Ý tưởng quay video gốc": (1) "Trang điểm 5 phút cho buổi sáng vội" — kèm mẹo chọn tông theo khuôn mặt vuông/tròn; (2) "Vừa trang điểm đi làm vừa tám chuyện nghề" — format immersive/talk-through, kèm mẹo giữ lớp nền bền
 - Đã kiểm tra bảng "Công cụ AI" (Base CRM `O2qIbEaIYabXEGsW6Dzjs0LCpZg`, table `tbliXt0oEV91oBhJ`) — đã có sẵn dòng mô tả skill này từ trước, không cần thêm dòng mới
 - Mâu thuẫn: none
+
+## [2026-07-13] research | Tìm kênh Douyin phong cách "hook dồn dập" + kho Hook/Insight/Vấn đề
+- Yêu cầu tiếp nối: Thuý muốn tìm kênh Douyin makeup cá nhân có phong cách nhiều hook giữ chân người xem (không phải kênh cụ thể "Thỏ Makeup", mà là kiểu phong cách) — đã hỏi rõ trước khi làm (AskUserQuestion): xác nhận không có kênh tham chiếu cụ thể, và hook lấy về phải ở dạng ĐÃ PHÂN LOẠI/DIỄN GIẢI LẠI (không sao chép nguyên văn caption gốc — đúng giới hạn bản quyền)
+- Quét 48 video top (4 từ khoá đã dùng ở lần trước, sort most_liked, 1 tuần) qua Apify, lần này lấy thêm field `authorMeta` (tên kênh, follower, secUid) và đọc nội dung `text`/`caption` CHỈ để phân tích pattern nội bộ (không lưu trữ lâu dài, không trích dẫn nguyên văn ra ngoài) — xoá file tạm chứa caption gốc sau khi phân tích xong
+- Tổng hợp 34 kênh duy nhất, liệt kê 12 kênh mạnh nhất (theo tổng lượt thích trong mẫu) kèm follower + link profile + đặc điểm định vị (rút từ bio, không phải caption) — đã đưa vào chat cho Thuý xem
+- Rút ra 9 KIỂU hook lặp lại nhiều nhất (không dịch nguyên văn, tự viết lại pattern + ví dụ tiếng Việt riêng): cam kết thời gian ngắn, gọi tên đúng vấn đề khuôn mặt/da, "đã ra rồi/có sẵn", nhắm đối tượng cực hẹp, cảm giác vỡ oà/khai sáng, con số xã hội gây tò mò, thử thách trước-sau, bí mật ngành, tâm sự/immersive
+- Theo yêu cầu tiếp theo của Thuý ("liệt kê lại các câu hook, insight, vấn đề vào lark base"), đã tạo bảng mới **"Hook & Insight Douyin"** (`tblA3og4w9etMZnF`, cùng Base `Wtn8bQ4sLanhfWsHrZ9jmbmypeH`) — cột: Kiểu hook / Insight - vì sao hiệu quả / Vấn đề nhắm tới / Ví dụ hook tự viết / Nguồn tham khảo / Ngày thêm — nạp đủ 9 dòng tương ứng 9 kiểu hook
+- Danh sách 12 kênh (tên/follower/link) CHƯA lưu vào Base — Thuý chưa xác nhận có muốn lưu thêm không, chỉ hỏi lưu phần hook/insight/vấn đề
+- Mâu thuẫn: none
+
+## [2026-07-13] build | Bảng "Kênh tham khảo Douyin" — phân loại 12 kênh theo quy mô + phong cách
+- Tiếp nối log ngay trên: Thuý xác nhận "ok phân loại riêng nhé" — lưu danh sách 12 kênh vào 1 bảng riêng (tách khỏi bảng "Hook & Insight Douyin"), có phân loại thay vì liệt kê phẳng
+- Tạo bảng mới "Kênh tham khảo Douyin" (`tblZSpgtkvnU9gNV`, cùng Base `Wtn8bQ4sLanhfWsHrZ9jmbmypeH`) — cột: Tên kênh / Phân loại (single-select 8 giá trị: Nhỏ-viral nhờ hook, Nhỏ/Vừa-định vị theo vấn đề da/mặt, Vừa-giọng thân mật, Vừa-dạy kèm riêng, Lớn-nội dung ổn định, Lớn-định vị gần gũi/tự học, Lớn-1 video viral đột biến) / Followers / Tổng lượt thích (mẫu quét) / Đặc điểm định vị / Link kênh / Ngày thêm
+- Nạp đủ 12 dòng đã liệt kê ở chat lần trước, gán phân loại theo quy mô follower + phong cách định vị rút từ bio kênh
+- Mâu thuẫn: none
+
+## [2026-07-13] research | Mở rộng bảng "Kênh tham khảo Douyin" — thêm 10 kênh makeup cá nhân
+- Yêu cầu tiếp nối: Thuý muốn "cào tiếp những kênh liên quan đến makeup cá nhân nữa"
+- Quét 4 từ khoá MỚI (chưa dùng ở 2 lần trước): 化妆博主 (blogger makeup), 淡妆教程 (trang điểm nhẹ), 伪素颜 (mặt mộc giả/tự nhiên), 约会妆容 (makeup hẹn hò) — 37 video top (sort most_liked, 1 tuần) qua Apify, loại trùng với 12 kênh đã lưu trước đó
+- Chọn 10 kênh mạnh nhất trong số kênh mới (theo tổng lượt thích mẫu), thêm vào đúng bảng "Kênh tham khảo Douyin" (`tblZSpgtkvnU9gNV`) đã có — cùng schema/phân loại như lần trước: 蠕蠕在旋转跳跃 (viral đột biến, 130k thích/1 video), 少女总裁 & 秦苒ran_ (kênh lớn ổn định), 会呆呆 & 小乖张 (giọng thân mật/gần gũi), 我是当天才的料 (kênh siêu nhỏ, tên kênh chính là hook), 肉骨头 & ISHS施施 & YueYue_ & 海～ (định vị hẹp theo vấn đề da/mặt cụ thể)
+- Bảng "Kênh tham khảo Douyin" hiện có tổng **22 kênh** (12 + 10)
+- Mâu thuẫn: none
+
+## [2026-07-13] tư vấn + research | Đổi chiến lược quét sang theo nỗi đau khách AMI, không quét từ khoá makeup chung
+- Thuý hỏi xin tư vấn "nên đi cào như nào cho sát" — đã chỉ ra vấn đề: từ khoá chung (化妆技巧, 化妆教程...) ra lẫn cả kênh bán hàng/mega-influencer không hợp mô hình AMI (đào tạo, không bán mỹ phẩm); đề xuất quét theo đúng nỗi đau đã biết của khách AMI (sợ không năng khiếu, muốn học 1 kèm 1, tự học từ 0) và ưu tiên lọc kênh kiểu "dạy 1 kèm 1/tự học từ 0" — Thuý đồng ý ("ok")
+- Quét 4 từ khoá mới bám sát insight: 零基础化妆 (học từ 0 nền tảng), 化妆小白 (gà mờ trang điểm), 一对一化妆教学 (dạy 1 kèm 1), 手残党化妆 (hội tay vụng) — 45 video top qua Apify, loại trùng 22 kênh đã lưu
+- Phát hiện quan trọng: **仟仟教化妆** (222k follower) — makeup artist cấp quốc gia, có ĐỦ 3 loại lớp (từ 0 nền tảng / hình ảnh cá nhân / nâng cao kỹ thuật nghề) — cấu trúc sản phẩm gần giống AMI nhất trong toàn bộ kênh đã quét từ trước tới nay; và phát hiện 1 FORMAT nội dung lặp lại ở 2 kênh nhỏ (西西爱化妆, 一只荔枝) — "nhật ký hành trình tự học" (ghi lại từng lần trang điểm hỏng/tiến bộ), khớp trực tiếp insight "sợ không có năng khiếu" đã có trong hồ sơ khách AMI
+- Thêm 4 nhóm phân loại mới vào field "Phân loại" (field-update, giữ nguyên 8 nhóm cũ + thêm): "Nhỏ - nhật ký hành trình tự học", "Nhỏ - dạy 1 kèm 1", "Vừa - mô hình đào tạo giống AMI (có lớp học thật)", "Vừa - giọng điệu thẳng thắn/phê bình"
+- Nạp 6 kênh mới vào bảng "Kênh tham khảo Douyin": 仟仟教化妆, 西西爱化妆, 小房, 化妆师梦依, 退休老赵(化妆师), 一只荔枝（练妆日记）— bảng hiện có tổng **28 kênh**
+- Mâu thuẫn: none
+
+## [2026-07-13] lint | Kiểm tra & liên kết trang wiki (Obsidian graph)
+- Yêu cầu: kiểm tra biểu đồ Obsidian (mạng liên kết wiki), đảm bảo các trang liên kết với nhau
+- Quét toàn bộ 189 trang wiki bằng script Node đếm inbound/outbound `[[...]]`: phát hiện 50 trang mồ côi (không có link trỏ tới) và 59 liên kết hỏng (trỏ tới trang không tồn tại)
+- Đã hỏi Thuý ưu tiên sửa nhóm nào — chọn: đưa 40 nguồn `sources/hoangminhhoaoffical/` (transcript kênh Hoàng Minh Hoá, sưu tầm qua [[sources/2026-suu-tam-kien-thuc-skill]]) vào index
+- Đã tạo [[sources/hoangminhhoaoffical/index]] — chỉ mục 40 video nhóm theo 9 chủ đề (Bán hàng/Marketing/Lãnh đạo/Khởi nghiệp/Tư duy-Thành công/...), và thêm 1 dòng trỏ tới trang này trong [[index]]
+- Kết quả: orphan pages giảm 50 → 9 (9 trang còn lại là lỗi tên file/nội dung riêng lẻ, chưa xử lý)
+- Còn tồn đọng (chưa sửa, đã báo Thuý): 59 liên kết hỏng — đáng chú ý là các link `[[project-...]]`/`[[reference-...]]` trong `log.md`/`index.md`/vài trang `nang-luc/` đang trỏ nhầm sang tên file bộ nhớ (memory) thay vì trang wiki thật; `[[entities/huyen-nguyen]]` bị trích 6 lần nhưng chưa có trang; 9 trang mồ côi còn lại (2 file bị lỗi tên khi tạo)
+- Mâu thuẫn: none
+
+## [2026-07-13] lint | Sửa toàn bộ liên kết hỏng & trang mồ côi còn lại
+- Tiếp nối lint trước đó (xem log ngay trên) — Thuý xác nhận "có làm đi", sửa hết phần còn tồn đọng
+- Xoá 1 file trùng lặp 100% nội dung: `skills/name_ Tư duy thành công...md` (tên bị lỗi do export sai) — giữ lại bản tên sạch [[skills/tu-duy-thanh-cong-va-quan-ly-thoi-gian]]
+- Đổi tên 2 file lỗi định dạng: `AMI_Quy_Trinh_Tu_Van_Chot_Sale.docx (1).md` → [[skills/ami-quy-trinh-tu-van-chot-sale]], `Bo-quy-trinh-SIPOC-cua-hang-vay-cuoi.md` → [[skills/bo-quy-trinh-sipoc-cua-hang-vay-cuoi]]
+- Tạo 2 trang entity: [[entities/huyen-nguyen]] (giảng viên nội tâm, được 6 trang nhắc tới nhưng chưa có trang), [[entities/cau-lac-bo-truong-sinh-an-lac]] (trang tồn tại nhưng trống — điền nội dung từ ngữ cảnh các trang liên quan)
+- De-link 24 tham chiếu sai định dạng (không sửa log.md — append-only): các link `[[project-ami-so-lieu-thuc-te]]`/`[[project-dinh-huong-2026]]`/`[[reference-crm-thuy-thuy-base-token]]` (tên file bộ nhớ, không phải trang wiki) chuyển thành text in nghiêng; `[[entities/thuy-tran]]`→"Thuý Trần" (chủ nhân wiki, không cần trang entity riêng); `[[entities/domain]]`→text thường (không phải entity cụ thể); `[[sources/2026-thau-hieu-noi-tam-buoi-1]]`→ghi rõ "chưa ingest vào wiki" (buổi 1 không có raw file, không thể tạo); `[[skill ads-agent]]`→format lại đúng quy ước backtick; `[[concepts/xu-ly-phan-doi]]`→text thường (data gap đã biết)
+- Nối 8 trang mồ côi còn lại vào [[index]] và các trang liên quan: [[analyses/base-structure-crm-thuys-makeup]], [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami]] (liên kết chéo với bản `-simple`), [[nang-luc/2026-suu-tam-kien-thuc]] (liên kết với [[sources/2026-suu-tam-kien-thuc-skill]] và [[sources/hoangminhhoaoffical/index]]), [[nang-luc/out-2026-07-02-sop-training-ai-thuytran-makeup]], [[pham-chat/2026-tong-hop-pham-chat]], và 3 trang skills đã đổi tên ở trên (thêm mục mới "Tài liệu tham khảo khác" trong [[skills/index]])
+- Kết quả cuối: **0/190 trang mồ côi** (từ 50), **0 liên kết hỏng thật sự** ngoài `log.md` (append-only, giữ nguyên lịch sử) và 4 link trỏ tới file `.html` công cụ tính toán có thật (`out-2026-07-10-may-tinh-chien-luoc-pheu-san-pham.html`, `out-2026-07-11-may-tinh-ngan-sach-quang-cao.html`) — không phải lỗi, chỉ là ngoài phạm vi quét .md
+- Mâu thuẫn: none
+
+## [2026-07-13] ingest | Sưu tầm kênh @longguru (Phạm Thành Long) — 37 video bị sót
+- Thuý hỏi lại: "tôi nhớ có đi cào thêm tri thức của long guru mà sao không thấy ở đây" — đúng, kiểm tra lại phát hiện batch @longguru đã được skill sưu-tầm-kiến-thức collect + consolidate (viết dàn ý, phân loại 9 chủ đề) xong ngày 2026-07-11 (xem `_suu_tam_log.txt`), nhưng chưa từng được đưa vào wiki
+- Nguyên nhân gốc: skill lưu kết quả tại `D:\Trí Tuệ Uyên Nhiên\raw\Tri Thức Sưu Tầm\` — một thư mục riêng NẰM NGOÀI vault wiki hiện tại (`D:\BỘ NÃO THỨ 2\`). Batch hoangminhhoaoffical (40 video, 2026-07-09) từng được copy thủ công vào wiki ở phiên trước đó; batch longguru (37 video, 2026-07-11) bị bỏ sót, không có ai copy tiếp
+- Đã copy 37 file từ kho thô vào [[sources/longguru/index]] (giữ nguyên nội dung dàn ý gốc, chỉ thêm dòng `category` vào frontmatter cho khớp định dạng hoangminhhoaoffical), nhóm theo 6 chủ đề đang có (02 Tài chính=3, 03 Bán hàng=3, 04 Marketing-MXH=5, 06 Khởi nghiệp-Kinh doanh=19, 08 Tư duy-Thành công=3, 09 Khác=4) — 3 file là bài hát/vlog cá nhân, không phải bài giảng, đã ghi chú rõ
+- Liên kết: [[index]] (thêm entry), [[sources/2026-suu-tam-kien-thuc-skill]] (thêm cảnh báo về lỗi đường dẫn), [[nang-luc/2026-suu-tam-kien-thuc]] (cập nhật nguồn)
+- ⚠️ Vấn đề cần Thuý quyết định: script skill vẫn đang trỏ vào thư mục cũ ngoài wiki — nếu không sửa, lần collect tiếp theo sẽ lặp lại y hệt lỗi này (nội dung nằm ngoài wiki, không ai biết). Đề xuất 2 hướng: (1) sửa `collect.ps1`/`classify.ps1` để lưu thẳng vào `D:\BỘ NÃO THỨ 2\wiki\sources\<kênh>\`, hoặc (2) giữ nguyên quy trình nhưng thêm bước "đồng bộ vào wiki" bắt buộc cuối mỗi lần consolidate
+- Mâu thuẫn: none
+
+## [2026-07-13] fix | Skill sưu-tầm-kiến-thức — chuyển kho lưu vào trong wiki
+- Theo lựa chọn của Thuý ("Sửa script trỏ thẳng vào wiki") — sửa tận gốc để lần collect tiếp theo không lặp lại lỗi bỏ sót batch @longguru
+- Sửa `collect.ps1` và `classify.ps1` (tại `C:\Users\Admin\.claude\skills\suu-tam-kien-thuc\scripts\`): biến `$kb` đổi từ `D:\Trí Tuệ Uyên Nhiên\raw\Tri Thức Sưu Tầm` (ngoài wiki) → `D:\BỘ NÃO THỨ 2\wiki\sources` (trong wiki) — không đổi logic script, chỉ đổi gốc lưu
+- Copy `_suu_tam_log.txt` cũ sang `wiki\sources\_suu_tam_log.txt` để giữ liên tục lịch sử collect/consolidate
+- Cập nhật `SKILL.md`: ghi rõ cảnh báo lỗi cũ + đường dẫn mới, thêm **bước 5 bắt buộc "xuất bản vào wiki"** vào quy trình CONSOLIDATE (copy file đã classify sang layout phẳng `wiki/sources/<kênh>/*.md` + category frontmatter + cập nhật index.md kênh + [[index]] gốc + ghi log) — đây chính là bước đã bị bỏ sót ở batch longguru, nay ép thành bước bắt buộc để không quên nữa
+- yt-dlp.exe vẫn để nguyên tại `D:\Trí Tuệ Uyên Nhiên\.tools\` (chỉ là tool tải về, không phải tri thức, không cần chuyển)
+- Lưu ý cấu trúc mới: lần COLLECT/CONSOLIDATE tiếp theo sẽ tạo `wiki\sources\<kênh>\videos\_inbox\` và `videos\<NN — chủ đề>\` — đây là **thư mục tạm**, khác với layout phẳng đã xuất bản (`wiki\sources\<kênh>\*.md` + `index.md`) của 2 batch hiện có; cần làm bước 5 để chuyển từ tạm sang chính thức
+- Mâu thuẫn: none
+
+## [2026-07-13] cleanup | Xoá thư mục thô cũ D:\Trí Tuệ Uyên Nhiên
+- Trước khi xoá, xác minh bằng script so khớp `video_id`: 77/77 video (40 hoangminhhoaoffical + 37 longguru) đã có mặt đầy đủ trong wiki, không thiếu file nào — an toàn để xoá bản gốc
+- Phát hiện + sửa 1 rủi ro trước khi xoá: `collect.ps1` còn phụ thuộc `yt-dlp.exe` nằm trong đúng thư mục định xoá (`D:\Trí Tuệ Uyên Nhiên\.tools\`), và code tự tải lại không tạo thư mục cha trước — nếu xoá ngay sẽ hỏng lần chạy tiếp theo. Đã chuyển yt-dlp.exe sang `C:\Users\Admin\.claude\skills\suu-tam-kien-thuc\tools\` (cạnh skill, không phụ thuộc ổ đĩa/thư mục nào khác), sửa `collect.ps1` trỏ đúng và tự tạo thư mục nếu thiếu
+- Đã xoá `D:\Trí Tuệ Uyên Nhiên\` (raw hoangminhhoaoffical + longguru + _suu_tam_log.txt cũ + .tools) theo xác nhận của Thuý
+- Theo yêu cầu Thuý ("từ giờ đi cào xong nạp vào wiki luôn"): từ lần "đi sưu tầm" tiếp theo, `collect.ps1`/`classify.ps1` ghi thẳng vào `wiki\sources\<kênh>\videos\_inbox\` rồi `videos\<NN chủ đề>\` — không còn thư mục ngoài wiki nào để nội dung "mất tích" nữa. Bước viết dàn ý (cần đọc hiểu) và bước gộp phẳng+index vẫn cần Claude làm thủ công trong phiên, nhưng nội dung đã nằm sẵn trong wiki từ bước tải đầu tiên nên không còn nguy cơ thất lạc ra ngoài
+- Mâu thuẫn: none

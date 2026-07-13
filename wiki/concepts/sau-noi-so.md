@@ -40,4 +40,4 @@ Không phải bằng lý trí hay ý chí, mà bằng **[[concepts/quy-luat-chuy
 
 - [[concepts/quy-luat-chuyen-hoa]] — nguyên lý để vượt qua nỗi sợ
 - [[concepts/ba-loai-tri-thuc]] — nỗi sợ là vấn đề thuộc nhân sinh quan
-- [[sources/2026-thau-hieu-noi-tam-buoi-1]]
+- buổi 1 (chưa ingest vào wiki)

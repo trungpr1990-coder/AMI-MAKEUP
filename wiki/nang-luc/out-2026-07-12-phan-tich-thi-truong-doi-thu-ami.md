@@ -151,4 +151,4 @@ Xét theo tỷ lệ tương tác/follower quan sát được (chỉ mang tính t
 - Phát hiện về SĐT trên trang cá nhân Thuý (0911148995) khác hotline chính thức (0327.355.595) — cần Thuý xác nhận số nào đang dùng thật để tránh khách gọi nhầm số cũ.
 
 ## Liên kết
-[[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[project-ami-so-lieu-thuc-te]], [[entities/ami-makeup-academy]]
+[[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], bộ nhớ *project-ami-so-lieu-thuc-te*, [[entities/ami-makeup-academy]]

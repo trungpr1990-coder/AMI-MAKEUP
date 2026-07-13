@@ -63,5 +63,5 @@ Nguyên tắc: 1 group đông thành viên hoặc tên nhóm nêu rõ 1 nhu cầ
 
 - **Nghiên cứu insight/nỗi đau:** vào nhóm mục 1, đọc bài hỏi-đáp thật (xem cách làm ở [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]])
 - **Đăng bài/quảng cáo tự nhiên (organic):** xin phép admin đăng trong nhóm mục 1 & 2 khi có ưu đãi/case study
-- **Target ads:** dùng tên nhóm mục 1 làm gợi ý sở thích (interest) khi thiết lập target trong [[skill ads-agent]]
+- **Target ads:** dùng tên nhóm mục 1 làm gợi ý sở thích (interest) khi thiết lập target trong skill `ads-agent`
 - **Xây cộng đồng riêng:** cân nhắc tự lập nhóm Nam Định (mục 3) làm kênh sở hữu dài hạn, không phụ thuộc thuật toán Facebook

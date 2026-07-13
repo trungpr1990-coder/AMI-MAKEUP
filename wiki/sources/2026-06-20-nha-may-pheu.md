@@ -43,7 +43,7 @@ Tài liệu chuyên sâu hướng dẫn dựng hệ thống thu lead & nuôi dư
 - [[entities/claude-code]] — Tool tạo nội dung, code, deploy
 - [[entities/lark]] — Platform quản lý dữ liệu & gửi email
 - [[entities/cloudflare]] — Hosting miễn phí cho worker/landing page
-- [[entities/domain]] — Tên miền cho chiến dịch
+- Tên miền (domain) cho chiến dịch — chưa gắn với entity cụ thể
 
 ## Concepts
 

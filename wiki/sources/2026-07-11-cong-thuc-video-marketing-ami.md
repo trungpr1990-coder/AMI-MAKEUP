@@ -33,4 +33,4 @@ Không có entity tổ chức mới — buổi trao đổi hoàn toàn về AMI 
 
 - File gốc là `.docx`/`.pdf` ở gốc thư mục `D:\BỘ NÃO THỨ 2\`, không theo quy ước `wiki/<khoang>/` — giữ nguyên vị trí gốc, chỉ ingest nội dung vào wiki.
 - Đã tách nội dung thành 2 khoang page: (1) framework/phương pháp có thể tái dùng cho mọi dòng sản phẩm AMI, (2) chiến lược cụ thể riêng cho dòng Makeup Cá Nhân.
-- Không mâu thuẫn với dữ liệu thật đã có ([[project-ami-so-lieu-thuc-te]]) — giá Basic 2 triệu/VIP 3 triệu trong tài liệu này khớp đúng với giá đã xác nhận trước đó.
+- Không mâu thuẫn với dữ liệu thật đã có (bộ nhớ *project-ami-so-lieu-thuc-te*) — giá Basic 2 triệu/VIP 3 triệu trong tài liệu này khớp đúng với giá đã xác nhận trước đó.

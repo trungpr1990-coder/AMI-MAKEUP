@@ -59,6 +59,12 @@ updated: 2026-06-03
 - [[skills/lark-openapi-explorer]] — Khám phá OpenAPI chưa được CLI wrap
 - [[skills/lark-skill-maker]] — Tạo custom skill mới
 
+## Tài liệu tham khảo khác (không phải Lark skill)
+
+- [[skills/ami-quy-trinh-tu-van-chot-sale]] — Quy trình tư vấn chốt sale 6 bước thật của AMI (Facebook Messenger/Zalo), phỏng theo playbook 11 bước của [[entities/gao-nau-personal-makeup]] — xem so sánh ở [[sources/2026-quy-trinh-tu-van-chot-sale]]
+- [[skills/bo-quy-trinh-sipoc-cua-hang-vay-cuoi]] — Bộ quy trình vận hành mẫu (phương pháp SIPOC) cho cửa hàng váy cưới — tài liệu tham khảo khi thiết kế SOP, không phải dữ liệu thật của AMI
+- [[skills/tu-duy-thanh-cong-va-quan-ly-thoi-gian]] — Nguyên tắc quản lý thời gian, thu phục nhân tâm, tư duy tài chính người giàu/người nghèo
+
 ---
 
 **Cài đặt:** `D:\BỘ NÃO THỨ 2\.agents\skills\` (26 thư mục)  

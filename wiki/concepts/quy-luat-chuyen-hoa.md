@@ -62,4 +62,4 @@ Trước khi vũ trụ tặng quà (thăng tiến, thành công), sẽ có một
 - [[concepts/sau-noi-so]] — những gì cần chuyển hóa
 - [[concepts/ba-loai-tri-thuc]] — nền tảng triết học của quy luật này
 - [[entities/huyen-nguyen]], [[entities/cau-lac-bo-truong-sinh-an-lac]]
-- [[sources/2026-thau-hieu-noi-tam-buoi-1]]
+- buổi 1 (chưa ingest vào wiki)

@@ -28,4 +28,4 @@ Theo [[entities/huyen-nguyen]] trong hệ thống [[entities/cau-lac-bo-truong-s
 
 - [[concepts/sau-noi-so]] — những rào cản thuộc phạm trù nhân sinh quan
 - [[concepts/quy-luat-chuyen-hoa]] — cách ứng dụng nhân sinh quan để thay đổi
-- [[sources/2026-thau-hieu-noi-tam-buoi-1]]
+- buổi 1 (chưa ingest vào wiki)

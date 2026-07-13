@@ -123,7 +123,7 @@ Sản phẩm & mô tả: Đào tạo makeup cá nhân + dịch vụ makeup (cô 
 
 ### MẢNG 8 — ĐỐI THỦ
 
-- Đối thủ cùng địa bàn Nam Định (đã xác định): Triệu Vy (facebook.com/trieuvy68), Vi Vi (facebook.com/vivi.lady9x) — cả hai định vị thương hiệu cá nhân giống AMI, chưa khảo sát giá/quy mô (theo [[project-ami-so-lieu-thuc-te]])
+- Đối thủ cùng địa bàn Nam Định (đã xác định): Triệu Vy (facebook.com/trieuvy68), Vi Vi (facebook.com/vivi.lady9x) — cả hai định vị thương hiệu cá nhân giống AMI, chưa khảo sát giá/quy mô (theo bộ nhớ *project-ami-so-lieu-thuc-te*)
 - Đối thủ tham chiếu thiết kế thương hiệu/website: Hằng Thu Makeup (hangthumakeup.vn)
 - Đối thủ mới cần theo dõi thêm (mới ghi nhận 2026-07-12): Thỏ Makeup, Gạo Nâu, Hiền Mew
 
@@ -132,7 +132,7 @@ Sản phẩm & mô tả: Đào tạo makeup cá nhân + dịch vụ makeup (cô 
 - Doanh thu mong muốn/tháng (hoặc /quý): **50 triệu/tháng** *(chốt 2026-07-12, thay thế số nháp cũ 30-45tr chưa xác nhận — xem [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami-simple]])*
 - Số khách/đơn mong muốn/tháng: …………
 - Mục tiêu tăng trưởng kênh 3-6 tháng: …………
-- Ưu tiên số 1 trong 90 ngày tới: tăng đơn Khoá Makeup Cá Nhân (Basic/VIP) — khớp [[project-dinh-huong-2026]] (năm 2026 ưu tiên kinh doanh makeup cá nhân), nhưng con số mục tiêu cụ thể chưa chốt — …………
+- Ưu tiên số 1 trong 90 ngày tới: tăng đơn Khoá Makeup Cá Nhân (Basic/VIP) — khớp bộ nhớ *project-dinh-huong-2026* (năm 2026 ưu tiên kinh doanh makeup cá nhân), nhưng con số mục tiêu cụ thể chưa chốt — …………
 
 ### MẢNG 10 — GIỌNG THƯƠNG HIỆU & RANH GIỚI
 

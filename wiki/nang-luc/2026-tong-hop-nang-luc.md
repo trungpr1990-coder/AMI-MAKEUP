@@ -7,7 +7,7 @@ created: 2026-06-23
 updated: 2026-06-23
 sources: []
 ---
-
+           
 ## Mô Tả Khoang
 Kỹ năng thực thi, chuyên môn nghề nghiệp, công cụ, phương pháp làm việc. Những gì bạn có thể **làm được**.
 

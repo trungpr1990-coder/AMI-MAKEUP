@@ -9,7 +9,7 @@ sources: []
 
 ## Tổng Quan
 
-6 lĩnh vực cốt lõi mà [[entities/thuy-tran]] tập trung học tập và phát triển trong doanh nghiệp. Đây là hệ thống phân loại kiến thức theo góc độ **vận hành thực chiến**.
+6 lĩnh vực cốt lõi mà Thuý Trần tập trung học tập và phát triển trong doanh nghiệp. Đây là hệ thống phân loại kiến thức theo góc độ **vận hành thực chiến**.
 
 ---
 

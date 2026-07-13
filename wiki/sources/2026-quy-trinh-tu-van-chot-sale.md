@@ -33,4 +33,5 @@ Tài liệu là một đoạn hội thoại thực tế giữa nhân viên tư v
 
 - Đây là 1 hội thoại mẫu — chưa rõ có bao nhiêu cuộc hội thoại trong tài liệu gốc (phần còn lại của file chỉ chứa ảnh base64, không có text).
 - Khách hàng chưa chốt — có thể bổ sung thêm ví dụ hội thoại đã chốt thành công để so sánh kỹ thuật.
-- Cần thêm tài liệu về [[concepts/xu-ly-phan-doi]] nếu muốn đào sâu từng objection.
+- Cần thêm tài liệu về xử lý phản đối (chưa có trang riêng) nếu muốn đào sâu từng objection.
+- So sánh: quy trình 6 bước thật của AMI (phỏng theo playbook 11 bước này) — xem [[skills/ami-quy-trinh-tu-van-chot-sale]]

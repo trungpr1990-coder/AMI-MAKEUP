@@ -554,7 +554,7 @@ Giống tinh thần Chương 16 của file mẫu — liệt kê rõ điều CHƯ
 | [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]] | Bóng tối & ánh sáng khách hàng makeup | Đối chiếu/bổ trợ Ch6 |
 | [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] | Chiến lược nội dung & định vị Makeup Cá Nhân | Cấu trúc khoá học, insight Thuý nhớ lại |
 | [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]] | Định vị & thông điệp thương hiệu chính thức | Đối chiếu định vị Ch12, giọng nói |
-| [[project-dinh-huong-2026]] | Định hướng kinh doanh 2026 | Xác nhận ưu tiên dòng Makeup Cá Nhân |
+| bộ nhớ *project-dinh-huong-2026* | Định hướng kinh doanh 2026 | Xác nhận ưu tiên dòng Makeup Cá Nhân |
 | Ảnh chụp Messenger/testimonial (Thuý gửi trực tiếp 2026-07-12) | Dữ liệu thô | Ch9 bằng chứng khách hàng thật |
 | Lý do chiến lược ưu tiên Makeup Cá Nhân (Thuý xác nhận trực tiếp 2026-07-12) | Dữ liệu thô | Mục "Vì sao ưu tiên..." đầu hồ sơ |
 | Khảo sát trực tiếp 6 Fanpage Facebook (AMI + 5 đối thủ, 2026-07-12, không đăng nhập) | Dữ liệu thô | Toàn bộ Ch12 và [[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]] |
@@ -562,4 +562,4 @@ Giống tinh thần Chương 16 của file mẫu — liệt kê rõ điều CHƯ
 ---
 
 ## Liên kết
-[[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]], [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]], [[project-dinh-huong-2026]]
+[[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]], [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]], [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]], [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]], bộ nhớ *project-dinh-huong-2026*
