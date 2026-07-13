@@ -19,6 +19,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[entities/lark]] — Nền tảng quản lý dữ liệu, email, tích hợp
 - [[entities/claude-code]] — AI tool tạo nội dung & code
 - [[entities/ami-makeup-academy]] — Thương hiệu AMI: địa chỉ/hotline thật, giá khoá chuyên nghiệp thật (25tr/KM 20tr khoá makeup, 10tr khoá tóc) — đã sửa dữ liệu placeholder/demo cũ nhầm là của Hằng Thu (cập nhật 2026-07-12)
+- [[entities/tho-makeup-ha-noi]] — Fanpage đối thủ Thỏ MakeUp Hà Nội: khoá makeup 1-1 tại nhà, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
+- [[entities/phuong-koi-makeup]] — Fanpage đối thủ Phương Kòi Makeup: học viện đào tạo, reach gấp ~28 lần Thỏ MakeUp, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
 
 ## Concepts (Khái niệm chính)
 
@@ -95,6 +97,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]] — Phân tích thị trường/đối thủ AMI vs 5 đối thủ thật (Thỏ MakeUp 481K, Hiền Mew 231K, Phương Kòi 192K, Phạm Quỳnh Chi 170K, Gạo Nâu 25K) qua 13 đầu mục: điểm mạnh/yếu 2 bên, tệp khách, thông điệp, khoảng trống, ánh sáng/bóng tối, ngách, định vị khác biệt, nhóm content — phát hiện quan trọng: tagline AMI trùng lõi với Hiền Mew (added 2026-07-12)
 - [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]] — Hồ sơ khách hàng mục tiêu chuyên sâu dòng Makeup Cá Nhân: cấu trúc file mẫu Hằng China (chân dung, 4 phân khúc, đau-sướng, JTBD, VoC, hành trình, phản đối, đối thủ, offer/content) + lý do chiến lược ưu tiên dòng này + Phần VII Value Proposition Canvas (Osterwalder — Customer Profile/Value Map/Fit Analysis) — 100% dữ liệu thật AMI, có 5 testimonial thật tìm được (updated 2026-07-12)
 - [[nang-luc/out-2026-07-12-danh-sach-group-cong-dong-makeup]] — Danh sách group/cộng đồng Facebook makeup + bảng vấn đề suy ra từ quy mô/tên nhóm (tự học sai cách, sợ chọn nhầm chỗ uy tín, matching khách-thợ, Nam Định chưa có group riêng) (added 2026-07-12, mở rộng 2026-07-12)
+- [[nang-luc/out-2026-07-13-phan-tich-khoang-trong-noi-dung-reels-makeup]] — Phân tích khoảng trống nội dung Reels 2 kênh đối thủ (Thỏ MakeUp Hà Nội, Phương Kòi Makeup) qua Apify: độ phủ, khoảng trống tìm kiếm/định dạng, xu hướng 2026, xếp hạng 5 cơ hội nội dung (added 2026-07-13)
+- [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] — Giáo án chi tiết khóa Makeup Cá Nhân VIP 1-1, 5 buổi, 3 triệu (từ infographic user cung cấp): mục tiêu/nội dung/timing/lỗi thường gặp/bài tập từng buổi, xử lý nỗi sợ "không có năng khiếu" (added 2026-07-13)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 

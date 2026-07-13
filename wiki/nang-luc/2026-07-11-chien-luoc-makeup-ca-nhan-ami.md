@@ -19,10 +19,10 @@ AMI có 3 dòng: (1) Makeup dịch vụ — chủ yếu cô dâu, (2) Đào tạ
 | | AMI Basic | AMI VIP |
 |---|---|---|
 | Hình thức | Nhóm 3-6 người, 2 giáo viên dạy | Học 1-1 trực tiếp với Thuý Trần |
-| Thời lượng | 3 buổi × 1.5-2 tiếng | Tương tự, cá nhân hóa theo tone mong muốn |
-| Giá | 2.000.000đ/3 buổi | 3.000.000đ (theo bộ nhớ *project-ami-so-lieu-thuc-te*) |
-| Nội dung | Buổi 1-2: hiểu khuôn mặt/da, chọn layout phù hợp. Buổi 3: chọn kiểu tóc phù hợp khuôn mặt | Giống Basic + tặng giáo trình + video online xem lại |
-| Cam kết | Học xong tự makeup được cho chính mình | Giống Basic |
+| Thời lượng | 3 buổi × 1.5-2 tiếng | **5 buổi** × 1.5-2 tiếng (đã xác nhận 2026-07-13 — trước đó ghi nhầm "tương tự Basic") |
+| Giá | 2.000.000đ/3 buổi | 3.000.000đ/5 buổi |
+| Nội dung | Buổi 1-2: hiểu khuôn mặt/da, chọn layout phù hợp. Buổi 3: chọn kiểu tóc phù hợp khuôn mặt | Lộ trình 5 buổi đầy đủ: Nền tảng & Hiểu da → Kỹ thuật cơ bản → Nâng cao phong cách → Hoàn thiện & chuyên sâu → Thực hành & Toả sáng. Giáo án chi tiết: [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] |
+| Cam kết | Học xong tự makeup được cho chính mình | Giống Basic + tặng giáo trình + video online xem lại |
 | Hỗ trợ sau khóa | Hỗ trợ thêm 1 buổi nếu khó khăn + hỗ trợ nhắn tin online | Tặng thêm 1 buổi nếu chưa tự tin, có trợ giảng support |
 
 **Mục tiêu học viên đạt được (Thuý xác nhận):** tự makeup đẹp mỗi ngày, tự tin.

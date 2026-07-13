@@ -520,3 +520,32 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã xoá `D:\Trí Tuệ Uyên Nhiên\` (raw hoangminhhoaoffical + longguru + _suu_tam_log.txt cũ + .tools) theo xác nhận của Thuý
 - Theo yêu cầu Thuý ("từ giờ đi cào xong nạp vào wiki luôn"): từ lần "đi sưu tầm" tiếp theo, `collect.ps1`/`classify.ps1` ghi thẳng vào `wiki\sources\<kênh>\videos\_inbox\` rồi `videos\<NN chủ đề>\` — không còn thư mục ngoài wiki nào để nội dung "mất tích" nữa. Bước viết dàn ý (cần đọc hiểu) và bước gộp phẳng+index vẫn cần Claude làm thủ công trong phiên, nhưng nội dung đã nằm sẵn trong wiki từ bước tải đầu tiên nên không còn nguy cơ thất lạc ra ngoài
 - Mâu thuẫn: none
+
+## [2026-07-13] query | Phân tích khoảng trống nội dung Facebook Reels — Thỏ MakeUp Hà Nội & Phương Kòi Makeup
+- Yêu cầu: đóng vai chuyên gia chiến lược nội dung, phân tích 2 fanpage đối thủ (makeup cá nhân, thị trường VN) để tìm khoảng trống nội dung Reels — 5 phần phân tích (độ phủ, nhu cầu qua bình luận, khoảng trống tìm kiếm, khoảng trống định dạng, cơ hội theo xu hướng) + xếp hạng 5 cơ hội
+- Dữ liệu: lấy thật qua Apify `facebook-posts-scraper` (skill `lay-du-lieu-facebook`, dùng token trong [[apify-token]]) — 50 bài/kênh, metadata (caption/likes/shares/views/loại/thời gian), không lấy được bình luận (tool không hỗ trợ) — đã nêu rõ giới hạn, không bịa số liệu bình luận
+- Phần xu hướng có tra cứu web thật (WebSearch): trend làm đẹp VN 2026 (Jelly Makeup, Lived-in Lips, Satin Skin...) và thuật toán Facebook Reels 2026 (ưu tiên nội dung gốc, video 15-30s, UTIS model)
+- File tạo: [[nang-luc/out-2026-07-13-phan-tich-khoang-trong-noi-dung-reels-makeup]], [[entities/tho-makeup-ha-noi]] (mới), [[entities/phuong-koi-makeup]] (mới)
+- Liên quan: [[nang-luc/2026-07-12-phan-tich-tuyen-noi-dung-tho-makeup]], [[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]]
+- Sources drawn from: dữ liệu Apify thật (không phải wiki cũ)
+- Mâu thuẫn: none
+
+## [2026-07-13] create | Giáo án Khóa học Makeup Cá Nhân — 5 buổi (từ infographic)
+- Yêu cầu: Thuý gửi 1 infographic (lộ trình 5 buổi: Nền tảng&Hiểu da / Kỹ thuật cơ bản / Nâng cao phong cách / Hoàn thiện&chuyên sâu / Thực hành&Toả sáng) và yêu cầu dựng thành giáo án giảng dạy + module bài giảng chi tiết
+- Đã đối chiếu với khung 5 tầng giáo trình đã chốt trước đó ([[nang-luc/2026-07-11-sop-san-pham-va-giao-trinh-ami]] — SOP26) — 2 khung khớp gần như trực tiếp, dùng làm nguyên tắc giảng dạy xuyên suốt (HIỂU→PHÂN TÍCH→THỰC HÀNH→ỨNG DỤNG, 6 nhịp mỗi bài)
+- Nội dung giáo án mỗi buổi: mục tiêu, phân bổ thời lượng theo phút, nội dung chi tiết từng module con, lỗi thường gặp cần sửa, bài tập về nhà, cách xử lý nỗi sợ ngầm "không có năng khiếu" (lấy từ insight thật [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]]), giọng điệu đứng lớp theo [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]]
+- File tạo: [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]]
+- Mâu thuẫn ban đầu (đã giải quyết): lộ trình ảnh là 5 buổi nhưng wiki cũ ghi VIP là "3 buổi 1-1, 3 triệu" — Thuý xác nhận trực tiếp đây là khóa **VIP 1-1, 5 buổi, giá 3.000.000đ** (giá giữ nguyên, chỉ số buổi VIP tăng từ 3→5; Basic nhóm 3-6 người vẫn 3 buổi/2 triệu, không đổi). Đã sửa lại bảng giá ở [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] và tiêu đề/mô tả file giáo án cho khớp
+
+## [2026-07-13] export | Giáo án Makeup Cá Nhân VIP 5 buổi — xuất bản .docx
+- Yêu cầu: Thuý muốn file Word để in/gửi thay vì chỉ đọc markdown
+- Dùng skill `docx` (docx-js) dựng file theo tông hồng AMI (heading màu hồng đậm C2185B, bảng thời lượng/dụng cụ có header hồng, callout box viền hồng cho các câu trích/nguyên tắc), có header/footer đánh số trang
+- Không có LibreOffice/Python trên máy để render PDF xem trước theo đúng quy trình chuẩn của skill — đã kiểm tra thay thế: cấu trúc zip hợp lệ (unzip -l), toàn bộ text tiếng Việt có dấu được giữ nguyên trong `word/document.xml` (kiểm tra bằng script Node, không lỗi mojibake)
+- File tạo: `wiki/nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi.docx` (song song với bản `.md` gốc)
+- Mâu thuẫn: none
+
+## [2026-07-13] sửa | Giáo án Makeup Cá Nhân VIP — đổi cách mở đầu Buổi 1
+- Lý do: Thuý phản hồi phần mở đầu Buổi 1 cũ giả định sẵn 1 nỗi sợ ("không có năng khiếu") trong khi học viên VIP 1-1 mỗi người có vấn đề khác nhau — muốn mở đầu là trò chuyện lắng nghe để hiểu đúng vấn đề & mong muốn thật của từng người, không áp 1 kịch bản trấn an cố định
+- Đã sửa: mục "Xử lý nỗi sợ ngầm..." trong Tổng quan → đổi thành "Mở đầu Buổi 1 — trò chuyện tìm hiểu vấn đề & mong muốn" (4 câu hỏi mở gợi ý + bảng 5 nhóm vấn đề/mong muốn thường gặp kèm cách phản hồi tương ứng — không phải danh sách đóng); bảng thời lượng Buổi 1 đổi mốc 0-10→0-15 (giãn thời gian trò chuyện thật, các mốc sau dịch theo, tổng vẫn 105 phút); câu tham chiếu "nhắc lại thông điệp Buổi 1" ở Buổi 5 và mục Ghi chú giáo viên đổi thành tham chiếu chung "đúng điều đã trò chuyện ở Buổi 1" thay vì câu cố định
+- File cập nhật: [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] (.md + .docx regenerate cùng script docx-js)
+- Mâu thuẫn: none
