@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Khoá Tự Trang Điểm Cá Nhân — Cơ Bản &amp; VIP | Thuý Trần</title>
+<meta name="description" content="Học tự trang điểm đẹp chuẩn thần thái cho bản thân cùng Thuý Trần. 2 gói: Cơ Bản (2.000.000đ / 3 buổi) và VIP (3.000.000đ / 5 buổi). Đăng ký giữ chỗ ngay." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --pink:#ff6f91;
+    --pink-dark:#e0447a;
+    --pink-deep:#c22a63;
+    --peach:#ff9a5a;
+    --cream:#fff8f5;
+    --pink-soft:#ffe9ef;
+    --pink-bg:#fff3f6;
+    --line:#ffd9e4;
+    --text:#3a2c2f;
+    --muted:#8a7278;
+    --cta-grad:linear-gradient(135deg,var(--pink),var(--peach));
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms !important;transition-duration:.01ms !important;scroll-behavior:auto !important}}
+  body{font-family:'Be Vietnam Pro',sans-serif;background:var(--cream);color:var(--text);line-height:1.7;-webkit-font-smoothing:antialiased;font-size:15.5px}
+  a{text-decoration:none;color:inherit}
+  img{display:block;max-width:100%}
+  ul{list-style:none}
+  :focus-visible{outline:2px solid var(--pink-dark);outline-offset:3px}
+
+  .wrap{max-width:720px;margin:0 auto;padding:0 20px}
+
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:700;line-height:1.25;color:var(--text)}
+  .eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink-dark);text-align:center;display:block;margin-bottom:10px}
+  .h-section{font-size:clamp(24px,5vw,32px);text-align:center;margin-bottom:8px}
+  .h-section em{font-style:italic;color:var(--pink-dark)}
+  .sub-center{text-align:center;color:var(--muted);font-size:14.5px;max-width:520px;margin:0 auto}
+
+  section{padding:56px 0}
+
+  .btn{display:inline-block;background:var(--cta-grad);color:#fff;border:none;padding:17px 30px;border-radius:50px;font-size:14.5px;font-weight:700;letter-spacing:.02em;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;box-shadow:0 14px 30px -14px rgba(224,68,122,.55);transition:transform .2s,box-shadow .2s;text-align:center}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 18px 36px -12px rgba(224,68,122,.65)}
+  .btn-block{display:block;width:100%}
+  .btn-outline{background:none;border:2px solid var(--pink-dark);color:var(--pink-dark);box-shadow:none;border-radius:50px;padding:15px 28px}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,#ffe4ef 0%,var(--cream) 60%);padding:52px 0 44px;text-align:center;position:relative;overflow:hidden}
+  .hero-tag{display:inline-flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);color:var(--pink-deep);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;border-radius:30px;margin-bottom:20px}
+  .hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--pink)}
+  .hero h1{font-size:clamp(28px,7vw,42px);margin-bottom:16px}
+  .hero h1 em{font-style:italic;color:var(--pink-dark)}
+  .hero-sub{color:var(--muted);font-size:15.5px;max-width:480px;margin:0 auto 28px;line-height:1.8}
+  .hero-ctas{display:flex;flex-direction:column;gap:12px;max-width:340px;margin:0 auto 30px}
+  .hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:20px;max-width:420px;margin:0 auto}
+  .hero-stat b{font-family:'Playfair Display',serif;font-size:22px;color:var(--pink-dark);display:block;line-height:1}
+  .hero-stat span{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-top:5px}
+
+  /* PAIN / BENEFIT */
+  .pb-block{margin-top:34px}
+  .pb-title{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pink-deep);margin-bottom:14px;padding-left:2px}
+  .pb-list li{display:flex;gap:10px;padding:12px 14px;background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;font-size:14px;color:var(--text)}
+  .pb-list.no li{border-left:3px solid #e08a9c}
+  .pb-list.yes li{border-left:3px solid var(--pink-dark)}
+  .pb-list .ic{flex-shrink:0;font-weight:700}
+  .pb-list.no .ic{color:#c2536b}
+  .pb-list.yes .ic{color:var(--pink-dark)}
+
+  /* STORY */
+  .story-box{background:#fff;border:1px dashed #e0447a80;border-radius:16px;padding:26px 22px;margin-top:20px;position:relative}
+  .story-box p{color:var(--muted);font-size:14px;line-height:1.9;font-style:italic}
+  .mock-tag{display:inline-block;background:#fff3f6;color:var(--pink-dark);border:1px solid var(--pink-dark);font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-bottom:12px}
+
+  /* TESTIMONIALS (mock) */
+  .testi-grid{display:flex;flex-direction:column;gap:14px;margin-top:20px}
+  .testi-card{background:rgba(255,255,255,.06);border:1px dashed rgba(255,154,90,.6);border-radius:14px;padding:16px 18px;position:relative}
+  .testi-stars{color:var(--peach);font-size:13px;margin-bottom:6px;letter-spacing:2px}
+  .testi-card p{color:rgba(255,255,255,.8);font-size:13.5px;line-height:1.7;font-style:italic;margin-bottom:10px}
+  .testi-foot{display:flex;align-items:center;gap:10px}
+  .testi-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:14px;color:#2b1c22;flex-shrink:0}
+  .testi-name{font-size:12px;color:rgba(255,255,255,.55);font-weight:600}
+  .mock-note{text-align:center;font-size:12px;color:#c04a70;background:#fff0f4;border:1px solid #ffd2e0;border-radius:12px;padding:12px 16px;margin-top:18px;font-weight:600}
+
+  /* PRICING */
+  .pricing-section{background:var(--pink-soft)}
+  .price-cards{display:flex;flex-direction:column;gap:20px;margin-top:34px}
+  .price-card{background:#fff;border:1.5px solid var(--line);border-radius:20px;padding:28px 24px;position:relative}
+  .price-card.vip{border:2px solid var(--pink-dark);box-shadow:0 20px 44px -26px rgba(224,68,122,.5)}
+  .price-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--cta-grad);color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:20px;white-space:nowrap}
+  .price-name{font-family:'Playfair Display',serif;font-size:21px;text-align:center;margin-bottom:4px}
+  .price-buoi{text-align:center;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+  .price-amount{text-align:center;font-family:'Playfair Display',serif;font-size:30px;color:var(--pink-dark);font-weight:700;margin-bottom:20px}
+  .price-list{margin-bottom:22px}
+  .price-list li{display:flex;gap:9px;padding:8px 0;font-size:13.5px;color:var(--muted);border-bottom:1px dashed var(--line)}
+  .price-list li:last-child{border-bottom:none}
+  .price-list .ic{color:var(--pink-dark);flex-shrink:0}
+  .price-note{text-align:center;font-size:11.5px;color:#b99aa4;margin-top:16px;font-style:italic}
+
+  /* CURRICULUM */
+  .curr-list{margin-top:30px;display:flex;flex-direction:column;gap:14px}
+  .curr-item{display:flex;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px}
+  .curr-num{font-family:'Playfair Display',serif;font-size:20px;color:var(--pink);flex-shrink:0;width:28px}
+  .curr-item h4{font-size:14px;font-weight:700;margin-bottom:4px}
+  .curr-item p{font-size:13px;color:var(--muted);line-height:1.6}
+  .tag-vip{display:inline-block;margin-top:6px;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--pink-dark);border:1px solid var(--pink-dark);padding:2px 7px;border-radius:10px}
+
+  /* CREDIBILITY */
+  .cred-section{background:#2b1c22;color:#fff}
+  .cred-section .eyebrow{color:var(--peach)}
+  .cred-section .h-section{color:#fff}
+  .cred-stats{display:flex;justify-content:center;gap:0;margin-top:30px;border-top:1px solid rgba(255,255,255,.15);border-bottom:1px solid rgba(255,255,255,.15)}
+  .cred-stat{flex:1;text-align:center;padding:20px 8px;border-right:1px solid rgba(255,255,255,.15)}
+  .cred-stat:last-child{border-right:none}
+  .cred-stat b{font-family:'Playfair Display',serif;font-size:20px;color:var(--peach);display:block}
+  .cred-stat b.pending{font-size:12px;color:rgba(255,255,255,.35);font-style:italic;font-family:'Be Vietnam Pro',sans-serif;font-weight:400}
+  .cred-stat span{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);display:block;margin-top:6px}
+  .proof-placeholder{margin-top:24px;border:1px dashed rgba(255,255,255,.3);border-radius:14px;padding:24px 18px;text-align:center;color:rgba(255,255,255,.4);font-size:13px;font-style:italic}
+  .bio-box{margin-top:24px;background:rgba(255,255,255,.05);border-radius:14px;padding:20px}
+  .bio-box p{color:rgba(255,255,255,.75);font-size:13.5px;line-height:1.8}
+
+  /* GUARANTEE */
+  .guarantee{margin-top:0;text-align:center;background:#fff;border:1px solid var(--line);border-radius:18px;padding:30px 24px}
+  .guarantee-badge{width:52px;height:52px;border-radius:50%;background:var(--pink-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .guarantee h3{font-size:17px;margin-bottom:10px}
+  .guarantee p{font-size:13.5px;color:var(--muted);line-height:1.8}
+  .pending-note{display:block;margin-top:8px;font-size:11px;color:#c9a3ae;font-style:italic}
+
+  /* FAQ */
+  .faq{margin-top:30px}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-q{width:100%;text-align:left;background:none;border:none;padding:16px 2px;display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:600;color:var(--text)}
+  .faq-q .plus{font-family:'Playfair Display',serif;font-size:20px;color:var(--pink-dark);flex-shrink:0;transition:transform .25s}
+  .faq-item[data-open="true"] .plus{transform:rotate(45deg)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+  .faq-a p{padding:0 2px 18px;font-size:13.5px;color:var(--muted);line-height:1.8}
+
+  /* FORM */
+  .reg-section{background:linear-gradient(160deg,#ffe4ef,var(--pink-soft))}
+  .reg-head{text-align:center;margin-bottom:26px}
+  .reg-form{background:#fff;border-radius:20px;padding:26px 22px;box-shadow:0 24px 50px -30px rgba(194,42,99,.35)}
+  .fg{margin-bottom:15px}
+  .fg label{display:block;font-size:12.5px;font-weight:700;color:var(--pink-deep);margin-bottom:6px}
+  .fg input,.fg select,.fg textarea{width:100%;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14.5px;font-family:'Be Vietnam Pro',sans-serif;color:var(--text);outline:none;transition:border-color .2s;background:#fffdfd}
+  .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--pink-dark)}
+  .fg textarea{resize:vertical;min-height:76px}
+  .reg-trust{text-align:center;font-size:11.5px;color:var(--muted);margin-top:14px}
+  .reg-contact{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
+  .reg-contact strong{color:var(--pink-deep)}
+
+  #success-box{display:none;background:#fff;border-radius:20px;padding:38px 24px;text-align:center;box-shadow:0 24px 50px -30px rgba(194,42,99,.35)}
+  #success-box .check{width:52px;height:52px;border-radius:50%;background:var(--cta-grad);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+  #success-box h3{font-size:19px;margin-bottom:8px}
+  #success-box p{font-size:13.5px;color:var(--muted)}
+
+  footer{background:#2b1c22;text-align:center;padding:24px 20px;color:rgba(255,255,255,.4);font-size:11px}
+
+  /* Mobile-first: widen up from base styles for larger screens */
+  @media(min-width:640px){
+    .wrap{max-width:760px}
+    .hero-ctas{flex-direction:row;justify-content:center;max-width:none}
+    .pb-block-wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .price-cards{flex-direction:row}
+    .price-card{flex:1}
+    .curr-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .cred-stat b{font-size:26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-tag">2 Gói Học · Cầm Tay Chỉ Việc</div>
+    <h1>Tự Trang Điểm <em>Đẹp Chuẩn Thần Thái</em> Chỉ Sau 3 Buổi Học</h1>
+    <p class="hero-sub">Không cần ra tiệm mỗi lần đi tiệc, đi làm hay có dịp quan trọng. Học trực tiếp 1-1 cùng Thuý Trần — Makeup Artist &amp; Giảng viên đào tạo makeup tại Nam Định.</p>
+    <div class="hero-ctas">
+      <a href="#dang-ky" class="btn btn-block">Đăng Ký Giữ Chỗ Ngay</a>
+      <a href="#gia" class="btn btn-outline">Xem 2 Gói Học</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>2tr</b><span>Học phí từ</span></div>
+      <div class="hero-stat"><b>3-5</b><span>Buổi học</span></div>
+      <div class="hero-stat"><b>1-1</b><span>Trực tiếp cùng Thuý</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN / BENEFIT -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Đây Có Phải Bạn Không</span>
+    <h2 class="h-section">Từ loay hoay mỗi sáng đến <em>tự tin làm chủ gương mặt mình</em></h2>
+    <div class="pb-block-wrap">
+      <div class="pb-block">
+        <div class="pb-title">Vấn đề bạn đang gặp</div>
+        <ul class="pb-list no">
+          <li><span class="ic">✕</span> Chọn sai tông kem nền, bị "hai màu mặt với cổ"</li>
+          <li><span class="ic">✕</span> Đánh mắt mãi không lên thần thái</li>
+          <li><span class="ic">✕</span> Makeup xong vài tiếng là xuống tông, đổ dầu</li>
+          <li><span class="ic">✕</span> Trang điểm buổi sáng mất cả tiếng vẫn chưa ưng</li>
+          <li><span class="ic">✕</span> Mua mỹ phẩm sai màu, lãng phí tiền triệu mỗi năm</li>
+          <li><span class="ic">✕</span> Lên hình không tự tin, phải chỉnh sửa ảnh nhiều</li>
+        </ul>
+      </div>
+      <div class="pb-block">
+        <div class="pb-title">Sau khoá học bạn sẽ</div>
+        <ul class="pb-list yes">
+          <li><span class="ic">✓</span> Tự chọn đúng tông nền, che khuyết điểm tự nhiên</li>
+          <li><span class="ic">✓</span> Tự đánh mắt có thần, hợp dáng mắt của mình</li>
+          <li><span class="ic">✓</span> Makeup bền cả ngày, không lo xuống tông</li>
+          <li><span class="ic">✓</span> Trang điểm gọn trong 15-20 phút mỗi sáng</li>
+          <li><span class="ic">✓</span> Biết chọn đúng mỹ phẩm hợp da, hợp mình</li>
+          <li><span class="ic">✓</span> Tự tin lên hình, chủ động vẻ đẹp mỗi ngày</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="story-box">
+      <span class="mock-tag">✎ Câu chuyện minh hoạ — chưa phải thật</span>
+      <p>"Hồi mới cầm cọ, tôi makeup cho chính mình mà còn hỏng suốt — hôm thì kem nền lệch tông sáng hẳn so với cổ, hôm thì đánh mắt một bên đậm một bên nhạt, đi ra đường cứ cúi mặt vì ngại. Không có ai chỉ tận tay, tôi mày mò xem đủ video, mua đủ loại mỹ phẩm, có tháng tiêu gần hết lương chỉ để thử sai.</p>
+      <p>Cái khiến tôi vỡ ra là một lần makeup cho bạn thân đi ăn hỏi, làm y hệt các bước mình học mà lên mặt bạn lại không đẹp — lúc đó tôi mới hiểu: không có công thức chung cho mọi khuôn mặt, mỗi người một dáng, một kiểu da, phải nhìn đúng người mà chỉnh tay. Từ đó tôi bỏ hẳn kiểu học vẹt, chuyển sang quan sát và luyện trên thật nhiều gương mặt khác nhau.</p>
+      <p>Đến khi tự tin cầm cọ, tôi mở lớp vì thấy rất nhiều bạn giống mình ngày xưa — muốn đẹp mà không biết bắt đầu từ đâu. Giờ mỗi buổi dạy, tôi chỉ đúng theo mặt của từng học viên, để các bạn không phải đi đường vòng như tôi đã từng."</p>
+      <p style="font-size:11px;margin-top:6px;color:#c04a70;font-style:normal">* Bản minh hoạ — Thuý xem lại, chỉnh cho khớp đúng hành trình thật của mình trước khi đăng công khai.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="gia" class="pricing-section">
+  <div class="wrap">
+    <span class="eyebrow">Chọn Gói Phù Hợp Với Bạn</span>
+    <h2 class="h-section">2 Gói Học <em>Trang Điểm Cá Nhân</em></h2>
+    <p class="sub-center">Học trực tiếp, cầm tay chỉ việc — không phải xem video tự học.</p>
+
+    <div class="price-cards">
+      <div class="price-card">
+        <div class="price-name">Cơ Bản</div>
+        <div class="price-buoi">3 buổi học</div>
+        <div class="price-amount">2.000.000đ</div>
+        <ul class="price-list">
+          <li><span class="ic">✓</span> Buổi 1 — Chăm da &amp; lót nền, chọn đúng tông kem nền</li>
+          <li><span class="ic">✓</span> Buổi 2 — Mắt &amp; chân mày hợp dáng khuôn mặt</li>
+          <li><span class="ic">✓</span> Buổi 3 — Môi &amp; hoàn thiện set makeup đi làm/đi chơi</li>
+        </ul>
+        <a href="#dang-ky" class="btn btn-block" onclick="preselectPackage('Cơ Bản')">Đăng Ký Gói Cơ Bản</a>
+      </div>
+      <div class="price-card vip">
+        <div class="price-badge">Đầy Đủ Nhất</div>
+        <div class="price-name">VIP</div>
+        <div class="price-buoi">5 buổi học</div>
+        <div class="price-amount">3.000.000đ</div>
+        <ul class="price-list">
+          <li><span class="ic">✓</span> Trọn vẹn nội dung Buổi 1-3 của gói Cơ Bản</li>
+          <li><span class="ic">✓</span> Buổi 4 — Makeup đi tiệc/dạ hội, kỹ thuật lên khối chuyên sâu</li>
+          <li><span class="ic">✓</span> Buổi 5 — Makeup chụp ảnh/quay video, chỉnh riêng theo khuôn mặt bạn (1-1)</li>
+        </ul>
+        <a href="#dang-ky" class="btn btn-block" onclick="preselectPackage('VIP')">Đăng Ký Gói VIP</a>
+      </div>
+    </div>
+    <p class="price-note">* Nội dung từng buổi mang tính tổng quan, sẽ được Thuý xác nhận chi tiết khi tư vấn.</p>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section>
+  <div class="wrap">
+    <span class="eyebrow">Lộ Trình Chi Tiết</span>
+    <h2 class="h-section">5 buổi học, từ <em>nền tảng đến hoàn thiện</em></h2>
+    <div class="curr-list">
+      <div class="curr-item"><span class="curr-num">01</span><div><h4>Chăm da &amp; lót nền</h4><p>Chọn đúng tông kem nền hợp da, kỹ thuật che khuyết điểm tự nhiên.</p></div></div>
+      <div class="curr-item"><span class="curr-num">02</span><div><h4>Mắt &amp; chân mày</h4><p>Kỹ thuật đánh mắt cơ bản hợp dáng mắt, kẻ mày chuẩn khuôn mặt.</p></div></div>
+      <div class="curr-item"><span class="curr-num">03</span><div><h4>Môi &amp; tổng thể</h4><p>Hoàn thiện set makeup đi làm, đi chơi hàng ngày.</p></div></div>
+      <div class="curr-item"><span class="curr-num">04</span><div><h4>Makeup đi tiệc/dạ hội</h4><p>Kỹ thuật đánh khối, tán màu chuyên sâu, giữ bền lâu.<br><span class="tag-vip">Chỉ có ở gói VIP</span></p></div></div>
+      <div class="curr-item"><span class="curr-num">05</span><div><h4>Makeup chụp ảnh/quay video</h4><p>Chỉnh riêng theo khuôn mặt bạn, 1-1 cùng Thuý.<br><span class="tag-vip">Chỉ có ở gói VIP</span></p></div></div>
+      <div class="curr-item"><span class="curr-num">📍</span><div><h4>Địa điểm học</h4><p>351 Lê Hồng Phong, TP. Nam Định — Thuý Trần trực tiếp giảng dạy 100% buổi học.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<section class="cred-section">
+  <div class="wrap">
+    <span class="eyebrow">Vì Sao Học Cùng Thuý</span>
+    <h2 class="h-section">Uy tín được xây bằng <em>thời gian &amp; kết quả thật</em></h2>
+    <div class="cred-stats">
+      <div class="cred-stat"><b>150+ *</b><span>Học Viên</span></div>
+      <div class="cred-stat"><b>100%</b><span>Thuý Dạy Trực Tiếp</span></div>
+      <div class="cred-stat"><b>5+ *</b><span>Năm Kinh Nghiệm</span></div>
+    </div>
+    <div class="bio-box">
+      <p><strong style="color:#fff">Thuý Trần</strong> — Makeup Artist &amp; Giảng viên đào tạo makeup, trực tiếp giảng dạy 100% các buổi học tại 351 Lê Hồng Phong, TP. Nam Định (không qua trợ giảng). * Số năm kinh nghiệm và thành tích cụ thể cần Thuý xác nhận lại.</p>
+    </div>
+
+    <div class="testi-grid">
+      <span class="mock-tag">✎ Feedback minh hoạ — chưa phải khách thật</span>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Học xong buổi 2 là mình tự đánh mắt được rồi, trước giờ toàn makeup lệch một bên mà không biết sửa sao. Cô chỉ rất kỹ theo đúng dáng mắt của mình."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar" style="background:#ffd9e4">H.</div>
+          <div class="testi-name">Chị H. — Nam Định · Gói Cơ Bản (minh hoạ)</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Mình hay đi tiệc nên học gói VIP luôn, giờ tự trang điểm dạ hội cũng lên khối đẹp, không cần ra tiệm nữa, tiết kiệm được kha khá."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar" style="background:#ffe1c2">M.</div>
+          <div class="testi-name">Chị M. — Nam Định · Gói VIP (minh hoạ)</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Trước mình makeup buổi sáng mất cả tiếng, giờ chỉ 15 phút là xong mà vẫn tươi tắn cả ngày, đúng cái mình cần."</p>
+        <div class="testi-foot">
+          <div class="testi-avatar" style="background:#e0c2ff">L.</div>
+          <div class="testi-name">Chị L. — Nam Định · Gói Cơ Bản (minh hoạ)</div>
+        </div>
+      </div>
+    </div>
+    <div class="mock-note">⚠️ Toàn bộ số liệu và feedback trong khối này là VÍ DỤ MINH HOẠ để xem bố cục — bắt buộc thay bằng dữ liệu khách thật trước khi công khai trang, tránh quảng cáo sai sự thật.</div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section style="padding-bottom:20px">
+  <div class="wrap">
+    <div class="guarantee">
+      <div class="guarantee-badge">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e0447a" stroke-width="1.8"><path d="M12 2l7 3v6c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V5l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+      </div>
+      <h3>Cam Kết Của Thuý</h3>
+      <p>Nếu sau buổi học đầu tiên bạn thấy không phù hợp, Thuý sẽ trao đổi phương án hỗ trợ hợp lý cho bạn.</p>
+      <span class="pending-note">* Chính sách hoàn/đổi lịch cụ thể sẽ được xác nhận và cập nhật sau.</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Câu Hỏi Thường Gặp</span>
+    <h2 class="h-section" style="margin-bottom:0">Giải Đáp Nhanh</h2>
+    <div class="faq" id="faq">
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Học có cần mang dụng cụ trang điểm riêng không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Thông tin cụ thể sẽ được Thuý tư vấn khi liên hệ lại — thường học viên nên có sẵn bộ mỹ phẩm cá nhân để thực hành đúng trên da mình.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Lịch học có linh động không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Có, lịch học sẽ được sắp xếp phù hợp với thời gian rảnh của bạn, trao đổi trực tiếp khi đăng ký.</p></div>
+      </div>
+      <div class="faq-item" data-open="false">
+        <button class="faq-q" aria-expanded="false">Học xong có tự trang điểm thành thạo không, có hỗ trợ sau khoá không? <span class="plus">+</span></button>
+        <div class="faq-a"><p>Mục tiêu của khoá là giúp bạn tự trang điểm thành thạo cho các dịp trong gói đã chọn. Chính sách hỗ trợ sau khoá sẽ được cập nhật cụ thể.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION FORM -->
+<section class="reg-section" id="dang-ky">
+  <div class="wrap">
+    <div class="reg-head">
+      <h2 class="h-section">Đăng Ký Giữ Chỗ</h2>
+      <p class="sub-center">Điền thông tin bên dưới, Thuý sẽ liên hệ lại trong vòng 24h để tư vấn kỹ hơn và xác nhận lịch học phù hợp với bạn.</p>
+    </div>
+
+    <form class="reg-form" id="reg-form">
+      <div class="fg">
+        <label>Họ tên *</label>
+        <input type="text" id="f-name" required placeholder="Nguyễn Thị A" />
+      </div>
+      <div class="fg">
+        <label>Số điện thoại *</label>
+        <input type="tel" id="f-phone" required placeholder="0912 345 678" />
+      </div>
+      <div class="fg">
+        <label>Email</label>
+        <input type="email" id="f-email" placeholder="email@gmail.com" />
+      </div>
+      <div class="fg">
+        <label>Tuổi</label>
+        <input type="number" id="f-age" min="10" max="100" placeholder="25" />
+      </div>
+      <div class="fg">
+        <label>Khoá quan tâm *</label>
+        <select id="f-package" required>
+          <option value="">— Chọn gói —</option>
+          <option value="Cơ Bản">Cơ Bản — 2.000.000đ / 3 buổi</option>
+          <option value="VIP">VIP — 3.000.000đ / 5 buổi</option>
+          <option value="Chưa chắc, cần tư vấn">Chưa chắc, cần tư vấn</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Nhu cầu mong muốn</label>
+        <textarea id="f-need" placeholder="VD: mình muốn tự trang điểm đi làm hàng ngày..."></textarea>
+      </div>
+      <button type="submit" class="btn btn-block">Tôi Muốn Đăng Ký Giữ Chỗ</button>
+      <p class="reg-trust">Thuý cam kết bảo mật thông tin của bạn.</p>
+    </form>
+
+    <div id="success-box">
+      <div class="check"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h3>Đã Nhận Đăng Ký!</h3>
+      <p>Cảm ơn bạn đã quan tâm. Thuý sẽ liên hệ lại trong vòng 24h để tư vấn kỹ hơn.</p>
+    </div>
+
+    <div class="reg-contact">Hoặc liên hệ trực tiếp <strong>trungpr1990@gmail.com</strong> · 351 Lê Hồng Phong, TP. Nam Định</div>
+  </div>
+</section>
+
+<footer>© 2026 Thuý Trần · Khoá Tự Trang Điểm Cá Nhân · 351 Lê Hồng Phong, TP. Nam Định</footer>
+
+<script>
+  function preselectPackage(name) {
+    setTimeout(() => {
+      const sel = document.getElementById('f-package');
+      if (sel) sel.value = name;
+    }, 250);
+  }
+
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    const ans = item.querySelector('.faq-a');
+    btn.addEventListener('click', () => {
+      const open = item.getAttribute('data-open') === 'true';
+      document.querySelectorAll('.faq-item').forEach(o => {
+        o.setAttribute('data-open','false');
+        o.querySelector('.faq-q').setAttribute('aria-expanded','false');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!open) {
+        item.setAttribute('data-open','true');
+        btn.setAttribute('aria-expanded','true');
+        ans.style.maxHeight = ans.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Form submit — hiện tại chỉ hiển thị xác nhận, CHƯA nối Lark Base (sẽ nối ở bước sau)
+  document.getElementById('reg-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const phone = document.getElementById('f-phone').value.trim();
+    const pkg = document.getElementById('f-package').value;
+    if (!name || !phone || !pkg) {
+      alert('⚠️ Vui lòng điền Họ tên, Số điện thoại và chọn Khoá quan tâm');
+      return;
+    }
+    const payload = {
+      name, phone,
+      age: document.getElementById('f-age').value,
+      email: document.getElementById('f-email').value.trim(),
+      package: pkg,
+      need: document.getElementById('f-need').value.trim(),
+    };
+    // TODO: nối vào Lark Base khi có endpoint — hiện chưa gửi đi đâu
+    console.log('Đăng ký khoá trang điểm cá nhân:', payload);
+
+    document.getElementById('reg-form').style.display = 'none';
+    document.getElementById('success-box').style.display = 'block';
+  });
+</script>
+</body>
+</html>
