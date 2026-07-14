@@ -589,3 +589,16 @@ Append-only record of all ingest, query, and maintenance operations.
 - Khoang pages: [[nang-luc/2026-07-14-ami-beauty-funnel-90-ngay]] — phễu đầy đủ Ebook → Zalo AMI Beauty Club → Workshop → Khoá học, Content Engine 5 trụ cột, hệ thống quảng cáo thu data, lịch sản xuất content 30/90 ngày (15/07-15/11/2026), Giai đoạn 2 đề xuất AMI 5 Step Beauty Method
 - Mâu thuẫn: none về số liệu — chỉ ghi chú (không phải mâu thuẫn thật) rằng ebook đề xuất "7 Lỗi..." là ý tưởng thứ 3, khác 2 ebook đã build ([[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]], [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]]); và phễu lead-gen này khác track với phễu up-sell dịch vụ [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami]] — 2 phễu phục vụ 2 luồng doanh thu khác nhau, không cần chọn 1
 - Việc cần Thuý quyết định: (1) có build ebook "7 Lỗi..." hay dùng lại 1 trong 2 ebook đã có làm mồi câu chính, (2) đối chiếu số buổi khoá Basic (3 buổi theo tài liệu này) vs giáo án đã có 5 buổi ở [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]], (3) kế hoạch bắt đầu 15/07 — tức ngay ngày mai tính từ lúc ingest
+
+## [2026-07-14] output | 8 ý tưởng video từ phân tích đối thủ Lely Lan Huong
+- Bối cảnh: Thuý gửi link Facebook đối thủ, dùng skill `lay-du-lieu-facebook` (Apify) cào 50 bài gần nhất (26/01-14/07/2026) → phân tích rút insight → brainstorm 8 ý tưởng video
+- Insight đối thủ: 80% bài là Reels, engagement TB reel (~27.700) gấp ~3 lần bài ảnh (~9.900); mỏ vàng = chủ đề "má hồng" (4/10 bài top), format "siêu nhanh/chỉ 1 món", hook "đừng làm sai nữa / ước gì biết sớm hơn" tái dùng vẫn viral. Top bài 183k like / 22,6tr view
+- Dữ liệu thô lưu: `C:\Users\Admin\.claude\skills\lay-du-lieu-facebook\scripts\facebook_analysis_lelylanhuong_2026-07-14.json` + `.csv`
+- Nạp 8 dòng vào bảng "Kho Tiêu Đề Video - Makeup Cá Nhân" (tblyL3QtUIUePwq1) trong Base CRM Thúy Thúy — Số Video 51-58, thêm option Nguồn mới "Phân tích đối thủ (Lely Lan Huong, 07-14)" để phân biệt với nguồn ChatGPT cũ. Không gộp với bảng "Ngân Hàng Insight" (Thuý xác nhận giữ 2 bảng riêng: 1 cho nỗi đau/insight, 1 cho hook/tiêu đề)
+- Mâu thuẫn: none
+
+## [2026-07-14] output | Tạo bảng "Kho Data Đối Thủ (cào về)" + nạp 50 bài Lely Lan Huong
+- Bối cảnh: Thuý muốn 1 bảng chuyên lưu tiêu đề/hook của đối thủ cào về. Đã kiểm tra bảng có sẵn "15.2 Phân Tích Bài Đăng Facebook" (đang chứa data đối thủ Hường Phiêu, cụm 15.x riêng) → Thuý chọn (AskUserQuestion) tạo bảng MỚI tổng quát đa đối thủ thay vì trộn vào 15.x
+- Bảng mới: "Kho Data Đối Thủ (cào về)" (table_id `tbl2YiR4wcARM7wc`) trong Base CRM Thúy Thúy. 14 cột: Nội Dung/Hook, Đối thủ/Page (select), Nền tảng (select: FB/TikTok/IG), Loại Bài (Reel/Ảnh), Ngày Đăng, Lượt Xem, Lượt Thích, Số Share, Số Comment, Tương tác (Like+Share), Hashtags, Link, Ghi Chú Phân Tích, Ngày Cào
+- Nạp 50 bài Lely Lan Huong (cào bằng skill lay-du-lieu-facebook/Apify, dữ liệu thô tại `facebook_analysis_lelylanhuong_2026-07-14.json`). Lưu ý: actor facebook-posts-scraper không trả số comment nên cột Số Comment để trống
+- Mâu thuẫn: none
