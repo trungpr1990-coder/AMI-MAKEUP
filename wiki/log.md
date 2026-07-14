@@ -549,3 +549,35 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã sửa: mục "Xử lý nỗi sợ ngầm..." trong Tổng quan → đổi thành "Mở đầu Buổi 1 — trò chuyện tìm hiểu vấn đề & mong muốn" (4 câu hỏi mở gợi ý + bảng 5 nhóm vấn đề/mong muốn thường gặp kèm cách phản hồi tương ứng — không phải danh sách đóng); bảng thời lượng Buổi 1 đổi mốc 0-10→0-15 (giãn thời gian trò chuyện thật, các mốc sau dịch theo, tổng vẫn 105 phút); câu tham chiếu "nhắc lại thông điệp Buổi 1" ở Buổi 5 và mục Ghi chú giáo viên đổi thành tham chiếu chung "đúng điều đã trò chuyện ở Buổi 1" thay vì câu cố định
 - File cập nhật: [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] (.md + .docx regenerate cùng script docx-js)
 - Mâu thuẫn: none
+
+## [2026-07-13] output | Ebook "7 Nỗi Sợ Khiến Phụ Nữ Mãi Chưa Dám Học Makeup Cho Chính Mình"
+- Skill: hmh-mkt-ebook-sach-lat (giai đoạn 1-3: nghiên cứu → soạn markdown → build PDF)
+- File: `output/2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan/7-noi-so-hoc-makeup-ca-nhan.pdf` (20 trang)
+- Ghi chú: [[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]]
+- Grounded từ: [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]], [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]]
+- Chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy — dừng chờ Thuý duyệt nội dung trước khi xuất bản
+- Mâu thuẫn: none
+
+## [2026-07-13] ingest | Ebook "Bí Mật Hệ Thống Tạo 1.000 Khách Hàng Đầu Tiên Không Cần Lộ Diện" (Hoàng Minh Hoá) — đóng gói thành SOP
+- File: Lark Docx `Vfy0dOsoXoIshUxxyK6l1Jf8gHe` (đọc qua `lark-cli docs +fetch`) — cùng tác giả kênh sưu tầm [[sources/hoangminhhoaoffical/index]]
+- Summary: [[sources/2026-07-13-co-may-marketing-an-danh]]
+- Khoang pages: [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] — đóng gói 9 chương thành SOP 8 bước dùng lại được (khách hàng/nỗi đau → hook → nội dung ebook → mockup → quảng cáo → leadpage → email automation → lộ trình 7 ngày), có ghi rõ liên kết tới hạ tầng kỹ thuật đã có sẵn ([[concepts/nha-may-pheu]]) và lead magnet AMI đang dở dang ([[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]] mới làm xong bước 1-3)
+- New pages: [[entities/hoang-minh-hoa]] (tác giả, trước đó chỉ có source video chưa có entity riêng)
+- Mâu thuẫn: none — nội dung là lớp chiến lược/copywriting, không trùng với [[concepts/nha-may-pheu]] (lớp hạ tầng kỹ thuật)
+
+## [2026-07-13] create | Quy trình tạo Ebook cho bất kỳ vấn đề nào (bản rút gọn)
+- Lý do: Thuý phản hồi SOP đầy đủ cả phễu (log ngay trên) không đúng ý — muốn riêng quy trình **tạo ebook**, tổng quát cho bất kỳ vấn đề/chủ đề nào, không cần phần ads/leadpage/email
+- Tách Bước 1-3 (khách hàng/nỗi đau → hook 5 công thức → nội dung 5 phần → mockup) từ [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] thành file riêng dạng điền-vào-chỗ-trống, có bảng công thức hook kèm ví dụ
+- Đã đối chiếu với skill có sẵn `hmh-mkt-ebook-sach-lat` (pipeline 6 giai đoạn: nghiên cứu → soạn markdown → build PDF → host → Heyzine → xuất bản) — không trùng lặp: skill đó mạnh về kỹ thuật xuất bản nhưng Giai đoạn 1-2 (nghiên cứu/soạn) khá chung chung, thiếu công thức hook cụ thể và cấu trúc 5 phần chi tiết; quy trình mới này lấp đúng khoảng trống đó và bàn giao đầu ra sang Giai đoạn 3-6 của skill
+- File tạo: [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]]
+- File cũ [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] giữ nguyên (vẫn đúng khi cần cả phễu đầy đủ), chỉ thêm 1 dòng ghi chú trỏ sang bản rút gọn
+- Mâu thuẫn: none
+
+## [2026-07-13] output | Ebook "10 Lý Do Khiến Bạn Tự Makeup Mãi Vẫn Chưa Đẹp" — áp dụng thật quy trình mới
+- Bối cảnh: Thuý chọn chủ đề mới (khác 2 gợi ý ban đầu), qua AskUserQuestion xác nhận không dùng "checklist chọn nơi học" hay "bộ mỹ phẩm cơ bản" mà tự nêu chủ đề riêng — mình điền sẵn Bước 0 (vấn đề/khách hàng/giai đoạn/né tránh) + đề xuất 10 lý do grounded từ dữ liệu có sẵn, Thuý xác nhận "ok đấy" rồi viết trọn ebook
+- Nguồn 10 lý do: 7 lý do kỹ thuật rút từ mục "Lỗi thường gặp cần sửa" trong [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] (giáo án dạy thật), 3 lý do tâm lý/thói quen rút từ [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] (câu nói thật, gồm bình luận TikTok 3.876 likes "khung mặt cj này đẹp sẵn r")
+- Viết theo đúng [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]] (Bước 0-2) rồi build bằng skill `hmh-mkt-ebook-sach-lat`
+- Sự cố kỹ thuật: script `build-pdf.mjs` luôn nhúng logo Mentorcamp thật nếu file ảnh tồn tại trong `assets/` dùng chung của skill, không có cờ tắt — thử di chuyển tạm 2 file ảnh dùng chung bị auto mode classifier chặn đúng (sửa tài nguyên chia sẻ ngoài phạm vi phiên này). Xử lý an toàn hơn: build PDF bình thường trước, `sed` xoá 6 thẻ `<img class="logo-img">` khỏi `.html` đã sinh (chỉ sửa file riêng của dự án), tự gọi lại Chrome headless `--print-to-pdf` trên HTML đã xoá logo — ra bìa chữ đúng thương hiệu AMI, đã chụp ảnh kiểm tra bìa/mục lục để xác nhận
+- File tạo: [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]] (.md ghi chú + PDF 23 trang tại `output/2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep/`)
+- Chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy — dừng chờ Thuý duyệt nội dung trước khi xuất bản
+- Mâu thuẫn: none

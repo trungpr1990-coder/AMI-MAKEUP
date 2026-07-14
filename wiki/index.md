@@ -12,6 +12,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[sources/2026-07-11-sop-van-hanh-toan-dien-ami]] — Bộ 28 SOP vận hành AMI Makeup Academy (dạng thẻ AI): chiến lược → khách hàng/insight → content/video → bán hàng/phễu/ads → vận hành lớp học → chăm sóc học viên → nhân sự (added 2026-07-11)
 - [[sources/hoangminhhoaoffical/index]] — Chỉ mục 40 video sưu tầm kênh Hoàng Minh Hoá (kinh doanh studio), phân theo 9 chủ đề — nguồn thô chưa consolidate (added 2026-07-13)
 - [[sources/longguru/index]] — Chỉ mục 37 video sưu tầm kênh @longguru (Phạm Thành Long — kinh doanh, tư duy, bán hàng), phân theo 9 chủ đề — thu thập 2026-07-11 nhưng sót ở kho thô ngoài wiki, phát hiện lại và nạp vào 2026-07-13
+- [[sources/2026-07-13-co-may-marketing-an-danh]] — Ebook "Bí Mật Hệ Thống Tạo 1.000 Khách Hàng Đầu Tiên Không Cần Lộ Diện" (Hoàng Minh Hoá): lead magnet, hook, ebook, mockup, ads, leadpage, email automation — đóng gói SOP tại [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] (added 2026-07-13)
 
 ## Entities (Nền tảng & công cụ)
 
@@ -21,6 +22,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[entities/ami-makeup-academy]] — Thương hiệu AMI: địa chỉ/hotline thật, giá khoá chuyên nghiệp thật (25tr/KM 20tr khoá makeup, 10tr khoá tóc) — đã sửa dữ liệu placeholder/demo cũ nhầm là của Hằng Thu (cập nhật 2026-07-12)
 - [[entities/tho-makeup-ha-noi]] — Fanpage đối thủ Thỏ MakeUp Hà Nội: khoá makeup 1-1 tại nhà, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
 - [[entities/phuong-koi-makeup]] — Fanpage đối thủ Phương Kòi Makeup: học viện đào tạo, reach gấp ~28 lần Thỏ MakeUp, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
+- [[entities/hoang-minh-hoa]] — Coach kinh doanh studio ảnh bên ngoài, tác giả kênh sưu tầm hoangminhhoaoffical + ebook "Cỗ Máy Marketing Ẩn Danh" (added 2026-07-13)
 
 ## Concepts (Khái niệm chính)
 
@@ -99,6 +101,10 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-12-danh-sach-group-cong-dong-makeup]] — Danh sách group/cộng đồng Facebook makeup + bảng vấn đề suy ra từ quy mô/tên nhóm (tự học sai cách, sợ chọn nhầm chỗ uy tín, matching khách-thợ, Nam Định chưa có group riêng) (added 2026-07-12, mở rộng 2026-07-12)
 - [[nang-luc/out-2026-07-13-phan-tich-khoang-trong-noi-dung-reels-makeup]] — Phân tích khoảng trống nội dung Reels 2 kênh đối thủ (Thỏ MakeUp Hà Nội, Phương Kòi Makeup) qua Apify: độ phủ, khoảng trống tìm kiếm/định dạng, xu hướng 2026, xếp hạng 5 cơ hội nội dung (added 2026-07-13)
 - [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]] — Giáo án chi tiết khóa Makeup Cá Nhân VIP 1-1, 5 buổi, 3 triệu (từ infographic user cung cấp): mục tiêu/nội dung/timing/lỗi thường gặp/bài tập từng buổi, xử lý nỗi sợ "không có năng khiếu" (added 2026-07-13)
+- [[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]] — Ebook lead magnet "7 Nỗi Sợ Khiến Phụ Nữ Mãi Chưa Dám Học Makeup Cho Chính Mình" (20 trang, PDF ở `output/2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan/`), grounded từ insight thật + giáo án + giọng thương hiệu AMI, chưa host công khai/chưa làm sách lật (added 2026-07-13)
+- [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] — SOP 8 bước "Cỗ Máy Marketing Ẩn Danh" đóng gói từ ebook Hoàng Minh Hoá: khách hàng/nỗi đau → hook → nội dung ebook → mockup → quảng cáo → leadpage → email automation → lộ trình 7 ngày; ghi rõ AMI đã làm xong bước 1-3, còn thiếu bước 4-7 cho ebook 7-nỗi-sợ (added 2026-07-13)
+- [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]] — Bản rút gọn: quy trình tạo EBOOK (không kèm ads/leadpage/email) cho bất kỳ vấn đề nào, dạng điền-vào-chỗ-trống (vấn đề→hook 5 công thức→nội dung 5 phần→mockup), bàn giao sang skill `hmh-mkt-ebook-sach-lat` để build PDF/flipbook (added 2026-07-13)
+- [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]] — Ebook lead magnet thứ 2 "10 Lý Do Khiến Bạn Tự Makeup Mãi Vẫn Chưa Đẹp" (23 trang, PDF ở `output/2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep/`) — áp dụng thật quy trình tạo ebook mới, nhắm tệp khách khác ebook trước (đã tự makeup nhưng chưa ưng ý), 7 lý do kỹ thuật từ giáo án thật + 3 lý do tâm lý từ insight thật, chưa host công khai/chưa làm sách lật (added 2026-07-13)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 
