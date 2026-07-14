@@ -581,3 +581,11 @@ Append-only record of all ingest, query, and maintenance operations.
 - File tạo: [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]] (.md ghi chú + PDF 23 trang tại `output/2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep/`)
 - Chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy — dừng chờ Thuý duyệt nội dung trước khi xuất bản
 - Mâu thuẫn: none
+
+## [2026-07-14] ingest | AMI Beauty Funnel Strategy (14 thẻ tư vấn AI, qua NotebookLM)
+- Bối cảnh: Thuý tải nội dung vào notebook "AMI Makeup Funnel Strategy: From Lead Magnet to Student Conversion" trên NotebookLM (không phải tạo trong phiên Claude Code này), yêu cầu Claude Code "nhập dữ liệu" vào wiki. Phiên đăng nhập `nlm` đã hết hạn — chạy lại `nlm login` (browser thật) để lấy cookie mới trước khi đọc được nguồn qua MCP `notebooklm-mcp`
+- File: nguồn "Giai đoạn 1" trong notebook `b7e1ec6d-2b38-401e-96a7-9bc0176261eb` (62.668 ký tự, lấy qua `source_get_content`)
+- Summary: [[sources/2026-07-14-ami-beauty-funnel-strategy-notebooklm]]
+- Khoang pages: [[nang-luc/2026-07-14-ami-beauty-funnel-90-ngay]] — phễu đầy đủ Ebook → Zalo AMI Beauty Club → Workshop → Khoá học, Content Engine 5 trụ cột, hệ thống quảng cáo thu data, lịch sản xuất content 30/90 ngày (15/07-15/11/2026), Giai đoạn 2 đề xuất AMI 5 Step Beauty Method
+- Mâu thuẫn: none về số liệu — chỉ ghi chú (không phải mâu thuẫn thật) rằng ebook đề xuất "7 Lỗi..." là ý tưởng thứ 3, khác 2 ebook đã build ([[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]], [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]]); và phễu lead-gen này khác track với phễu up-sell dịch vụ [[nang-luc/2026-06-30-pheu-makeup-ca-nhan-ami]] — 2 phễu phục vụ 2 luồng doanh thu khác nhau, không cần chọn 1
+- Việc cần Thuý quyết định: (1) có build ebook "7 Lỗi..." hay dùng lại 1 trong 2 ebook đã có làm mồi câu chính, (2) đối chiếu số buổi khoá Basic (3 buổi theo tài liệu này) vs giáo án đã có 5 buổi ở [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]], (3) kế hoạch bắt đầu 15/07 — tức ngay ngày mai tính từ lúc ingest
