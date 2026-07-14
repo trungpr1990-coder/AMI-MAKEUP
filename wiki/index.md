@@ -14,6 +14,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[sources/longguru/index]] — Chỉ mục 37 video sưu tầm kênh @longguru (Phạm Thành Long — kinh doanh, tư duy, bán hàng), phân theo 9 chủ đề — thu thập 2026-07-11 nhưng sót ở kho thô ngoài wiki, phát hiện lại và nạp vào 2026-07-13
 - [[sources/2026-07-13-co-may-marketing-an-danh]] — Ebook "Bí Mật Hệ Thống Tạo 1.000 Khách Hàng Đầu Tiên Không Cần Lộ Diện" (Hoàng Minh Hoá): lead magnet, hook, ebook, mockup, ads, leadpage, email automation — đóng gói SOP tại [[nang-luc/out-2026-07-13-sop-co-may-marketing-an-danh]] (added 2026-07-13)
 - [[sources/2026-07-14-ami-beauty-funnel-strategy-notebooklm]] — Bản tư vấn 14 thẻ AI (NotebookLM): phễu "AMI Beauty Funnel" trọn gói — ebook → Zalo AMI Beauty Club → workshop → khoá học, content engine, hệ thống quảng cáo, lịch sản xuất 30/90 ngày, AMI 5 Step Method — chi tiết tại [[nang-luc/2026-07-14-ami-beauty-funnel-90-ngay]] (added 2026-07-14)
+- [[sources/2026-07-14-sop-phan-quyen-base-lark]] — SOP phân quyền Base Lark vận hành công ty (63 bảng) cho 5 phòng ban (Sale/MKT/Media/Kế toán/CSKH) — kế hoạch chưa thực hiện, để dành khi có nhân viên; chi tiết tại [[nang-luc/2026-07-14-sop-phan-quyen-base-lark]] (added 2026-07-14)
 
 ## Entities (Nền tảng & công cụ)
 
@@ -24,6 +25,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[entities/tho-makeup-ha-noi]] — Fanpage đối thủ Thỏ MakeUp Hà Nội: khoá makeup 1-1 tại nhà, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
 - [[entities/phuong-koi-makeup]] — Fanpage đối thủ Phương Kòi Makeup: học viện đào tạo, reach gấp ~28 lần Thỏ MakeUp, số liệu Reels quan sát 2026-07-13 (added 2026-07-13)
 - [[entities/hoang-minh-hoa]] — Coach kinh doanh studio ảnh bên ngoài, tác giả kênh sưu tầm hoangminhhoaoffical + ebook "Cỗ Máy Marketing Ẩn Danh" (added 2026-07-13)
+- [[entities/linhlinhmakeup]] — Fanpage đối thủ Linh Linh Makeup: khoá nhóm/1:1/VIP Hà Nội-Sài Gòn, số liệu Reels quan sát 2026-07-14 (added 2026-07-14)
+- [[entities/lelylanhuong]] — Fanpage đối thủ quy mô lớn nhất nhóm đã cào (avg views ~2 triệu/bài), số liệu Reels quan sát 2026-07-14 (added 2026-07-14)
 
 ## Concepts (Khái niệm chính)
 
@@ -107,6 +110,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]] — Bản rút gọn: quy trình tạo EBOOK (không kèm ads/leadpage/email) cho bất kỳ vấn đề nào, dạng điền-vào-chỗ-trống (vấn đề→hook 5 công thức→nội dung 5 phần→mockup), bàn giao sang skill `hmh-mkt-ebook-sach-lat` để build PDF/flipbook (added 2026-07-13)
 - [[nang-luc/out-2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep]] — Ebook lead magnet thứ 2 "10 Lý Do Khiến Bạn Tự Makeup Mãi Vẫn Chưa Đẹp" (23 trang, PDF ở `output/2026-07-13-ebook-10-ly-do-tu-makeup-chua-dep/`) — áp dụng thật quy trình tạo ebook mới, nhắm tệp khách khác ebook trước (đã tự makeup nhưng chưa ưng ý), 7 lý do kỹ thuật từ giáo án thật + 3 lý do tâm lý từ insight thật, chưa host công khai/chưa làm sách lật (added 2026-07-13)
 - [[nang-luc/2026-07-14-ami-beauty-funnel-90-ngay]] — Phễu "AMI Beauty Funnel" đầy đủ 90 ngày (15/07-15/11/2026): ebook "7 Lỗi..." (ebook thứ 3, chưa build) → nhóm Zalo AMI Beauty Club (lịch nuôi dưỡng 30 ngày 4 giai đoạn) → workshop → khoá Basic/VIP; Content Engine 5 trụ cột; hệ thống quảng cáo thu data (3 mẫu test, ngân sách 300k/ngày); lịch sản xuất content theo ngày; Giai đoạn 2 đề xuất AMI 5 Step Beauty Method + chuẩn hoá đào tạo giáo viên (added 2026-07-14)
+- [[nang-luc/2026-07-14-sop-phan-quyen-base-lark]] — SOP phân quyền Base Lark vận hành (63 bảng, app `Pq8vbFwEeajzdhsykL1jdRhnpkc`): lưu đồ 7 bước, ma trận phân quyền 5 phòng ban, 3 bảng tối mật (Lương/Giá vốn/Thu Chi), phân công người thật vào vai trò — kế hoạch để dành khi có nhân viên (added 2026-07-14)
+- [[nang-luc/out-2026-07-14-phan-tich-doi-thu-linhlinhmakeup]] — Phân tích chuyên sâu 50 bài Reels Linh Linh Makeup: 3 trụ nội dung chênh lệch hiệu suất 8-25 lần, bài outlier "rãnh nhăn" bị bỏ phí, series celeb phụ thuộc độ trend, đối chiếu quy mô 4 đối thủ, 5 cơ hội xếp hạng cho AMI (added 2026-07-14)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 

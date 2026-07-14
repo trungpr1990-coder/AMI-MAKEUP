@@ -602,3 +602,27 @@ Append-only record of all ingest, query, and maintenance operations.
 - Bảng mới: "Kho Data Đối Thủ (cào về)" (table_id `tbl2YiR4wcARM7wc`) trong Base CRM Thúy Thúy. 14 cột: Nội Dung/Hook, Đối thủ/Page (select), Nền tảng (select: FB/TikTok/IG), Loại Bài (Reel/Ảnh), Ngày Đăng, Lượt Xem, Lượt Thích, Số Share, Số Comment, Tương tác (Like+Share), Hashtags, Link, Ghi Chú Phân Tích, Ngày Cào
 - Nạp 50 bài Lely Lan Huong (cào bằng skill lay-du-lieu-facebook/Apify, dữ liệu thô tại `facebook_analysis_lelylanhuong_2026-07-14.json`). Lưu ý: actor facebook-posts-scraper không trả số comment nên cột Số Comment để trống
 - Mâu thuẫn: none
+
+## [2026-07-14] ingest | SOP Phân Quyền Base Lark Vận Hành (2 tài liệu Lark Docx v1+v2)
+- File: 2 Lark Docx do Thuý gửi link — `GgjKd8aceoS0uKxXPYej9Oabpac` (v1) và `JyHJd7ox7oE3NjxRbdBjKKnppE9` (v2, bản đầy đủ hơn, có thêm phân công người thật vào vai trò)
+- Nội dung: nghiên cứu + kế hoạch phân quyền Base Lark vận hành công ty (63 bảng, app `Pq8vbFwEeajzdhsykL1jdRhnpkc`) cho 5 phòng ban qua tính năng "Quyền nâng cao" — lưu đồ 7 bước, ma trận phân quyền, 3 bảng tối mật (Lương/Giá vốn/Thu Chi), các bước gán quyền thực tế
+- Summary: [[sources/2026-07-14-sop-phan-quyen-base-lark]]
+- Khoang pages: [[nang-luc/2026-07-14-sop-phan-quyen-base-lark]]
+- Trạng thái: kế hoạch chưa thực hiện — Thuý xác nhận chưa có nhân viên nên chưa cần làm ngay, để dành khi tuyển người
+- Mâu thuẫn: none
+
+## [2026-07-14] output | Cào & nạp 50 bài Reels đối thủ Linh Linh Makeup vào bảng "Kho Data Đối Thủ (cào về)"
+- Nguồn: Apify `facebook-posts-scraper` qua skill `lay-du-lieu-facebook` (Node.js, token trong [[apify-token]]), URL https://www.facebook.com/linhlinhmakeup/reels/, 50 bài gần nhất (2026-05-31 → 2026-07-14)
+- Dữ liệu thô: `facebook_analysis_linhlinhmakeup_2026-07-14.json` + `.csv` tại `C:\Users\Admin\.claude\skills\lay-du-lieu-facebook\scripts\`
+- Đổ vào bảng "Kho Data Đối Thủ (cào về)" (`tbl2YiR4wcARM7wc`, Base CRM Thúy Thúy `O2qIbEaIYabXEGsW6Dzjs0LCpZg`) — thêm option mới "Linh Linh Makeup" vào field "Đối thủ / Page", batch-create 1 lần 50 record, xác nhận qua record-list filter (không gọi lại lệnh ghi để tránh trùng)
+- Không tạo trang wiki riêng cho đối thủ này (đổi quy ước: từ nay chỉ đổ vào bảng Base, không tạo entity page per-đối thủ nữa, theo đúng cách đã làm với Lely Lan Huong cùng ngày)
+- Nhận xét nhanh: bài đứng đầu "Xử Lý Rãnh Nhăn Vùng Dưới Mắt Khi Trang Điểm" đạt 2.065 likes/616 shares/193.776 views (~16 lần views TB) — nội dung kỹ thuật/giải quyết vấn đề tương tác cao hơn hẳn nội dung quảng bá khoá học (chênh 10-100 lần)
+- Mâu thuẫn: none
+
+## [2026-07-14] sửa | Đảo ngược kết luận sai "chỉ lưu Base, không lưu wiki" + thêm phân tích chuyên sâu
+- Thuý sửa trực tiếp: TẤT CẢ dữ liệu cào về phải lưu SONG SONG cả wiki lẫn Lark Base, không phải chỉ 1 nơi (tôi đã suy đoán sai quy ước từ 1 lần quan sát — xem [[feedback-luu-du-lieu-cao-ve-wiki-va-base]])
+- Thuý cũng yêu cầu: từ nay khi có dữ liệu cào về phải nhập vai chuyên gia hàng đầu phân tích sâu, không chỉ báo cáo số liệu thô — xem [[feedback-nhap-vai-chuyen-gia-phan-tich-du-lieu-cao]]
+- Đã tạo lại [[entities/linhlinhmakeup]] (trang wiki đã xoá nhầm) + tạo mới [[entities/lelylanhuong]] (bù trang còn thiếu từ lần nạp Base trước đó cùng ngày)
+- Tạo phân tích chuyên sâu [[nang-luc/out-2026-07-14-phan-tich-doi-thu-linhlinhmakeup]]: 3 trụ nội dung (kỹ thuật/feedback/quảng bá) chênh lệch hiệu suất 8-25 lần, bài outlier "rãnh nhăn" là mỏ vàng chưa khai thác, series celeb phụ thuộc độ trend nhân vật hơn kỹ thuật, đối chiếu quy mô 4 đối thủ, 5 cơ hội xếp hạng có tiêu đề gợi ý cho AMI
+- File tạo/sửa: [[entities/linhlinhmakeup]], [[entities/lelylanhuong]], [[nang-luc/out-2026-07-14-phan-tich-doi-thu-linhlinhmakeup]]
+- Mâu thuẫn: none
