@@ -39,6 +39,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[concepts/2026-06-30-insights-va-cheat-sheet]] — Insights sâu sắc & ghi chú nhanh để áp dụng ngay
 - [[concepts/dang-reel-facebook-tu-dong]] — Hệ thống tự động đăng Reel Facebook từ Lark Base (skill `đăng-reel-facebook`)
 - [[concepts/2026-07-03-dang-bai-da-nen-tang]] — Đăng bài tự động đa nền tảng (Facebook+Instagram+TikTok) từ Lark Base + AI viết content (added 2026-07-03)
+- [[concepts/8-cong-cu-quan-tri-van-hanh]] — 8 công cụ quản trị vận hành & chuẩn hoá doanh nghiệp: BMC, BSC, Value-Added Analysis, SIPOC, Swimlane, WI, OPL, ITTO — hệ thống từ chiến lược đến đào tạo (added 2026-07-15)
 
 ## Analyses (analyses/) — Phân tích, tổng hợp, trả lời câu hỏi
 
@@ -115,6 +116,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-14-sop-tao-bot-lark-content]] — SOP 11 bước dựng bot Lark điều khiển Claude Code qua tin nhắn (case "Bé Bun Content" `D:\BUN-CONTENT-BOT`): tạo app/profile/scope, dựng bridge Node.js, 2 cạm bẫy Windows quan trọng (shell quoting + AppData\Roaming vô hình dưới Scheduled Task) (added 2026-07-14)
 - [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]] — Research YouTube thật (144 video) cho chiến dịch "Forever Green": công thức tiêu đề thắng lặp lại ("đơn giản cho người mới bắt đầu", "tone [cảm xúc]", cam kết thời gian), 3 đối thủ academy lộ diện qua từ khoá tiêu đề (PLITA & PHUONGLY, Tina Lê, Hoàng Minh Ngọc), khoảng trống content "trước khi quyết định học" (added 2026-07-15)
 - [[nang-luc/kb-forever-green-insight]] — Insight rút từ NotebookLM (16 transcript thật): nỗi đau kỹ thuật, công thức hook lặp lại, insight tâm lý sâu (áp lực "con gái phải biết làm đẹp", nỗi sợ "học xong vẫn không giỏi" dù tốn 3-8tr) — tri thức tái dùng cho mọi chiến dịch Forever Green (added 2026-07-15)
+- [[nang-luc/out-2026-07-15-ap-dung-8-cong-cu-van-hanh-ami]] — Áp dụng 8 công cụ quản trị vận hành (xem [[concepts/8-cong-cu-quan-tri-van-hanh]]) vào AMI: thứ tự ưu tiên BMC → Swimlane buổi học → WI/OPL cho việc giao được ngay (added 2026-07-15)
+- [[nang-luc/out-2026-07-15-huong-dan-ap-dung-8-cong-cu-chi-tiet-ami]] — Hướng dẫn CHI TIẾT áp dụng từng công cụ: BMC 9 ô (Tuần 1-2) → Swimlane buổi học VIP (Tuần 2-3) → 4 WI + 4 bàn giao (Tuần 3) → OPL dạy nhanh (Tuần 3-4+), kèm ví dụ cụ thể, output từng bước, lịch trình, sai lầm thường gặp (added 2026-07-15)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 

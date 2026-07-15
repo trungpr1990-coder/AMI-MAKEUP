@@ -652,3 +652,23 @@ Append-only record of all ingest, query, and maintenance operations.
 - Persona: theo yêu cầu Thuý, KHÔNG bám khung giọng điệu thương hiệu AMI có sẵn trong wiki — để Bun viết tự do
 - Summary: [[nang-luc/out-2026-07-14-sop-tao-bot-lark-content]]
 - Mâu thuẫn: none
+
+## [2026-07-15] ingest | 8 công cụ quản trị vận hành (BMC, BSC, Value Analysis, SIPOC, Swimlane, WI, OPL, ITTO)
+- File: text input (giải thích trực tiếp theo yêu cầu Thuý)
+- Concept page: [[concepts/8-cong-cu-quan-tri-van-hanh]] — diễn giải chi tiết nguồn gốc/cấu trúc/cách dùng/sai lầm thường gặp của cả 8 công cụ, kèm bản đồ hệ thống (BMC → BSC → Value Analysis → SIPOC → Swimlane → WI/ITTO → OPL)
+- Khoang pages: [[nang-luc/out-2026-07-15-ap-dung-8-cong-cu-van-hanh-ami]] — áp dụng thực tế vào AMI, thứ tự ưu tiên đề xuất: BMC → Swimlane buổi học → WI/OPL
+- Pages updated: [[index]]
+- New pages: 2 (1 concept + 1 nang-luc)
+- Mâu thuẫn: none
+
+## [2026-07-15] create | Hướng dẫn chi tiết áp dụng 8 công cụ vận hành vào AMI
+- File: [[nang-luc/out-2026-07-15-huong-dan-ap-dung-8-cong-cu-chi-tiet-ami]]
+- Bối cảnh: Thuý yêu cầu "áp dụng như thế nào vào phát triển doanh nghiệp AMI" — không phải lý thuyết chung chung
+- Nội dung: từng công cụ giải quyết vấn đề gì cụ thể của AMI → cách áp dụng (với ví dụ cụ thể: BMC 9 ô cho dòng Makeup Cá nhân, Swimlane cho buổi học VIP, 4 WI cho 4 bàn giao, OPL cho lỗi lặp lại) → output từng bước → thời gian → sai lầm thường gặp → kiểm tra thành công
+- Bước đầu: BMC (tuần 1-2) — xác định "kiếm tiền bằng mô hình nào, tỷ lệ từng loại sản phẩm"
+- Bước tiếp: Swimlane buổi học VIP (tuần 2-3) — "ai làm gì, bàn giao ở đâu, rủi ro gì"
+- Bước 3: WI cho 4 bàn giao chính (tuần 3) — "chồng/học viên làm mà không cần hỏi"
+- Bước 4: OPL mỗi khi lỗi lặp (tuần 3-4+) — "dạy nhanh 1 điểm, 2-3 phút, không sai nữa"
+- Pages updated: [[index]]
+- New pages: 1 (nang-luc)
+- Mâu thuẫn: none
