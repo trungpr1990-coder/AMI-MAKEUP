@@ -15,6 +15,13 @@ Append-only record of all ingest, query, and maintenance operations.
 - Sources drawn from: [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]]
 - Pages updated: none | New pages: [[nang-luc/kb-forever-green-insight]]
 
+## [2026-07-15] create | Skill mới: forever-green-content-30-ngay
+- Skill Claude Code mới tại `.claude/skills/forever-green-content-30-ngay/` — nghiên cứu YouTube + NotebookLM → viết 30 bài content → tự đăng Facebook
+- Bảng Lark mới: "Forever Green" (`tbl4ZMKIMg9SUqgy`) + "Kho Ảnh Thật" (`tblwjTIdKMhOOwRp`) trong Base CRM Thúy Thúy
+- 2 Scheduled Task chạy nền: "Forever Green - Dispatcher" (2 phút/lần), "Forever Green - Fill Media" (06:00/ngày)
+- Đã thêm dòng vào bảng "Công cụ AI" (`tbliXt0oEV91oBhJ`, record `recvprBaXs0Xxm`)
+- Đã đóng gói chuyển giao tại `Desktop\forever-green-chuyen-giao\` (chưa gửi, chờ Thuý chuẩn bị Base mẫu)
+
 ## [2026-07-15] create | Forever Green — 30 bài content đầu tiên (trang điểm cá nhân)
 - 30 record ghi vào bảng "Forever Green" (Base "CRM Thúy Thúy", `tbl4ZMKIMg9SUqgy`), Trạng thái = "Chờ duyệt", lịch đăng rải 2026-07-16 → 2026-08-14 (19:00 mỗi ngày)
 - Outline đã được Thuý duyệt trước khi viết full nội dung
