@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tạo Feedback Facebook</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root{
+    --bg:#f0f2f5; --panel:#fff; --border:#dadde1; --text:#050505; --sub:#65676b;
+    --blue:#1877f2; --blue-dark:#166fe5; --green:#42b72a;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg); color:var(--text); display:flex; min-height:100vh;
+  }
+  .panel{width:420px; padding:24px; background:var(--panel); border-right:1px solid var(--border); overflow-y:auto; max-height:100vh;}
+  .stage{flex:1; display:flex; align-items:flex-start; justify-content:center; padding:40px 20px; overflow:auto;}
+  h1{font-size:18px; margin:0 0 4px;}
+  .hint{font-size:12px; color:var(--sub); margin-bottom:20px;}
+  label{display:block; font-size:13px; font-weight:600; margin:14px 0 6px;}
+  input[type=text], input[type=number], textarea, select{
+    width:100%; padding:8px 10px; border:1px solid var(--border); border-radius:8px; font-size:14px; font-family:inherit;
+  }
+  textarea{resize:vertical; min-height:70px;}
+  .row{display:flex; gap:10px;}
+  .row > div{flex:1;}
+  .tabs{display:flex; gap:8px; margin-bottom:16px;}
+  .tab{flex:1; padding:8px; text-align:center; border:1px solid var(--border); border-radius:8px; cursor:pointer; font-size:13px; font-weight:600; background:#f5f6f7;}
+  .tab.active{background:var(--blue); color:#fff; border-color:var(--blue);}
+  button{cursor:pointer; border:none; border-radius:8px; font-weight:600; font-size:14px; padding:10px 14px;}
+  .btn-primary{background:var(--blue); color:#fff; width:100%; margin-top:8px;}
+  .btn-primary:hover{background:var(--blue-dark);}
+  .btn-secondary{background:#e4e6eb; color:var(--text); width:100%; margin-top:8px;}
+  .btn-download{background:var(--green); color:#fff; width:100%; margin-top:18px; padding:12px;}
+  .field-hint{font-size:11px; color:var(--sub); margin-top:2px;}
+  hr{border:none; border-top:1px solid var(--border); margin:18px 0;}
+
+  /* ---- Facebook post mockup ---- */
+  #capture{background:#fff;}
+  .fb-post{width:500px; background:#fff; border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,.2); font-family:inherit;}
+  .fb-header{display:flex; align-items:center; padding:12px 16px; gap:10px;}
+  .avatar{width:40px; height:40px; border-radius:50%; object-fit:cover; background:#ccd0d5; flex-shrink:0;}
+  .fb-name{font-weight:600; font-size:15px; line-height:1.2;}
+  .fb-meta{font-size:13px; color:var(--sub); display:flex; align-items:center; gap:4px;}
+  .fb-body{padding:0 16px 12px; font-size:15px; line-height:1.4; white-space:pre-wrap;}
+  .fb-photo{width:100%; display:block; max-height:500px; object-fit:cover; background:#eee;}
+  .fb-stats{display:flex; justify-content:space-between; padding:8px 16px; font-size:13px; color:var(--sub);}
+  .fb-actions{display:flex; border-top:1px solid var(--border); padding:4px 8px;}
+  .fb-actions span{flex:1; text-align:center; padding:8px; color:var(--sub); font-size:14px; font-weight:600;}
+
+  /* ---- Messenger mockup ---- */
+  .msg-wrap{width:380px; background:#fff; border-radius:16px; box-shadow:0 1px 4px rgba(0,0,0,.25); overflow:hidden;}
+  .msg-head{display:flex; align-items:center; gap:10px; padding:14px 16px; border-bottom:1px solid var(--border);}
+  .msg-name{font-weight:700; font-size:16px;}
+  .msg-status{font-size:12px; color:var(--sub);}
+  .msg-body{padding:16px; display:flex; flex-direction:column; gap:6px; min-height:200px; background:#fff;}
+  .bubble-left{align-self:flex-start; background:#f0f0f0; color:#000; padding:10px 14px; border-radius:18px; max-width:80%; font-size:15px; line-height:1.35; white-space:pre-wrap;}
+  .bubble-right{align-self:flex-end; background:var(--blue); color:#fff; padding:10px 14px; border-radius:18px; max-width:80%; font-size:15px; line-height:1.35; white-space:pre-wrap;}
+  .msg-time{font-size:11px; color:var(--sub); text-align:center; margin:6px 0;}
+</style>
+</head>
+<body>
+
+<div class="panel">
+  <h1>Tạo ảnh Feedback Facebook</h1>
+  <div class="hint">Dán feedback thật của khách, hoặc để AI viết nháp rồi tự chỉnh sửa lại cho đúng thực tế trước khi dùng.</div>
+
+  <div class="tabs">
+    <div class="tab active" data-mode="post" onclick="setMode('post')">Bài đăng</div>
+    <div class="tab" data-mode="messenger" onclick="setMode('messenger')">Tin nhắn Messenger</div>
+  </div>
+
+  <label>Tên khách hàng</label>
+  <input type="text" id="custName" value="Nguyễn Thị Lan" oninput="render()">
+
+  <label>Ảnh đại diện (để trống dùng ảnh mặc định)</label>
+  <input type="file" id="avatarFile" accept="image/*" onchange="handleAvatar(event)">
+
+  <div id="postOnlyFields">
+    <label>Thời gian đăng</label>
+    <input type="text" id="postTime" value="2 giờ" oninput="render()">
+
+    <label>Nội dung feedback</label>
+    <textarea id="feedbackText" oninput="render()">Mình vừa được chị Thuý makeup đi tiệc, ưng cực kỳ luôn ạ! Da mịn, lên màu chuẩn mà chụp ảnh cực lên hình, ai cũng khen 😍</textarea>
+
+    <label>Ảnh đính kèm (tuỳ chọn)</label>
+    <input type="file" id="postImage" accept="image/*" onchange="handlePostImage(event)">
+
+    <div class="row">
+      <div>
+        <label>Số lượt thích</label>
+        <input type="text" id="likeCount" value="128" oninput="render()">
+      </div>
+      <div>
+        <label>Số bình luận</label>
+        <input type="text" id="commentCount" value="24" oninput="render()">
+      </div>
+    </div>
+  </div>
+
+  <div id="msgOnlyFields" style="display:none;">
+    <label>Trạng thái (dưới tên)</label>
+    <input type="text" id="msgStatus" value="Đang hoạt động" oninput="render()">
+
+    <label>Tin nhắn của khách (bên trái)</label>
+    <textarea id="msgLeft" oninput="render()">Chị ơi em đi tiệc makeup xong ai cũng khen đẹp, cảm ơn chị nhiều ạ 🥰</textarea>
+
+    <label>Tin nhắn trả lời (bên phải, để trống nếu không cần)</label>
+    <textarea id="msgRight" oninput="render()">Dạ em cảm ơn chị đã tin tưởng ạ, chúc chị luôn xinh đẹp nha 💕</textarea>
+  </div>
+
+  <hr>
+  <label>Mô tả ngắn trải nghiệm khách (để AI viết nháp câu feedback)</label>
+  <textarea id="aiPrompt" placeholder="VD: khách đi makeup cô dâu, hài lòng vì lớp trang điểm bền cả ngày, không bị xuống tone khi chụp ảnh ngoài trời"></textarea>
+  <button class="btn-secondary" onclick="aiDraft()">✨ AI viết nháp feedback</button>
+  <div class="field-hint" id="aiStatus"></div>
+
+  <button class="btn-download" onclick="downloadImage()">⬇️ Tải ảnh feedback (PNG)</button>
+</div>
+
+<div class="stage">
+  <div id="capture">
+    <div class="fb-post" id="postView">
+      <div class="fb-header">
+        <img class="avatar" id="avatarImg" src="https://ui-avatars.com/api/?name=Nguyen+Lan&background=random">
+        <div>
+          <div class="fb-name" id="nameOut">Nguyễn Thị Lan</div>
+          <div class="fb-meta"><span id="timeOut">2 giờ</span> · 🌐</div>
+        </div>
+      </div>
+      <div class="fb-body" id="bodyOut"></div>
+      <img class="fb-photo" id="postImg" style="display:none;">
+      <div class="fb-stats"><span>👍❤️ <span id="likeOut">128</span></span><span><span id="commentOut">24</span> bình luận</span></div>
+      <div class="fb-actions"><span>👍 Thích</span><span>💬 Bình luận</span><span>↗ Chia sẻ</span></div>
+    </div>
+
+    <div class="msg-wrap" id="msgView" style="display:none;">
+      <div class="msg-head">
+        <img class="avatar" id="avatarImgMsg" src="https://ui-avatars.com/api/?name=Nguyen+Lan&background=random">
+        <div>
+          <div class="msg-name" id="nameOutMsg">Nguyễn Thị Lan</div>
+          <div class="msg-status" id="statusOut">Đang hoạt động</div>
+        </div>
+      </div>
+      <div class="msg-body">
+        <div class="bubble-left" id="msgLeftOut"></div>
+        <div class="msg-time">Vừa xong</div>
+        <div class="bubble-right" id="msgRightOut" style="display:none;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let mode = 'post';
+let avatarDataUrl = null;
+let postImageDataUrl = null;
+
+function setMode(m){
+  mode = m;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active', t.dataset.mode===m));
+  document.getElementById('postOnlyFields').style.display = m==='post' ? 'block':'none';
+  document.getElementById('msgOnlyFields').style.display = m==='messenger' ? 'block':'none';
+  document.getElementById('postView').style.display = m==='post' ? 'block':'none';
+  document.getElementById('msgView').style.display = m==='messenger' ? 'block':'none';
+  render();
+}
+
+function handleAvatar(e){
+  const f = e.target.files[0];
+  if(!f) return;
+  const reader = new FileReader();
+  reader.onload = ev => { avatarDataUrl = ev.target.result; render(); };
+  reader.readAsDataURL(f);
+}
+
+function handlePostImage(e){
+  const f = e.target.files[0];
+  if(!f) return;
+  const reader = new FileReader();
+  reader.onload = ev => { postImageDataUrl = ev.target.result; render(); };
+  reader.readAsDataURL(f);
+}
+
+function esc(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function render(){
+  const name = document.getElementById('custName').value || 'Khách hàng';
+  const avatarSrc = avatarDataUrl || ('https://ui-avatars.com/api/?name=' + encodeURIComponent(name) + '&background=random');
+  document.getElementById('avatarImg').src = avatarSrc;
+  document.getElementById('avatarImgMsg').src = avatarSrc;
+  document.getElementById('nameOut').textContent = name;
+  document.getElementById('nameOutMsg').textContent = name;
+
+  if(mode === 'post'){
+    document.getElementById('timeOut').textContent = document.getElementById('postTime').value || '';
+    document.getElementById('bodyOut').textContent = document.getElementById('feedbackText').value || '';
+    document.getElementById('likeOut').textContent = document.getElementById('likeCount').value || '0';
+    document.getElementById('commentOut').textContent = document.getElementById('commentCount').value || '0';
+    const img = document.getElementById('postImg');
+    if(postImageDataUrl){ img.src = postImageDataUrl; img.style.display='block'; }
+    else{ img.style.display='none'; }
+  } else {
+    document.getElementById('statusOut').textContent = document.getElementById('msgStatus').value || '';
+    document.getElementById('msgLeftOut').textContent = document.getElementById('msgLeft').value || '';
+    const rightVal = document.getElementById('msgRight').value;
+    const rightEl = document.getElementById('msgRightOut');
+    if(rightVal.trim()){ rightEl.textContent = rightVal; rightEl.style.display='block'; }
+    else{ rightEl.style.display='none'; }
+  }
+}
+
+async function aiDraft(){
+  const promptDesc = document.getElementById('aiPrompt').value.trim();
+  const statusEl = document.getElementById('aiStatus');
+  if(!promptDesc){
+    statusEl.textContent = 'Hãy mô tả ngắn trải nghiệm khách trước khi để AI viết nháp.';
+    return;
+  }
+  statusEl.textContent = 'Đang tạo nháp...';
+  const sys = 'Bạn viết feedback khách hàng bằng tiếng Việt, giọng văn tự nhiên như khách thật viết trên Facebook, ngắn gọn 2-4 câu, có thể dùng 1 emoji, không quảng cáo lộ liễu, không viết hoa toàn bộ.';
+  const userMsg = 'Viết 1 đoạn feedback khách hàng dựa trên mô tả sau: ' + promptDesc;
+  try{
+    const res = await fetch('https://text.pollinations.ai/openai', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'openai',
+        messages: [
+          {role:'system', content: sys},
+          {role:'user', content: userMsg}
+        ]
+      })
+    });
+    const data = await res.json();
+    const draft = data?.choices?.[0]?.message?.content?.trim();
+    if(draft){
+      if(mode === 'post'){ document.getElementById('feedbackText').value = draft; }
+      else{ document.getElementById('msgLeft').value = draft; }
+      render();
+      statusEl.textContent = 'Đã tạo nháp — nhớ đọc lại và chỉnh cho đúng thực tế trước khi dùng.';
+    } else {
+      statusEl.textContent = 'Không tạo được nháp, thử lại sau.';
+    }
+  }catch(err){
+    statusEl.textContent = 'Lỗi kết nối, thử lại sau.';
+  }
+}
+
+function downloadImage(){
+  const target = mode === 'post' ? document.getElementById('postView') : document.getElementById('msgView');
+  html2canvas(target, {scale:2, backgroundColor:'#ffffff'}).then(canvas=>{
+    const link = document.createElement('a');
+    link.download = 'feedback-facebook-' + Date.now() + '.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  });
+}
+
+render();
+</script>
+</body>
+</html>

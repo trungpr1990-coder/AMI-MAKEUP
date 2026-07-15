@@ -4,6 +4,23 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-15] query | research youtube: Forever Green — trang điểm cá nhân
+- File: `output/2026-07-15-yt-forever-green-trang-diem-ca-nhan/ket-qua.json` (144 video)
+- Summary: [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]]
+- Mục đích: nguồn insight cho chiến dịch content 30 ngày "Forever Green"
+
+## [2026-07-15] ingest | NotebookLM insight — Forever Green trang điểm cá nhân
+- Notebook: "Forever Green - Trang điểm cá nhân - 2026-07-15" (`f09befae-b996-47ae-8055-9082dc3ec8fc`), 16 nguồn transcript YouTube thật
+- Summary: [[nang-luc/kb-forever-green-insight]]
+- Sources drawn from: [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]]
+- Pages updated: none | New pages: [[nang-luc/kb-forever-green-insight]]
+
+## [2026-07-15] create | Forever Green — 30 bài content đầu tiên (trang điểm cá nhân)
+- 30 record ghi vào bảng "Forever Green" (Base "CRM Thúy Thúy", `tbl4ZMKIMg9SUqgy`), Trạng thái = "Chờ duyệt", lịch đăng rải 2026-07-16 → 2026-08-14 (19:00 mỗi ngày)
+- Outline đã được Thuý duyệt trước khi viết full nội dung
+- Dựa trên: [[nang-luc/kb-forever-green-insight]], khung 4 tuần + `brand-voice.md` (chỉ makeup cá nhân)
+- Một số bài có [CẦN ĐIỀN] chỗ cần Thuý bổ sung số liệu/testimonial thật trước khi duyệt sang "Chờ đăng"
+
 ## [2026-06-30] ingest | Nội tâm & Lãnh đạo (Buổi học - Bản ghi mới 7) — Full
 - File: `Tài liệu không có tiêu đề (3).md` (tổng hợp từ ghi âm qua NotebookLM)
 - Summary: [[sources/2026-06-30-noi-tam-lanh-dao]]
@@ -625,4 +642,13 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã tạo lại [[entities/linhlinhmakeup]] (trang wiki đã xoá nhầm) + tạo mới [[entities/lelylanhuong]] (bù trang còn thiếu từ lần nạp Base trước đó cùng ngày)
 - Tạo phân tích chuyên sâu [[nang-luc/out-2026-07-14-phan-tich-doi-thu-linhlinhmakeup]]: 3 trụ nội dung (kỹ thuật/feedback/quảng bá) chênh lệch hiệu suất 8-25 lần, bài outlier "rãnh nhăn" là mỏ vàng chưa khai thác, series celeb phụ thuộc độ trend nhân vật hơn kỹ thuật, đối chiếu quy mô 4 đối thủ, 5 cơ hội xếp hạng có tiêu đề gợi ý cho AMI
 - File tạo/sửa: [[entities/linhlinhmakeup]], [[entities/lelylanhuong]], [[nang-luc/out-2026-07-14-phan-tich-doi-thu-linhlinhmakeup]]
+- Mâu thuẫn: none
+
+## [2026-07-14] output | Dựng bot Lark "Bé Bun Content" điều khiển Claude Code qua tin nhắn
+- Yêu cầu: bot Lark riêng cho content/marketing (khác bot Sóc đa năng đã có), điều khiển Claude Code từ điện thoại qua nhóm Lark
+- App Lark mới "Bé Bun Content" (App ID cli_aadc91489da1de17), profile lark-cli riêng "bun-content", nhóm điều khiển "Bé Bun Content" (chat_id oc_64ed6a107be518c724838725cad6fb97), PERMISSION_MODE=bypassPermissions (Thuý xác nhận trực tiếp)
+- Hạ tầng: `D:\BUN-CONTENT-BOT` (bun-bridge.mjs + node_modules/@larksuite/cli copy cục bộ + Scheduled Task "BunContent-Bridge"), test end-to-end qua Lark thật thành công
+- Gỡ 2 lỗi hạ tầng quan trọng khi chạy qua Scheduled Task (không tái hiện khi test tay): shell quoting Windows vỡ chuỗi tiếng Việt, và AppData\Roaming\npm vô hình dưới tiến trình Task Scheduler — đã ghi thành quy trình chuẩn để tái sử dụng
+- Persona: theo yêu cầu Thuý, KHÔNG bám khung giọng điệu thương hiệu AMI có sẵn trong wiki — để Bun viết tự do
+- Summary: [[nang-luc/out-2026-07-14-sop-tao-bot-lark-content]]
 - Mâu thuẫn: none
