@@ -715,3 +715,12 @@ Append-only record of all ingest, query, and maintenance operations.
 - New pages: [[entities/eatcleanhong]], [[nang-luc/kb-van-phong-eatcleanhong]]
 - Mâu thuẫn: none
 - Ghi chú: kênh khác ngành hoàn toàn với AMI (vlog ẩm thực/đời thường, không phải makeup) — đã tách rõ trong hồ sơ đặc điểm "dùng ngay được" (ẩn dụ ẩm thực-triết lý, cấu trúc storytelling, CTA nhẹ) vs "ăn theo quy mô/bối cảnh riêng" (xưng tên ngôi 3 mật độ cực cao, giọng địa phương Tây Nguyên, "vũ trụ nhân vật" gia đình cần nhiều năm mới xây được).
+
+## [2026-07-16] update | Sửa mục "Cấu trúc câu" trong hồ sơ văn phong Eat Clean Hong + lưu mẫu content thử nghiệm
+- File cập nhật: [[nang-luc/kb-van-phong-eatcleanhong]] (mục 3), file mới: [[nang-luc/out-2026-07-16-mau-content-van-phong-eatcleanhong]]
+- Bối cảnh: Thuý thử áp dụng hồ sơ vào content thật (chuyên môn makeup, đi chơi, khách hàng, kịch bản cô dâu, và 1 bài food tour Hải Phòng có thật) — Thuý chỉ ra bản viết đầu bị sai nhịp, "giọng không hợp", đọc lại transcript gốc kỹ hơn mới phát hiện: mô tả ban đầu "câu dài nói liên tục" là hiểu sai, thực chất Thu Nhi nói câu NGẮN, rời rạc, nhiều thán từ ("Trời ơi", "Ê", "Ủa"), hay tự hỏi-tự trả lời — không phải văn xuôi trau chuốt nhiều mệnh đề phụ
+- Đã sửa trực tiếp mục 3 hồ sơ gốc + thêm bước 7 vào "Công thức áp dụng nhanh"
+- Lưu 6 mẫu content đã thử (bao gồm bản sai/bản sửa của bài Hải Phòng để đối chiếu) vào file output mới
+- Pages updated: [[index]], [[nang-luc/kb-van-phong-eatcleanhong]]
+- New pages: [[nang-luc/out-2026-07-16-mau-content-van-phong-eatcleanhong]]
+- Mâu thuẫn: none — đây là sửa lỗi hiểu sai ban đầu trong cùng hồ sơ, không phải mâu thuẫn giữa 2 nguồn khác nhau.
