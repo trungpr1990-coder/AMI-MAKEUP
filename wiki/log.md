@@ -688,3 +688,20 @@ Append-only record of all ingest, query, and maintenance operations.
 - New pages: [[entities/huong-phieu]], [[nang-luc/kb-van-phong-huong-phieu]]
 - Mâu thuẫn: none
 - Ghi chú chất lượng: 2/11 video bị Whisper "ảo giác" ra câu quảng cáo kênh khác không có thật (lỗi ASR nổi tiếng khi âm thanh không rõ) — đã loại khỏi phân tích, chỉ dùng 9 video có tư liệu đáng tin.
+
+## [2026-07-16] create | 3 mẫu content AMI theo văn phong Hường Phiêu
+- File: [[nang-luc/out-2026-07-16-mau-content-ami-van-phong-huong-phieu]]
+- Bối cảnh: Thuý muốn xem thử áp dụng hồ sơ văn phong vào content thật — viết 3 mẫu (kể chuyện khoá cá nhân, tutorial lệch tông da, khoá VIP dùng giá thật 3tr/5 buổi 1-1 với Thuý Trần)
+- Phát hiện quan trọng: Thuý chỉ ra Hường Phiêu là "master" còn mình là makeup bình thường — đã cập nhật [[nang-luc/kb-van-phong-huong-phieu]] thêm mục cảnh báo tách "đặc điểm dùng ngay được" vs "đặc điểm ăn theo uy tín master" (tự gọi tên ngôi 3, giọng chấm bài thẳng thắn) — cả 3 mẫu đều né 2 đặc điểm rủi ro này
+- Thuý xác nhận: "làm tốt lắm, hãy lưu lại nhé... sau này tôi cần bạn viết như vậy cho tôi nhé" — quy trình viết content theo văn phong đã học được xác nhận là cách làm chuẩn cho các lần sau
+- Pages updated: [[index]], [[nang-luc/kb-van-phong-huong-phieu]]
+- Mâu thuẫn: none
+
+## [2026-07-16] ingest | Skill Sao Chép Văn Phong (tài liệu hoá công cụ mới)
+- File: skill `C:\Users\Admin\.claude\skills\sao-chép-văn-phong\` (SKILL.md, KHUNG-PHAN-TICH.md, 2 script PowerShell)
+- Summary: [[nang-luc/2026-07-16-skill-sao-chep-van-phong]]
+- Khoang pages: [[nang-luc/2026-07-16-skill-sao-chep-van-phong]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/2026-07-16-skill-sao-chep-van-phong]]
+- Mâu thuẫn: none
+- Ghi chú: theo yêu cầu Thuý "lưu skill này lại, lưu vào wiki và Base" — tiếp theo sẽ thêm dòng vào bảng "Công cụ AI" (tbliXt0oEV91oBhJ) trong Base CRM THÚY THÚY theo quy tắc thường trực đã xác nhận 2026-07-11.
