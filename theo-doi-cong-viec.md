@@ -4,6 +4,8 @@ File sống, cập nhật liên tục. Đây KHÔNG phải wiki tri thức (khô
 
 **Bản mirror trên điện thoại:** cùng nội dung này cũng có ở Lark Base "CRM THÚY THÚY" → bảng "Theo Dõi Công Việc" (table_id `tblGQheszu7dDWHb`), để xem/sửa nhanh trên app Lark khi không có máy tính. File `.md` này vẫn là bản gốc (nguồn sự thật) — khi cập nhật ở đây, nhớ đồng bộ sang Lark Base luôn (và ngược lại nếu Thuý sửa trực tiếp trên Lark trước).
 
+**Dashboard trực quan:** [theo-doi-cong-viec-dashboard.html](theo-doi-cong-viec-dashboard.html) — stat tiles + bảng Kanban theo trạng thái + dòng thời gian 7 ngày. Link xem: https://claude.ai/code/artifact/506b5ece-c279-45f7-b78b-720ba3f9fac7 (private, chỉ Thuý xem trừ khi bấm share). Dashboard KHÔNG tự đồng bộ — mỗi khi bảng dưới đây thay đổi, nói "cập nhật dashboard" để mình dựng lại file và republish (giữ nguyên link).
+
 Cách dùng:
 - Khi bàn giao việc mới → nói "bàn giao thêm: <việc>" → mình thêm vào mục **Đang chờ / Đang làm**.
 - Khi xong một phần → nói "xong phần <X>" hoặc "cập nhật: <X> xong rồi" → mình chuyển trạng thái, ghi ngày, và báo cáo tiến độ tổng.
@@ -131,6 +133,11 @@ Cách dùng:
 ## [2026-07-12] Hoàn thành nạp hồ sơ doanh nghiệp AMI (bản điền tay)
 - Nạp xong phiếu hồ sơ doanh nghiệp AMI, sửa lại thông tin đội ngũ (có chồng hỗ trợ + 2 học viên đồng hành), chốt doanh thu mục tiêu 50tr/tháng, tách trang giọng điệu thương hiệu riêng
 - Còn tồn: lệch hotline 2 nguồn, đối chiếu tên khoá "AMI Professional Makeup Artist", và Mảng 5 feedback thật vẫn trống
+
+## [2026-07-16] Dựng dashboard trực quan cho bảng theo dõi
+- Tạo `theo-doi-cong-viec-dashboard.html` (stat tiles + Kanban theo trạng thái + dòng thời gian 7 ngày cho việc #8), publish artifact riêng
+- Phát hiện: Checklist Tuần 1 (việc #8) đã trễ 2 ngày (Ngày 1-2, 15-16/07) vì còn chờ chốt việc #9 — đánh dấu cảnh báo trên dashboard
+- Dashboard không tự đồng bộ, cần nói "cập nhật dashboard" mỗi khi bảng này đổi để mình dựng lại + republish
 
 ## [2026-07-14] Ingest tài liệu AMI Beauty Funnel + đồng bộ toàn bộ bảng theo dõi
 - Ingest tài liệu chiến lược "AMI Beauty Funnel" (14 thẻ tư vấn AI qua NotebookLM) vào wiki — xem [[nang-luc/2026-07-14-ami-beauty-funnel-90-ngay]]
