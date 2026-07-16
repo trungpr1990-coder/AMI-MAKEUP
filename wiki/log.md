@@ -705,3 +705,13 @@ Append-only record of all ingest, query, and maintenance operations.
 - New pages: [[nang-luc/2026-07-16-skill-sao-chep-van-phong]]
 - Mâu thuẫn: none
 - Ghi chú: theo yêu cầu Thuý "lưu skill này lại, lưu vào wiki và Base" — tiếp theo sẽ thêm dòng vào bảng "Công cụ AI" (tbliXt0oEV91oBhJ) trong Base CRM THÚY THÚY theo quy tắc thường trực đã xác nhận 2026-07-11.
+
+## [2026-07-16] ingest | Hồ sơ văn phong Eat Clean Hong - Thu Nhi (15 video Reels viral)
+- File: raw/van-phong/eatcleanhong/ (15 video — caption qua Apify Facebook scraper (`fetch_facebook_data.js`, lấy 50 bài gần nhất, chọn 15 Reels engagement cao nhất) + lời nói qua Whisper local, skill `sao-chép-văn-phong`)
+- Đầu vào: chỉ có link trang Facebook (không phải danh sách video cụ thể) — đã tự quét bằng Apify để lấy danh sách rồi lọc theo engagement trước khi đưa vào quy trình Case C của skill
+- Summary: [[entities/eatcleanhong]]
+- Khoang pages: [[nang-luc/kb-van-phong-eatcleanhong]] — hồ sơ 11 tiêu chí văn phong, có bằng chứng trích dẫn
+- Pages updated: [[index]]
+- New pages: [[entities/eatcleanhong]], [[nang-luc/kb-van-phong-eatcleanhong]]
+- Mâu thuẫn: none
+- Ghi chú: kênh khác ngành hoàn toàn với AMI (vlog ẩm thực/đời thường, không phải makeup) — đã tách rõ trong hồ sơ đặc điểm "dùng ngay được" (ẩn dụ ẩm thực-triết lý, cấu trúc storytelling, CTA nhẹ) vs "ăn theo quy mô/bối cảnh riêng" (xưng tên ngôi 3 mật độ cực cao, giọng địa phương Tây Nguyên, "vũ trụ nhân vật" gia đình cần nhiều năm mới xây được).
