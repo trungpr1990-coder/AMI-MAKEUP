@@ -27,6 +27,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[entities/hoang-minh-hoa]] — Coach kinh doanh studio ảnh bên ngoài, tác giả kênh sưu tầm hoangminhhoaoffical + ebook "Cỗ Máy Marketing Ẩn Danh" (added 2026-07-13)
 - [[entities/linhlinhmakeup]] — Fanpage đối thủ Linh Linh Makeup: khoá nhóm/1:1/VIP Hà Nội-Sài Gòn, số liệu Reels quan sát 2026-07-14 (added 2026-07-14)
 - [[entities/lelylanhuong]] — Fanpage đối thủ quy mô lớn nhất nhóm đã cào (avg views ~2 triệu/bài), số liệu Reels quan sát 2026-07-14 (added 2026-07-14)
+- [[entities/huong-phieu]] — Makeup artist & GV dạy nghề, fanpage 307K follower, avg views ~155K/bài — tư liệu học văn phong, xem [[nang-luc/kb-van-phong-huong-phieu]] (added 2026-07-16)
 
 ## Concepts (Khái niệm chính)
 
@@ -90,6 +91,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-11-sop-buoi-trai-nghiem-mien-phi]] — SOP buổi trải nghiệm makeup miễn phí 15km quanh cửa hàng: logistics, cơ chế lọc 25-35 đăng ký → 10-15 người đến, timeline 4 tuần, kịch bản 90 phút (added 2026-07-11)
 - [[nang-luc/2026-07-11-cong-thuc-video-va-phuong-phap-insight]] — 25 công thức video, phương pháp đào Insight (5 tầng, 5 tại sao, 8 nhu cầu gốc), thị trường lạnh-ấm-nóng, Hút-Dẫn-Chốt, quy trình 6 bước — dùng chung mọi dòng AMI (added 2026-07-11)
 - [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] — Chiến lược riêng dòng Makeup Cá Nhân: cấu trúc khóa Basic/VIP thật, customer avatar, insight map, định vị "AMI Personal Beauty" (đề xuất), phễu marketing, 50 ý tưởng video (added 2026-07-11)
+- [[nang-luc/kb-van-phong-huong-phieu]] — Hồ sơ văn phong Hường Phiêu (11 tiêu chí, từ 9 video viral đáng tin — 2 video loại bỏ vì Whisper "ảo giác" câu subscribe không có thật): tic "nha/nhé" dày đặc, tự gọi tên ngôi thứ 3, mô-típ before-after-lý do-cảm xúc — dùng để viết content AMI theo văn phong này (added 2026-07-16)
 - [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]] — Hồ sơ doanh nghiệp AMI đủ 10 mảng: câu chuyện gốc/tầm nhìn, chi tiết gói sản phẩm, đội ngũ thật (chồng hỗ trợ phụ + 2 học viên đồng hành), doanh thu mục tiêu 50tr/tháng, giá khoá chuyên nghiệp thật 20-25tr (đã sửa bảng giá sai nhầm là của Hằng Thu), hotline đã xác nhận đúng 0327.355.595 (added 2026-07-09, updated 2026-07-12)
 - [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]] — Khung giọng điệu thương hiệu AMI Makeup đầy đủ (cốt lõi, hình ảnh con người, cách nói, ngôn ngữ nên dùng/tránh, công thức nội dung, tỷ lệ giọng 60/30/10) — nháp có cấu trúc, chưa chốt chính thức (added 2026-07-12)
 - [[nang-luc/out-2026-07-11-may-tinh-ngan-sach-quang-cao]] — Công cụ HTML: nhập AOV/CPL/CR%/biên LN/ngân sách ads → tự tính ngưỡng hoà vốn, ROAS, phán quyết SCALE/DỪNG, test 200k, số funnel cần chạy để đạt mục tiêu lãi (phục dựng theo mẫu ngansach.alita.vn, công thức nguồn chị Nhung Lê — Nhóm Lửa 09/07) — deploy tại https://may-tinh-ngan-sach.pages.dev (added 2026-07-11, deployed 2026-07-11)

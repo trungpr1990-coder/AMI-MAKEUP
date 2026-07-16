@@ -679,3 +679,12 @@ Append-only record of all ingest, query, and maintenance operations.
 - Pages updated: [[index]]
 - New pages: 1 (nang-luc)
 - Mâu thuẫn: none
+
+## [2026-07-16] ingest | Hồ sơ văn phong Hường Phiêu (11 video Reels viral)
+- File: raw/van-phong/huong-phieu/ (11 video — caption qua Apify Facebook scraper + lời nói qua Whisper local, skill `sao-chép-văn-phong`)
+- Summary: [[entities/huong-phieu]]
+- Khoang pages: [[nang-luc/kb-van-phong-huong-phieu]] — hồ sơ 11 tiêu chí văn phong, có bằng chứng
+- Pages updated: [[index]]
+- New pages: [[entities/huong-phieu]], [[nang-luc/kb-van-phong-huong-phieu]]
+- Mâu thuẫn: none
+- Ghi chú chất lượng: 2/11 video bị Whisper "ảo giác" ra câu quảng cáo kênh khác không có thật (lỗi ASR nổi tiếng khi âm thanh không rõ) — đã loại khỏi phân tích, chỉ dùng 9 video có tư liệu đáng tin.
