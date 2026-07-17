@@ -724,3 +724,79 @@ Append-only record of all ingest, query, and maintenance operations.
 - Pages updated: [[index]], [[nang-luc/kb-van-phong-eatcleanhong]]
 - New pages: [[nang-luc/out-2026-07-16-mau-content-van-phong-eatcleanhong]]
 - Mâu thuẫn: none — đây là sửa lỗi hiểu sai ban đầu trong cùng hồ sơ, không phải mâu thuẫn giữa 2 nguồn khác nhau.
+
+## [2026-07-17] query | Nghiên cứu từ khoá SEO chủ đề "makeup cá nhân" (5 bài, giai đoạn 1)
+- Chạy skill `hmh-mkt-research-seo-web` (giai đoạn 1) theo phương pháp Backlinko (keyword) + Ahrefs 3C's (SERP) + video YouTube outlier thật (`hmh-mkt-research-youtube`, YouTube Data API)
+- Hạ tầng mới dựng lần đầu: bảng Lark Base "SEO Brief - Web" (`tblUPvC0XvWQOx4S`, base CRM Thúy Thúy `O2qIbEaIYabXEGsW6Dzjs0LCpZg`, 21 trường) + biến `WEB_BASE_TOKEN`/`WEB_TABLE_ID` thêm vào `.env` — skill này trước đó chưa từng chạy được trên máy Thuý vì thiếu 2 biến này và trỏ nhầm sang thư mục `h:/HOÁ TRI THỨC` không tồn tại
+- 5 từ khoá chính đã nghiên cứu: "trang điểm cá nhân là gì", "học trang điểm cá nhân mất bao lâu", "có nên học trang điểm cá nhân không", "cách chọn thợ trang điểm uy tín", "các bước trang điểm cá nhân cơ bản cho người mới bắt đầu"
+- Đã ghi 5 record vào bảng "SEO Brief - Web", trạng thái "Chờ viết" (record id: recvpA8jgiH3Ge, recvpA8jgi0N5i, recvpA8jgi8DwL, recvpA8jgixp5G, recvpA8jgiNJjw)
+- Summary: [[nang-luc/out-2026-07-17-nghien-cuu-tu-khoa-makeup-ca-nhan]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-nghien-cuu-tu-khoa-makeup-ca-nhan]]
+- Lưu ý quan trọng: Thuý xác nhận CHƯA có website WordPress — 5 brief này là backlog, CHƯA nối với skill đăng bài giai đoạn 2 (`hmh-AIOS-dang-bai-seo`). Volume/KD là ước lượng định tính (không có tool trả số thật như Ahrefs), đúng theo phương pháp luận của skill.
+- Mâu thuẫn: none
+
+## [2026-07-17] query | Nghiên cứu khách hàng — bình luận thật dưới bài viral 4 đối thủ
+- Chạy skill `nghiên-cứu-khách` (Mode 2: đi tìm nguồn mới) — góc độ chưa từng dùng trước đây: bình luận thật của khách (không phải nội dung bài đăng)
+- Cào qua Apify (`apify/facebook-comments-scraper`) 8 bài viral nhất (2 bài/trang) của [[entities/tho-makeup-ha-noi]], [[entities/phuong-koi-makeup]], [[entities/linhlinhmakeup]], [[entities/lelylanhuong]] — 218 bình luận thô, lọc còn 160 bình luận có nội dung thật
+- Bảng Lark mới: "Bình luận Khách Hàng - Đối Thủ (cào về)" (`tblOM8jdlvMsddzx`, base CRM Thúy Thúy `O2qIbEaIYabXEGsW6Dzjs0LCpZg`) — tách riêng khỏi bảng "Kho Data Đối Thủ" (chỉ lưu số liệu cấp bài đăng)
+- Insight mạnh nhất tìm được: "video dễ, làm theo thì hỏng" — bình luận tự giễu có 100-384 like, cao hơn engagement nhiều bài gốc; củng cố định lượng cho nỗi sợ "không có năng khiếu" đã ghi nhận trước đây
+- Summary: [[nang-luc/out-2026-07-17-insight-binh-luan-khach-hang-doi-thu]]
+- Sources drawn from: [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]], [[nang-luc/kb-forever-green-insight]], [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-insight-binh-luan-khach-hang-doi-thu]]
+- Mâu thuẫn: none
+
+## [2026-07-17] ingest | Ebook "Cẩm Nang Chọn Đúng Nơi Học Makeup Cá Nhân — 7 Câu Hỏi Cần Hỏi Trước Khi Đóng Tiền"
+- File: `output/2026-07-17-ebook-cam-nang-chon-noi-hoc/cam-nang-chon-noi-hoc-makeup-ca-nhan.pdf` (20 trang)
+- Áp dụng quy trình [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]], build PDF qua skill `hmh-mkt-ebook-sach-lat` (xoá logo Mentorcamp, bìa chữ text-only)
+- Summary: [[nang-luc/out-2026-07-17-ebook-cam-nang-chon-noi-hoc]]
+- Nguồn insight grounded: [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] (mục 1, 2, 3), giá/chính sách từ [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-ebook-cam-nang-chon-noi-hoc]]
+- Mâu thuẫn: none
+- Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy — chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
+
+## [2026-07-17] create | Ebook "Tìm Đúng Kiểu Makeup Hợp Với Khuôn Mặt Bạn — Không Cần Học Theo Người Khác"
+- File: `output/2026-07-17-ebook-tim-dung-kieu-makeup/tim-dung-kieu-makeup.pdf` (24 trang)
+- Định dạng mới so với 3 ebook trước: ebook tự trắc nghiệm (self-test) — người đọc tự soi gương nhận diện 5 dáng mặt + 4 dáng mắt, mỗi loại có phần "tự kiểm tra" + "nguyên tắc layout gợi ý" ở mức chung, kết bằng bảng tổng hợp tự chấm điểm
+- Áp dụng quy trình [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]], build PDF qua skill `hmh-mkt-ebook-sach-lat` (build bình thường → xoá 6 thẻ logo Mentorcamp khỏi HTML → render lại Chrome headless → bìa chữ text-only, tagline "AMI MAKEUP ACADEMY · HIỂU MÌNH TRƯỚC KHI ĐẸP")
+- Summary: [[nang-luc/out-2026-07-17-ebook-tim-dung-kieu-makeup]]
+- Nguồn insight grounded: tinh thần chủ đạo từ [[nang-luc/2026-07-11-dinh-vi-thuong-hieu-ami-chinh-thuc]] (định vị đã chốt); bình luận TikTok thật "khung mặt cj này đẹp sẵn r" (3.876 likes) và 3 câu quote khách/học viên từ [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] + [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]]; giá/chính sách từ [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-ebook-tim-dung-kieu-makeup]]
+- Mâu thuẫn: none
+- Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy, mockup bìa 3D (Bước 3 quy trình chuẩn) — chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
+
+## [2026-07-17] ingest | Ebook "15 Phút Mỗi Sáng: Makeup Đi Làm Nhanh Gọn Cho Phụ Nữ Bận Rộn"
+- File: `output/2026-07-17-ebook-15-phut-moi-sang/15-phut-moi-sang.pdf` (19 trang, .md + .html đi kèm)
+- Áp dụng quy trình [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]], build PDF qua skill `hmh-mkt-ebook-sach-lat` (build thường có logo Mentorcamp → xoá 6 thẻ `<img class="logo-img">` → render lại Chrome headless → bìa chữ text-only)
+- Góc khai thác: rào cản THỜI GIAN (khác 2 ebook fear-based trước) — tinh thần tích cực/giải pháp, không xoáy vào nỗi sợ
+- Summary: [[nang-luc/out-2026-07-17-ebook-15-phut-moi-sang]]
+- Nguồn insight grounded: [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] (mục 6, quote "muốn học mà không có thời gian"), [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] (customer avatar minh hoạ, khách hàng mục tiêu 22-40 tuổi), `landing-khoa-hoc-makeup-ca-nhan/index.html` (lời hứa "15-20 phút mỗi sáng"), giá/chính sách từ [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-ebook-15-phut-moi-sang]]
+- Mâu thuẫn: none
+- Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy, đồng bộ Lark Base — chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
+
+## [2026-07-17] ingest | Ebook "Da Không Hoàn Hảo Vẫn Makeup Đẹp Tự Nhiên — Không Cần Lớp Nền Dày Cộp"
+- File: `output/2026-07-17-ebook-da-khong-hoan-hao/da-khong-hoan-hao.pdf` (20 trang, .md + .html đi kèm)
+- Áp dụng quy trình [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]], build PDF qua skill `hmh-mkt-ebook-sach-lat` (build thường có logo Mentorcamp → xoá 6 thẻ `<img class="logo-img">` → render lại Chrome headless → bìa chữ text-only)
+- Góc khai thác: rào cản DA/KỸ THUẬT TRANG ĐIỂM (khuyết điểm da, nền dày cộp, độ bền makeup, phối màu) — nhấn xuyên suốt "tôn lên vẻ đẹp có sẵn", không dùng từ "che hết khuyết điểm/hoàn hảo/đẹp nhất"
+- Summary: [[nang-luc/out-2026-07-17-ebook-da-khong-hoan-hao]]
+- Nguồn insight grounded: [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] (mục 5, 7 — 5 quote gốc về da/độ bền), [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]] (giọng điệu), giá/chính sách từ [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-ebook-da-khong-hoan-hao]]
+- Mâu thuẫn: none
+- Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy, đồng bộ Lark Base — chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
+
+## [2026-07-17] ingest | Ebook "Bộ Mỹ Phẩm Tối Giản Cho Người Mới Tự Makeup — Không Cần Mua Nhiều Vẫn Đủ"
+- File: `output/2026-07-17-ebook-bo-my-pham-toi-gian/bo-my-pham-toi-gian.pdf` (19 trang, .md + .html đi kèm)
+- Áp dụng quy trình [[nang-luc/out-2026-07-13-quy-trinh-tao-ebook-tu-van-de]], build PDF qua skill `hmh-mkt-ebook-sach-lat` (build thường có logo Mentorcamp → xoá 6 thẻ `<img class="logo-img">` → render lại Chrome headless → bìa chữ text-only, tagline "AMI MAKEUP ACADEMY · HIỂU MÌNH TRƯỚC KHI ĐẸP")
+- Góc khai thác: QUÁ TẢI LỰA CHỌN SẢN PHẨM khi mới bắt đầu tự makeup (không phải nỗi sợ tâm lý) — 8 nhóm sản phẩm ưu tiên (không nêu thương hiệu cụ thể), tiêu chí chọn theo loại da, 1 chương riêng cho nhóm "học lại sau khi quên"
+- Summary: [[nang-luc/out-2026-07-17-ebook-bo-my-pham-toi-gian]]
+- Nguồn insight grounded: [[nang-luc/out-2026-07-10-insight-noi-dau-hoc-makeup-ca-nhan]] (mục 8 "quá tải lựa chọn sản phẩm", mục 9 "học lại sau khi quên"), [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]] (giọng điệu), giá/chính sách từ [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-ebook-bo-my-pham-toi-gian]]
+- Mâu thuẫn: none
+- Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy, đồng bộ Lark Base — chưa thực hiện đúng phạm vi được giao (chỉ PDF local + tóm tắt wiki), chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
