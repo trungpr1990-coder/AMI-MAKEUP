@@ -800,3 +800,33 @@ Append-only record of all ingest, query, and maintenance operations.
 - New pages: [[nang-luc/out-2026-07-17-ebook-bo-my-pham-toi-gian]]
 - Mâu thuẫn: none
 - Việc chưa làm: host PDF công khai (Novamira), sách lật Heyzine, đăng Wiki Academy, đồng bộ Lark Base — chưa thực hiện đúng phạm vi được giao (chỉ PDF local + tóm tắt wiki), chờ Thuý duyệt nội dung trước (nguyên tắc deploy-only-after-approval)
+
+## [2026-07-17] ingest | Cào TikTok — nỗi đau khách hàng makeup cá nhân (25-40 tuổi)
+- Nguồn: Apify `clockworks/tiktok-scraper` (190 video, 2 lượt) + `clockworks/tiktok-comments-scraper` (375 bình luận, 15 video liên quan nhất) — chi phí ~$1.47/$5 quỹ FREE tháng
+- Summary: [[nang-luc/out-2026-07-17-insight-tiktok-noi-dau-tu-hoc-makeup]]
+- Phát hiện chính: Theme "chọn sai tone/màu kem nền" (có hành vi mua/bán lại thật) — khoảng trống CHƯA được 5 ebook lead magnet làm hôm nay che phủ, đề xuất ebook thứ 6
+- Cross-validate với [[nang-luc/out-2026-07-17-insight-binh-luan-khach-hang-doi-thu]] (Facebook, cùng ngày): trùng khớp "video dễ làm theo thì hỏng" và "địa điểm/giá là rào cản hỏi-mua #1"
+- Dữ liệu insight tổng hợp (8 dòng) đã ghi vào Lark Base "CRM Thúy Thúy" → bảng "Ngân Hàng Insight - Nỗi Đau Khách Hàng" (`tblG095uASx2PDSJ`), Nguồn = "Cào MXH (FB+TikTok)", Nhóm khách hàng = "Makeup Cá Nhân"
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-insight-tiktok-noi-dau-tu-hoc-makeup]]
+- Mâu thuẫn: none
+- Việc chưa làm: chưa tạo bảng Base riêng lưu 375 bình luận thô TikTok (khác bảng Facebook đối thủ) — dữ liệu thô hiện chỉ ở scratchpad phiên làm việc; chưa xây ebook thứ 6 (chọn tone kem nền) — chờ Thuý duyệt hướng trước khi làm
+
+## [2026-07-17] ingest | Cào & phân tích đối thủ Facebook — TipsMakeup Skincare1
+- Nguồn: Apify (`apify~facebook-posts-scraper` qua skill `lay-du-lieu-facebook`), 50 bài gần nhất (07/07–17/07/2026) của fanpage tipsmakeup.skincare1
+- Phát hiện chính: đối thủ dạng content-farm tips (không phải academy/personal-brand) — Reels gánh 100% hiệu suất (avg 174,9 like/33.215 view), 19 bài ảnh/status gần như chết (avg 2,5 like, không lọt top 10); hook "giải nỗi đau cụ thể" (VD "cách đánh son tint không bị khô") ăn đứt hook "review sản phẩm thuần" 15-75 lần dù cùng định dạng/hashtag/giờ đăng — xác nhận lần thứ 5 cùng 1 quy luật đã thấy ở các đối thủ trước; giờ đăng đều tới từng phút mỗi ngày → khả năng cao dùng hệ thống tự động giống [[concepts/dang-reel-facebook-tu-dong]] của Thuý
+- Summary: [[entities/tipsmakeup-skincare1]], phân tích chi tiết [[nang-luc/out-2026-07-17-phan-tich-doi-thu-tipsmakeup-skincare1]]
+- Dữ liệu thô: 50 bản ghi nạp Lark Base "CRM Thúy Thúy" → bảng "Kho Data Đối Thủ (cào về)" (`tbl2YiR4wcARM7wc`), thêm option mới "TipsMakeup Skincare1" vào field "Đối thủ / Page"
+- Pages updated: [[index]]
+- New pages: [[entities/tipsmakeup-skincare1]], [[nang-luc/out-2026-07-17-phan-tich-doi-thu-tipsmakeup-skincare1]]
+- Mâu thuẫn: none
+
+## [2026-07-17] ingest | Cào 8 kênh TikTok makeup lớn theo chỉ định — insight bình luận cho ebook
+- Nguồn: 8 link TikTok Thuý gửi trực tiếp (@gigi.glowup, @rosermae, @ciaramakeup2003, @hue.uii, @jolly011009, @janehere_official, @liu.bui510, @hoangminhngoc21) — Apify `clockworks/tiktok-scraper` (96 video, 12/kênh) + `clockworks/tiktok-comments-scraper` (690 bình luận từ 23 video liên quan makeup nhất, tối đa 30 bình luận/video). Chi phí ~$1,22, gần hết ngân sách FREE $5/tháng (còn ~$0,34 tới hết chu kỳ 2026-07-24)
+- Summary: [[nang-luc/out-2026-07-17-insight-8-kenh-tiktok-makeup-lon]]
+- Phát hiện chính: (1) @rosermae và @janehere_official là ĐỐI THỦ TRỰC TIẾP (janehere_official bán "Khoá makeup cá nhân" trả phí); (2) Theme MỚI mạnh nhất — tự ti vì makeup tự học ra y hệt 1 kiểu "khối Hàn/Trung/Thái nửa mặt" (bình luận đạt 31.025 tim, cao nhất mọi dữ liệu đã cào từ trước tới nay) — khoảng trống ebook hoàn toàn mới, khác các theme kỹ thuật/sản phẩm đã khai thác; (3) cross-validate lần 3 chủ đề mốc/trượt/nứt nền (nay từ 3 nguồn độc lập: Facebook, TikTok search, TikTok theo kênh)
+- Dữ liệu insight tổng hợp (7 dòng) đã ghi vào Lark Base "CRM Thúy Thúy" → bảng "Ngân Hàng Insight - Nỗi Đau Khách Hàng" (`tblG095uASx2PDSJ`)
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-insight-8-kenh-tiktok-makeup-lon]]
+- Mâu thuẫn: none
+- Việc chưa làm: chưa viết ebook mới theo góc "vì sao makeup giống người khác" — chờ Thuý duyệt hướng trước (nguyên tắc [[feedback-duyet-truoc-khi-lam-full]]); dữ liệu thô 690 bình luận hiện chỉ ở scratchpad phiên làm việc, chưa có bảng Base riêng lưu bình luận thô theo kênh
