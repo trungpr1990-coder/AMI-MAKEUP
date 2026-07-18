@@ -4,6 +4,14 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-18] query | Phân tích quảng cáo Facebook đối thủ gián tiếp — Hải Lynh Beauty & Cosmetic
+- Thuý gửi link Reel công khai, hỏi "chạy quảng cáo có đúng tệp không" — xác minh qua Meta Ad Library (không cần đăng nhập): reel khớp 1 quảng cáo Active, page đang chạy ~160 biến thể song song, một số chạy liên tục từ 12/07/2025
+- Xác định rõ đây là đối thủ **gián tiếp** (bán sản phẩm kem nền, không phải đào tạo) — dùng làm case study chiến lược quảng cáo, không phải đối thủ cạnh tranh trực tiếp như nhóm academy đã khảo sát trước đó
+- Đối chiếu với hồ sơ khách hàng AMI đã chốt: targeting rộng của Hải Lynh hợp lý cho ecommerce giá thấp nhưng không nên áp dụng cho AMI (cam kết mua cao hơn + ràng buộc địa lý học trực tiếp)
+- Summary: [[nang-luc/out-2026-07-18-phan-tich-chien-luoc-quang-cao-hai-lynh]]
+- Sources drawn từ: [[nang-luc/2026-07-11-chien-luoc-quang-cao-va-dinh-vi]], [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]], [[nang-luc/out-2026-07-11-sop-buoi-trai-nghiem-mien-phi]]
+- Mâu thuẫn: none
+
 ## [2026-07-15] query | research youtube: Forever Green — trang điểm cá nhân
 - File: `output/2026-07-15-yt-forever-green-trang-diem-ca-nhan/ket-qua.json` (144 video)
 - Summary: [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]]
