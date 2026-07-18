@@ -830,3 +830,11 @@ Append-only record of all ingest, query, and maintenance operations.
 - New pages: [[nang-luc/out-2026-07-17-insight-8-kenh-tiktok-makeup-lon]]
 - Mâu thuẫn: none
 - Việc chưa làm: chưa viết ebook mới theo góc "vì sao makeup giống người khác" — chờ Thuý duyệt hướng trước (nguyên tắc [[feedback-duyet-truoc-khi-lam-full]]); dữ liệu thô 690 bình luận hiện chỉ ở scratchpad phiên làm việc, chưa có bảng Base riêng lưu bình luận thô theo kênh
+
+## [2026-07-17] output | Nội dung thật khóa Cơ Bản 3 buổi + cập nhật landing page
+- Thuý cung cấp trực tiếp nội dung 3 buổi thật của khóa Cơ Bản (2 triệu/3 buổi): Buổi 1 Nền tảng & layout nhẹ nhàng, Buổi 2 Nâng cao mắt & phong cách Hàn-Douyin, Buổi 3 Thực hành cá nhân & hoàn thiện phong cách — kèm tagline "Học để hiểu – Hiểu để đẹp – Đẹp theo cách riêng của bạn"
+- Summary: [[nang-luc/out-2026-07-17-giao-an-khoa-hoc-makeup-ca-nhan-co-ban-3-buoi]]
+- Đã dùng nội dung này sửa lại `landing-khoa-hoc-makeup-ca-nhan/index.html` (phần bảng giá gói Cơ Bản + phần Lộ Trình Chi Tiết mục 01-03) — bản cũ mô tả chung chung, thiếu hẳn phần layout Hàn-Douyin/kẻ liner/gắn mi/làm tóc/chụp hình lưu niệm
+- Pages updated: [[index]]
+- New pages: [[nang-luc/out-2026-07-17-giao-an-khoa-hoc-makeup-ca-nhan-co-ban-3-buoi]]
+- Mâu thuẫn: (1) tagline mới khác chữ với tagline chính thức đã chốt 11/07 ("Hiểu vẻ đẹp riêng - Tự tin làm đẹp mỗi ngày") — cùng tinh thần, cần Thuý xác nhận dùng tagline nào; (2) Buổi 2 Cơ Bản (gắn mi, layout Hàn-Douyin) trùng khá nhiều với Buổi 3-4 giáo án VIP 5 buổi — không phải mâu thuẫn nội dung, chỉ khác độ sâu luyện tập, nhưng landing page đang gắn nhãn "gắn mi/đánh khối chuyên sâu" là "Chỉ có ở gói VIP" trong khi Cơ Bản buổi 2 cũng đã dạy gắn mi — cần Thuý xác nhận lại phần phân biệt Cơ Bản/VIP trên landing page
