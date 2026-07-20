@@ -83,10 +83,10 @@ Cách dùng:
 - **Việc con:**
   - [x] Chiến lược tổng + lịch nuôi dưỡng 30 ngày (4 giai đoạn) + KPI (300 thành viên nhóm, 20 tham gia workshop, 5-10 học viên đầu tiên)
   - [x] **Chọn bản ebook mồi câu chính thức: "7 Nỗi Sợ..."** (đã có PDF sẵn — xem việc #9)
-  - [ ] Host PDF công khai + tạo sách lật (chưa làm, đang chờ Thuý duyệt nội dung trước theo nguyên tắc deploy-only-after-approval)
+  - [x] **Host PDF công khai + tạo sách lật** — PDF: https://ami-ebooks.pages.dev/pdf/7-noi-so-hoc-makeup-ca-nhan.pdf · Sách lật: https://heyzine.com/flip-book/6b2fa539ab.html (2026-07-20)
   - [ ] Tạo form thu data + nhóm Zalo "AMI Beauty Club"
   - [ ] Lịch nuôi dưỡng nội dung 30 ngày đầu (thực thi, không chỉ kế hoạch)
-- **Cập nhật gần nhất:** 2026-07-17 — đã chốt ebook dùng ("7 Nỗi Sợ...", PDF có sẵn) nên bỏ qua bước viết ebook mới, có thể đi thẳng vào host + form + nhóm Zalo.
+- **Cập nhật gần nhất:** 2026-07-20 — đã có link sách lật công khai, sẵn sàng dùng làm mồi câu; còn thiếu form thu data + nhóm Zalo.
 
 ### 8. Triển khai AMI Beauty Funnel — Checklist Tuần 1 (15/07-21/07, đã trễ)
 - **Trạng thái:** Sẵn sàng bắt đầu (0%) — không còn vướng quyết định, chỉ còn vướng lịch (đã trễ 2 ngày)
@@ -109,6 +109,15 @@ Cách dùng:
   - [x] **Ebook mồi câu chính: "7 Nỗi Sợ Khiến Phụ Nữ Mãi Chưa Dám Học Makeup Cho Chính Mình"** (đã có PDF, [[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]]) — Claude đề xuất vì nhắm đúng nhóm rộng nhất (người chưa dám bắt đầu), khớp mission "giúp được nhiều phụ nữ nhất". "10 Lý Do..." giữ làm tài liệu nuôi dưỡng thứ cấp trong nhóm Zalo (đã khớp lịch "Ngày 2: video 3 lỗi makeup khiến nhìn già").
   - [x] **Khoá Basic: 3 buổi/2tr** — khớp sẵn với landing page chính thức (việc #5) và tài liệu Beauty Funnel 14/07. Không xung đột với giáo án 5 buổi đã có — giáo án đó là cho khoá **VIP** (1-1, 5 buổi, 3tr), không phải Basic.
 - **Cập nhật gần nhất:** 2026-07-17 — chốt đủ 3/3 quyết định. Việc #8 (Checklist Tuần 1) có thể bắt đầu.
+
+### 11. Theo dõi đăng video hàng ngày (3 kênh) ✅ Đã dựng xong — bản TỰ ĐỘNG
+- **Trạng thái:** Hoàn thành (2026-07-20)
+- **Mô tả:** Nhiệm vụ mỗi ngày phải đăng 1 video lên 3 kênh: trang cá nhân Facebook, page AMI MAKEUP ACADEMY, kênh YouTube. Cần chỗ theo dõi + tự nhận biết hôm nào thiếu kênh nào + % tiến độ trong tháng.
+- **Bản chính thức (tự động, không cần tick tay):** Bảng "Theo Dõi Đăng Video" trong base "Đăng Bài Đa Nền Tảng - Template" (`base_token Wtn8bQ4sLanhfWsHrZ9jmbmypeH`, `table_id tblajRS4QQW6xRZF`) — nơi 2 máy tự đăng thật (Đăng Reel + Đăng YouTube) đang chạy. 31 dòng có sẵn cho tháng 7/2026 (1 dòng/ngày). Cột "Trang cá nhân"/"Page AMI"/"YouTube" là CÔNG THỨC tự đọc dữ liệu thật từ bảng Đăng Reel (theo Fanpage: "Thuý Trần Makeup & Academy" = trang cá nhân, "Ami Makeup Academy" = page AMI) + bảng Đăng YouTube — không cần Thuý tự tick. Cột "Trạng thái ngày" tự tính Đủ/Thiếu, cột "% Tiến độ tháng" tự tính % số ngày đã qua trong tháng đăng đủ cả 3 kênh. Để làm được, đã thêm field hệ thống "Cập nhật cuối" (updated_at, chỉ đọc) vào 2 bảng Đăng Reel + Đăng YouTube để bắt đúng ngày đăng thật (không dùng field lịch hẹn vì có bài đăng ngay không đặt lịch).
+- **Bản cũ (tick tay, ở base CRM THÚY THÚY):** Đã XOÁ theo yêu cầu Thuý (2026-07-20) — dư thừa vì bản tự động đã thay thế hoàn toàn.
+- **Lưu ý:** Base "Đăng Bài Đa Nền Tảng - Template" có 3 Fanpage (Ami Makeup Academy, Thúy Rose Makeup & Academy, Thuý Trần Makeup & Academy) — Thuý xác nhận "Thuý Trần Makeup & Academy" là trang cá nhân cần theo dõi; "Thúy Rose Makeup & Academy" hiện không nằm trong 3 kênh theo dõi.
+- **Còn tồn:** Đã có sẵn dữ liệu tháng 7 + tháng 8/2026 (62 dòng). Sang tháng 9 cần tạo thêm 31 dòng mới (nhắc Claude làm đầu tháng, hoặc Thuý tự nhắc).
+- **Cập nhật gần nhất:** 2026-07-20 — dựng xong bảng tự động, đối chiếu dữ liệu thật khớp 100% (06/07 Page AMI ✓, 08-11/07 YouTube ✓); xoá bảng tick tay cũ; tạo sẵn thêm 31 dòng tháng 8.
 
 ### 10. Áp dụng 8 công cụ quản trị vận hành vào AMI
 - **Trạng thái:** Chưa bắt đầu (0%)
@@ -182,6 +191,14 @@ Cách dùng:
 - **Chốt hướng phễu (việc #9):** Ebook+Zalo Beauty Club là phễu chính thức. Việc #7 (Web Lead/Bridge/Sales page) chuyển sang tạm hoãn, không xoá. Tách phễu Ebook+Zalo thành việc riêng **#7b** để theo dõi thực thi.
 - Còn tồn: 2/3 quyết định của việc #9 (ebook bản nào, khoá Basic 3 hay 5 buổi) và xử lý 3 file trùng — cần Thuý trả lời nốt để mở khoá việc #8 (Checklist Tuần 1, đang trễ từ 15/07).
 - Chưa đồng bộ sang Lark Base — cần làm ở lượt cập nhật kế tiếp.
+
+## [2026-07-20] Dựng hệ thống theo dõi đăng video hàng ngày (3 kênh) — 2 vòng
+- Vòng 1: Thuý cần theo dõi + nhắc nhở việc đăng 1 video/ngày lên trang cá nhân + page AMI + YouTube. Tạo bảng "Nhật Ký Đăng Video Hàng Ngày" trong base CRM THÚY THÚY (`tblXLaURIxJFCwEA`) — tick tay, không tin nhắn chủ động
+- Vòng 2: Thuý gửi link bảng "Nội dung" trong base "Đăng Bài Đa Nền Tảng - Template" (nơi 2 máy tự đăng Reel + YouTube đang chạy thật), muốn có cột % tiến độ tháng, theo dõi chi tiết ngày/tháng, hệ thống TỰ cập nhật (không tick tay)
+- Xác nhận qua hỏi đáp: bảng riêng (không gộp vào bảng Nội dung ý tưởng), tự lấy dữ liệu thật từ Đăng Reel + Đăng YouTube bằng công thức, % = số ngày đăng đủ 3 kênh / số ngày đã qua trong tháng. Fanpage "trang cá nhân" = "Thuý Trần Makeup & Academy" (Thuý xác nhận qua link facebook.com/thuytran.makeup.academy)
+- Thêm field hệ thống "Cập nhật cuối" (updated_at, chỉ đọc) vào bảng Đăng Reel + Đăng YouTube để bắt đúng ngày đăng thật (verify: record cũ 06/07 hiện đúng "2026-07-06 08:37", không bị đổi thành hôm nay khi thêm field — an toàn)
+- Tạo bảng "Theo Dõi Đăng Video" (`tblajRS4QQW6xRZF`) trong base Đăng Bài Đa Nền Tảng, 31 dòng cho tháng 7/2026, công thức tự đọc Đăng Reel (theo Fanpage) + Đăng YouTube — đối chiếu dữ liệu thật khớp 100%
+- Ghi nhận thành việc #11, đã hoàn thành. Bảng vòng 1 (CRM THÚY THÚY) có thể dư thừa, chưa xoá, chờ Thuý xác nhận
 
 ## [2026-07-17] Chốt đủ 3/3 quyết định — mở khoá việc #8
 - Thuý chọn: lưu trữ 3 file trùng (đã di chuyển vào `ami-website/archive/`, xác nhận không có link nào khác trong site trỏ tới nên an toàn); khoá Basic 3 buổi (khớp landing page hiện tại, không xung đột giáo án 5 buổi vì đó là cho khoá VIP)

@@ -4,7 +4,7 @@ type: output
 khoang: nang-luc
 tags: [ebook, lead-magnet, makeup-ca-nhan, content, ami]
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-20
 sources: []
 ---
 
@@ -27,13 +27,17 @@ Ebook mồi câu (lead magnet) cho dòng Makeup Cá Nhân AMI, viết theo skill
 
 Bản build PDF **không dùng logo Mentorcamp mặc định** của skill (assets dùng chung `logo-mentorcamp-*.png`) vì đây là tài sản của AMI, không phải Mentorcamp — dùng bìa chữ (text-only) với tagline "AMI MAKEUP ACADEMY · HIỂU MÌNH TRƯỚC KHI ĐẸP" thay logo ảnh, tránh gắn nhầm thương hiệu. Nếu muốn có logo ảnh thật AMI trên bìa, cần bổ sung file logo AMI dạng PNG nền trong suốt/tối.
 
-## Việc chưa làm (cần Thuý duyệt trước khi làm)
+## Xuất bản (2026-07-20)
 
-- Host PDF công khai qua Novamira → domain AMI
-- Tạo sách lật Heyzine
-- Đăng lên Wiki Academy (nếu muốn)
+Theo yêu cầu trực tiếp của Thuý ("lấy sẵn 1 cuốn ebook tạo sách lật cho tôi"), đã xuất bản công khai:
 
-Chưa thực hiện vì đây là bước xuất bản công khai — theo nguyên tắc *feedback-deploy-only-after-approval*, dừng lại chờ Thuý duyệt nội dung trước.
+- **PDF công khai:** https://ami-ebooks.pages.dev/pdf/7-noi-so-hoc-makeup-ca-nhan.pdf — host trên Cloudflare Pages project mới `ami-ebooks` (project riêng, không đụng site khách hàng `ami-website`), vì Novamira MCP (cách host gốc theo SOP skill) chưa từng được cấu hình thật trên máy này.
+- **Sách lật Heyzine:** https://heyzine.com/flip-book/6b2fa539ab.html (20 trang, id `6b2fa539abfc5ec625e2832eedc205462ebbaa55`)
+- Thuý đã tự đăng ký tài khoản Heyzine (gói miễn phí — 5 sách lật, có API access) và cung cấp `HEYZINE_API_KEY` + `HEYZINE_CLIENT_ID`, đã lưu vào `.env` của dự án để dùng lại cho các ebook sau.
+
+## Việc chưa làm (tuỳ chọn)
+
+- Đăng lên Lark Wiki Academy (chưa yêu cầu)
 
 ## Liên kết
 [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]], [[nang-luc/out-2026-07-13-giao-an-khoa-hoc-makeup-ca-nhan-5-buoi]], [[nang-luc/2026-07-12-giong-dieu-thuong-hieu-ami]], [[entities/ami-makeup-academy]]

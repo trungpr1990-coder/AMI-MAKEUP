@@ -846,3 +846,12 @@ Append-only record of all ingest, query, and maintenance operations.
 - Pages updated: [[index]]
 - New pages: [[nang-luc/out-2026-07-17-giao-an-khoa-hoc-makeup-ca-nhan-co-ban-3-buoi]]
 - Mâu thuẫn: (1) tagline mới khác chữ với tagline chính thức đã chốt 11/07 ("Hiểu vẻ đẹp riêng - Tự tin làm đẹp mỗi ngày") — cùng tinh thần, cần Thuý xác nhận dùng tagline nào; (2) Buổi 2 Cơ Bản (gắn mi, layout Hàn-Douyin) trùng khá nhiều với Buổi 3-4 giáo án VIP 5 buổi — không phải mâu thuẫn nội dung, chỉ khác độ sâu luyện tập, nhưng landing page đang gắn nhãn "gắn mi/đánh khối chuyên sâu" là "Chỉ có ở gói VIP" trong khi Cơ Bản buổi 2 cũng đã dạy gắn mi — cần Thuý xác nhận lại phần phân biệt Cơ Bản/VIP trên landing page
+
+## [2026-07-20] xuất bản | Sách lật Heyzine — Ebook "7 Nỗi Sợ Khiến Phụ Nữ Mãi Chưa Dám Học Makeup Cho Chính Mình"
+- Yêu cầu: Thuý nhờ "lấy sẵn 1 cuốn ebook tạo sách lật cho tôi" — chọn ebook có sẵn trong 6 ebook đã viết trước đó (chưa xuất bản), đẩy hết bước host + Heyzine
+- Phát hiện: cả Novamira MCP (host PDF theo SOP gốc skill `hmh-mkt-ebook-sach-lat`) lẫn Heyzine API key đều **chưa từng được cấu hình thật** trên máy này — cả 6 ebook trước đó đều dừng đúng ở bước này (ghi rõ trong log các ngày 07-13, 07-17)
+- Giải pháp: (1) tạo project Cloudflare Pages mới `ami-ebooks` (tách riêng, không đụng site khách hàng `ami-website`) để host PDF công khai — verify HTTP 200 application/pdf; (2) Thuý tự đăng ký tài khoản Heyzine (gói miễn phí, có API access) qua khung trình duyệt, cung cấp `HEYZINE_API_KEY`/`HEYZINE_CLIENT_ID`, đã lưu vào `.env` dự án
+- Kết quả: sách lật https://heyzine.com/flip-book/6b2fa539ab.html (20 trang) — verify live qua curl
+- Summary: [[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]] (mục "Xuất bản" mới thêm)
+- Hạ tầng mới: Cloudflare Pages project `ami-ebooks` (dùng lại được cho các ebook sau); `.env` bổ sung `HEYZINE_API_KEY`, `HEYZINE_CLIENT_ID`
+- Mâu thuẫn: none
