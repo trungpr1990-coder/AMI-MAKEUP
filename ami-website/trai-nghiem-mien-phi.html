@@ -4,37 +4,37 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Trải Nghiệm Makeup Cá Nhân MIỄN PHÍ — AMI Make Up Academy</title>
-<meta name="description" content="AMI tặng bạn 1 buổi trải nghiệm makeup cá nhân miễn phí — đích thân Thuý Trần trang điểm. Không mất phí, không ép mua, số suất có hạn." />
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+<meta name="description" content="AMI tặng bạn 1 buổi trải nghiệm makeup cá nhân miễn phí — chuyên gia AMI trực tiếp trang điểm. Không mất phí, không ép mua, số suất có hạn." />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --cream-bg:#F3ECDD;
-    --cream-card:#FFFCF5;
-    --espresso:#2B2018;
-    --text:#3D2F22;
-    --muted:#8B7A63;
-    --muted-dark:#C9B79C;
-    --gold:#AD8A4D;
-    --gold-dark:#8A6B36;
-    --gold-deep:#6E5327;
-    --gold-light:#D9BD82;
-    --gold-soft:#F0E4C8;
-    --line:#E3D6BC;
-    --blush:#CBA98D;
+    --cream-bg:#F8E9DF;
+    --cream-card:#FFFFFF;
+    --espresso:#2E2019;
+    --text:#3A2B22;
+    --muted:#8B7566;
+    --muted-dark:#E8CBB8;
+    --gold:#D9825F;
+    --gold-dark:#C06A45;
+    --gold-deep:#A8532F;
+    --gold-light:#EFAE8C;
+    --gold-soft:#FBEEE4;
+    --line:#F0DECF;
+    --blush:#D98060;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:'Montserrat',sans-serif;background:#FAF6EC;color:var(--text);font-size:15px;line-height:1.65}
+  body{font-family:'Poppins',sans-serif;background:#FCF3EC;color:var(--text);font-size:18px;line-height:1.7}
   a{text-decoration:none;color:inherit}
   img{max-width:100%;display:block}
   ul{list-style:none}
-  section{padding:56px 20px}
+  section{padding:60px 20px}
   .wrap{max-width:1040px;margin:0 auto}
-  h1,h2,h3{font-family:'Unbounded',sans-serif;letter-spacing:-.01em}
-  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-dark)}
-  .section-head{text-align:center;max-width:640px;margin:0 auto 36px}
-  .section-head h2{font-size:26px;font-weight:800;color:var(--text);margin-top:8px;line-height:1.35}
-  .section-head p{color:var(--muted);font-size:14px;margin-top:10px}
+  h1,h2,h3{font-family:'Playfair Display',serif;letter-spacing:0}
+  .eyebrow{font-size:14px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark)}
+  .section-head{text-align:center;max-width:680px;margin:0 auto 36px}
+  .section-head h2{font-size:32px;font-weight:800;color:var(--text);margin-top:10px;line-height:1.35}
+  .section-head p{color:var(--muted);font-size:17px;margin-top:12px}
 
   /* ── Icon (sprite <use>) ── */
   .ic-svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:-4px}
@@ -42,94 +42,103 @@
   .icon-badge svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
   /* ── Scarcity bar ── */
-  .scarcity-bar{background:var(--espresso);color:#fff;text-align:center;padding:10px 16px;font-size:12.5px;font-weight:600;letter-spacing:.03em;position:sticky;top:0;z-index:1000}
+  .scarcity-bar{background:var(--espresso);color:#fff;text-align:center;padding:12px 16px;font-size:14.5px;font-weight:600;letter-spacing:.02em;position:sticky;top:0;z-index:1000}
   .scarcity-bar strong{color:var(--gold-light)}
 
-  /* ── Top banner (ảnh + chữ, ngay đầu trang) ── */
-  .top-banner{position:relative;width:100%;aspect-ratio:16/8;max-height:460px;min-height:300px;overflow:hidden;background:linear-gradient(135deg,#E4CDA0,#F3ECDD)}
-  .top-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .top-banner-badge{position:absolute;top:14px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(255,252,246,.94);border-radius:30px;padding:7px 16px;font-size:11px;font-weight:700;color:var(--gold-deep);display:flex;align-items:center;gap:6px;box-shadow:0 6px 16px -8px rgba(43,32,24,.35);max-width:90%;text-align:center}
-  .top-banner-frame{position:absolute;inset:8px;border:2.5px dashed rgba(173,138,77,.55);border-radius:16px;pointer-events:none}
-  .top-banner-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(24,17,10,.06) 0%,rgba(24,17,10,.62) 78%);display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:22px 20px 26px}
-  .tb-brand{font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:#fff;letter-spacing:.02em;text-shadow:0 2px 10px rgba(0,0,0,.4)}
-  .tb-brand span{display:block;font-family:'Montserrat',sans-serif;font-weight:600;font-size:8.5px;letter-spacing:.32em;color:var(--gold-light);text-transform:uppercase;margin-top:2px}
-  .top-banner h1{font-size:22px;font-weight:800;line-height:1.3;color:#fff;margin:10px 0 0;text-shadow:0 2px 14px rgba(0,0,0,.45)}
-  .top-banner h1 span{color:var(--gold-light)}
-  @media(min-width:640px){.top-banner h1{font-size:32px}}
+  /* ── Top banner (ảnh full-width ngay đầu trang) ── */
+  .top-banner{position:relative;width:100%;height:44vw;min-height:220px;max-height:460px;overflow:hidden;background:var(--espresso)}
+  .top-banner img{width:100%;height:100%;object-fit:cover;object-position:62% 28%}
+  .top-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,32,24,.05) 0%,rgba(43,32,24,0) 30%,rgba(43,32,24,.55) 100%)}
+  .top-banner-caption{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;z-index:2;text-align:center}
+  .top-banner-caption span{display:inline-block;background:rgba(43,32,24,.55);backdrop-filter:blur(2px);color:#fff;font-size:14.5px;font-weight:600;letter-spacing:.02em;padding:9px 20px;border-radius:30px}
 
-  /* ── Hero ── */
-  .hero{background:linear-gradient(150deg,#F3ECDD 0%,#FBF7EE 55%,#F6EEDC 100%);padding:40px 20px 46px;text-align:center;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(173,138,77,.16),transparent 70%)}
-  .hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(173,138,77,.12),transparent 70%)}
-  .hero-inner{position:relative;z-index:2;max-width:640px;margin:0 auto}
-  .hero p.lead{color:#6B5A47;font-size:15px;max-width:480px;margin:0 auto}
+  /* ── Hero (2 cột: chữ trái · ảnh 9:16 phải) ── */
+  .hero{background:linear-gradient(150deg,#F8E9DF 0%,#FDF6F1 55%,#FBEEE4 100%);padding:44px 20px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(217,130,95,.18),transparent 70%)}
+  .hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(217,130,95,.13),transparent 70%)}
+  .hero-grid{position:relative;z-index:2;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:30px;text-align:center}}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--cream-card);border:1px solid var(--line);border-radius:30px;padding:9px 18px;font-size:14px;font-weight:700;color:var(--gold-deep)}
+  .hero-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+  .hero h1{font-size:34px;font-weight:800;line-height:1.26;color:var(--text);margin:18px 0 14px}
+  .hero h1 span{color:var(--gold)}
+  @media(min-width:640px){.hero h1{font-size:44px}}
+  .hero p.lead{color:#6B5A47;font-size:18px;max-width:480px}
+  @media(max-width:860px){.hero p.lead{margin:0 auto}}
+  .hero-cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+  @media(max-width:860px){.hero-cta-row{justify-content:center}}
+  .btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;border:2px solid var(--gold);color:var(--gold-deep);font-weight:600;font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;padding:16px 30px;border-radius:999px;cursor:pointer;font-family:inherit;transition:background .2s}
+  .btn-outline:hover{background:var(--gold-soft)}
+  .hero-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:9/16;box-shadow:0 30px 60px -24px rgba(192,106,69,.45);border:6px solid var(--cream-card);max-width:340px;margin:0 auto}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
 
   /* ── Photo frame (khung ảnh chờ ảnh thật) ── */
   .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
   @media(max-width:640px){.photo-grid{grid-template-columns:1fr 1fr}}
-  .photo-frame{aspect-ratio:4/5;border:2.5px dashed rgba(173,138,77,.5);border-radius:16px;background:var(--gold-soft);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--gold-deep);text-align:center;padding:12px;overflow:hidden;position:relative}
+  .photo-frame{aspect-ratio:4/5;border:1px solid var(--line);border-radius:16px;background:var(--gold-soft);overflow:hidden;position:relative;box-shadow:0 10px 26px -18px rgba(192,106,69,.4)}
   .photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .photo-frame .pf-ic svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-  .photo-frame .pf-txt{font-size:11.5px;font-weight:700;line-height:1.5}
 
-  .value-box{background:var(--cream-card);border:2px solid var(--gold-soft);border-radius:18px;padding:20px 22px;margin:26px auto 0;max-width:400px;box-shadow:0 16px 40px -20px rgba(110,83,39,.32)}
-  .value-box .vb-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .value-box .vb-amount{font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;color:var(--gold-dark);margin:4px 0}
-  .value-box .vb-amount del{color:#C4B295;font-size:16px;font-weight:600;margin-right:8px}
-  .value-box .vb-pay0{font-size:13px;color:#6E5D48}
-  .slots-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;font-size:12.5px;color:#8a7561;font-weight:600}
+  .value-box{background:var(--cream-card);border:2px solid var(--gold-soft);border-radius:18px;padding:20px 22px;margin:24px 0 0;max-width:400px;box-shadow:0 16px 40px -20px rgba(192,106,69,.28)}
+  @media(max-width:860px){.value-box{margin:24px auto 0}}
+  .value-box .vb-label{font-size:12.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .value-box .vb-amount{font-family:'Playfair Display',serif;font-weight:700;font-size:34px;color:var(--gold-dark);margin:6px 0}
+  .value-box .vb-amount del{color:#C4B295;font-size:18px;font-weight:600;margin-right:8px}
+  .value-box .vb-pay0{font-size:15px;color:#6E5D48}
+  .slots-row{display:flex;align-items:center;justify-content:flex-start;gap:10px;margin-top:14px;font-size:14.5px;color:#8a7561;font-weight:600}
+  @media(max-width:860px){.slots-row{justify-content:center}}
   .slots-track{width:130px;height:8px;background:var(--gold-soft);border-radius:6px;overflow:hidden}
   .slots-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:6px}
 
-  .btn-cta{display:inline-flex;align-items:center;gap:8px;margin-top:24px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;font-weight:700;font-size:15px;letter-spacing:.03em;padding:17px 38px;border-radius:14px;box-shadow:0 16px 32px -14px rgba(110,83,39,.55);transition:transform .2s,box-shadow .2s;border:none;cursor:pointer;font-family:inherit}
-  .btn-cta:hover{transform:translateY(-2px);box-shadow:0 20px 40px -12px rgba(110,83,39,.65)}
-  .hero-note{margin-top:14px;font-size:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+  .btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#fff;font-weight:600;font-size:14.5px;letter-spacing:.06em;text-transform:uppercase;padding:18px 34px;border-radius:999px;box-shadow:0 16px 32px -14px rgba(192,106,69,.55);transition:transform .2s,box-shadow .2s,background .2s;border:none;cursor:pointer;font-family:inherit}
+  .btn-cta:hover{transform:translateY(-2px);background:var(--gold-dark);box-shadow:0 20px 40px -12px rgba(192,106,69,.65)}
+  .hero-note{margin-top:16px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+  @media(max-width:860px){.hero-note{justify-content:center}}
 
   /* ── Dành cho bạn ── */
   .persona-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
   @media(max-width:760px){.persona-grid{grid-template-columns:1fr 1fr}}
-  .persona{background:var(--cream-card);border:1px solid var(--line);border-radius:16px;padding:22px 14px;text-align:center}
+  .persona{background:var(--cream-card);border:1px solid var(--line);border-radius:16px;padding:24px 14px;text-align:center}
   .persona .ic{width:46px;height:46px;border-radius:50%;background:var(--gold-soft);margin:0 auto 12px}
-  .persona h4{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:4px}
-  .persona p{font-size:12px;color:var(--muted)}
+  .persona h4{font-size:15.5px;font-weight:700;color:var(--text);margin-bottom:5px}
+  .persona p{font-size:14px;color:var(--muted)}
 
   /* ── Gift package ── */
-  .gift-section{background:linear-gradient(180deg,var(--cream-card),#F8F1DE)}
-  .gift-card{background:var(--cream-card);border:2px solid var(--gold-soft);border-radius:20px;padding:30px 26px;max-width:560px;margin:0 auto;box-shadow:0 20px 44px -26px rgba(110,83,39,.32)}
-  .gift-row{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--line)}
+  .gift-section{background:linear-gradient(180deg,var(--cream-card),#FBEEE4)}
+  .gift-card{background:var(--cream-card);border:2px solid var(--gold-soft);border-radius:20px;padding:32px 28px;max-width:580px;margin:0 auto;box-shadow:0 20px 44px -26px rgba(192,106,69,.28)}
+  .gift-row{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-bottom:1px solid var(--line)}
   .gift-row:last-of-type{border-bottom:none}
   .gift-ic{width:44px;height:44px;border-radius:12px;background:var(--gold-soft)}
-  .gift-row h4{font-size:15px;font-weight:700;color:var(--text)}
+  .gift-row h4{font-size:17px;font-weight:700;color:var(--text)}
   .gift-row h4 .gift-price{color:var(--gold-dark);font-weight:800;margin-left:4px}
-  .gift-row p{font-size:13px;color:var(--muted);margin-top:3px;line-height:1.6}
+  .gift-row p{font-size:15px;color:var(--muted);margin-top:4px;line-height:1.6}
   .gift-total{text-align:center;margin-top:22px;padding-top:20px;border-top:2px dashed var(--line)}
-  .gift-total .gt-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .gift-total .gt-amount{font-family:'Unbounded',sans-serif;font-weight:800;font-size:26px;color:var(--gold-dark);margin:6px 0}
+  .gift-total .gt-label{font-size:12.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+  .gift-total .gt-amount{font-family:'Playfair Display',serif;font-weight:700;font-size:30px;color:var(--gold-dark);margin:6px 0}
 
   /* ── Trust stats ── */
-  .trust-section{background:var(--espresso);color:#fff;text-align:center}
-  .trust-section .section-head h2{color:#fff}
-  .trust-section .section-head p{color:var(--muted-dark)}
+  .trust-section{background:var(--gold-soft);text-align:center}
+  .trust-section .section-head p{color:var(--muted)}
   .trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:700px;margin:0 auto}
   @media(max-width:640px){.trust-grid{grid-template-columns:1fr}}
-  .trust-item .t-num{font-family:'Unbounded',sans-serif;font-weight:800;font-size:32px;color:var(--gold-light)}
-  .trust-item .t-lbl{font-size:12.5px;color:var(--muted-dark);margin-top:6px}
+  .trust-item{background:var(--cream-card);border-radius:18px;padding:26px 16px;box-shadow:0 14px 30px -20px rgba(192,106,69,.3)}
+  .trust-item .t-num{font-family:'Playfair Display',serif;font-weight:700;font-size:38px;color:var(--gold-dark)}
+  .trust-item .t-lbl{font-size:14.5px;color:var(--muted);margin-top:6px}
 
   /* ── Form ── */
   .form-section{background:var(--cream-bg)}
-  .form-card{background:var(--cream-card);border-radius:22px;padding:34px 28px;max-width:560px;margin:0 auto;box-shadow:0 24px 54px -28px rgba(110,83,39,.38);border:1px solid var(--line)}
+  .form-card{background:var(--cream-card);border-radius:22px;padding:34px 28px;max-width:560px;margin:0 auto;box-shadow:0 24px 54px -28px rgba(192,106,69,.3);border:1px solid var(--line)}
   .form-card h2{font-size:22px;font-weight:800;color:var(--text);text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
   .form-card > p{text-align:center;font-size:13.5px;color:var(--muted);margin-top:8px;margin-bottom:24px}
   .fg{display:flex;flex-direction:column;margin-bottom:14px}
   .fg label{font-size:12.5px;font-weight:700;color:#5C4B37;margin-bottom:6px}
   .fg label .req{color:var(--gold-dark)}
-  .fg input,.fg select{border:1.5px solid var(--line);border-radius:10px;padding:13px 14px;font-size:15px;font-family:'Montserrat',sans-serif;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;width:100%;background:#fff}
-  .fg input:focus,.fg select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(173,138,77,.16)}
-  .fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A6B36' stroke-width='1.8' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+  .fg input,.fg select{border:1.5px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15px;font-family:'Poppins',sans-serif;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;width:100%;background:#fff}
+  .fg input:focus,.fg select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(217,130,95,.16)}
+  .fg select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C06A45' stroke-width='1.8' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
   .fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   @media(max-width:480px){.fr{grid-template-columns:1fr}}
-  .btn-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:#fff;border:none;border-radius:14px;padding:17px;font-size:15px;font-weight:700;letter-spacing:.03em;cursor:pointer;font-family:inherit;margin-top:6px;box-shadow:0 14px 30px -14px rgba(110,83,39,.55);transition:transform .2s}
-  .btn-submit:hover{transform:translateY(-2px)}
+  .btn-submit{width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--gold);color:#fff;border:none;border-radius:999px;padding:17px;font-size:14.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;font-family:inherit;margin-top:6px;box-shadow:0 14px 30px -14px rgba(192,106,69,.5);transition:transform .2s,background .2s}
+  .btn-submit:hover{transform:translateY(-2px);background:var(--gold-dark)}
   .form-secure{text-align:center;font-size:11.5px;color:#9C8A73;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px}
 
   #success-screen{display:none;text-align:center;padding:10px 8px}
@@ -149,13 +158,19 @@
 
   /* ── Footer ── */
   footer{background:var(--espresso);color:var(--muted-dark);text-align:center;padding:34px 20px}
-  footer .f-logo{font-family:'Unbounded',sans-serif;font-weight:800;font-size:18px;color:#fff;margin-bottom:10px}
+  footer .f-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:#fff;margin-bottom:10px}
   footer p{font-size:12.5px;line-height:2}
   footer p span{display:inline-flex;align-items:center;gap:6px}
   footer a{color:var(--gold-light)}
 </style>
 </head>
 <body>
+
+<!-- BANNER — ảnh thật ngay đầu trang -->
+<div class="top-banner">
+  <img src="images/ảnh banner.jpg" alt="Lớp học makeup cá nhân tại AMI Make Up Academy" />
+  <div class="top-banner-caption"><span>AMI Make Up Academy — 351 Lê Hồng Phong, TP. Nam Định</span></div>
+</div>
 
 <!-- Sprite icon (thay cho emoji) — dùng chung qua <svg class="ic-svg"><use href="#ic-TEN"/></svg> -->
 <svg style="display:none" aria-hidden="true">
@@ -178,38 +193,38 @@
   </defs>
 </svg>
 
-<!-- BANNER ẢNH + CHỮ — NGAY ĐẦU TRANG -->
-<!-- ✏️ CHÈN ẢNH THẬT: xoá <div class="top-banner-placeholder">...</div> bên dưới, thêm
-     <img src="images/TEN-ANH-THAT.jpg" alt="AMI Make Up Academy"> ngay trước <div class="top-banner-overlay"> -->
-<div class="top-banner">
-  <div class="top-banner-frame"></div>
-  <div class="top-banner-badge"><svg class="ic-svg"><use href="#ic-frame"/></svg> Khung ảnh banner — chờ chị gửi ảnh thật (ngang, chị đang trang điểm cho khách)</div>
-  <div class="top-banner-overlay">
-    <div class="tb-brand">AMI <span>Make Up Academy</span></div>
-    <h1>Trải nghiệm 1 buổi<br><span>Makeup cá nhân MIỄN PHÍ</span></h1>
-  </div>
-</div>
-
 <div class="scarcity-bar"><svg class="ic-svg"><use href="#ic-gift"/></svg> Ưu đãi tháng này — chỉ nhận <strong id="bar-slots">10 suất</strong> trải nghiệm miễn phí · <span id="bar-taken">Đã có 0 người nhận</span></div>
 
-<!-- HERO -->
+<!-- HERO — 2 cột: chữ trái · ảnh 9:16 phải -->
+<!-- ✏️ SỬA ẢNH: đổi src bên dưới nếu chị muốn dùng ảnh khác (ảnh dọc 9:16) -->
 <div class="hero">
-  <div class="hero-inner">
-    <p class="lead">Đích thân Thuý Trần trang điểm cho bạn — theo đúng gương mặt và phong cách riêng. Không mất phí, không điều kiện, không ép mua thêm bất cứ điều gì.</p>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> 7+ năm kinh nghiệm · 200+ học viên</div>
+      <h1>Trải nghiệm 1 buổi<br>Makeup cá nhân <span>MIỄN PHÍ</span></h1>
+      <p class="lead">AMI tặng bạn trọn gói trải nghiệm làm đẹp trị giá 2.500.000đ — makeup cá nhân, ebook, voucher ưu đãi. Không mất tiền · Không điều kiện · Không ép mua.</p>
 
-    <div class="value-box">
-      <div class="vb-label">Tổng giá trị bạn nhận được</div>
-      <!-- ✏️ SỬA: khớp với tổng 4 món quà bên dưới (1tr + 500k + 1tr + voucher kèm) -->
-      <div class="vb-amount"><del>2.500.000đ</del>Bạn trả 0đ</div>
-      <div class="vb-pay0">AMI tặng 100% — không mất phí, không điều kiện</div>
-      <div class="slots-row">
-        <span id="slots-text">Suất đã nhận: 0 / 10</span>
-        <div class="slots-track"><div class="slots-fill" id="slots-fill" style="width:0%"></div></div>
+      <div class="value-box">
+        <div class="vb-label">Tổng giá trị bạn nhận được</div>
+        <!-- ✏️ SỬA: khớp với tổng 4 món quà bên dưới (1tr + 500k + 1tr + voucher kèm) -->
+        <div class="vb-amount"><del>2.500.000đ</del>Bạn trả 0đ</div>
+        <div class="vb-pay0">AMI tặng 100% — không mất phí, không điều kiện</div>
+        <div class="slots-row">
+          <span id="slots-text">Suất đã nhận: 0 / 10</span>
+          <div class="slots-track"><div class="slots-fill" id="slots-fill" style="width:0%"></div></div>
+        </div>
       </div>
+
+      <div class="hero-cta-row">
+        <button class="btn-cta" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})"><svg class="ic-svg"><use href="#ic-lipstick"/></svg> Nhận suất miễn phí ngay</button>
+        <button class="btn-outline" onclick="document.getElementById('qua-tang').scrollIntoView({behavior:'smooth'})"><svg class="ic-svg"><use href="#ic-gift"/></svg> Xem gói quà 2.5 triệu</button>
+      </div>
+      <div class="hero-note"><svg class="ic-svg"><use href="#ic-clock"/></svg> AMI liên hệ đặt lịch cho bạn trong vòng 2 giờ · <svg class="ic-svg"><use href="#ic-pin"/></svg> 351 Lê Hồng Phong, TP. Nam Định</div>
     </div>
 
-    <button class="btn-cta" onclick="document.getElementById('form-section').scrollIntoView({behavior:'smooth'})"><svg class="ic-svg"><use href="#ic-lipstick"/></svg> Nhận suất miễn phí ngay</button>
-    <div class="hero-note"><svg class="ic-svg"><use href="#ic-clock"/></svg> AMI liên hệ đặt lịch cho bạn trong vòng 2 giờ · <svg class="ic-svg"><use href="#ic-pin"/></svg> 351 Lê Hồng Phong, TP. Nam Định</div>
+    <div class="hero-photo">
+      <img src="images/cô dâu 2.jpg" alt="AMI Make Up Academy — trang điểm cá nhân" />
+    </div>
   </div>
 </div>
 
@@ -231,7 +246,7 @@
 </section>
 
 <!-- GIFT -->
-<section class="gift-section">
+<section class="gift-section" id="qua-tang">
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">AMI tặng bạn</div>
@@ -243,7 +258,7 @@
         <div class="gift-ic icon-badge"><svg><use href="#ic-lipstick"/></svg></div>
         <div>
           <h4>1 buổi Makeup cá nhân <span class="gift-price">1.000.000đ</span></h4>
-          <p>Được chính Thuý Trần trang điểm, thiết kế theo đúng gương mặt & phong cách của riêng bạn — khoảng 45–60 phút tại cửa hàng AMI.</p>
+          <p>Được chuyên gia AMI trang điểm, thiết kế theo đúng gương mặt & phong cách của riêng bạn — khoảng 45–60 phút tại cửa hàng AMI.</p>
         </div>
       </div>
       <div class="gift-row">
@@ -296,23 +311,22 @@
   </div>
 </section>
 
-<!-- KẾT QUẢ THỰC TẾ — khung ảnh chờ ảnh thật -->
-<!-- ✏️ CHÈN ẢNH THẬT: mỗi khung bên dưới, xoá <div class="photo-frame">...</div>, thay bằng
-     <div class="photo-frame"><img src="images/TEN-ANH-THAT.jpg" alt="Mô tả ảnh"></div> -->
+<!-- KẾT QUẢ THỰC TẾ -->
+<!-- ✏️ SỬA ẢNH: đổi src bên dưới nếu chị muốn thay ảnh khác -->
 <section>
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Kết quả thực tế</div>
       <h2>Hình ảnh thật từ AMI</h2>
-      <p>Chị Thuý gửi ảnh thật (khách đang được trang điểm, before/after, ảnh tại cửa hàng...) — AMI sẽ chèn thay cho các khung bên dưới.</p>
+      <p>Ảnh thật từ khách hàng & học viên đã được AMI trang điểm.</p>
     </div>
     <div class="photo-grid">
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #1</div></div>
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #2</div></div>
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #3</div></div>
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #4</div></div>
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #5</div></div>
-      <div class="photo-frame"><div class="pf-ic"><svg><use href="#ic-frame"/></svg></div><div class="pf-txt">Ảnh thật #6</div></div>
+      <div class="photo-frame"><img src="images/cô dâu 1.jpg" alt="Khách hàng AMI — makeup cô dâu" /></div>
+      <div class="photo-frame"><img src="images/cô dâu 3.jpg" alt="Khách hàng AMI — makeup cô dâu" /></div>
+      <div class="photo-frame"><img src="images/kỷ yếu.jpg" alt="Học viên AMI — makeup kỷ yếu" /></div>
+      <div class="photo-frame"><img src="images/kỷ yếu 2.jpg" alt="Học viên AMI — makeup kỷ yếu" /></div>
+      <div class="photo-frame"><img src="images/SLI00416.jpeg" alt="Khách hàng AMI — makeup cá nhân" /></div>
+      <div class="photo-frame"><img src="images/IMG_9013.JPG" alt="Khách hàng AMI — makeup cá nhân" /></div>
     </div>
   </div>
 </section>
@@ -376,7 +390,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8A6B36" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg>
         </div>
         <h3>Đăng ký thành công!</h3>
-        <p>Cảm ơn bạn đã tin tưởng AMI. Chị Thuý sẽ liên hệ xác nhận lịch trong vòng 2 giờ.</p>
+        <p>Cảm ơn bạn đã tin tưởng AMI. AMI sẽ liên hệ xác nhận lịch trong vòng 2 giờ.</p>
         <a href="https://zalo.me/0327355595" target="_blank" class="btn-zalo-mini">Chat Zalo với AMI ngay</a>
       </div>
 
@@ -407,7 +421,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">Vì sao chỉ giới hạn số suất mỗi tháng?<span class="plus">+</span></div>
-        <div class="faq-a"><p>Vì đích thân Thuý Trần trực tiếp trang điểm cho từng khách để đảm bảo chất lượng, nên số suất mỗi tháng có giới hạn.</p></div>
+        <div class="faq-a"><p>Vì chuyên gia AMI trực tiếp trang điểm cho từng khách để đảm bảo chất lượng, nên số suất mỗi tháng có giới hạn.</p></div>
       </div>
     </div>
   </div>

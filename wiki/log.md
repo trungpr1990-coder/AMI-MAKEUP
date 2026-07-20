@@ -893,3 +893,20 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã test lại bằng npx serve — xác nhận đúng nội dung/giá tiền qua get_page_text, không lỗi console
 - Việc còn lại: Thuý xác nhận ebook nào sẽ dùng thật trước khi deploy
 - Mâu thuẫn: none
+
+## [2026-07-20] sửa | Landing page trải nghiệm miễn phí — chèn ảnh thật vào banner + khung ảnh
+- Yêu cầu: Thuý bảo lấy ảnh trong `ami-website/images/` chèn vào landing page
+- Trước khi chèn, hỏi lại 1 lần nữa (đã hỏi lần đầu ở phiên trước) vì xem thêm ảnh mới (kỷ yếu.jpg, SLI00416.jpeg, IMG_9013.JPG, makeup di choi dao pho.JPG) càng thấy giống ảnh stock/AI (da mịn bất thường, bokeh dàn dựng, phụ kiện studio) hơn là ảnh chụp thật — Thuý xác nhận trực tiếp: **đây là ảnh thật 100%, khách/học viên AMI, có chuẩn hoá/chỉnh sửa lại** — ghi nhận để dùng đúng nhãn "ảnh thật" trên trang
+- Đã chèn: banner đầu trang dùng `images/makeup di choi dao pho.JPG` (object-position 20% để giữ khuôn mặt trong khung ngang); 6 khung "Kết quả thực tế" dùng `cô dâu 1.jpg`, `cô dâu 3.jpg`, `kỷ yếu.jpg`, `kỷ yếu 2.jpg`, `SLI00416.jpeg`, `IMG_9013.JPG`
+- Bỏ style khung đứt nét (placeholder) ở `.photo-frame` vì đã có ảnh thật, đổi sang viền mảnh + đổ bóng như thẻ khác trên trang
+- Cũng đã dựng lại `preview-gallery.html` (bản cũ thiếu nhiều ảnh mới) thành trang xem nhanh chia 2 nhóm "trông như ảnh thật" / "trông như ảnh mẫu" để Thuý duyệt trước khi chọn — dùng cho phiên này và có thể dùng lại sau
+- Đã test: toàn bộ ảnh load thành công (200 OK qua network log), không lỗi console
+- Việc còn lại: banner + khung ảnh giờ đã có ảnh thật, chỉ còn thiếu ebook thật (xem log trước) trước khi deploy
+- Mâu thuẫn: none
+
+## [2026-07-20] redesign | Landing page trải nghiệm miễn phí — banner 2 cột (ảnh 9:16) + bỏ tên cá nhân Thuý Trần
+- Yêu cầu: Thuý gửi ảnh chụp màn hình trang CELLA bản mới (họ cũng đổi tông be/vàng đồng) làm mẫu bố cục — banner 2 cột: chữ bên trái, ảnh dọc 9:16 bên phải (khớp đúng dạng ảnh thật đang có, thay vì gò ép vào banner ngang 16:8 cũ); đồng thời yêu cầu **bỏ hẳn tên "Thuý Trần" khỏi trang, chỉ nhắc "AMI"** — lý do: muốn tách thương hiệu ra khỏi cá nhân để nhân sự/học viên khác có thể đứng lớp/trang điểm, không chỉ riêng Thuý
+- Đã gộp `.top-banner` (ảnh ngang toàn màn hình) + `.hero` (khối chữ riêng) thành 1 section `.hero` 2 cột (`hero-grid`: 1.1fr chữ trái · 1fr ảnh phải, stack dọc dưới 860px) — cột trái: badge "7+ năm kinh nghiệm · 200+ học viên" (số liệu dùng lại từ số đã xác nhận, không bịa mới), headline, mô tả, value-box (2.5tr), 2 nút CTA (nút vàng chính "Nhận suất miễn phí ngay" + nút viền "Xem gói quà 2.5 triệu" cuộn xuống `#qua-tang`), hero-note; cột phải: ảnh dọc 9:16 (`cô dâu 2.jpg`) trong khung bo góc viền kem
+- Thay toàn bộ nhắc tên cá nhân bằng "AMI"/"chuyên gia AMI": mô tả meta, đoạn lead hero, dòng mô tả món quà 1 (makeup cá nhân), màn hình thành công (trước "Chị Thuý sẽ liên hệ" → "AMI sẽ liên hệ"), câu trả lời FAQ về lý do giới hạn suất — rà lại bằng grep xác nhận không còn "Thuý"/"Thúy" nào trong nội dung hiển thị (chỉ còn 1 comment nội bộ trong code, không hiển thị cho khách)
+- Đã test lại bằng npx serve ở cả khung desktop (1280px, 2 cột hiển thị đúng) và mobile (375px, xếp dọc đúng: chữ → value box → 2 nút → ảnh), không lỗi console
+- Mâu thuẫn: none
