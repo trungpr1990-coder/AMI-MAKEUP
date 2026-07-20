@@ -855,3 +855,41 @@ Append-only record of all ingest, query, and maintenance operations.
 - Summary: [[nang-luc/out-2026-07-13-ebook-7-noi-so-hoc-makeup-ca-nhan]] (mục "Xuất bản" mới thêm)
 - Hạ tầng mới: Cloudflare Pages project `ami-ebooks` (dùng lại được cho các ebook sau); `.env` bổ sung `HEYZINE_API_KEY`, `HEYZINE_CLIENT_ID`
 - Mâu thuẫn: none
+
+## [2026-07-20] build | Landing page thu lead — Trải Nghiệm Makeup Cá Nhân Miễn Phí
+- Yêu cầu: Thuý gửi link đối thủ (cella-trai-nghiem.pages.dev) làm mẫu, muốn 1 landing page thu data tương tự cho buổi trải nghiệm makeup miễn phí. Đã hỏi rõ 2 điểm trước khi làm: (1) nội dung ưu đãi là buổi TRẢI NGHIỆM được trang điểm (không phải học), (2) data khách đăng ký ghi tự động vào Lark Base — thực thi ngay theo lựa chọn của Thuý
+- Nội dung dựa trên kế hoạch đã có sẵn ở [[nang-luc/out-2026-07-11-sop-buoi-trai-nghiem-mien-phi]] (SOP buổi trải nghiệm 15km) và số liệu thật trong [[project-ami-so-lieu-thuc-te]] (giá dịch vụ, quy mô khách/học viên ước tính, mục tiêu 10-15 khách/tháng) — không bịa testimonial giả (AMI chưa có review có tên thật), phần "cảm nhận học viên" của bản mẫu CELLA bị bỏ hẳn thay vì tạo tên/câu nói giả
+- File tạo: `ami-website/trai-nghiem-mien-phi.html` (trang độc lập, không dùng chung nav.js — giữ khách tập trung vào form) + `ami-website/functions/api/submit-trai-nghiem.js` (Cloudflare Pages Function, dùng chung LARK_APP_ID/LARK_APP_SECRET đã cấu hình sẵn cho submit-booking.js)
+- Bảng Lark Base mới: "Đăng Ký Trải Nghiệm Miễn Phí" (`tblGwNxY4ep5Zdsp`, Base CRM THÚY THÚY `O2qIbEaIYabXEGsW6Dzjs0LCpZg`) — Họ và tên/Số điện thoại/Email/Địa chỉ/Độ tuổi/Bạn đang là/Trạng thái/Ngày đăng ký
+- Đã test bằng npx serve cục bộ: điền form thật + bấm gửi → hiện đúng màn hình cảm ơn, FAQ accordion hoạt động, không có lỗi console (API ghi Lark Base chỉ chạy được khi đã deploy lên Cloudflare Pages thật, không test được ở local)
+- Các chỗ đánh dấu "✏️ SỬA" trong file cần Thuý xác nhận trước khi chạy quảng cáo thật: giá trị quy đổi buổi trải nghiệm (500.000đ), số suất giới hạn/tháng (10), có thêm ưu đãi giảm giá khoá học kèm theo hay không
+- **Chưa deploy** — chỉ mới sửa code, dừng lại chờ Thuý duyệt rồi mới chạy `wrangler pages deploy` (đúng nguyên tắc [[feedback-deploy-only-after-approval]])
+- Mâu thuẫn: none
+
+## [2026-07-20] sửa | Landing page trải nghiệm miễn phí — thêm banner ảnh + khung ảnh chờ ảnh thật
+- Yêu cầu tiếp theo: Thuý muốn có khung ảnh để chèn ảnh tạo niềm tin + 1 banner ảnh/chữ ngay đầu trang
+- Phát hiện quan trọng trước khi làm: thư mục `ami-website/images/` có 2 loại ảnh lẫn lộn — nhóm "cô dâu 1/2/3.jpg" trông như ảnh chụp thật (hậu cảnh đời thường), nhóm "idx-gallery-*/idx-founder/hero-ca-nhan-luxury/IMG_8399" trông giống ảnh stock/editorial dàn dựng studio, không rõ có phải ảnh thật của Thuý/khách hay không — đã hỏi lại thay vì tự ý dùng, tránh gắn nhãn "ảnh thật" cho ảnh có thể là ảnh mẫu (phản tác dụng với đúng mục tiêu "tạo niềm tin")
+- Thuý xác nhận: chưa có ảnh nào dùng được ngay, sẽ tự gửi ảnh thật sau
+- Đã thêm vào `trai-nghiem-mien-phi.html`: (1) banner ảnh+chữ cố định ngay đầu trang (trước thanh khan hiếm) — hiện là khung placeholder viền đứt nét rõ ràng, kèm hướng dẫn bằng comment HTML cách thay ảnh thật; (2) section "Kết quả thực tế" với 6 khung ảnh chờ (photo-frame) ngay trước phần form đăng ký, cùng cơ chế thay ảnh tương tự
+- Đã test lại bằng npx serve: banner và khung ảnh hiển thị đúng, không đè chữ, không lỗi console
+- Việc còn lại: chờ Thuý gửi ảnh thật để chèn vào banner + 6 khung ảnh, sau đó mới deploy
+- Mâu thuẫn: none
+
+## [2026-07-20] redesign | Landing page trải nghiệm miễn phí — đổi tông be sang trọng + icon SVG
+- Yêu cầu: Thuý muốn đổi tông màu từ hồng sang be (beige) sang trọng, và đổi icon (trước đó dùng emoji màu mè)
+- Đã dùng skill `frontend-design` để lên bảng màu có chủ đích: nền kem ngà (#F3ECDD/#FAF6EC), thẻ ngà trắng (#FFFCF5), nâu espresso cho khối tối (#2B2018, thay đen-tím #1c1420 cũ), chữ nâu ấm (#3D2F22), vàng đồng làm accent chính (#AD8A4D/#8A6B36/#6E5327) thay hồng, be nhạt tạo bg mềm (#F0E4C8)
+- Icon: bỏ toàn bộ emoji (💄🎁💼🤱👰💗💬🎟️🔒⏱️📍📞🖼️), thay bằng bộ icon SVG line-art tự vẽ (sprite `<symbol>` giấu trong `<body>`, dùng lại qua `<use href="#ic-...">`) — 13 icon: lipstick/gift/briefcase/flower/ring/heart/chat/ticket/lock/clock/pin/phone/frame, đồng bộ nét mảnh 1.6px màu vàng đồng
+- Lỗi phát hiện khi test: icon trong khung `.icon-badge` (persona, gift-row) và `.photo-frame` bị thiếu `fill:none` nên hiện thành khối đen đặc thay vì icon nét mảnh — đã sửa, test lại xác nhận đúng
+- Giữ nguyên toàn bộ copy/nội dung, cấu trúc HTML, id/class dùng trong JS — chỉ đổi màu sắc + icon theo đúng yêu cầu, không mở rộng phạm vi
+- Đã test lại bằng npx serve, xác nhận màu be/vàng đồng + icon SVG hiển thị đúng ở banner, hero, persona, form, FAQ, footer
+- Mâu thuẫn: none
+
+## [2026-07-20] sửa | Landing page trải nghiệm miễn phí — đổi persona + gói quà theo đúng mẫu CELLA (giá trị 2.5tr)
+- Yêu cầu: Thuý gửi lại nguyên văn nội dung gói quà của mẫu CELLA (4 món: makeup cá nhân 1tr, ebook 500k, voucher cô dâu 1tr, voucher giảm 10%) để áp dụng, và đổi persona "Sắp làm cô dâu" thành "Học sinh - Sinh viên"
+- Đã sửa `trai-nghiem-mien-phi.html`: persona 3 đổi icon+chữ (mũ tốt nghiệp thay nhẫn cưới); gói quà viết lại đủ 4 món đúng thứ tự bản gốc CELLA (makeup cá nhân 1.000.000đ → ebook 500.000đ → voucher cô dâu 1.000.000đ → voucher giảm 10% "quà tặng kèm"); tổng giá trị đổi từ 500.000đ (chỉ tính riêng buổi trải nghiệm) lên **2.500.000đ** khớp đúng tổng 4 món, đồng bộ luôn ô "Tổng giá trị" trong hero
+- Thêm 2 icon SVG mới vào sprite: `ic-cap` (mũ tốt nghiệp — học sinh/sinh viên), `ic-book` (ebook); tái dùng lại `ic-ring` (trước gắn cho persona cô dâu, nay chuyển sang gắn cho voucher Makeup Test cô dâu — vẫn đúng ngữ cảnh)
+- ⚠️ Đã gắn cờ `✏️ SỬA` ngay trong code: **chưa có ebook đúng tên "Makeup cho người mới bắt đầu"** — cần chị chọn 1 trong các ebook đã viết (VD "7 Nỗi Sợ Khiến Phụ Nữ Mãi Chưa Dám Học Makeup Cho Chính Mình" đã xuất bản sách lật) hoặc viết ebook mới, và gắn link tải thật trước khi chạy quảng cáo — tránh hứa một tài liệu chưa tồn tại
+- Voucher Makeup Test cô dâu (tặng miễn phí trong gói) không mâu thuẫn với giá dịch vụ thật (dịch vụ này bình thường tính phí 1.000.000đ theo [[project-ami-so-lieu-thuc-te]]) — đây là logic voucher: tặng miễn phí 1 dịch vụ vốn có phí, đúng bản chất khuyến mãi
+- Đã test lại bằng npx serve — xác nhận đúng nội dung/giá tiền qua get_page_text, không lỗi console
+- Việc còn lại: Thuý xác nhận ebook nào sẽ dùng thật trước khi deploy
+- Mâu thuẫn: none
