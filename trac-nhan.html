@@ -1,0 +1,849 @@
+<title>Phiếu Ứng Tuyển & Đánh Giá Năng Lực</title>
+<style>
+  :root{
+    --bg:#e9e7f0;--bg-2:#f5f3fa;--bg-3:#ffffff;--ink:#211d33;--ink-soft:#54506c;
+    --ink-faint:#8a84a0;--line:#d7d3e4;--line-strong:#c4bfd6;--accent:#9a6f18;
+    --accent-2:#7f5a11;--accent-soft:rgba(154,111,24,.10);
+    --d:#c0472e;--i:#b17512;--s:#3f7d61;--c:#3c66a0;
+    --shadow:0 1px 2px rgba(33,29,51,.05),0 12px 32px -18px rgba(33,29,51,.28);
+    --star:120,110,150;
+    --serif:"Cambria","Constantia","Georgia","Times New Roman",serif;
+    --sans:system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:"Consolas","SF Mono","Cascadia Code","Roboto Mono",monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#131120;--bg-2:#1b1830;--bg-3:#221e39;--ink:#ecebf6;--ink-soft:#aaa4c6;
+      --ink-faint:#6f6a8c;--line:#2e2947;--line-strong:#3a3457;--accent:#d8b45f;
+      --accent-2:#e6c877;--accent-soft:rgba(216,180,95,.12);--d:#e0715a;--i:#e2a63b;
+      --s:#63a98a;--c:#6a92cf;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -22px rgba(0,0,0,.7);
+      --star:214,180,110;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#131120;--bg-2:#1b1830;--bg-3:#221e39;--ink:#ecebf6;--ink-soft:#aaa4c6;
+    --ink-faint:#6f6a8c;--line:#2e2947;--line-strong:#3a3457;--accent:#d8b45f;
+    --accent-2:#e6c877;--accent-soft:rgba(216,180,95,.12);--d:#e0715a;--i:#e2a63b;
+    --s:#63a98a;--c:#6a92cf;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -22px rgba(0,0,0,.7);
+    --star:214,180,110;
+  }
+  :root[data-theme="light"]{
+    --bg:#e9e7f0;--bg-2:#f5f3fa;--bg-3:#ffffff;--ink:#211d33;--ink-soft:#54506c;
+    --ink-faint:#8a84a0;--line:#d7d3e4;--line-strong:#c4bfd6;--accent:#9a6f18;
+    --accent-2:#7f5a11;--accent-soft:rgba(154,111,24,.10);--d:#c0472e;--i:#b17512;
+    --s:#3f7d61;--c:#3c66a0;--shadow:0 1px 2px rgba(33,29,51,.05),0 12px 32px -18px rgba(33,29,51,.28);
+    --star:120,110,150;
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    line-height:1.6;font-size:16px;letter-spacing:.01em;overflow-x:hidden}
+  ::selection{background:var(--accent-soft)}
+  #stars{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.9}
+
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--accent-2);font-weight:600}
+  .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 clamp(18px,4vw,36px)}
+  .wrap.wide{max-width:1080px}
+
+  .topbar{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;
+    padding:14px clamp(18px,4vw,40px);background:color-mix(in srgb,var(--bg) 82%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-weight:700;
+    font-size:1.12rem;letter-spacing:.02em}
+  .brand svg{width:22px;height:22px;color:var(--accent)}
+  .brand small{font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:600;margin-left:2px}
+  .tt{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line-strong);background:var(--bg-3);color:var(--ink-soft);cursor:pointer;transition:.2s}
+  .tt:hover{color:var(--accent);border-color:var(--accent)}
+  .tt svg{width:18px;height:18px}
+
+  .screen{display:none;padding:clamp(30px,5vw,60px) 0 90px;animation:fade .5s ease both}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.screen{animation:none}}
+
+  h1{font-family:var(--serif);font-weight:700;line-height:1.1;text-wrap:balance;
+    font-size:clamp(1.9rem,4.6vw,2.9rem);margin:.4rem 0 .7rem;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--accent)}
+  .lead{color:var(--ink-soft);font-size:1.04rem;max-width:56ch;margin:0 0 1.1rem}
+
+  /* part progress */
+  .parts{display:flex;gap:8px;margin:0 0 22px}
+  .parts .p{flex:1;display:flex;flex-direction:column;gap:7px}
+  .parts .p .bar{height:5px;border-radius:99px;background:var(--line)}
+  .parts .p.on .bar,.parts .p.done .bar{background:var(--accent)}
+  .parts .p span{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--ink-faint)}
+  .parts .p.on span{color:var(--accent-2);font-weight:600}
+
+  .card{background:var(--bg-3);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+  .pad{padding:clamp(22px,3.4vw,32px)}
+  .card h2{font-family:var(--serif);font-size:1.4rem;margin:0 0 4px}
+  .card p.sub{color:var(--ink-faint);font-size:.92rem;margin:0 0 22px}
+
+  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}
+  @media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+  .col-full{grid-column:1 / -1}
+  label.field{display:block;margin-bottom:16px}
+  label.field .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-soft);font-weight:600;display:block;margin-bottom:7px}
+  label.field .lab .req{color:var(--d)}
+  input,select,textarea{width:100%;font-family:var(--sans);font-size:1rem;color:var(--ink);
+    background:var(--bg-2);border:1px solid var(--line-strong);border-radius:10px;padding:12px 14px;transition:.18s}
+  textarea{resize:vertical;min-height:82px;line-height:1.5}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  select{appearance:none;cursor:pointer;padding-right:38px;
+    background-image:linear-gradient(45deg,transparent 50%,var(--ink-faint) 50%),linear-gradient(135deg,var(--ink-faint) 50%,transparent 50%);
+    background-position:calc(100% - 20px) 55%,calc(100% - 15px) 55%;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);
+    font-weight:600;font-size:1rem;cursor:pointer;border-radius:11px;padding:13px 22px;border:1px solid transparent;transition:.18s}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  :root[data-theme="dark"] .btn-primary{color:#1a1608}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-primary{color:#1a1608}}
+  .btn-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;border-color:var(--line-strong);color:var(--ink-soft)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .navrow{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
+  .err{color:var(--d);font-size:.85rem;margin-top:14px;display:none;font-weight:500}
+  .err.show{display:block}
+
+  /* competency questions */
+  .sq{padding:18px 0;border-bottom:1px solid var(--line)}
+  .sq:last-of-type{border-bottom:0}
+  .sq .sqt{font-weight:600;font-size:.98rem;margin-bottom:12px;line-height:1.4}
+  .sqopts{display:flex;flex-direction:column;gap:8px}
+  .sqopt{display:flex;gap:12px;align-items:center;text-align:left;width:100%;background:var(--bg-2);
+    border:1px solid var(--line-strong);border-radius:10px;padding:11px 14px;cursor:pointer;transition:.14s;
+    color:var(--ink-soft);font-size:.9rem;font-family:var(--sans);line-height:1.4}
+  .sqopt:hover{border-color:var(--accent);color:var(--ink)}
+  .sqopt .dot{width:15px;height:15px;border-radius:50%;border:2px solid var(--line-strong);flex:0 0 auto;transition:.14s}
+  .sqopt.on{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+  .sqopt.on .dot{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px var(--bg-3)}
+
+  /* quiz */
+  .qhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  .qhead .count{font-family:var(--mono);font-size:.78rem;letter-spacing:.1em;color:var(--ink-soft)}
+  .qhead .who{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em}
+  .bar-lg{height:5px;border-radius:99px;background:var(--line);overflow:hidden;margin-bottom:28px}
+  .bar-lg>i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+  .qtext{font-family:var(--serif);font-size:clamp(1.3rem,3.3vw,1.65rem);line-height:1.32;text-wrap:balance;margin:0 0 22px}
+  .opts{display:flex;flex-direction:column;gap:11px}
+  .opt{display:flex;gap:14px;align-items:center;text-align:left;width:100%;background:var(--bg-3);
+    border:1px solid var(--line);border-radius:13px;padding:15px 18px;cursor:pointer;transition:.16s;
+    color:var(--ink);font-size:1.01rem;font-family:var(--sans)}
+  .opt:hover{border-color:var(--accent);background:var(--bg-2);transform:translateX(3px)}
+  .opt .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--line-strong);flex:0 0 auto;transition:.16s}
+  .opt.sel{border-color:var(--accent);background:var(--accent-soft)}
+  .opt.sel .dot{border-color:var(--accent);background:var(--accent);box-shadow:inset 0 0 0 3px var(--bg-3)}
+
+  /* ---- result: candidate ---- */
+  .thanks{text-align:center;padding:clamp(28px,4vw,42px) clamp(20px,4vw,40px)}
+  .thanks .seal{width:64px;height:64px;margin:0 auto 14px;color:var(--accent)}
+  .thanks h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 4px}
+  .thanks .who{font-family:var(--mono);color:var(--ink-faint);font-size:.82rem;margin-bottom:22px}
+  .snap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 6px;text-align:left}
+  @media (max-width:520px){.snap{grid-template-columns:1fr}}
+  .snap .box{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px}
+  .snap .box .eyebrow{display:block;margin-bottom:9px}
+  .snap .num{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:2.6rem;line-height:.9}
+  .snap .big{font-family:var(--serif);font-weight:700;font-size:2.2rem;line-height:.9}
+  .snap .t{font-family:var(--serif);font-size:1.12rem;font-weight:700;margin:8px 0 2px}
+  .snap .k{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .chip{font-size:.83rem;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:4px 11px;color:var(--ink-soft)}
+  .reveal-wrap{margin-top:26px;text-align:center}
+  .reveal-note{font-size:.82rem;color:var(--ink-faint);margin-top:10px}
+
+  /* ---- recruiter ---- */
+  .recruiter{display:none;margin-top:20px}
+  .recruiter.show{display:block}
+  .sec-title{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--accent-2);font-weight:600;margin:34px 0 14px;display:flex;align-items:center;gap:12px}
+  .sec-title::after{content:"";flex:1;height:1px;background:var(--line)}
+  .panel{padding:22px 24px}
+  .panel h3{font-family:var(--serif);font-size:1.15rem;margin:0 0 4px}
+  .panel .tag{font-family:var(--mono);font-size:.72rem;color:var(--ink-faint);letter-spacing:.05em;margin-bottom:14px;display:block}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:760px){.grid2{grid-template-columns:1fr}}
+  .attr{margin:12px 0}
+  .attr .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);display:block;margin-bottom:5px}
+  .attr .v{font-size:.96rem;color:var(--ink)}
+
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:9px 18px}
+  .kv dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);white-space:nowrap}
+  .kv dd{margin:0;font-size:.96rem;color:var(--ink)}
+  @media (max-width:520px){.kv{grid-template-columns:1fr;gap:2px 0}.kv dd{margin-bottom:8px}}
+
+  .skillbars{display:flex;flex-direction:column;gap:12px}
+  .sbar{display:grid;grid-template-columns:1fr auto;gap:5px 12px;align-items:center}
+  .sbar .sn{font-size:.92rem}
+  .sbar .sv{font-family:var(--mono);font-size:.8rem;color:var(--ink-soft);text-align:right;min-width:34px}
+  .sbar .strack{grid-column:1 / -1;height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+  .sbar .strack>i{display:block;height:100%;background:var(--accent);border-radius:99px;width:0;transition:width .9s ease}
+
+  .verdict{padding:20px 24px;margin-bottom:6px;border-left:4px solid var(--accent);display:flex;flex-wrap:wrap;
+    gap:18px 26px;align-items:center;justify-content:space-between}
+  .pill{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:1.02rem;padding:8px 16px;border-radius:99px;font-family:var(--sans)}
+  .pill::before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+  .tone-strong{color:var(--s);background:color-mix(in srgb,var(--s) 14%,transparent)}
+  .tone-good{color:var(--s);background:color-mix(in srgb,var(--s) 12%,transparent)}
+  .tone-mid{color:var(--i);background:color-mix(in srgb,var(--i) 15%,transparent)}
+  .tone-low{color:var(--d);background:color-mix(in srgb,var(--d) 14%,transparent)}
+  .verdict .synth{color:var(--ink-soft);font-size:.98rem;max-width:52ch;flex:1 1 300px}
+  .verdict .fitbox{text-align:center;font-family:var(--mono)}
+  .verdict .fitbox b{font-family:var(--serif);font-size:2.1rem;color:var(--accent);display:block;line-height:1}
+  .verdict .fitbox small{font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+
+  .disc-bars{display:flex;flex-direction:column;gap:13px}
+  .drow{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+  .dlabel{display:flex;align-items:center;gap:9px;min-width:150px}
+  .dchit{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:1rem;color:#fff}
+  .dname{font-size:.9rem;color:var(--ink)}
+  .dtrack{height:9px;border-radius:99px;background:var(--line);overflow:hidden}
+  .dtrack>i{display:block;height:100%;border-radius:99px;width:0;transition:width .9s cubic-bezier(.3,0,.2,1)}
+  .dval{font-family:var(--mono);font-size:.82rem;color:var(--ink-soft);min-width:30px;text-align:right;font-variant-numeric:tabular-nums}
+
+  .roles{display:flex;flex-direction:column;gap:11px}
+  .role{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--bg-3)}
+  .role.best{border-color:var(--accent);background:var(--accent-soft)}
+  .role .rn{font-weight:600;font-size:1rem;display:flex;align-items:center;gap:8px}
+  .role .rn .star{color:var(--accent);font-size:.9rem}
+  .role .rd{grid-column:1;font-size:.85rem;color:var(--ink-faint)}
+  .role .rf{grid-row:1;grid-column:2;font-family:var(--serif);font-size:1.35rem;color:var(--accent);font-weight:700;text-align:right}
+  .role .rtrack{grid-column:1 / -1;height:6px;border-radius:99px;background:var(--line);overflow:hidden;margin-top:2px}
+  .role .rtrack>i{display:block;height:100%;background:var(--accent);border-radius:99px;width:0;transition:width .9s ease}
+
+  .persuade{display:flex;flex-direction:column}
+  .pitem{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .pitem:last-child{border-bottom:0}
+  .pitem .n{font-family:var(--serif);color:var(--accent);font-size:1.05rem;font-weight:700;min-width:26px}
+  .pitem .t{font-size:.98rem;color:var(--ink)}
+  .risk{display:flex;flex-wrap:wrap;gap:9px}
+  .risk .chip{border-color:color-mix(in srgb,var(--d) 40%,var(--line));color:var(--d);background:color-mix(in srgb,var(--d) 8%,transparent)}
+
+  .foot{margin-top:34px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+  .foot .actions{display:flex;gap:12px;flex-wrap:wrap}
+  .disclaimer{color:var(--ink-faint);font-size:.82rem;max-width:60ch;line-height:1.55}
+  .disclaimer b{color:var(--ink-soft)}
+  .sitefoot{position:relative;z-index:1;text-align:center;padding:26px 20px 40px;color:var(--ink-faint);font-size:.78rem;font-family:var(--mono);letter-spacing:.04em}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);
+    padding:11px 20px;border-radius:99px;font-size:.9rem;font-weight:600;opacity:0;pointer-events:none;transition:.3s;z-index:20}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media print{
+    .topbar,.tt,.foot .actions,#stars,.sitefoot,.reveal-wrap,.thanks .seal{display:none!important}
+    body{background:#fff}
+    .recruiter{display:block!important}
+    .card,.panel,.role{box-shadow:none;break-inside:avoid}
+    .screen{padding-top:6px}
+  }
+</style>
+
+<canvas id="stars" aria-hidden="true"></canvas>
+
+<header class="topbar">
+  <div class="brand">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 2l2.4 6.9L21.5 9l-5.6 4.3 2.1 7.2L12 16.9 6 20.5l2.1-7.2L2.5 9l7.1-.1z"/>
+    </svg>
+    <span id="brandName">AMI</span> <small>Phiếu ứng tuyển</small>
+  </div>
+  <button class="tt" id="themeBtn" aria-label="Đổi giao diện sáng/tối" title="Sáng / Tối"></button>
+</header>
+
+<main class="wrap" id="mainWrap">
+
+  <!-- ===== PART 1: HỒ SƠ ===== -->
+  <section id="screen-form" class="screen active">
+    <span class="eyebrow">Phiếu ứng tuyển · Bước 1 / 3</span>
+    <h1>Chào bạn — cảm ơn bạn đã <em>ứng tuyển</em>.</h1>
+    <p class="lead">Phiếu này gồm 3 phần và mất khoảng <b>7 phút</b>: thông tin cơ bản,
+      bạn tự đánh giá năng lực qua vài câu hỏi, và một bài trắc nghiệm tính cách ngắn. Hãy trả lời thật lòng —
+      không có đáp án đúng hay sai, mục tiêu là tìm đúng vị trí hợp với bạn nhất.</p>
+
+    <div class="parts">
+      <div class="p on"><div class="bar"></div><span>1 · Hồ sơ</span></div>
+      <div class="p"><div class="bar"></div><span>2 · Năng lực</span></div>
+      <div class="p"><div class="bar"></div><span>3 · Tính cách</span></div>
+    </div>
+
+    <div class="card pad">
+      <h2>Thông tin ứng viên</h2>
+      <p class="sub">Các mục có dấu <span style="color:var(--d)">*</span> là bắt buộc.</p>
+      <div class="fgrid">
+        <label class="field"><span class="lab">Họ và tên <span class="req">*</span></span>
+          <input id="f-name" type="text" placeholder="VD: Nguyễn Thị Mai" autocomplete="name"></label>
+        <label class="field"><span class="lab">Ngày sinh <span class="req">*</span></span>
+          <input id="f-dob" type="date" min="1950-01-01" max="2012-12-31"></label>
+        <label class="field"><span class="lab">Số điện thoại <span class="req">*</span></span>
+          <input id="f-phone" type="tel" inputmode="tel" placeholder="09xx xxx xxx" autocomplete="tel"></label>
+        <label class="field"><span class="lab">Email</span>
+          <input id="f-email" type="email" placeholder="email@…" autocomplete="email"></label>
+        <label class="field"><span class="lab">Giới tính</span>
+          <select id="f-gender"><option value="Nữ">Nữ</option><option value="Nam">Nam</option><option value="Khác">Khác / Không nêu</option></select></label>
+        <label class="field"><span class="lab">Vị trí ứng tuyển <span class="req">*</span></span>
+          <select id="f-role">
+            <option value="">— Chọn vị trí —</option>
+            <option value="assistant">Trợ lý / Phụ makeup</option>
+            <option value="sales">Tư vấn & Bán hàng</option>
+            <option value="content">Content & Quay dựng</option>
+            <option value="ops">Vận hành & Hậu cần</option>
+            <option value="teach">Trợ giảng & Đào tạo</option>
+            <option value="flex">Vị trí khác / Linh hoạt</option>
+          </select></label>
+        <label class="field col-full"><span class="lab">Địa chỉ hiện tại</span>
+          <input id="f-addr" type="text" placeholder="Phường/xã, tỉnh/thành"></label>
+        <label class="field"><span class="lab">Kinh nghiệm liên quan</span>
+          <select id="f-exp"><option>Chưa có kinh nghiệm</option><option>Dưới 1 năm</option><option>1 – 3 năm</option><option>Trên 3 năm</option></select></label>
+        <label class="field"><span class="lab">Có thể bắt đầu</span>
+          <select id="f-start"><option>Ngay lập tức</option><option>Trong 1–2 tuần</option><option>Trong 1 tháng</option><option>Cần trao đổi thêm</option></select></label>
+        <label class="field col-full"><span class="lab">Mức lương mong muốn</span>
+          <input id="f-salary" type="text" placeholder="VD: 7–9 triệu / thoả thuận"></label>
+      </div>
+      <p class="err" id="err-form">Bạn điền giúp các mục có dấu * nhé (họ tên, ngày sinh, SĐT, vị trí).</p>
+      <div class="navrow"><span></span>
+        <button class="btn btn-primary" id="toSkills">Tiếp tục
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PART 2: NĂNG LỰC ===== -->
+  <section id="screen-skills" class="screen">
+    <span class="eyebrow">Phiếu ứng tuyển · Bước 2 / 3</span>
+    <h1>Bạn tự đánh giá <em>năng lực</em> của mình.</h1>
+    <p class="lead">Với mỗi câu hỏi dưới đây, chọn câu trả lời gần đúng nhất với bạn. Cứ trung thực nhé —
+      chúng tôi trân trọng người biết rõ mình đang ở đâu.</p>
+
+    <div class="parts">
+      <div class="p done"><div class="bar"></div><span>1 · Hồ sơ</span></div>
+      <div class="p on"><div class="bar"></div><span>2 · Năng lực</span></div>
+      <div class="p"><div class="bar"></div><span>3 · Tính cách</span></div>
+    </div>
+
+    <div class="card pad">
+      <h2>Tự đánh giá năng lực</h2>
+      <p class="sub">Chọn câu trả lời gần đúng nhất với bạn cho mỗi câu hỏi.</p>
+      <div id="rates"></div>
+    </div>
+
+    <div class="card pad" style="margin-top:16px">
+      <label class="field"><span class="lab">Điểm mạnh lớn nhất của bạn là gì?</span>
+        <textarea id="f-strength" placeholder="Viết ngắn gọn 1–2 câu…"></textarea></label>
+      <label class="field" style="margin-bottom:0"><span class="lab">Vì sao bạn muốn ứng tuyển vị trí này?</span>
+        <textarea id="f-why" placeholder="Điều gì khiến bạn chọn công việc này?"></textarea></label>
+    </div>
+
+    <div class="navrow">
+      <button class="btn btn-ghost" id="backForm">← Quay lại</button>
+      <button class="btn btn-primary" id="toQuiz">Tiếp tục
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ===== PART 3: TÍNH CÁCH ===== -->
+  <section id="screen-quiz" class="screen">
+    <span class="eyebrow">Phiếu ứng tuyển · Bước 3 / 3</span>
+    <h1 style="margin-bottom:14px">Trắc nghiệm <em>tính cách</em></h1>
+    <p class="lead">Với mỗi tình huống, chọn phương án <b>giống bạn nhất</b>. Không cần suy nghĩ quá lâu —
+      phản xạ đầu tiên thường đúng nhất.</p>
+
+    <div class="parts">
+      <div class="p done"><div class="bar"></div><span>1 · Hồ sơ</span></div>
+      <div class="p done"><div class="bar"></div><span>2 · Năng lực</span></div>
+      <div class="p on"><div class="bar"></div><span>3 · Tính cách</span></div>
+    </div>
+
+    <div class="qhead"><span class="count" id="qcount">Câu 1 / 16</span><span class="who" id="qwho"></span></div>
+    <div class="bar-lg"><i id="qbar" style="width:8%"></i></div>
+    <p class="qtext" id="qtext"></p>
+    <div class="opts" id="qopts"></div>
+    <div class="navrow" style="margin-top:24px"><button class="btn btn-ghost" id="backSkills">← Quay lại</button><span></span></div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="screen-result" class="screen">
+    <div class="card thanks">
+      <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></svg>
+      <h2 id="t-title">Cảm ơn bạn đã hoàn thành!</h2>
+      <p class="who" id="t-who"></p>
+      <p style="max-width:48ch;margin:0 auto;color:var(--ink-soft)">Hồ sơ của bạn đã được ghi nhận. Chúng tôi sẽ xem xét và liên hệ sớm.
+        Đây là một chút khám phá về tính cách của bạn:</p>
+
+      <div class="snap">
+        <div class="box"><span class="eyebrow">Con số của bạn</span>
+          <div class="num" id="t-num"></div><div class="t" id="t-numtitle"></div><div class="k" id="t-numkey"></div></div>
+        <div class="box"><span class="eyebrow">Nhóm tính cách</span>
+          <div class="big" id="t-disc"></div><div class="t" id="t-discname"></div><div class="k" id="t-disckey"></div></div>
+      </div>
+      <div class="chips" id="t-strengths" style="justify-content:center"></div>
+
+      <div class="reveal-wrap">
+        <button class="btn btn-ghost" id="revealBtn">Xem bản đánh giá tuyển dụng →</button>
+        <p class="reveal-note">Phần dưới đây dành cho nhà tuyển dụng.</p>
+      </div>
+    </div>
+
+    <!-- recruiter -->
+    <div class="recruiter" id="recruiter">
+      <div class="sec-title">Hồ sơ ứng tuyển</div>
+      <div class="card panel"><dl class="kv" id="r-profile"></dl></div>
+
+      <div class="sec-title">Tự đánh giá năng lực</div>
+      <div class="card panel"><div class="skillbars" id="r-skills"></div>
+        <div id="r-openbox" style="margin-top:18px"></div></div>
+
+      <div class="sec-title">Khuyến nghị tuyển dụng</div>
+      <div class="card verdict" id="r-verdict">
+        <div><div class="eyebrow" style="margin-bottom:9px">Đề xuất</div><span class="pill" id="r-pill"></span></div>
+        <p class="synth" id="r-synth"></p>
+        <div class="fitbox"><b id="r-fit"></b><small id="r-fitlabel">Độ phù hợp</small></div>
+      </div>
+
+      <div class="sec-title">Phân bố DISC</div>
+      <div class="card panel"><div class="disc-bars" id="r-bars"></div></div>
+
+      <div class="sec-title">Giải mã chi tiết</div>
+      <div class="grid2"><div class="card panel" id="r-numpanel"></div><div class="card panel" id="r-discpanel"></div></div>
+
+      <div class="sec-title">Vị trí phù hợp nhất</div>
+      <div class="roles" id="r-roles"></div>
+
+      <div class="sec-title">Cách thu phục & quản lý</div>
+      <div class="card panel"><div class="persuade" id="r-persuade"></div></div>
+
+      <div class="sec-title">Điểm cần lưu ý</div>
+      <div class="card panel"><div class="risk" id="r-risk"></div></div>
+
+      <div class="foot">
+        <p class="disclaimer"><b>Ghi chú:</b> Thần số học & DISC là góc nhìn <i>tham khảo</i> để hiểu tính cách,
+          không phải thước đo khoa học tuyệt đối. Hãy dùng kèm phỏng vấn & thử việc thực tế —
+          đừng để quyết định tuyển dụng phụ thuộc hoàn toàn vào công cụ này.</p>
+        <div class="actions">
+          <button class="btn btn-ghost" id="copyBtn">Sao chép tóm tắt</button>
+          <button class="btn btn-ghost" id="printBtn">In hồ sơ</button>
+          <button class="btn btn-ghost" id="againBtn">Ứng viên mới</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="sitefoot">Phiếu ứng tuyển & đánh giá năng lực — <span id="footBrand">AMI</span></footer>
+<div class="toast" id="toast">Đã sao chép tóm tắt hồ sơ</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s){return document.querySelector(s);};
+  var BRAND="AMI"; /* ← Chị đổi tên thương hiệu ở đây (hiện: AMI) */
+  $("#brandName").textContent=BRAND;$("#footBrand").textContent=BRAND;
+
+  /* ---------- Thần số học ---------- */
+  var NUM={
+    1:{title:"Người Dẫn Đầu",key:"Độc lập · Tiên phong",one:"Bạn sinh ra để chủ động và dẫn dắt.",
+       strengths:["Chủ động","Quyết đoán","Dám chịu trách nhiệm"],
+       work:"Thích tự chủ, làm tốt nhất khi được giao mục tiêu rõ ràng và quyền quyết.",watch:"Bướng, khó nghe ý kiến, dễ áp đặt.",
+       manage:"Giao mục tiêu kèm quyền quyết, tránh quản vi mô; ghi nhận thành tích cá nhân."},
+    2:{title:"Người Kết Nối",key:"Hợp tác · Nhạy cảm",one:"Bạn toả sáng khi làm cùng và hỗ trợ người khác.",
+       strengths:["Khéo léo","Biết lắng nghe","Giữ hoà khí"],
+       work:"Hợp vai trò phối hợp, chăm sóc, hỗ trợ; không thích cạnh tranh gay gắt.",watch:"Ngại va chạm, dễ tổn thương, thiếu quyết đoán.",
+       manage:"Tạo môi trường an toàn, phản hồi nhẹ nhàng, cho vai trò đồng đội."},
+    3:{title:"Người Truyền Cảm Hứng",key:"Sáng tạo · Biểu đạt",one:"Bạn giàu ý tưởng và có duyên với mọi người.",
+       strengths:["Giao tiếp giỏi","Vui vẻ","Nhiều ý tưởng"],
+       work:"Hợp việc sáng tạo, content, tương tác khách; cần không gian thể hiện.",watch:"Cả thèm chóng chán, thiếu kỷ luật, dễ sao nhãng.",
+       manage:"Cho việc đa dạng + sân khấu thể hiện; đặt deadline rõ, khen công khai."},
+    4:{title:"Người Xây Nền",key:"Kỷ luật · Thực tế",one:"Bạn đáng tin và làm việc có hệ thống.",
+       strengths:["Chăm chỉ","Tỉ mỉ","Đáng tin cậy"],
+       work:"Giỏi quy trình, việc lặp lại, nền tảng vận hành; cần sự rõ ràng, ổn định.",watch:"Cứng nhắc, ngại thay đổi, chậm thích nghi.",
+       manage:"Cho quy trình & kỳ vọng rõ; báo trước khi thay đổi; ghi nhận sự bền bỉ."},
+    5:{title:"Người Tự Do",key:"Linh hoạt · Đổi thay",one:"Bạn nhanh nhạy, thích nghi và giỏi xoay xở.",
+       strengths:["Năng động","Thích nghi tốt","Giỏi xoay xở"],
+       work:"Hợp việc nhiều biến hoá, gặp gỡ, bán hàng; ghét gò bó lặp lại.",watch:"Thiếu kiên định, dễ bỏ dở, khó cam kết dài.",
+       manage:"Cho biến hoá & tự do trong khuôn khổ; chốt cam kết ngắn hạn, tránh việc đơn điệu."},
+    6:{title:"Người Chăm Sóc",key:"Trách nhiệm · Phục vụ",one:"Bạn tận tâm và ấm áp với người xung quanh.",
+       strengths:["Tận tâm","Ấm áp","Có trách nhiệm"],
+       work:"Toả sáng ở chăm khách, hỗ trợ học viên, giữ chất lượng dịch vụ.",watch:"Ôm việc, khó từ chối, dễ kiệt sức, hay lo.",
+       manage:"Ghi nhận sự tận tâm; giúp họ đặt giới hạn; đừng lợi dụng lòng tốt."},
+    7:{title:"Người Phân Tích",key:"Chuyên sâu · Trí tuệ",one:"Bạn tư duy sắc và có chiều sâu chuyên môn.",
+       strengths:["Tư duy sắc","Quan sát kỹ","Chuyên môn sâu"],
+       work:"Hợp việc cần phân tích, nghiên cứu; cần yên tĩnh và không gian riêng.",watch:"Xa cách, ít nói, khó gần, hay hoài nghi.",
+       manage:"Tôn trọng chiều sâu & không gian; thuyết phục bằng logic, đừng ép xã giao."},
+    8:{title:"Người Kinh Doanh",key:"Quyền lực · Tham vọng",one:"Bạn có tư duy tiền bạc và hướng kết quả lớn.",
+       strengths:["Tư duy kinh doanh","Tổ chức tốt","Tham vọng"],
+       work:"Hợp quản lý, doanh số, mục tiêu lớn; cần phần thưởng xứng đáng.",watch:"Đề cao vật chất, dễ độc đoán, áp lực cao.",
+       manage:"Gắn với mục tiêu & thưởng theo kết quả; trao quyền đi cùng trách nhiệm."},
+    9:{title:"Người Lý Tưởng",key:"Nhân đạo · Cống hiến",one:"Bạn rộng lượng và làm việc vì ý nghĩa.",
+       strengths:["Rộng lượng","Có tầm nhìn","Giàu cảm thông"],
+       work:"Làm tốt khi công việc có ý nghĩa; giỏi kết nối cộng đồng.",watch:"Mơ mộng, ôm đồm, dễ thất vọng khi thực tế phũ.",
+       manage:"Gắn công việc với giá trị; ghi nhận đóng góp; giữ họ thực tế."},
+    11:{title:"Người Truyền Lửa",key:"Trực giác · Cảm hứng (Số bậc thầy)",one:"Bạn có trực giác mạnh và truyền cảm hứng.",
+       strengths:["Trực giác nhạy","Truyền cảm hứng","Lý tưởng"],
+       work:"Sáng tạo & dẫn dắt tinh thần; cần môi trường tích cực, ý nghĩa.",watch:"Nhạy cảm thái quá, dao động cảm xúc, áp lực nội tâm.",
+       manage:"Nuôi dưỡng cảm hứng & công nhận; giúp họ ổn định, việc rõ ràng."},
+    22:{title:"Người Kiến Tạo",key:"Tầm nhìn lớn · Hiện thực hoá (Số bậc thầy)",one:"Bạn vừa mơ lớn vừa làm được việc lớn.",
+       strengths:["Tầm nhìn lớn","Tổ chức tầm cỡ","Đáng tin"],
+       work:"Hợp dự án lớn, xây hệ thống; cần mục tiêu xứng tầm.",watch:"Tự đặt áp lực cao, dễ quá tải, cầu toàn.",
+       manage:"Giao dự án tầm cỡ & tin tưởng; hỗ trợ nguồn lực; đừng để họ ôm hết."},
+    33:{title:"Người Thầy",key:"Dìu dắt · Yêu thương (Số bậc thầy)",one:"Bạn giàu tình thương và giỏi nâng đỡ người khác.",
+       strengths:["Giàu tình thương","Giỏi truyền dạy","Nâng đỡ người khác"],
+       work:"Toả sáng ở đào tạo, dẫn dắt, chăm sóc học viên.",watch:"Hy sinh quá mức, ôm cảm xúc người khác, tự áp lực.",
+       manage:"Trao vai trò dìu dắt/đào tạo; ghi nhận sự cho đi; giúp họ giữ sức."}
+  };
+
+  /* ---------- DISC ---------- */
+  var DISC={
+    D:{name:"Thống Trị (Dominance)",key:"Quyết đoán · Hướng kết quả",varc:"--d",one:"Mạnh mẽ, dứt khoát, luôn hướng đến kết quả.",
+       strengths:["Quyết đoán","Dám làm","Chịu áp lực tốt","Hướng kết quả"],work:"Nhanh, thích thử thách, tự chủ, ghét lề mề.",watch:"Nóng tính, áp đặt, thiếu kiên nhẫn, dễ va chạm.",
+       manage:["Nói thẳng, ngắn gọn — đừng vòng vo.","Giao mục tiêu kèm quyền tự quyết, đừng quản vặt.","Thách thức bằng KPI, con số cụ thể.","Tranh luận bằng kết quả, không bằng cảm xúc."]},
+    I:{name:"Ảnh Hưởng (Influence)",key:"Nhiệt tình · Kết nối",varc:"--i",one:"Hoạt ngôn, lạc quan, giỏi tạo quan hệ và thuyết phục.",
+       strengths:["Hoạt ngôn","Lạc quan","Tạo quan hệ giỏi","Thuyết phục tốt"],work:"Thích môi trường vui, tương tác, được chú ý.",watch:"Thiếu kỷ luật, hứa nhiều, mau chán, ngại chi tiết.",
+       manage:["Khen ngợi công khai, ghi nhận thường xuyên.","Cho không gian giao tiếp & thể hiện.","Biến mục tiêu thành 'trò chơi', thử thách vui.","Theo sát deadline & chi tiết giúp họ."]},
+    S:{name:"Kiên Định (Steadiness)",key:"Ổn định · Trung thành",varc:"--s",one:"Kiên nhẫn, đáng tin và trung thành bền bỉ.",
+       strengths:["Kiên nhẫn","Đáng tin","Trung thành","Hợp tác tốt"],work:"Thích ổn định, quy trình quen, môi trường hoà thuận.",watch:"Ngại thay đổi, hơi chậm, né xung đột, khó nói 'không'.",
+       manage:["Tạo cảm giác an toàn & gắn bó lâu dài.","Báo trước mọi thay đổi, đừng ép gấp.","Quan tâm chân thành, ấm áp, kiên nhẫn hướng dẫn.","Ghi nhận sự bền bỉ & lòng trung thành."]},
+    C:{name:"Tuân Thủ (Compliance)",key:"Chính xác · Chuẩn mực",varc:"--c",one:"Tỉ mỉ, logic, đề cao chất lượng và nguyên tắc.",
+       strengths:["Tỉ mỉ","Logic","Cẩn thận","Chất lượng cao"],work:"Thích rõ ràng, dữ liệu, quy chuẩn, có không gian suy nghĩ.",watch:"Cầu toàn, chậm quyết, hơi lạnh, hay nghi ngờ.",
+       manage:["Đưa dữ liệu & lý do rõ ràng cho mọi yêu cầu.","Đặt tiêu chuẩn chất lượng minh bạch.","Cho thời gian phân tích, đừng hối thúc.","Phản hồi bằng sự kiện cụ thể, không cảm tính."]}
+  };
+
+  var ROLES=[
+    {id:"assistant",name:"Trợ lý / Phụ makeup",ideal:{D:.15,I:.20,S:.35,C:.30},good:[6,2,4,33],desc:"Tỉ mỉ, kiên nhẫn, khéo với khách, hỗ trợ tốt"},
+    {id:"sales",name:"Tư vấn & Bán hàng",ideal:{D:.30,I:.40,S:.20,C:.10},good:[3,8,1,5],desc:"Thuyết phục, ấm áp, chốt đơn, chủ động"},
+    {id:"content",name:"Content & Quay dựng",ideal:{D:.20,I:.35,S:.20,C:.25},good:[3,5,1,11],desc:"Sáng tạo, biểu đạt, kỷ luật sản xuất"},
+    {id:"ops",name:"Vận hành & Hậu cần",ideal:{D:.20,I:.10,S:.30,C:.40},good:[4,8,7,6],desc:"Chính xác, quy trình, ổn định"},
+    {id:"teach",name:"Trợ giảng & Đào tạo",ideal:{D:.20,I:.30,S:.30,C:.20},good:[2,3,6,9,33],desc:"Truyền đạt, kiên nhẫn, chuẩn mực"}
+  ];
+  var ROLEBYID={};ROLES.forEach(function(r){ROLEBYID[r.id]=r;});
+
+  var COMP=[
+    {k:"skill",l:"Chuyên môn makeup / tay nghề",q:"Về tay nghề makeup, bạn thấy mình đang ở đâu?",opts:[
+      "Em mới học, đang làm quen với các bước cơ bản",
+      "Em làm được các bước cơ bản nhưng còn chưa chắc tay",
+      "Em tự làm được một bộ mặt hoàn chỉnh, ổn với nhu cầu thường ngày",
+      "Em tự tin làm nhiều phong cách, xử lý được tình huống phát sinh",
+      "Em làm chủ kỹ thuật, tự đảm nhận được cả ca khó / khách yêu cầu cao"]},
+    {k:"comm",l:"Giao tiếp & chăm sóc khách hàng",q:"Khi trò chuyện, tư vấn với khách hàng, bạn thấy mình thế nào?",opts:[
+      "Em còn ngại nói chuyện, dễ lúng túng khi khách hỏi",
+      "Em nói chuyện được nhưng chưa biết cách dẫn dắt, thuyết phục",
+      "Em giao tiếp thoải mái, khách hỏi gì em trả lời được",
+      "Em chủ động tư vấn, biết đọc ý khách và xử lý tình huống khó",
+      "Em tạo thiện cảm ngay từ đầu, khách thường quay lại vì cách em chăm sóc"]},
+    {k:"learn",l:"Chủ động & ham học hỏi",q:"Khi có điều mới cần học hoặc việc chưa ai giao, bạn thường làm gì?",opts:[
+      "Em chờ được hướng dẫn cụ thể mới làm",
+      "Em làm theo nếu có người chỉ, ít khi tự tìm hiểu thêm",
+      "Em hay chủ động hỏi, tự tìm hiểu thêm khi rảnh",
+      "Em thường tự đề xuất cách làm mới, không đợi ai nhắc",
+      "Em luôn chủ động học trước, tự đi tìm việc để làm"]},
+    {k:"pressure",l:"Chịu áp lực, giữ bình tĩnh",q:"Khi lịch dày, nhiều khách cùng lúc hoặc có sự cố bất ngờ, bạn thường thế nào?",opts:[
+      "Em dễ rối, cần thời gian mới bình tĩnh lại",
+      "Em căng thẳng nhưng vẫn cố hoàn thành được việc",
+      "Em giữ được bình tĩnh, xử lý ổn trong đa số tình huống",
+      "Em bình tĩnh, sắp xếp ưu tiên tốt dù áp lực cao",
+      "Càng áp lực em càng tập trung, xử lý gọn và không ảnh hưởng người xung quanh"]},
+    {k:"detail",l:"Tỉ mỉ, cẩn thận",q:"Trong công việc cần độ chính xác cao (VD: đánh khối, chi tiết nhỏ), bạn thấy mình thế nào?",opts:[
+      "Em hay bỏ sót chi tiết nhỏ, cần người kiểm tra lại",
+      "Em cẩn thận nhưng đôi khi vẫn sai sót",
+      "Em làm kỹ, ít khi sai sót đáng kể",
+      "Em luôn kiểm tra lại kỹ trước khi hoàn thành",
+      "Em cực kỳ tỉ mỉ, gần như không bỏ sót chi tiết nào"]},
+    {k:"team",l:"Làm việc nhóm & hỗ trợ",q:"Khi làm cùng đồng nghiệp trong một ca việc, bạn thường thế nào?",opts:[
+      "Em quen làm một mình hơn, ít khi phối hợp",
+      "Em làm được cùng người khác nếu được phân việc rõ",
+      "Em phối hợp tốt, sẵn sàng hỗ trợ khi cần",
+      "Em chủ động hỗ trợ, biết linh hoạt bù việc cho nhau",
+      "Em là người mọi người hay tìm đến để phối hợp, luôn sẵn sàng gánh vác"]}
+  ];
+
+  var Q=[
+    {t:"Khi bắt đầu một công việc mới, bạn thường:",o:[
+      {t:"Muốn bắt tay làm ngay, thử và điều chỉnh sau",k:"D"},{t:"Muốn trao đổi với mọi người để có thêm ý tưởng",k:"I"},
+      {t:"Muốn biết ai sẽ cùng làm và môi trường thế nào",k:"S"},{t:"Muốn hiểu rõ quy trình, tiêu chuẩn trước khi làm",k:"C"}]},
+    {t:"Khi gặp vấn đề khó, bạn thường:",o:[
+      {t:"Tập trung tìm cách giải quyết nhanh nhất",k:"D"},{t:"Nói chuyện với người khác để tìm góc nhìn mới",k:"I"},
+      {t:"Cân nhắc ảnh hưởng đến mọi người",k:"S"},{t:"Phân tích nguyên nhân thật kỹ",k:"C"}]},
+    {t:"Trong nhóm, bạn thường là người:",o:[
+      {t:"Đưa ra quyết định, thúc đẩy tiến độ",k:"D"},{t:"Tạo năng lượng, kết nối mọi người",k:"I"},
+      {t:"Hỗ trợ, giữ sự hòa hợp",k:"S"},{t:"Kiểm tra chất lượng, chú ý chi tiết",k:"C"}]},
+    {t:"Điều khiến bạn khó chịu nhất là:",o:[
+      {t:"Chậm chạp, thiếu quyết đoán",k:"D"},{t:"Không được giao tiếp, bị giới hạn sáng tạo",k:"I"},
+      {t:"Mâu thuẫn, căng thẳng trong tập thể",k:"S"},{t:"Làm việc thiếu chính xác, thiếu kế hoạch",k:"C"}]},
+    {t:"Khi nhận phản hồi tiêu cực, bạn thường:",o:[
+      {t:"Muốn biết cách sửa để làm tốt hơn",k:"D"},{t:"Hơi buồn nhưng muốn được động viên",k:"I"},
+      {t:"Quan tâm xem mình ảnh hưởng người khác thế nào",k:"S"},{t:"Muốn biết bằng chứng, lý do cụ thể",k:"C"}]},
+    {t:"Bạn thích môi trường làm việc:",o:[
+      {t:"Thử thách, có mục tiêu rõ ràng",k:"D"},{t:"Năng động, nhiều người giao tiếp",k:"I"},
+      {t:"Thân thiện, hỗ trợ lẫn nhau",k:"S"},{t:"Ổn định, chuyên nghiệp, có quy trình",k:"C"}]},
+    {t:"Khi ra quyết định, bạn thường dựa vào:",o:[
+      {t:"Kết quả và tốc độ",k:"D"},{t:"Cảm xúc và sự hứng thú",k:"I"},
+      {t:"Sự đồng thuận của mọi người",k:"S"},{t:"Logic và dữ liệu",k:"C"}]},
+    {t:"Bạn thường được người khác nhận xét là:",o:[
+      {t:"Mạnh mẽ, quyết đoán",k:"D"},{t:"Cởi mở, nhiệt tình",k:"I"},
+      {t:"Dễ gần, biết lắng nghe",k:"S"},{t:"Cẩn thận, kỹ tính",k:"C"}]},
+    {t:"Khi làm việc với người khác, bạn thích:",o:[
+      {t:"Có quyền chủ động",k:"D"},{t:"Được trao đổi nhiều ý tưởng",k:"I"},
+      {t:"Có sự phối hợp và hỗ trợ",k:"S"},{t:"Có tiêu chuẩn rõ ràng",k:"C"}]},
+    {t:"Khi có deadline gấp, bạn thường:",o:[
+      {t:"Tập trung hoàn thành bằng mọi giá",k:"D"},{t:"Huy động mọi người hỗ trợ",k:"I"},
+      {t:"Bình tĩnh xử lý từng bước",k:"S"},{t:"Lập kế hoạch chi tiết rồi làm",k:"C"}]},
+    {t:"Bạn thích được công nhận vì:",o:[
+      {t:"Thành tích đạt được",k:"D"},{t:"Khả năng truyền cảm hứng",k:"I"},
+      {t:"Sự tận tâm, trách nhiệm",k:"S"},{t:"Sự chính xác, chuyên môn",k:"C"}]},
+    {t:"Điều quan trọng nhất trong công việc với bạn là:",o:[
+      {t:"Thành công và thử thách",k:"D"},{t:"Cơ hội phát triển và mối quan hệ",k:"I"},
+      {t:"Sự ổn định và ý nghĩa",k:"S"},{t:"Chất lượng và sự chuyên nghiệp",k:"C"}]},
+    {t:"Khi có thay đổi bất ngờ, bạn:",o:[
+      {t:"Thích nghi nhanh và hành động ngay",k:"D"},{t:"Thấy thú vị vì có điều mới",k:"I"},
+      {t:"Cần thời gian để làm quen",k:"S"},{t:"Muốn tìm hiểu kỹ trước khi thay đổi",k:"C"}]},
+    {t:"Khi giao việc cho người khác, bạn thường:",o:[
+      {t:"Nói rõ mục tiêu và kỳ vọng",k:"D"},{t:"Truyền cảm hứng để họ làm",k:"I"},
+      {t:"Quan tâm họ có gặp khó khăn không",k:"S"},{t:"Hướng dẫn từng bước cụ thể",k:"C"}]},
+    {t:"Bạn muốn cấp trên của mình là người:",o:[
+      {t:"Quyết đoán, mạnh mẽ",k:"D"},{t:"Cởi mở, khuyến khích sáng tạo",k:"I"},
+      {t:"Quan tâm, hỗ trợ nhân viên",k:"S"},{t:"Công bằng, chuyên nghiệp",k:"C"}]},
+    {t:"Bạn thấy mình giống nhất với:",o:[
+      {t:"Người dẫn đầu",k:"D"},{t:"Người kết nối",k:"I"},
+      {t:"Người hỗ trợ",k:"S"},{t:"Người phân tích",k:"C"}]}
+  ];
+
+  /* ---------- state ---------- */
+  var state={form:{},skills:{},strength:"",why:"",answers:[],order:[],q:0};
+
+  /* ---------- helpers ---------- */
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];});}
+  function reduce(n){while(n>9&&n!==11&&n!==22&&n!==33){n=String(n).split("").reduce(function(a,d){return a+ +d;},0);}return n;}
+  function lifePathFrom(dob){return reduce(dob.replace(/\D/g,"").split("").reduce(function(a,d){return a+ +d;},0));}
+  function birthdayFrom(dob){return reduce(parseInt(dob.split("-")[2],10));}
+  function fmtDate(dob){var p=dob.split("-");return p[2]+"/"+p[1]+"/"+p[0];}
+  function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+  function screen(id){document.querySelectorAll(".screen").forEach(function(s){s.classList.remove("active");});
+    $("#"+id).classList.add("active");$("#mainWrap").classList.toggle("wide",id==="screen-result");
+    window.scrollTo({top:0,behavior:"smooth"});starToggle(id==="screen-form");}
+
+  /* ---------- PART 1 ---------- */
+  $("#toSkills").addEventListener("click",function(){
+    var f={name:$("#f-name").value.trim(),dob:$("#f-dob").value,phone:$("#f-phone").value.trim(),
+      email:$("#f-email").value.trim(),gender:$("#f-gender").value,role:$("#f-role").value,
+      addr:$("#f-addr").value.trim(),exp:$("#f-exp").value,start:$("#f-start").value,salary:$("#f-salary").value.trim()};
+    if(!f.name||!f.dob||!f.phone||!f.role){$("#err-form").classList.add("show");return;}
+    $("#err-form").classList.remove("show");state.form=f;
+    renderSkills();screen("screen-skills");
+  });
+
+  /* ---------- PART 2 ---------- */
+  function renderSkills(){
+    var box=$("#rates");if(box.dataset.built)return;box.dataset.built="1";
+    COMP.forEach(function(c,idx){
+      var row=document.createElement("div");row.className="sq";
+      var opts='<div class="sqopts" data-k="'+c.k+'">';
+      c.opts.forEach(function(txt,i){
+        opts+='<button type="button" class="sqopt" data-v="'+(i+1)+'"><span class="dot"></span><span>'+esc(txt)+'</span></button>';
+      });
+      opts+='</div>';
+      row.innerHTML='<div class="sqt">'+(idx+1)+'. '+esc(c.q)+'</div>'+opts;
+      box.appendChild(row);
+    });
+    box.addEventListener("click",function(e){
+      var b=e.target.closest("button[data-v]");if(!b)return;
+      var wrap=b.parentNode,k=wrap.dataset.k,v=+b.dataset.v;
+      wrap.querySelectorAll("button").forEach(function(x){x.classList.remove("on");});b.classList.add("on");
+      state.skills[k]=v;
+    });
+  }
+  $("#backForm").addEventListener("click",function(){screen("screen-form");});
+  $("#toQuiz").addEventListener("click",function(){
+    state.strength=$("#f-strength").value.trim();state.why=$("#f-why").value.trim();
+    state.answers=[];state.q=0;state.order=Q.map(function(q){return shuffle(q.o);});
+    screen("screen-quiz");renderQ();
+  });
+
+  /* ---------- PART 3 ---------- */
+  function renderQ(){
+    var i=state.q,q=Q[i],opts=state.order[i];
+    $("#qcount").textContent="Câu "+(i+1)+" / "+Q.length;
+    $("#qwho").textContent=state.form.name;
+    $("#qbar").style.width=(i/Q.length*100+8)+"%";
+    $("#qtext").textContent=q.t;
+    var box=$("#qopts");box.innerHTML="";
+    opts.forEach(function(op){
+      var b=document.createElement("button");b.className="opt"+(state.answers[i]===op.k?" sel":"");
+      b.innerHTML='<span class="dot"></span><span>'+esc(op.t)+'</span>';
+      b.addEventListener("click",function(){state.answers[i]=op.k;
+        box.querySelectorAll(".opt").forEach(function(x){x.classList.remove("sel");});b.classList.add("sel");
+        setTimeout(next,240);});
+      box.appendChild(b);
+    });
+    $("#backSkills").style.visibility="visible";
+  }
+  function next(){if(state.q<Q.length-1){state.q++;renderQ();}else compute();}
+  $("#backSkills").addEventListener("click",function(){if(state.q>0){state.q--;renderQ();}else screen("screen-skills");});
+
+  /* ---------- compute ---------- */
+  function fitScore(dist,role,lp,bd){var q=role.ideal,sum=0;["D","I","S","C"].forEach(function(k){sum+=Math.abs(dist[k]-q[k]);});
+    var base=(1-0.5*sum)*100,boost=(role.good.indexOf(lp)>-1?6:0)+(role.good.indexOf(bd)>-1?3:0);
+    return Math.max(0,Math.min(99,Math.round(base+boost)));}
+  function band(f){if(f>=76)return{label:"Rất nên tuyển",tone:"tone-strong"};if(f>=62)return{label:"Nên tuyển",tone:"tone-good"};
+    if(f>=48)return{label:"Cân nhắc thêm",tone:"tone-mid"};return{label:"Cân nhắc kỹ",tone:"tone-low"};}
+
+  var RESULT=null;
+  function compute(){
+    var c={D:0,I:0,S:0,C:0};state.answers.forEach(function(k){if(k)c[k]++;});
+    var total=state.answers.filter(Boolean).length||1;
+    var dist={D:c.D/total,I:c.I/total,S:c.S/total,C:c.C/total};
+    var order=["D","I","S","C"].sort(function(a,b){return c[b]-c[a];});
+    var lp=lifePathFrom(state.form.dob),bd=birthdayFrom(state.form.dob);
+    var ranked=ROLES.map(function(r){return{r:r,f:fitScore(dist,r,lp,bd)};}).sort(function(a,b){return b.f-a.f;});
+    var appliedRole=ROLEBYID[state.form.role]||null;
+    var chosen=appliedRole?ranked.filter(function(x){return x.r.id===appliedRole.id;})[0]:ranked[0];
+    RESULT={c:c,total:total,primary:order[0],secondary:order[1],lp:lp,bd:bd,ranked:ranked,chosen:chosen,vb:band(chosen.f)};
+    render(RESULT);screen("screen-result");
+  }
+
+  function attr(k,v){return '<div class="attr"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>';}
+  function chips(arr){return arr.map(function(s){return '<span class="chip">'+esc(s)+'</span>';}).join("");}
+  function roleName(id){return ROLEBYID[id]?ROLEBYID[id].name:(id==="flex"?"Vị trí khác / Linh hoạt":"—");}
+
+  function render(R){
+    var np=NUM[R.lp],dp=DISC[R.primary],sp=DISC[R.secondary],f=state.form;
+
+    /* candidate thank-you */
+    $("#t-who").textContent=f.name+" · "+roleName(f.role);
+    $("#t-num").textContent=R.lp;$("#t-numtitle").textContent=np.title;$("#t-numkey").textContent=np.key;
+    $("#t-disc").textContent=R.primary+"/"+R.secondary;$("#t-discname").textContent=dp.name.split(" (")[0];
+    $("#t-disckey").textContent=dp.key;
+    $("#t-strengths").innerHTML=chips(dp.strengths.slice(0,3).concat(np.strengths.slice(0,1)));
+
+    /* profile */
+    $("#r-profile").innerHTML=
+      row("Họ tên",f.name)+row("Ngày sinh",fmtDate(f.dob)+"  ("+R.lp+" · "+bdShort(R)+")")+
+      row("Giới tính",f.gender)+row("Điện thoại",f.phone||"—")+row("Email",f.email||"—")+
+      row("Địa chỉ",f.addr||"—")+row("Vị trí ứng tuyển",roleName(f.role))+
+      row("Kinh nghiệm",f.exp)+row("Bắt đầu",f.start)+row("Lương mong muốn",f.salary||"—");
+
+    /* skills */
+    var sb=$("#r-skills");sb.innerHTML="";
+    COMP.forEach(function(cp){var v=state.skills[cp.k]||3,pct=v/5*100;
+      var el=document.createElement("div");el.className="sbar";
+      el.innerHTML='<div class="sn">'+esc(cp.l)+'</div><div class="sv">'+v+'/5</div><div class="strack"><i></i></div>';
+      sb.appendChild(el);var fill=el.querySelector("i");
+      requestAnimationFrame(function(){setTimeout(function(){fill.style.width=pct+"%";},60);});});
+    $("#r-openbox").innerHTML=
+      (state.strength?attr("Điểm mạnh (tự nhận)",esc(state.strength)):"")+
+      (state.why?attr("Lý do ứng tuyển",esc(state.why)):"");
+
+    /* verdict */
+    var pill=$("#r-pill");pill.className="pill "+R.vb.tone;pill.textContent=R.vb.label;
+    $("#r-fit").textContent=R.chosen.f+"%";
+    $("#r-fitlabel").textContent="Hợp: "+shortRole(R.chosen.r.name);
+    $("#r-synth").textContent="Ứng viên thuộc nhóm "+dp.name.split(" (")[0]+", mang năng lượng Số "+R.lp+" – "+np.title+". "+dp.one+" "+np.one;
+
+    /* disc bars */
+    var bars=$("#r-bars");bars.innerHTML="";
+    ["D","I","S","C"].forEach(function(k){var d=DISC[k],pct=Math.round(R.c[k]/R.total*100);
+      var rowEl=document.createElement("div");rowEl.className="drow";
+      rowEl.innerHTML='<div class="dlabel"><span class="dchit" style="background:var('+d.varc+')">'+k+'</span><span class="dname">'+d.name.split(" (")[0]+'</span></div>'+
+        '<div class="dtrack"><i style="background:var('+d.varc+')"></i></div><div class="dval">'+R.c[k]+'/'+R.total+'</div>';
+      bars.appendChild(rowEl);var fill=rowEl.querySelector("i");
+      requestAnimationFrame(function(){setTimeout(function(){fill.style.width=pct+"%";},60);});});
+
+    /* panels */
+    $("#r-numpanel").innerHTML='<h3>Số '+R.lp+' — '+np.title+'</h3><span class="tag">Thần số học · Số Đường Đời</span>'+
+      attr("Điểm mạnh",'<span class="chips">'+chips(np.strengths)+'</span>')+attr("Phong cách làm việc",np.work)+
+      attr("Cần lưu ý",np.watch)+(R.bd!==R.lp?attr("Số ngày sinh "+R.bd,"Thiên hướng bẩm sinh: "+NUM[R.bd].key.toLowerCase()):"");
+    $("#r-discpanel").innerHTML='<h3>Nhóm '+R.primary+' — '+dp.name.split(" (")[0]+'</h3><span class="tag">DISC · '+dp.key+'</span>'+
+      attr("Điểm mạnh",'<span class="chips">'+chips(dp.strengths)+'</span>')+attr("Phong cách làm việc",dp.work)+
+      attr("Cần lưu ý",dp.watch)+attr("Xu hướng phụ",sp.name.split(" (")[0]+" — "+sp.key.toLowerCase());
+
+    /* roles */
+    var roles=$("#r-roles");roles.innerHTML="";
+    R.ranked.forEach(function(x,idx){var best=idx===0;var el=document.createElement("div");el.className="role"+(best?" best":"");
+      var applied=ROLEBYID[state.form.role]&&ROLEBYID[state.form.role].id===x.r.id;
+      el.innerHTML='<div class="rn">'+(best?'<span class="star">★</span>':'')+x.r.name+(applied?' <span class="chip" style="padding:1px 8px">đã ứng tuyển</span>':'')+'</div>'+
+        '<div class="rf">'+x.f+'%</div><div class="rd">'+x.r.desc+'</div><div class="rtrack"><i></i></div>';
+      roles.appendChild(el);var fill=el.querySelector("i");
+      requestAnimationFrame(function(){setTimeout(function(){fill.style.width=x.f+"%";},80+idx*60);});});
+
+    /* persuade */
+    var pv=$("#r-persuade");pv.innerHTML="";var tips=dp.manage.slice();tips.push(np.manage);
+    tips.forEach(function(t,i){var d=document.createElement("div");d.className="pitem";
+      d.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+esc(t)+'</span>';pv.appendChild(d);});
+
+    /* risk */
+    var risk=$("#r-risk");risk.innerHTML="";
+    var rs=dp.watch.replace(/\.$/,"").split(",").map(function(s){return s.trim();})
+      .concat(np.watch.replace(/\.$/,"").split(",").map(function(s){return s.trim();}));
+    var seen={};rs.forEach(function(s){if(!s||seen[s.toLowerCase()])return;seen[s.toLowerCase()]=1;
+      var c=document.createElement("span");c.className="chip";c.textContent=s;risk.appendChild(c);});
+  }
+  function bdShort(R){return "sinh ngày "+R.bd;}
+  function row(k,v){return '<dt>'+k+'</dt><dd>'+esc(v)+'</dd>';}
+  function shortRole(n){return n.split(" / ")[0].split(" & ")[0];}
+
+  /* reveal / actions */
+  $("#revealBtn").addEventListener("click",function(){
+    var r=$("#recruiter");r.classList.add("show");this.parentNode.style.display="none";
+    r.scrollIntoView({behavior:"smooth"});
+  });
+  $("#printBtn").addEventListener("click",function(){window.print();});
+  $("#againBtn").addEventListener("click",function(){
+    state={form:{},skills:{},strength:"",why:"",answers:[],order:[],q:0};
+    ["f-name","f-dob","f-phone","f-email","f-addr","f-salary","f-strength","f-why"].forEach(function(id){var e=$("#"+id);if(e)e.value="";});
+    $("#f-role").value="";$("#rates").innerHTML="";$("#rates").removeAttribute("data-built");
+    $("#recruiter").classList.remove("show");
+    document.querySelector(".reveal-wrap").style.display="";
+    screen("screen-form");
+  });
+  $("#copyBtn").addEventListener("click",function(){
+    var R=RESULT,f=state.form,np=NUM[R.lp],dp=DISC[R.primary];
+    var lines=["HỒ SƠ ỨNG TUYỂN — "+f.name,
+      "Vị trí: "+roleName(f.role)+"  |  SĐT: "+(f.phone||"-")+"  |  Email: "+(f.email||"-"),
+      "Ngày sinh: "+fmtDate(f.dob)+"  |  Kinh nghiệm: "+f.exp+"  |  Bắt đầu: "+f.start+"  |  Lương: "+(f.salary||"-"),
+      "",
+      "Thần số học: Số "+R.lp+" – "+np.title+" ("+np.key+")",
+      "DISC: "+R.primary+"/"+R.secondary+" – "+dp.name+"  |  D"+R.c.D+" I"+R.c.I+" S"+R.c.S+" C"+R.c.C,
+      "",
+      "KHUYẾN NGHỊ: "+R.vb.label+"  ("+R.chosen.f+"% hợp "+shortRole(R.chosen.r.name)+")",
+      "Vị trí phù hợp: "+R.ranked.map(function(x){return x.r.name+" "+x.f+"%";}).join(" · "),
+      "",
+      "Tự đánh giá năng lực: "+COMP.map(function(c){return c.l+" "+(state.skills[c.k]||3)+"/5";}).join(" · "),
+      (state.strength?"Điểm mạnh: "+state.strength:""),
+      (state.why?"Lý do: "+state.why:""),
+      "",
+      "Cách thu phục: "+dp.manage.join(" | ")];
+    var txt=lines.filter(function(x){return x!==undefined;}).join("\n");
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(toast,function(){fallbackCopy(txt);});}
+    else fallbackCopy(txt);
+  });
+  function fallbackCopy(txt){var ta=document.createElement("textarea");ta.value=txt;ta.style.position="fixed";ta.style.opacity="0";
+    document.body.appendChild(ta);ta.select();try{document.execCommand("copy");toast();}catch(e){}document.body.removeChild(ta);}
+  function toast(){var t=$("#toast");t.classList.add("show");setTimeout(function(){t.classList.remove("show");},1800);}
+
+  /* theme */
+  var SUN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>';
+  var MOON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  function curDark(){var t=document.documentElement.getAttribute("data-theme");if(t)return t==="dark";return window.matchMedia("(prefers-color-scheme: dark)").matches;}
+  function paintToggle(){$("#themeBtn").innerHTML=curDark()?SUN:MOON;}
+  $("#themeBtn").addEventListener("click",function(){document.documentElement.setAttribute("data-theme",curDark()?"light":"dark");paintToggle();starColor();});
+  paintToggle();
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",function(){paintToggle();starColor();});
+
+  /* starfield */
+  var cv=$("#stars"),ctx=cv.getContext("2d"),stars=[],raf=null,running=true,W,H,DPR;
+  var reduce_=window.matchMedia("(prefers-reduced-motion: reduce)").matches,starRGB="120,110,150";
+  function starColor(){starRGB=curDark()?"214,180,110":"120,110,150";}
+  function sizeStars(){DPR=Math.min(window.devicePixelRatio||1,2);W=cv.width=Math.floor(innerWidth*DPR);H=cv.height=Math.floor(innerHeight*DPR);
+    cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";
+    var n=Math.max(24,Math.min(60,Math.round(innerWidth*innerHeight/28000)));stars=[];
+    for(var i=0;i<n;i++)stars.push({x:Math.random()*W,y:Math.random()*H,r:(Math.random()*1.1+.4)*DPR,a:Math.random()*.5+.15,vy:(Math.random()*.12+.03)*DPR,tw:Math.random()*6.28});}
+  function draw(){ctx.clearRect(0,0,W,H);for(var i=0;i<stars.length;i++){var s=stars[i];s.tw+=0.015;var a=s.a*(0.6+0.4*Math.sin(s.tw));
+    ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fillStyle="rgba("+starRGB+","+a.toFixed(3)+")";ctx.fill();s.y+=s.vy;if(s.y>H+2){s.y=-2;s.x=Math.random()*W;}}raf=requestAnimationFrame(draw);}
+  function staticDraw(){ctx.clearRect(0,0,W,H);for(var i=0;i<stars.length;i++){var s=stars[i];ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,7);ctx.fillStyle="rgba("+starRGB+","+s.a.toFixed(3)+")";ctx.fill();}}
+  function starToggle(on){if(reduce_){if(on)staticDraw();return;}if(on&&!running){running=true;draw();}else if(!on&&running){running=false;if(raf)cancelAnimationFrame(raf);}}
+  starColor();sizeStars();if(reduce_)staticDraw();else draw();
+  var rz;addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){sizeStars();if(reduce_)staticDraw();},200);});
+})();
+</script>
