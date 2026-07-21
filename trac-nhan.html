@@ -1,38 +1,38 @@
 <title>Phiếu Ứng Tuyển & Đánh Giá Năng Lực</title>
 <style>
   :root{
-    --bg:#e9e7f0;--bg-2:#f5f3fa;--bg-3:#ffffff;--ink:#211d33;--ink-soft:#54506c;
-    --ink-faint:#8a84a0;--line:#d7d3e4;--line-strong:#c4bfd6;--accent:#9a6f18;
-    --accent-2:#7f5a11;--accent-soft:rgba(154,111,24,.10);
-    --d:#c0472e;--i:#b17512;--s:#3f7d61;--c:#3c66a0;
-    --shadow:0 1px 2px rgba(33,29,51,.05),0 12px 32px -18px rgba(33,29,51,.28);
-    --star:120,110,150;
+    --bg:#f3f0e8;--bg-2:#ece6d9;--bg-3:#ffffff;--ink:#1c1516;--ink-soft:#5c5250;
+    --ink-faint:#948a86;--line:#e2dacb;--line-strong:#d2c5ac;--accent:#ae1a51;
+    --accent-2:#7e1039;--accent-soft:rgba(174,26,81,.10);--btn-dark:#1a1416;
+    --d:#ae1a51;--i:#c07a3e;--s:#6f7d5c;--c:#4a5568;
+    --shadow:0 1px 2px rgba(23,19,20,.06),0 14px 34px -18px rgba(23,19,20,.32);
+    --star:174,26,81;
     --serif:"Cambria","Constantia","Georgia","Times New Roman",serif;
     --sans:system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
     --mono:"Consolas","SF Mono","Cascadia Code","Roboto Mono",monospace;
   }
   @media (prefers-color-scheme:dark){
     :root{
-      --bg:#131120;--bg-2:#1b1830;--bg-3:#221e39;--ink:#ecebf6;--ink-soft:#aaa4c6;
-      --ink-faint:#6f6a8c;--line:#2e2947;--line-strong:#3a3457;--accent:#d8b45f;
-      --accent-2:#e6c877;--accent-soft:rgba(216,180,95,.12);--d:#e0715a;--i:#e2a63b;
-      --s:#63a98a;--c:#6a92cf;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -22px rgba(0,0,0,.7);
-      --star:214,180,110;
+      --bg:#171213;--bg-2:#211a1c;--bg-3:#261e20;--ink:#f3efe7;--ink-soft:#c9beb8;
+      --ink-faint:#8a7d78;--line:#332a2c;--line-strong:#463a3c;--accent:#e0507f;
+      --accent-2:#ee7ba0;--accent-soft:rgba(224,80,127,.14);--d:#e0507f;--i:#e0a868;
+      --s:#8fa17c;--c:#8a97ab;--shadow:0 1px 2px rgba(0,0,0,.35),0 18px 44px -22px rgba(0,0,0,.75);
+      --star:224,150,180;
     }
   }
   :root[data-theme="dark"]{
-    --bg:#131120;--bg-2:#1b1830;--bg-3:#221e39;--ink:#ecebf6;--ink-soft:#aaa4c6;
-    --ink-faint:#6f6a8c;--line:#2e2947;--line-strong:#3a3457;--accent:#d8b45f;
-    --accent-2:#e6c877;--accent-soft:rgba(216,180,95,.12);--d:#e0715a;--i:#e2a63b;
-    --s:#63a98a;--c:#6a92cf;--shadow:0 1px 2px rgba(0,0,0,.3),0 18px 44px -22px rgba(0,0,0,.7);
-    --star:214,180,110;
+    --bg:#171213;--bg-2:#211a1c;--bg-3:#261e20;--ink:#f3efe7;--ink-soft:#c9beb8;
+    --ink-faint:#8a7d78;--line:#332a2c;--line-strong:#463a3c;--accent:#e0507f;
+    --accent-2:#ee7ba0;--accent-soft:rgba(224,80,127,.14);--d:#e0507f;--i:#e0a868;
+    --s:#8fa17c;--c:#8a97ab;--shadow:0 1px 2px rgba(0,0,0,.35),0 18px 44px -22px rgba(0,0,0,.75);
+    --star:224,150,180;
   }
   :root[data-theme="light"]{
-    --bg:#e9e7f0;--bg-2:#f5f3fa;--bg-3:#ffffff;--ink:#211d33;--ink-soft:#54506c;
-    --ink-faint:#8a84a0;--line:#d7d3e4;--line-strong:#c4bfd6;--accent:#9a6f18;
-    --accent-2:#7f5a11;--accent-soft:rgba(154,111,24,.10);--d:#c0472e;--i:#b17512;
-    --s:#3f7d61;--c:#3c66a0;--shadow:0 1px 2px rgba(33,29,51,.05),0 12px 32px -18px rgba(33,29,51,.28);
-    --star:120,110,150;
+    --bg:#f3f0e8;--bg-2:#ece6d9;--bg-3:#ffffff;--ink:#1c1516;--ink-soft:#5c5250;
+    --ink-faint:#948a86;--line:#e2dacb;--line-strong:#d2c5ac;--accent:#ae1a51;
+    --accent-2:#7e1039;--accent-soft:rgba(174,26,81,.10);--d:#ae1a51;--i:#c07a3e;
+    --s:#6f7d5c;--c:#4a5568;--shadow:0 1px 2px rgba(23,19,20,.06),0 14px 34px -18px rgba(23,19,20,.32);
+    --star:174,26,81;
   }
 
   *{box-sizing:border-box}
@@ -101,10 +101,9 @@
 
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-family:var(--sans);
     font-weight:600;font-size:1rem;cursor:pointer;border-radius:11px;padding:13px 22px;border:1px solid transparent;transition:.18s}
-  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
-  :root[data-theme="dark"] .btn-primary{color:#1a1608}
-  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .btn-primary{color:#1a1608}}
-  .btn-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
+  .btn-primary{background:linear-gradient(135deg,var(--btn-dark) 0%,var(--accent) 100%);border-color:transparent;
+    color:#fff;border-radius:999px;padding:13px 26px}
+  .btn-primary:hover{background:linear-gradient(135deg,var(--btn-dark) 0%,var(--accent-2) 100%);transform:translateY(-1px)}
   .btn-ghost{background:transparent;border-color:var(--line-strong);color:var(--ink-soft)}
   .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
   .navrow{display:flex;justify-content:space-between;gap:12px;margin-top:8px}
@@ -145,14 +144,6 @@
   .thanks .seal{width:64px;height:64px;margin:0 auto 14px;color:var(--accent)}
   .thanks h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);margin:0 0 4px}
   .thanks .who{font-family:var(--mono);color:var(--ink-faint);font-size:.82rem;margin-bottom:22px}
-  .snap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 6px;text-align:left}
-  @media (max-width:520px){.snap{grid-template-columns:1fr}}
-  .snap .box{background:var(--bg-2);border:1px solid var(--line);border-radius:13px;padding:18px 20px}
-  .snap .box .eyebrow{display:block;margin-bottom:9px}
-  .snap .num{font-family:var(--serif);font-weight:700;color:var(--accent);font-size:2.6rem;line-height:.9}
-  .snap .big{font-family:var(--serif);font-weight:700;font-size:2.2rem;line-height:.9}
-  .snap .t{font-family:var(--serif);font-size:1.12rem;font-weight:700;margin:8px 0 2px}
-  .snap .k{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft)}
   .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
   .chip{font-size:.83rem;background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:4px 11px;color:var(--ink-soft)}
   .reveal-wrap{margin-top:26px;text-align:center}
@@ -260,10 +251,13 @@
   <!-- ===== PART 1: HỒ SƠ ===== -->
   <section id="screen-form" class="screen active">
     <span class="eyebrow">Phiếu ứng tuyển · Bước 1 / 3</span>
-    <h1>Chào bạn — cảm ơn bạn đã <em>ứng tuyển</em>.</h1>
-    <p class="lead">Phiếu này gồm 3 phần và mất khoảng <b>7 phút</b>: thông tin cơ bản,
-      bạn tự đánh giá năng lực qua vài câu hỏi, và một bài trắc nghiệm tính cách ngắn. Hãy trả lời thật lòng —
-      không có đáp án đúng hay sai, mục tiêu là tìm đúng vị trí hợp với bạn nhất.</p>
+    <h1>Chào bạn — cảm ơn bạn đã dành thời gian <em>ứng tuyển</em>!</h1>
+    <p class="lead">Lời đầu tiên, chúng mình muốn lắng nghe và hiểu rõ hơn về mong muốn, định hướng cũng như
+      phong cách làm việc của bạn. Phiếu này được thiết kế để giúp cả hai bên xem liệu chúng ta có thực sự
+      “thuộc về nhau” và vị trí này có giúp bạn phát huy tốt nhất thế mạnh của mình hay không.</p>
+    <p class="lead">Phiếu gồm <b>3 phần nhỏ</b> và chỉ mất khoảng <b>6 phút</b>.</p>
+    <p class="lead">Bạn cứ thoải mái chia sẻ thật lòng nhé — ở đây không có đáp án đúng hay sai,
+      chỉ có những câu trả lời giúp chúng mình hiểu và đồng hành cùng bạn tốt nhất!</p>
 
     <div class="parts">
       <div class="p on"><div class="bar"></div><span>1 · Hồ sơ</span></div>
@@ -358,7 +352,7 @@
       <div class="p on"><div class="bar"></div><span>3 · Tính cách</span></div>
     </div>
 
-    <div class="qhead"><span class="count" id="qcount">Câu 1 / 16</span><span class="who" id="qwho"></span></div>
+    <div class="qhead"><span class="count" id="qcount">Câu 1 / 12</span><span class="who" id="qwho"></span></div>
     <div class="bar-lg"><i id="qbar" style="width:8%"></i></div>
     <p class="qtext" id="qtext"></p>
     <div class="opts" id="qopts"></div>
@@ -369,18 +363,10 @@
   <section id="screen-result" class="screen">
     <div class="card thanks">
       <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.3l2.4 2.4 4.6-5"/></svg>
-      <h2 id="t-title">Cảm ơn bạn đã hoàn thành!</h2>
+      <h2 id="t-title">Cảm ơn bạn đã hoàn thành phiếu chia sẻ!</h2>
       <p class="who" id="t-who"></p>
-      <p style="max-width:48ch;margin:0 auto;color:var(--ink-soft)">Hồ sơ của bạn đã được ghi nhận. Chúng tôi sẽ xem xét và liên hệ sớm.
-        Đây là một chút khám phá về tính cách của bạn:</p>
-
-      <div class="snap">
-        <div class="box"><span class="eyebrow">Con số của bạn</span>
-          <div class="num" id="t-num"></div><div class="t" id="t-numtitle"></div><div class="k" id="t-numkey"></div></div>
-        <div class="box"><span class="eyebrow">Nhóm tính cách</span>
-          <div class="big" id="t-disc"></div><div class="t" id="t-discname"></div><div class="k" id="t-disckey"></div></div>
-      </div>
-      <div class="chips" id="t-strengths" style="justify-content:center"></div>
+      <p style="max-width:48ch;margin:0 auto;color:var(--ink-soft)">Đội ngũ tuyển dụng sẽ xem xét và phản hồi đến bạn
+        trong vòng <b>2 – 3 ngày làm việc</b> tới nhé.<br>Chúc bạn một ngày nhiều năng lượng!</p>
 
       <div class="reveal-wrap">
         <button class="btn btn-ghost" id="revealBtn">Xem bản đánh giá tuyển dụng →</button>
@@ -578,30 +564,18 @@
     {t:"Bạn thích môi trường làm việc:",o:[
       {t:"Thử thách, có mục tiêu rõ ràng",k:"D"},{t:"Năng động, nhiều người giao tiếp",k:"I"},
       {t:"Thân thiện, hỗ trợ lẫn nhau",k:"S"},{t:"Ổn định, chuyên nghiệp, có quy trình",k:"C"}]},
-    {t:"Khi ra quyết định, bạn thường dựa vào:",o:[
-      {t:"Kết quả và tốc độ",k:"D"},{t:"Cảm xúc và sự hứng thú",k:"I"},
-      {t:"Sự đồng thuận của mọi người",k:"S"},{t:"Logic và dữ liệu",k:"C"}]},
     {t:"Bạn thường được người khác nhận xét là:",o:[
       {t:"Mạnh mẽ, quyết đoán",k:"D"},{t:"Cởi mở, nhiệt tình",k:"I"},
       {t:"Dễ gần, biết lắng nghe",k:"S"},{t:"Cẩn thận, kỹ tính",k:"C"}]},
-    {t:"Khi làm việc với người khác, bạn thích:",o:[
-      {t:"Có quyền chủ động",k:"D"},{t:"Được trao đổi nhiều ý tưởng",k:"I"},
-      {t:"Có sự phối hợp và hỗ trợ",k:"S"},{t:"Có tiêu chuẩn rõ ràng",k:"C"}]},
     {t:"Khi có deadline gấp, bạn thường:",o:[
       {t:"Tập trung hoàn thành bằng mọi giá",k:"D"},{t:"Huy động mọi người hỗ trợ",k:"I"},
       {t:"Bình tĩnh xử lý từng bước",k:"S"},{t:"Lập kế hoạch chi tiết rồi làm",k:"C"}]},
     {t:"Bạn thích được công nhận vì:",o:[
       {t:"Thành tích đạt được",k:"D"},{t:"Khả năng truyền cảm hứng",k:"I"},
       {t:"Sự tận tâm, trách nhiệm",k:"S"},{t:"Sự chính xác, chuyên môn",k:"C"}]},
-    {t:"Điều quan trọng nhất trong công việc với bạn là:",o:[
-      {t:"Thành công và thử thách",k:"D"},{t:"Cơ hội phát triển và mối quan hệ",k:"I"},
-      {t:"Sự ổn định và ý nghĩa",k:"S"},{t:"Chất lượng và sự chuyên nghiệp",k:"C"}]},
     {t:"Khi có thay đổi bất ngờ, bạn:",o:[
       {t:"Thích nghi nhanh và hành động ngay",k:"D"},{t:"Thấy thú vị vì có điều mới",k:"I"},
       {t:"Cần thời gian để làm quen",k:"S"},{t:"Muốn tìm hiểu kỹ trước khi thay đổi",k:"C"}]},
-    {t:"Khi giao việc cho người khác, bạn thường:",o:[
-      {t:"Nói rõ mục tiêu và kỳ vọng",k:"D"},{t:"Truyền cảm hứng để họ làm",k:"I"},
-      {t:"Quan tâm họ có gặp khó khăn không",k:"S"},{t:"Hướng dẫn từng bước cụ thể",k:"C"}]},
     {t:"Bạn muốn cấp trên của mình là người:",o:[
       {t:"Quyết đoán, mạnh mẽ",k:"D"},{t:"Cởi mở, khuyến khích sáng tạo",k:"I"},
       {t:"Quan tâm, hỗ trợ nhân viên",k:"S"},{t:"Công bằng, chuyên nghiệp",k:"C"}]},
@@ -712,10 +686,6 @@
 
     /* candidate thank-you */
     $("#t-who").textContent=f.name+" · "+roleName(f.role);
-    $("#t-num").textContent=R.lp;$("#t-numtitle").textContent=np.title;$("#t-numkey").textContent=np.key;
-    $("#t-disc").textContent=R.primary+"/"+R.secondary;$("#t-discname").textContent=dp.name.split(" (")[0];
-    $("#t-disckey").textContent=dp.key;
-    $("#t-strengths").innerHTML=chips(dp.strengths.slice(0,3).concat(np.strengths.slice(0,1)));
 
     /* profile */
     $("#r-profile").innerHTML=
@@ -833,8 +803,8 @@
 
   /* starfield */
   var cv=$("#stars"),ctx=cv.getContext("2d"),stars=[],raf=null,running=true,W,H,DPR;
-  var reduce_=window.matchMedia("(prefers-reduced-motion: reduce)").matches,starRGB="120,110,150";
-  function starColor(){starRGB=curDark()?"214,180,110":"120,110,150";}
+  var reduce_=window.matchMedia("(prefers-reduced-motion: reduce)").matches,starRGB="174,26,81";
+  function starColor(){starRGB=curDark()?"224,150,180":"174,26,81";}
   function sizeStars(){DPR=Math.min(window.devicePixelRatio||1,2);W=cv.width=Math.floor(innerWidth*DPR);H=cv.height=Math.floor(innerHeight*DPR);
     cv.style.width=innerWidth+"px";cv.style.height=innerHeight+"px";
     var n=Math.max(24,Math.min(60,Math.round(innerWidth*innerHeight/28000)));stars=[];
