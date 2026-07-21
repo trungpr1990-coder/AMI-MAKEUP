@@ -4,6 +4,14 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-20] build | Dựng hệ thống Thu Chi AMI (Lark Base)
+- Thuý hỏi "còn thiếu skills gì để phát triển hơn nữa" → xác định Tài chính là khoang yếu nhất (chỉ có công thức/kế hoạch, chưa có công cụ thực thi)
+- Rà Base thật "CRM THÚY THÚY" phát hiện cụm 6 bảng "Tài Chính & Kế Toán" có sẵn nhưng là template studio ảnh cưới (danh mục chi phí sai hoàn toàn, có "Mã Hợp Đồng" MAD-xxx), trống dữ liệu — Thuý chọn dựng bảng mới sạch, không dùng cụm cũ
+- Tạo bảng "Thu Chi AMI" (`tblnyZNxbWcsjlsW`): Nội dung/Ngày/Loại(Thu-Chi)/Khoản mục(15 mục thật AMI)/Số tiền/Ghi chú + formula Dòng tiền/Tháng/Năm, view "Tổng hợp theo tháng" nhóm Năm>Tháng>Loại — đã test bằng 1 record thật rồi xoá
+- Ghi vào bảng "Công cụ AI" (`tbliXt0oEV91oBhJ`)
+- Summary: [[vat-chat/2026-07-20-he-thong-thu-chi-ami]]
+- Mâu thuẫn: none
+
 ## [2026-07-18] query | Phân tích quảng cáo Facebook đối thủ gián tiếp — Hải Lynh Beauty & Cosmetic
 - Thuý gửi link Reel công khai, hỏi "chạy quảng cáo có đúng tệp không" — xác minh qua Meta Ad Library (không cần đăng nhập): reel khớp 1 quảng cáo Active, page đang chạy ~160 biến thể song song, một số chạy liên tục từ 12/07/2025
 - Xác định rõ đây là đối thủ **gián tiếp** (bán sản phẩm kem nền, không phải đào tạo) — dùng làm case study chiến lược quảng cáo, không phải đối thủ cạnh tranh trực tiếp như nhóm academy đã khảo sát trước đó
@@ -902,6 +910,13 @@ Append-only record of all ingest, query, and maintenance operations.
 - Cũng đã dựng lại `preview-gallery.html` (bản cũ thiếu nhiều ảnh mới) thành trang xem nhanh chia 2 nhóm "trông như ảnh thật" / "trông như ảnh mẫu" để Thuý duyệt trước khi chọn — dùng cho phiên này và có thể dùng lại sau
 - Đã test: toàn bộ ảnh load thành công (200 OK qua network log), không lỗi console
 - Việc còn lại: banner + khung ảnh giờ đã có ảnh thật, chỉ còn thiếu ebook thật (xem log trước) trước khi deploy
+- Mâu thuẫn: none
+
+## [2026-07-21] create | 3 kịch bản video cho chương trình trải nghiệm makeup miễn phí
+- Yêu cầu: viết 3 kịch bản video quảng bá landing page `trai-nghiem-mien-phi.html`, mục tiêu thu hút/khan hiếm/hấp dẫn để thúc đăng ký ngay
+- Đã đọc trực tiếp code trang để lấy đúng số liệu thật: gói quà 4 món tổng 2.500.000đ, giới hạn 10 suất/tháng, địa chỉ 351 Lê Hồng Phong Nam Định, gọi xác nhận trong 2 giờ
+- 3 góc tiếp cận khác nhau để không trùng khi chạy đa kênh: (1) Khan hiếm/FOMO — hợp ads trả phí, (2) Nỗi đau (Pain-Agitate-Solve) — hợp organic/Reels, (3) Before/After bất ngờ — hợp mở chiến dịch mới
+- File tạo: [[nang-luc/out-2026-07-21-kich-ban-video-trai-nghiem-mien-phi]]
 - Mâu thuẫn: none
 
 ## [2026-07-20] redesign | Landing page trải nghiệm miễn phí — banner 2 cột (ảnh 9:16) + bỏ tên cá nhân Thuý Trần

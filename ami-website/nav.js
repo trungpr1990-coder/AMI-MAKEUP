@@ -3,9 +3,9 @@
 // ✏️ SỬA: Thay số điện thoại, link Zalo, link Messenger tại đây
 // ============================================================
 const CONTACT_INFO = {
-  phone:     '0979963369',          // ✏️ SỬA: Số điện thoại chính
-  phone2:    '0888646886',          // ✏️ SỬA: Số điện thoại phụ
-  zalo:      'https://zalo.me/0979963369', // ✏️ SỬA: Link Zalo (thay số của bạn)
+  phone:     '0327355595',          // ✏️ SỬA: Số điện thoại chính
+  phone2:    '0911148995',          // ✏️ SỬA: Số điện thoại phụ
+  zalo:      'https://zalo.me/0327355595', // ✏️ SỬA: Link Zalo (thay số của bạn)
   messenger: 'https://m.me/amimakeupacademy', // ✏️ SỬA: Link Messenger page Facebook
 };
 
@@ -27,17 +27,12 @@ const NAV_MENU = [
   {
     text: 'Khóa học', href: 'khoa-hoc.html',
     sub: [
-      { text: 'Khoá Học Make Up Pro 2026 (Người Mới Bắt Đầu)',   href: 'khoa-hoc-chi-tiet.html?id=1' },
-      { text: 'Khoá Make Up Nâng Cao Cấp Tốc Sài Gòn 2026',      href: 'khoa-hoc-chi-tiet.html?id=2' },
-      { text: 'Khoá Make Up Nâng Cao Cấp Tốc Hà Nội 2026',       href: 'khoa-hoc-chi-tiet.html?id=3' },
-      { text: 'Khoá Make Up Cá Nhân 2026',                         href: 'khoa-hoc-chi-tiet.html?id=4' },
-      { text: 'Khoá Online: Xử Lý Kỹ Thuật Nền Ngọc Trai',        href: 'khoa-hoc-chi-tiet.html?id=5' },
-      { text: 'Khoá Online: Trang Điểm Mắt Ứng Dụng',             href: 'khoa-hoc-chi-tiet.html?id=6' },
-      { text: 'Khoá Hairstylist: Tạo Kiểu Tóc Cô Dâu',            href: 'khoa-hoc-chi-tiet.html?id=7' },
-      { text: 'Khoá Online: Mix Son Môi Đa Chiều',                  href: 'khoa-hoc-chi-tiet.html?id=8' },
+      { text: 'Makeup Chuyên Nghiệp',        href: 'khoa-hoc.html#khoa-1' },
+      { text: 'Makeup Nâng Cao',              href: 'khoa-hoc.html#khoa-2' },
+      { text: 'Makeup Cá Nhân 3 Buổi',        href: 'khoa-hoc.html#khoa-3' },
+      { text: 'Makeup Cá Nhân VIP 5 Buổi',    href: 'khoa-hoc.html#khoa-4' },
     ]
   },
-  { text: 'Sản phẩm',  href: 'san-pham.html' },
   { text: 'Tin tức',   href: 'tin-tuc.html' },
   { text: 'Tuyển dụng',href: 'tuyen-dung.html' },
   { text: 'Liên hệ',   href: 'lien-he.html' },

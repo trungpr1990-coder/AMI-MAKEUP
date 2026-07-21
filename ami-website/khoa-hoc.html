@@ -84,7 +84,7 @@
 
   <!-- Topbar -->
   <div class="topbar">
-    <span>📞 Hotline: 0909 123 456 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
+    <span>📞 Hotline: 0327.355.595 &nbsp;|&nbsp; 🕐 Thứ 2 – Chủ nhật: 8:00 – 20:00</span>
     <div class="topbar-social">
       <a href="#" class="soc soc-fb">f</a>
       <a href="#" class="soc soc-yt">▶</a>
@@ -126,17 +126,6 @@
     </div>
   </div>
 
-  <!-- Filter -->
-  <div class="filter-bar">
-    <span class="filter-label">Lọc theo:</span>
-    <button class="filter-btn active" onclick="filterCourses('all', this)">Tất cả</button>
-    <button class="filter-btn" onclick="filterCourses('Chuyên nghiệp', this)">Chuyên nghiệp</button>
-    <button class="filter-btn" onclick="filterCourses('Online', this)">Online</button>
-    <button class="filter-btn" onclick="filterCourses('Premium 1-1', this)">Premium 1-1</button>
-    <button class="filter-btn" onclick="filterCourses('Tóc & Trang điểm', this)">Tóc & Makeup</button>
-    <button class="filter-btn" onclick="filterCourses('Dành cho người mới bắt đầu', this)">Người mới</button>
-  </div>
-
   <!-- Courses -->
   <div class="courses-section">
     <div class="courses-count" id="count"></div>
@@ -148,9 +137,9 @@
     <div class="footer-grid">
       <div>
         <div class="footer-logo">AMI</div>
-        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín hàng đầu Việt Nam.</p>
-        <p style="font-size:12px;color:#555;margin-top:8px;">📍 123 Đường ABC, Quận 1, TP.HCM</p>
-        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0979.963.369 — 0888.646.886</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;line-height:1.8;">Đơn vị đào tạo makeup chuyên nghiệp uy tín tại Nam Định.</p>
+        <p style="font-size:12px;color:#555;margin-top:8px;">📍 351 Lê Hồng Phong, TP. Nam Định</p>
+        <p style="font-size:12px;color:#555;margin-top:4px;">📞 0327.355.595 — 0911.148.995</p>
       </div>
       <div>
         <h4>Khóa học</h4>
@@ -171,21 +160,19 @@
   <div class="float-bar">
     <div class="float-label">TƯ VẤN TRỰC TUYẾN 24/7</div>
     <div class="float-phones">
-      <a href="tel:0979963369" class="float-phone">📞 0979.963.369</a>
-      <a href="tel:0888646886" class="float-phone">📞 0888.646.886</a>
+      <a href="tel:0327355595" class="float-phone">📞 0327.355.595</a>
+      <a href="tel:0911148995" class="float-phone">📞 0911.148.995</a>
     </div>
   </div>
   <div style="height:50px"></div>
 
   <script src="data-khoa-hoc.js"></script>
   <script>
-    let currentFilter = 'all';
-
     function renderCourses(list) {
       const grid = document.getElementById('courses-grid');
       document.getElementById('count').textContent = list.length + ' khoá học';
       grid.innerHTML = list.map(k => `
-        <div class="card" onclick="window.location='khoa-hoc-chi-tiet.html?id=${k.id}'">
+        <div class="card" id="${k.slug}" onclick="window.location='dat-lich.html'">
           <div class="card-thumb">
             <img src="${k.hinh}" alt="${k.ten}" onerror="this.style.display='none'" />
             <div class="card-thumb-placeholder" style="${k.hinh ? 'display:none' : ''}">📷 Chưa có ảnh</div>
@@ -201,7 +188,7 @@
                 <div class="card-price">${k.gia}</div>
                 <div class="card-old">${k.gia_goc}</div>
               </div>
-              <button class="card-btn">Xem chi tiết</button>
+              <button class="card-btn">Đăng ký ngay</button>
             </div>
           </div>
         </div>
@@ -209,15 +196,7 @@
 
       // Footer links
       document.getElementById('footer-courses').innerHTML =
-        KHOA_HOC.map(k => `<li><a href="khoa-hoc-chi-tiet.html?id=${k.id}">${k.ten_ngan}</a></li>`).join('');
-    }
-
-    function filterCourses(tag, btn) {
-      currentFilter = tag;
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const list = tag === 'all' ? KHOA_HOC : KHOA_HOC.filter(k => k.the === tag);
-      renderCourses(list);
+        KHOA_HOC.map(k => `<li><a href="dat-lich.html">${k.ten_ngan}</a></li>`).join('');
     }
 
     renderCourses(KHOA_HOC);
