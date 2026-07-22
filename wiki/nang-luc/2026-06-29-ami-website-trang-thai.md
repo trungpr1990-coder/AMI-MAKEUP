@@ -2,9 +2,9 @@
 title: AMI Website — Trạng thái & hạ tầng
 type: khoang
 khoang: nang-luc
-tags: [website, cloudflare, lark-base, deployment, dat-lich]
+tags: [website, cloudflare, lark-base, deployment, dat-lich, makeup-khong-dong, thuytranmakeup]
 created: 2026-06-29
-updated: 2026-07-02
+updated: 2026-07-22
 sources: []
 ---
 
@@ -97,6 +97,17 @@ Khi khách bấm gửi form, `dat-lich.html` gọi `POST /api/submit-booking` (C
 | Giờ hẹn lệch 7 tiếng khi hiện trong Lark | `new Date('...T08:00:00')` bị hiểu là UTC trong Cloudflare Workers — phải ghi rõ `+07:00` khi tạo timestamp |
 | Ảnh khách gửi không lên Lark dù API trả `ok:true` | Server đọc `img.dataUrl` nhưng client gửi `img.src` — sai tên field nên ảnh bị bỏ qua âm thầm, đã sửa server đọc đúng `img.src` |
 | Domain đã trỏ đúng DNS nhưng vẫn báo lỗi SSL | Cloudflare cần thời gian "Xác minh" (Verifying) → "Tích cực" (Active) sau khi đổi routing giữa 2 project — không phải lỗi cấu hình, chỉ cần chờ |
+
+## Landing page riêng "Makeup Không Đồng" (2026-07-22)
+
+Trang `ami-website/makeup-khong-dong.html` (landing trải nghiệm makeup miễn phí, tham khảo thiết kế mewartmakeup.com — hero watermark AMI có animation bounceIn, khung ảnh chuyên gia kiểu mockup-card, nút CTA nháy + nút nổi "Đăng ký ngay") được tách thành **project Cloudflare Pages riêng biệt**, KHÔNG chung với `ami-website`:
+
+- **Project:** `thuytranmakeup` (`thuytranmakeup.pages.dev`)
+- **Domain con:** **`trainghiemmakeupkhongdong.thuytranmakeup.com`** — Thuý tự gắn qua Cloudflare Dashboard (project `thuytranmakeup` → tab Custom domains → Set up a custom domain)
+- **Thư mục deploy local:** `ami-website/deploy-thuytranmakeup/` — chỉ chứa `index.html` (copy từ `makeup-khong-dong.html`) + đúng 11 ảnh nó cần trong `images/` (không copy nguyên thư mục `images/` gốc — thư mục đó nặng ~372MB, dùng chung cho toàn bộ site)
+- **Deploy lại:** `cd ami-website/deploy-thuytranmakeup && npx wrangler pages deploy . --project-name=thuytranmakeup`
+- **Lý do tách riêng:** domain gốc `thuytranmakeup.com` đã gắn sẵn vào project `ami-website` (trang chủ nhiều mục đang chạy thật) — Thuý không muốn động/đổi domain gốc đó. Dùng domain CON (subdomain) trỏ sang project mới là cách an toàn tuyệt đối, không ảnh hưởng gì tới site chính.
+- Xem thêm [[reference-cloudflare-pages-custom-domain-limit]] (memory hệ thống) — wrangler CLI không có lệnh gắn custom domain, chỉ làm được qua Cloudflare Dashboard hoặc API token riêng.
 
 ## Việc còn để ngỏ
 

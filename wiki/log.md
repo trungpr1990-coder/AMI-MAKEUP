@@ -4,6 +4,13 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-22] build | Landing "Makeup Không Đồng" + domain con trainghiemmakeupkhongdong.thuytranmakeup.com
+- Redesign toàn diện `ami-website/makeup-khong-dong.html`: khung ảnh chuyên gia kiểu mockup-card (tham khảo mewartmakeup.com), tách nền ảnh thật, animation bounceIn cho chữ AMI, nút CTA nháy + nút nổi "Đăng ký ngay", cập nhật bio/testimonial, thêm bản đồ + icon Facebook/Zalo/TikTok, tách toàn bộ ảnh base64 khổng lồ ra file riêng (giảm file HTML từ ~1.3M ký tự còn ~620K)
+- Deploy thành project Cloudflare Pages riêng biệt `thuytranmakeup` (không đụng project `ami-website` đang chạy domain gốc `thuytranmakeup.com`), gắn domain con `trainghiemmakeupkhongdong.thuytranmakeup.com`
+- Summary: [[nang-luc/2026-06-29-ami-website-trang-thai]]
+- Pages updated: [[nang-luc/2026-06-29-ami-website-trang-thai]]
+- Mâu thuẫn: none
+
 ## [2026-07-20] build | Dựng hệ thống Thu Chi AMI (Lark Base)
 - Thuý hỏi "còn thiếu skills gì để phát triển hơn nữa" → xác định Tài chính là khoang yếu nhất (chỉ có công thức/kế hoạch, chưa có công cụ thực thi)
 - Rà Base thật "CRM THÚY THÚY" phát hiện cụm 6 bảng "Tài Chính & Kế Toán" có sẵn nhưng là template studio ảnh cưới (danh mục chi phí sai hoàn toàn, có "Mã Hợp Đồng" MAD-xxx), trống dữ liệu — Thuý chọn dựng bảng mới sạch, không dùng cụm cũ

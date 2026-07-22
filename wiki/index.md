@@ -75,7 +75,7 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 ## Năng Lực (nang-luc/) — Kỹ năng, quy trình, thực thi
 
 - [[nang-luc/2026-06-24-ten-buoc-dung-pheu]] — 10 bước dựng phễu, phân vai AI vs người vận hành
-- [[nang-luc/2026-06-29-ami-website-trang-thai]] — AMI Website: hạ tầng Cloudflare (project `ami-website`), redesign trang đặt lịch, kết nối Lark Base (updated 2026-07-02)
+- [[nang-luc/2026-06-29-ami-website-trang-thai]] — AMI Website: hạ tầng Cloudflare (project `ami-website`), redesign trang đặt lịch, kết nối Lark Base, landing riêng "Makeup Không Đồng" tại project `thuytranmakeup` (updated 2026-07-22)
 - [[nang-luc/2026-06-30-pheu-va-lvc]] — Phễu sản phẩm, LVC, ứng dụng AI tự động hóa marketing & vận hành
 - [[nang-luc/2026-06-30-quan-tri-nhan-thuc-6-dong]] — Quản trị nhận thức vs hành vi, mô hình 6 Chữ Đồng, lộ trình 4 giai đoạn
 - [[nang-luc/2026-06-30-10-bong-toi-anh-sang-makeup]] — 10 Bóng tối & Ánh sáng khách hàng makeup — dùng cho content, email, sales
