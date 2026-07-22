@@ -211,6 +211,10 @@ section{position:relative;}
 .reg-form h3{font-size:20px;font-weight:700;margin:0 0 4px;}
 .reg-form .sm{font-size:13px;color:#b8b3b6;margin:0 0 20px;}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.field-row .field{margin-bottom:16px;}
+@media(max-width:480px){.field-row{grid-template-columns:1fr;gap:0;}}
+.reg-secure{text-align:center;font-size:12px;color:#9c9699;margin-top:14px;display:flex;align-items:center;justify-content:center;gap:6px;}
 .field label{font-size:12px;letter-spacing:.5px;text-transform:uppercase;color:#9c9699;}
 .field input,.field select,.field textarea{background:#262224;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 14px;color:#fff;font-family:'Montserrat',sans-serif;font-size:15px;}
 .field textarea{resize:vertical;}
@@ -566,23 +570,28 @@ footer{background:var(--cream);color:var(--ink);}
           <h3>Giữ suất của bạn</h3>
           <p class="sm">Chỉ 15 suất mỗi đợt — AMI sẽ gọi lại xác nhận khung giờ.</p>
           <div class="field"><label for="hoten">Họ và tên *</label><input id="hoten" type="text" placeholder="Nguyễn Thị A" autocomplete="name" required /></div>
-          <div class="field"><label for="sdt">Số điện thoại (Zalo) *</label><input id="sdt" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" required /></div>
-          <div class="field"><label for="email">Email *</label><input id="email" type="email" placeholder="ban@email.com" autocomplete="email" required /></div>
+          <div class="field-row">
+            <div class="field"><label for="sdt">Số điện thoại (Zalo) *</label><input id="sdt" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" required /></div>
+            <div class="field"><label for="email">Email *</label><input id="email" type="email" placeholder="ban@email.com" autocomplete="email" required /></div>
+          </div>
           <div class="field"><label for="diachi">Địa chỉ *</label><input id="diachi" type="text" placeholder="Số nhà, đường, phường/xã" autocomplete="street-address" required /></div>
-          <div class="field"><label for="dotuoi">Độ tuổi *</label><input id="dotuoi" type="number" min="10" max="90" placeholder="VD: 28" required /></div>
-          <div class="field">
-            <label for="nghenghiep">Bạn đang là *</label>
-            <select id="nghenghiep" required>
-              <option value="" selected disabled>-- Chọn --</option>
-              <option>Học sinh / Sinh viên</option>
-              <option>Nhân viên văn phòng</option>
-              <option>Kinh doanh tự do</option>
-              <option>Nội trợ</option>
-              <option>Khác</option>
-            </select>
+          <div class="field-row">
+            <div class="field"><label for="dotuoi">Độ tuổi *</label><input id="dotuoi" type="number" min="10" max="90" placeholder="VD: 28" required /></div>
+            <div class="field">
+              <label for="nghenghiep">Bạn đang là *</label>
+              <select id="nghenghiep" required>
+                <option value="" selected disabled>-- Chọn --</option>
+                <option>Học sinh / Sinh viên</option>
+                <option>Nhân viên văn phòng</option>
+                <option>Kinh doanh tự do</option>
+                <option>Nội trợ</option>
+                <option>Khác</option>
+              </select>
+            </div>
           </div>
           <div class="field"><label for="mongmuon">Mong muốn</label><textarea id="mongmuon" rows="3" placeholder="Bạn mong muốn điều gì khi tham gia buổi trải nghiệm?"></textarea></div>
           <a class="btn btn-rose btn-block btn-pulse" href="#dang-ky">ĐĂNG KÝ NGAY</a>
+          <p class="reg-secure">🔒 Thông tin của bạn được bảo mật, chỉ dùng để AMI liên hệ đặt lịch.</p>
         </form>
       </div>
     </div>
