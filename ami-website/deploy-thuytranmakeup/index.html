@@ -219,6 +219,18 @@ section{position:relative;}
 .field input,.field select,.field textarea{background:#262224;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:13px 14px;color:#fff;font-family:'Montserrat',sans-serif;font-size:15px;}
 .field textarea{resize:vertical;}
 .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--rose-bright);outline-offset:1px;}
+.reg-form-error{display:none;font-size:13px;color:#ff8fa3;background:rgba(181,31,86,.16);border:1px solid rgba(181,31,86,.4);border-radius:10px;padding:10px 14px;margin-bottom:16px;}
+.reg-submit-btn{border:none;cursor:pointer;}
+.reg-submit-btn:disabled{opacity:.6;cursor:default;}
+.reg-success{display:none;background:#1c191b;border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:28px;text-align:center;}
+.reg-success.is-active{display:block;}
+.reg-form.is-hidden{display:none;}
+.reg-success .success-check{width:56px;height:56px;border-radius:50%;background:var(--rose-bright);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
+.reg-success h3{font-size:20px;font-weight:700;margin:0 0 8px;}
+.reg-success p{font-size:14px;color:#c9c7c3;margin:0 0 20px;}
+.reg-success .qr-box{background:#fff;border-radius:16px;padding:16px;max-width:260px;margin:0 auto 20px;}
+.reg-success .qr-box img{width:100%;height:auto;display:block;border-radius:8px;}
+.reg-success .qr-caption{font-size:13px;color:#9c9699;margin-bottom:20px;}
 
 /* ---- Footer (cream) ---- */
 footer{background:var(--cream);color:var(--ink);}
@@ -566,9 +578,10 @@ footer{background:var(--cream);color:var(--ink);}
         <p class="kicker">Chỉ 15 suất — đăng ký để AMI giữ chỗ.</p>
       </div>
       <div class="reg-grid">
-        <form class="reg-form" onsubmit="return false;" data-reveal>
+        <form class="reg-form" id="regForm" data-reveal>
           <h3>Giữ suất của bạn</h3>
           <p class="sm">Chỉ 15 suất mỗi đợt — AMI sẽ gọi lại xác nhận khung giờ.</p>
+          <p class="reg-form-error" id="regFormError"></p>
           <div class="field"><label for="hoten">Họ và tên *</label><input id="hoten" type="text" placeholder="Nguyễn Thị A" autocomplete="name" required /></div>
           <div class="field-row">
             <div class="field"><label for="sdt">Số điện thoại (Zalo) *</label><input id="sdt" type="tel" placeholder="09xx xxx xxx" autocomplete="tel" required /></div>
@@ -590,9 +603,18 @@ footer{background:var(--cream);color:var(--ink);}
             </div>
           </div>
           <div class="field"><label for="mongmuon">Mong muốn</label><textarea id="mongmuon" rows="3" placeholder="Bạn mong muốn điều gì khi tham gia buổi trải nghiệm?"></textarea></div>
-          <a class="btn btn-rose btn-block btn-pulse" href="#dang-ky">ĐĂNG KÝ NGAY</a>
+          <button type="submit" class="btn btn-rose btn-block btn-pulse reg-submit-btn" id="regSubmitBtn">ĐĂNG KÝ NGAY</button>
           <p class="reg-secure">🔒 Thông tin của bạn được bảo mật, chỉ dùng để AMI liên hệ đặt lịch.</p>
         </form>
+        <div class="reg-success" id="regSuccess" data-reveal>
+          <div class="success-check">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h3>Đăng ký thành công!</h3>
+          <p>Cảm ơn bạn đã tin tưởng AMI. AMI sẽ gọi lại xác nhận khung giờ trong vòng 2 giờ.<br>Quét mã QR bên dưới để vào nhóm Zalo — nhận thông báo lịch hẹn và ưu đãi sớm nhất.</p>
+          <div class="qr-box"><img src="images/1784808680499_1567553163197809202_2457747668723068904_021d1ab1763df6c4bdd49cad9f202d89.jpg" alt="Quét mã QR để vào nhóm Zalo AMI-Makeup Cá Nhân" /></div>
+          <p class="qr-caption">Quét mã QR này bằng Zalo để tham gia nhóm</p>
+        </div>
       </div>
     </div>
   </section>
@@ -682,5 +704,61 @@ footer{background:var(--cream);color:var(--ink);}
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   checkScroll();
+})();
+</script>
+
+<script>
+(function(){
+  var form = document.getElementById('regForm');
+  if(!form) return;
+
+  var btn = document.getElementById('regSubmitBtn');
+  var errBox = document.getElementById('regFormError');
+  var success = document.getElementById('regSuccess');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    errBox.style.display = 'none';
+
+    var payload = {
+      name: document.getElementById('hoten').value.trim(),
+      phone: document.getElementById('sdt').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      address: document.getElementById('diachi').value.trim(),
+      age: document.getElementById('dotuoi').value.trim(),
+      occupation: document.getElementById('nghenghiep').value,
+      wish: document.getElementById('mongmuon').value.trim(),
+    };
+
+    if(!payload.name || !payload.phone || !payload.email || !payload.address || !payload.age || !payload.occupation){
+      errBox.textContent = 'Vui lòng điền đầy đủ thông tin bắt buộc (*).';
+      errBox.style.display = 'block';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Đang gửi...';
+
+    fetch('https://thuytranmakeup.com/api/submit-khong-dong', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+      .then(function(res){ return res.json().then(function(data){ return { ok: res.ok && data.ok, data: data }; }); })
+      .then(function(result){
+        if(!result.ok){
+          throw new Error((result.data && result.data.error) || 'Gửi đăng ký thất bại');
+        }
+        form.classList.add('is-hidden');
+        success.classList.add('is-active');
+        success.classList.add('is-revealed');
+      })
+      .catch(function(err){
+        errBox.textContent = 'Có lỗi khi gửi đăng ký, vui lòng thử lại hoặc liên hệ Zalo 0327.355.595. (' + err.message + ')';
+        errBox.style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'ĐĂNG KÝ NGAY';
+      });
+  });
 })();
 </script>
