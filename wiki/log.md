@@ -4,6 +4,15 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-24] query | research youtube: Forever Green — tự makeup / tự trang điểm (đợt 2)
+- File: `output/2026-07-24-yt-forever-green-tu-makeup/ket-qua.json` (189 video, từ khoá "makeup cá nhân"/"tự trang điểm"/"tự makeup")
+- Summary: [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]]
+- Pages updated: [[nang-luc/kb-forever-green-insight]] (thêm mục 5 — hook nghịch lý "không cần đi học", USP "tiết kiệm tiền học makeup", format "kỹ thuật đơn lẻ" evergreen, format "sửa lỗi cho beginner")
+- Sources drawn from: [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]] (đợt 1, để đối chiếu tránh trùng lặp)
+- Mục đích: mở rộng ngân hàng insight cho chiến dịch content 30 ngày "Forever Green" theo yêu cầu Thuý ("đi cào thêm nội dung liên quan makeup cá nhân, tự trang điểm, tự makeup")
+- Kênh mới phát hiện: Mai Trinh Hồ, Tiny Loly, Quach Anh Makeup Artist
+- Mâu thuẫn: none
+
 ## [2026-07-24] build | Hệ thống tự viết metadata YouTube + fix lệch múi giờ
 - Mở rộng skill `hmh-AIOS-dang-video-youtube`: thêm `generate-metadata.js` (trích khung hình video bằng ffmpeg → Claude vision tự viết Tiêu đề/Mô tả/Tags theo văn phong Thuý Trần, xem `youtube-brand-voice.md`), Scheduled Task mới `HMH-YouTube-AutoWrite` (30 phút/lần)
 - Sửa an toàn `scan-and-post.js`: chỉ đăng khi Tiêu đề đã có chữ, tránh đăng nhầm tiêu đề rỗng khi AI chưa kịp viết

@@ -2,10 +2,10 @@
 title: Insight khách hàng — Forever Green (Trang điểm cá nhân)
 type: source
 khoang: nang-luc
-tags: [forever-green, insight, notebooklm, trang-diem-ca-nhan]
+tags: [forever-green, insight, notebooklm, trang-diem-ca-nhan, tu-makeup]
 created: 2026-07-15
-updated: 2026-07-15
-sources: [nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]
+updated: 2026-07-24
+sources: [nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan, nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]
 ---
 
 ## Nguồn
@@ -55,6 +55,14 @@ Rút từ NotebookLM — 16 video (transcript thật) trong top outlier ngách "
 4. Format **"tone theo cảm xúc/dịp"** (LANA) — có thể làm chuỗi bài theo tuần: tone đi làm/đi học/đi tiệc/đi chụp ảnh.
 5. Góc **mẹ-con / bạn bè cùng học** — chưa khai thác, nhưng là động lực thật đứng sau nhiều quyết định học.
 
+## 5. Bổ sung từ đợt research 07-24 (từ khoá "makeup cá nhân"/"tự trang điểm"/"tự makeup")
+
+- **Hook nghịch lý "academy tự nói không cần đi học"**: video "BẠN KHÔNG CẦN ĐI HỌC MAKEUP NỮA" của chính 1 academy (Hoàng Minh Ngọc) đạt gần 2 triệu view. Cho đi giá trị miễn phí đủ nhiều để xây niềm tin, rồi chuyển đổi bằng chính uy tín đó — không phải nghịch lý, là chiến lược. Cẩn thận khi viết theo hướng này: không được hạ thấp giá trị việc học có người kèm để tôn vinh tự học (xem [[feedback-khong-doi-lap-tien-va-makeup]]).
+- **USP "tiết kiệm tiền học makeup"** (khác với "tiết kiệm tiền mua đồ" đã ghi ở mục 1) — kênh Mai Trinh Hồ khai thác lặp lại ≥5 lần dưới tên "TỰ HỌC MAKEUP". Đây là nỗi sợ "tốn tiền đi học mà không hiệu quả", cùng gốc với insight mục 3 ("sợ học xong vẫn không giỏi") nhưng nhấn vào góc chi phí thay vì góc kết quả.
+- **Định dạng "kỹ thuật đơn lẻ + câu hỏi cụ thể" là evergreen thật, không chỉ trend ngắn hạn** — video của kênh Tiny Loly từ 2018 (kẻ mắt, "1 bộ trang điểm cá nhân cơ bản gồm gì") vẫn kéo view triệu ở 2026. Đáng ưu tiên format này cho content dài hạn của AMI thay vì chỉ chạy theo trend.
+- **Format "Sửa lỗi X cho beginner"** (vd "Sửa 1001 lỗi đánh nền cho beginner") đúng khớp cụm "makeup cá nhân" trong tiêu đề — công thức tiêu đề mới đáng dùng cho content dạng cảnh báo sai lầm ở mục 1.
+- **Kênh mới đáng theo dõi**: Mai Trinh Hồ (240k sub, bám sát nhất phạm vi AMI), Tiny Loly (329k sub, kỹ thuật đơn lẻ evergreen), Quach Anh Makeup Artist (834k sub, xác nhận format beginner tutorial hiệu quả cả ở kênh lớn).
+
 ## Liên quan
 
-[[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]] — dữ liệu research gốc. [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] — chiến lược dòng Makeup Cá Nhân AMI đã có (customer avatar, insight map) — insight ở trên bổ sung thêm góc "quyết định học" và "nỗi sợ học xong không giỏi" chưa có trong bản chiến lược cũ.
+[[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]] — dữ liệu research gốc. [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]] — dữ liệu research đợt 2 (bổ sung mục 5). [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] — chiến lược dòng Makeup Cá Nhân AMI đã có (customer avatar, insight map) — insight ở trên bổ sung thêm góc "quyết định học" và "nỗi sợ học xong không giỏi" chưa có trong bản chiến lược cũ.

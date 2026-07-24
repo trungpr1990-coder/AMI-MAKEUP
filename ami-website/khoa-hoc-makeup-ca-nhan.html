@@ -107,6 +107,11 @@ section{position:relative;}
 
 /* ---- Pricing (cream) ---- */
 .s-price{background:var(--cream);}
+.price-intro{display:grid;grid-template-columns:.7fr 1.3fr;gap:36px;align-items:center;margin-bottom:40px;}
+.price-intro .ph{aspect-ratio:3/4;height:auto;width:100%;max-width:260px;margin:0 auto;background-size:cover;background-color:#e5e2dc;}
+.price-intro .sec-head{text-align:left;margin-bottom:0;}
+.price-intro .sec-head p{margin:0;margin-left:0;margin-right:0;}
+@media(max-width:920px){.price-intro{grid-template-columns:1fr;text-align:center;}.price-intro .sec-head{text-align:center;}.price-intro .sec-head p{margin-left:auto;margin-right:auto;}}
 .price2{display:grid;grid-template-columns:1fr 1fr;gap:26px;max-width:920px;margin:0 auto;}
 .price-card{background:#fff;border-radius:22px;padding:32px 28px;box-shadow:var(--shadow-sm);text-align:center;position:relative;}
 .price-card.hi{border:2px solid var(--terra-bright);}
@@ -284,7 +289,7 @@ footer{background:var(--cream);color:var(--ink);}
           </div>
         </div>
         <div class="hero-photo">
-          <div class="ph filled" style="--img:url('images/IMG_9013.JPG')"></div>
+          <div class="ph filled" style="--img:url('images/2.jpg')"></div>
         </div>
       </div>
     </div>
@@ -306,7 +311,7 @@ footer{background:var(--cream);color:var(--ink);}
         <p class="pain-resolve">👉 Nếu đó là điều bạn đang gặp thì <b>Khóa Học Makeup Cá Nhân tại Thuý Trần Academy</b> sinh ra dành cho bạn — không dạy để đi làm nghề, mà dạy để bạn tự chủ nhan sắc của chính mình, mỗi ngày, mọi dịp.</p>
       </div>
       <div class="pain-photo" data-reveal="right">
-        <div class="ph filled" style="--img:url('images/IMG_9014.JPG')"></div>
+        <div class="ph filled" style="--img:url('images/after-photo.jpg')"></div>
       </div>
     </div>
   </section>
@@ -314,18 +319,21 @@ footer{background:var(--cream);color:var(--ink);}
   <!-- ================= PRICING ================= -->
   <section class="s-price pad" id="hoc-phi">
     <div class="frame">
-      <div class="sec-head" data-reveal>
-        <div class="eyebrow" style="color:var(--terra-bright);margin-bottom:10px;">💰 Học phí</div>
-        <h2 class="sec-title">CHỌN GÓI PHÙ HỢP VỚI BẠN</h2>
-        <p>Học 1 lần, tự tin makeup cả đời — không phải gói nào cũng cần thợ.</p>
+      <div class="price-intro" data-reveal>
+        <div class="ph filled" style="--img:url('images/trai nghiem makeup.jpg')"></div>
+        <div class="sec-head">
+          <div class="eyebrow" style="color:var(--terra-bright);margin-bottom:10px;">💰 Học phí</div>
+          <h2 class="sec-title">CHỌN GÓI PHÙ HỢP VỚI BẠN</h2>
+          <p>Học 1 lần, tự tin makeup cả đời — không phải gói nào cũng cần thợ.</p>
+        </div>
       </div>
       <div class="price2" data-reveal>
         <div class="price-card hi">
-          <div class="tag">Nâng tầm nhan sắc</div>
+          <div class="tag">Gói VIP</div>
           <h3>5 BUỔI — 1 KÈM 1</h3>
           <p class="sessions">5 buổi học riêng cùng giảng viên</p>
-          <p class="val">3.500.000đ</p>
-          <p class="sub">~700.000đ / buổi — trọn gói từ nền tảng đến chuyên sâu</p>
+          <p class="val">3.000.000đ</p>
+          <p class="sub">~600.000đ / buổi — trọn gói từ nền tảng đến chuyên sâu</p>
           <ul>
             <li>Hiểu da, chọn mỹ phẩm đúng gu</li>
             <li>Layout công sở – Clean Girl – Hàn Quốc – Douyin</li>
@@ -382,7 +390,7 @@ footer{background:var(--cream);color:var(--ink);}
         <div class="fact"><div class="ic">🏫</div><h3>Phòng học</h3><p>Đầy đủ trang thiết bị, ánh sáng chuẩn makeup.</p></div>
         <div class="fact"><div class="ic">📚</div><h3>Giáo trình</h3><p>Rõ ràng theo từng buổi, có thực hành ngay tại lớp.</p></div>
         <div class="fact"><div class="ic">💄</div><h3>Sản phẩm dùng thử</h3><p>Được hướng dẫn chọn mỹ phẩm phù hợp làn da của mình.</p></div>
-        <div class="fact"><div class="ic">💰</div><h3>Học phí</h3><p>2.000.000đ (3 buổi) hoặc 3.500.000đ (5 buổi).</p></div>
+        <div class="fact"><div class="ic">💰</div><h3>Học phí</h3><p>2.000.000đ (3 buổi) hoặc 3.000.000đ (5 buổi – gói VIP).</p></div>
       </div>
     </div>
   </section>
@@ -398,8 +406,8 @@ footer{background:var(--cream);color:var(--ink);}
       <!-- Gói 5 buổi -->
       <div class="pack-block">
         <div class="pack-head" data-reveal>
-          <h3>💎 Gói 5 Buổi — Nâng Tầm Nhan Sắc</h3>
-          <span>3.500.000đ</span>
+          <h3>💎 Gói VIP 5 Buổi — Nâng Tầm Nhan Sắc</h3>
+          <span>3.000.000đ</span>
         </div>
         <div class="train-grid cols-3" data-reveal>
           <div class="train-card">
@@ -508,7 +516,7 @@ footer{background:var(--cream);color:var(--ink);}
         <p class="who">Thuý Trần trả lời thật lòng</p>
         <ul>
           <li><span class="obj-ic">💰</span>Mỗi lần ra tiệm/thuê người trung bình <b>200.000 – 500.000đ/lần</b>. Một năm có cưới hỏi, sự kiện, chụp ảnh — cộng lại dễ tốn <b>3 – 5 triệu</b>, mà lúc nào cũng phải đặt lịch trước, hôm cần gấp chưa chắc có người làm kịp.</li>
-          <li><span class="obj-ic">⏰</span>Học một lần (2 – 3,5 triệu), <b>dùng cả đời</b> — chủ động 100% giờ giấc, không phải chờ ai, không phải phụ thuộc lịch của thợ trang điểm.</li>
+          <li><span class="obj-ic">⏰</span>Học một lần (2 – 3 triệu), <b>dùng cả đời</b> — chủ động 100% giờ giấc, không phải chờ ai, không phải phụ thuộc lịch của thợ trang điểm.</li>
           <li><span class="obj-ic">🎨</span>Đây không phải học để làm nghề, mà học để <b>bạn tự quyết định vẻ ngoài của chính mình</b> mỗi ngày — đẹp theo đúng gu riêng, không phải theo tay nghề người khác.</li>
           <li><span class="obj-ic">💪</span>Nếu bạn là người thích chủ động, không muốn lệ thuộc vào ai mỗi lần cần đẹp — <b>khóa học này sinh ra đúng cho người như bạn</b>.</li>
         </ul>
@@ -547,10 +555,10 @@ footer{background:var(--cream);color:var(--ink);}
         <h2 class="sec-title">HỌC VIÊN SAU KHOÁ HỌC</h2>
       </div>
       <div class="gallery-grid" data-reveal>
-        <div class="ph filled" style="--img:url('images/IMG_9015.JPG')"></div>
-        <div class="ph filled" style="--img:url('images/IMG_8561.JPG')"></div>
-        <div class="ph filled" style="--img:url('images/IMG_8562.JPG')"></div>
-        <div class="ph filled" style="--img:url('images/IMG_5443.JPG')"></div>
+        <div class="ph filled" style="--img:url('images/who-photo-1.jpg')"></div>
+        <div class="ph filled" style="--img:url('images/who-photo-2.jpg')"></div>
+        <div class="ph filled" style="--img:url('images/who-photo-3.jpg')"></div>
+        <div class="ph filled" style="--img:url('images/who-photo-4.jpg')"></div>
       </div>
     </div>
   </section>
