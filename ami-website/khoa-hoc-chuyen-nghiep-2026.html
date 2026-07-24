@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<title>Khóa Học Makeup Chuyên Nghiệp 2026 — Thuý Trần Academy</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Khóa học Makeup Chuyên Nghiệp 2026 tại Thuý Trần Academy — học makeup, quay dựng hình ảnh, ứng dụng AI và xây dựng thương hiệu cá nhân. Học phí 20.000.000đ." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+
+:root{
+  --ink:#121011;
+  --cream:#f3f4ef;
+  --grey:#545454;
+  --rose:#923653;
+  --rose-bright:#b51f56;
+  --line:rgba(18,16,17,.12);
+  --shadow-sm:0 5px 20px -15px rgb(18,16,17);
+  --expert:url("images/thuy-tran-expert-square2.png");
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  font-family:'Montserrat',-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:#ffffff;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+svg{display:block;}
+
+.frame{max-width:1160px;margin:0 auto;padding:0 24px;width:100%;}
+
+.sec-title{font-size:32px;line-height:41px;font-weight:700;margin:0;}
+.eyebrow{font-size:14px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--grey);}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  font-family:'Montserrat',sans-serif;font-weight:700;font-size:16px;
+  border:none;cursor:pointer;
+  padding:14px 30px;border-radius:69px;
+  box-shadow:var(--shadow-sm);
+}
+.btn-dark{background:linear-gradient(#010101 0%,#6d6d6d 100%);color:var(--cream);}
+.btn-rose{background:linear-gradient(var(--rose-bright) 0%,#7a1339 100%);color:#fff;}
+.btn-outline{background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none;}
+.btn:hover{filter:brightness(1.08);}
+
+.ph{
+  position:relative;border-radius:14px;overflow:hidden;
+  background:
+    radial-gradient(120% 90% at 30% 20%, rgba(255,255,255,.55), transparent 60%),
+    linear-gradient(150deg,#e2e2de 0%,#c7c7c2 45%,#9c9a95 100%);
+  box-shadow:var(--shadow-sm);
+}
+.ph.filled{background-image:var(--img);background-size:cover;background-position:center;}
+
+/* ================= HEADER ================= */
+header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
+.logo{font-size:26px;font-weight:700;letter-spacing:4px;color:var(--ink);}
+.nav ul{display:flex;gap:8px;list-style:none;margin:0;padding:0;}
+.nav ul a{font-size:15px;color:rgba(1,1,1,.6);padding:8px 16px;border-radius:69px;transition:.2s;}
+.nav ul a:hover{color:var(--rose-bright);}
+
+/* ================= HERO ================= */
+.hero{position:relative;background:linear-gradient(#ffffff 0%,#898989 100%);overflow:hidden;}
+.hero-watermark{
+  position:absolute;left:0;right:0;top:20px;text-align:center;
+  font-size:160px;line-height:250px;font-weight:700;letter-spacing:3px;
+  color:rgba(1,1,1,.14);pointer-events:none;user-select:none;white-space:nowrap;
+  -webkit-mask-image:linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+  mask-image:linear-gradient(to bottom, #000 0%, #000 45%, transparent 92%);
+}
+.hero-grid{position:relative;z-index:2;padding:60px 0 52px;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center;}
+.hero .eyebrow{color:var(--rose-bright);margin-bottom:14px;}
+.hero h1{font-size:32px;line-height:41px;font-weight:800;color:var(--ink);margin:0 0 16px;}
+.hero .lead{font-size:18px;line-height:27px;font-weight:600;color:var(--rose);margin:0 0 28px;max-width:520px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-photo .ph{aspect-ratio:3/4;width:100%;max-width:320px;margin:0 auto;background-size:cover;background-position:top center;background-color:#e5e2dc;}
+@media(max-width:920px){.hero-grid{grid-template-columns:1fr;text-align:center;padding:52px 0 40px;}.hero .lead{margin-left:auto;margin-right:auto;}.hero-cta{justify-content:center;}}
+
+/* ================= SECTION SHELL ================= */
+section{position:relative;}
+.pad{padding:60px 0;}
+.sec-head{text-align:center;margin-bottom:36px;}
+.sec-head .sec-title{margin-bottom:10px;}
+.sec-head p{font-size:16px;color:var(--grey);margin:0;max-width:620px;margin-left:auto;margin-right:auto;}
+
+/* ---- Pain / intro (dark) ---- */
+.s-pain{background:linear-gradient(#010101 0%,#6d6d6d 100%);color:var(--cream);}
+.pain-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;}
+.pain-inner .sec-title{color:#fff;margin-bottom:28px;}
+.pain-inner .sec-title .big-q{display:inline-block;font-size:52px;line-height:1;color:var(--rose-bright);margin-left:4px;vertical-align:-8px;}
+.pain-photo .ph{aspect-ratio:2/3;height:auto;width:100%;max-width:340px;margin:0 auto;background-size:cover;background-color:#e5e2dc;}
+@media(max-width:920px){.pain-grid{grid-template-columns:1fr;}}
+.pain-list{list-style:none;margin:0 0 28px;padding:0;display:flex;flex-direction:column;gap:14px;text-align:left;}
+.pain-list li{font-size:17px;line-height:25px;padding-left:22px;position:relative;color:#f0efec;}
+.pain-list li::before{content:"–";position:absolute;left:0;top:0;color:var(--rose-bright);font-weight:700;}
+.pain-resolve{font-size:16px;line-height:25px;color:#fff;background:rgba(181,31,86,.22);border-left:3px solid var(--rose-bright);padding:18px 22px;border-radius:8px;text-align:left;}
+.pain-resolve b{color:#ffd9e4;}
+
+/* ---- Price + gifts (cream) ---- */
+.s-price{background:var(--cream);text-align:center;}
+.price-tag{display:inline-flex;flex-direction:column;align-items:center;gap:4px;background:#fff;border-radius:24px;padding:20px 40px;box-shadow:var(--shadow-sm);margin-bottom:36px;}
+.price-tag .lbl{font-size:15px;font-weight:700;color:var(--grey);}
+.price-tag .val{font-size:30px;font-weight:800;color:var(--rose-bright);}
+.price-tag .old{font-size:15px;font-weight:600;color:#9c9699;text-decoration:line-through;}
+.gift-title{font-size:20px;font-weight:700;margin:0 0 24px;}
+.gift4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.gift-card{background:#fff;border-radius:16px;padding:24px 18px;box-shadow:var(--shadow-sm);text-align:center;}
+.gift-card .ic{font-size:30px;margin-bottom:10px;}
+.gift-card p{font-size:13.5px;line-height:19px;color:var(--ink);margin:0;font-weight:600;}
+
+/* ---- Why choose (white) ---- */
+.s-why{background:#fff;}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px;}
+.why-grid li{display:flex;gap:12px;align-items:flex-start;font-size:15.5px;line-height:23px;color:var(--ink);list-style:none;}
+.why-grid .tick{flex:none;width:20px;height:20px;margin-top:2px;color:var(--rose-bright);}
+.why-grid .tick svg{width:100%;height:100%;}
+
+/* ---- Facts strip (cream) ---- */
+.s-facts{background:var(--cream);}
+.facts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.fact{background:#fff;border-radius:16px;padding:22px 18px;text-align:center;box-shadow:var(--shadow-sm);}
+.fact .ic{font-size:26px;margin-bottom:10px;}
+.fact h3{font-size:16px;font-weight:700;margin:0 0 6px;color:var(--ink);}
+.fact p{font-size:14.5px;color:var(--grey);margin:0;line-height:20px;}
+
+/* ---- Training content (white) ---- */
+.s-train{background:#fff;}
+.train-intro{display:grid;grid-template-columns:.75fr 1.25fr;gap:40px;align-items:center;margin-bottom:40px;}
+.train-intro .ph{aspect-ratio:2/3;height:auto;width:100%;max-width:280px;margin:0 auto;background-size:cover;background-color:#e5e2dc;}
+.train-intro .sec-head{text-align:left;margin-bottom:0;}
+.train-intro .sec-head p{margin:0;margin-left:0;margin-right:0;}
+@media(max-width:920px){.train-intro{grid-template-columns:1fr;text-align:center;}.train-intro .sec-head{text-align:center;}}
+.train-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+.train-card{background:var(--cream);border-radius:18px;padding:26px 26px 22px;}
+.train-card .head{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.train-card .head .ic{font-size:26px;}
+.train-card .head h3{font-size:18px;font-weight:700;margin:0;color:var(--ink);}
+.train-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.train-card li{font-size:14px;line-height:20px;color:var(--grey);padding-left:14px;position:relative;}
+.train-card li::before{content:"•";position:absolute;left:0;top:0;color:var(--rose-bright);font-weight:700;font-size:14px;}
+
+/* ---- Commitments (rose gradient) ---- */
+.s-commit{background:linear-gradient(135deg,#1a1719 0%,var(--rose) 100%);color:#fff;}
+.s-commit .sec-head .sec-title{color:#fff;}
+.s-commit .sec-head p{color:#e6d9de;}
+.commit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 32px;max-width:820px;margin:0 auto;}
+.commit-grid li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:22px;}
+.commit-grid li::before{content:"❤";color:#ff9db5;flex:none;}
+
+/* ---- Outcomes (cream) ---- */
+.s-outcome{background:var(--cream);}
+.outcome-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 32px;}
+.outcome-grid li{list-style:none;display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:22px;color:var(--ink);}
+.outcome-grid .tick{flex:none;width:19px;height:19px;margin-top:2px;color:var(--rose-bright);}
+.outcome-grid .tick svg{width:100%;height:100%;}
+
+/* ---- Instructor strip (white) ---- */
+.s-expert{background:#fff;}
+.expert-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center;}
+.mockup-frame{position:relative;width:316px;max-width:100%;margin:0 auto;background:#fff;border-radius:26px;box-shadow:0 8px 16px rgba(0,0,0,.16);padding:8px 8px 14px;}
+.mockup-dots{display:flex;gap:7px;padding:2px 4px 10px 6px;}
+.mockup-dots span{width:11px;height:11px;border-radius:50%;}
+.mockup-dots span:nth-child(1){background:#ff5f56;}
+.mockup-dots span:nth-child(2){background:#ffbd2e;}
+.mockup-dots span:nth-child(3){background:#27c93f;}
+.mockup-photo{width:300px;max-width:100%;height:250px;border-radius:16px;overflow:visible;position:relative;margin:0 auto;background:radial-gradient(120% 100% at 50% 0%,#fbeef1 0%,#f6d4de 55%,#eeb3c4 100%);}
+.mockup-photo .cut{position:absolute;left:18px;right:18px;bottom:0;height:282px;background-image:var(--expert);background-position:center;background-size:cover;border-radius:10px 10px 16px 16px;filter:drop-shadow(0 14px 18px rgba(0,0,0,.22));}
+.expert-eyebrow{color:var(--rose-bright);margin-bottom:12px;}
+.expert-name{font-size:28px;line-height:36px;font-weight:800;margin:0 0 6px;color:var(--ink);}
+.expert-role{font-size:15px;color:var(--rose);font-weight:700;margin:0 0 16px;}
+.expert-bio{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+.expert-bio li{font-size:15px;line-height:22px;padding-left:20px;position:relative;color:var(--grey);}
+.expert-bio li::before{content:"–";position:absolute;left:0;color:var(--rose-bright);font-weight:700;}
+@media(max-width:920px){.expert-grid{grid-template-columns:1fr;text-align:center;}.expert-bio li{text-align:left;}}
+
+/* ---- Mini gallery (cream) ---- */
+.s-gallery{background:var(--cream);}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.gallery-grid .ph{aspect-ratio:3/4;height:auto;width:100%;background-size:cover;background-color:#e5e2dc;}
+@media(max-width:640px){.gallery-grid{grid-template-columns:1fr 1fr;}}
+
+/* ---- Quote / spirit (dark) ---- */
+.s-quote{background:var(--ink);color:#fff;text-align:center;}
+.quote-block{max-width:720px;margin:0 auto 28px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:26px 30px;}
+.quote-block p{font-size:19px;line-height:28px;font-weight:700;font-style:italic;margin:0;color:#fff;}
+.s-quote .body{max-width:640px;margin:0 auto 32px;font-size:15.5px;line-height:24px;color:#c9c7c3;}
+.s-quote .highlight{color:#ff9db5;font-weight:700;}
+
+/* ---- Footer (cream) ---- */
+footer{background:var(--cream);color:var(--ink);}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:start;}
+.foot-company{font-size:19px;font-weight:700;line-height:27px;margin:0 0 16px;}
+.foot-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px;font-size:14.5px;color:#3a3638;}
+.foot-list b{color:var(--rose);}
+.foot-social{display:flex;gap:12px;margin-top:18px;}
+.social-ic{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--rose-bright);color:#fff;transition:opacity .2s,transform .2s;}
+.social-ic:hover{opacity:.85;transform:translateY(-2px);}
+.social-ic svg{width:19px;height:19px;}
+.foot-map{margin-top:36px;border-radius:16px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.foot-map iframe{width:100%;}
+
+/* ---- scroll reveal (subtle) ---- */
+[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+[data-reveal].is-revealed{opacity:1;transform:none;}
+
+/* ---- floating CTA ---- */
+.floating-cta{
+  position:fixed;right:20px;bottom:20px;z-index:999;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--rose-bright);color:#fff;font-weight:700;font-size:14px;
+  padding:14px 22px;border-radius:50px;text-decoration:none;
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+  transition:transform .2s;
+}
+.floating-cta:hover{transform:translateY(-3px);}
+@media(max-width:640px){.floating-cta{right:14px;bottom:14px;padding:11px 16px;font-size:13px;}}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:920px){
+  .hero-watermark{font-size:100px;line-height:170px;}
+  .gift4,.facts-grid{grid-template-columns:1fr 1fr;}
+  .why-grid,.train-grid,.commit-grid,.outcome-grid,.foot-grid{grid-template-columns:1fr;gap:16px;}
+}
+@media(max-width:640px){
+  .frame{padding:0 18px;}
+  .nav ul{display:none;}
+  .sec-title{font-size:24px;line-height:32px;}
+  .hero h1{font-size:24px;line-height:32px;}
+  .hero .lead{font-size:16px;line-height:24px;}
+  .gift4,.facts-grid{grid-template-columns:1fr 1fr;}
+  .pad{padding:44px 0;}
+  .price-tag{flex-direction:column;gap:4px;padding:18px 28px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="frame nav">
+    <div class="logo">AMI</div>
+    <nav>
+      <ul>
+        <li><a href="#top">Trang chủ</a></li>
+        <li><a href="#noi-dung">Nội dung</a></li>
+        <li><a href="#lien-he">Liên hệ</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-rose" href="tel:0327355595" style="padding:9px 20px;font-size:13px;">📞 0327.355.595</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="frame">
+      <div class="hero-watermark" aria-hidden="true">AMI</div>
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">🎓 Khai giảng khóa mới</div>
+          <h1>KHÓA HỌC MAKEUP CHUYÊN NGHIỆP 2026<br>TẠI THUÝ TRẦN ACADEMY</h1>
+          <p class="lead">Học để làm được nghề – Học xong tự tin nhận khách – Biết kiếm tiền từ chính đam mê của mình!</p>
+          <div class="hero-cta">
+            <a class="btn btn-rose" href="https://m.me/thuytran.makeup.academy" target="_blank" rel="noopener">📩 Inbox tư vấn ngay</a>
+            <a class="btn btn-outline" href="#noi-dung">Xem nội dung khoá học</a>
+          </div>
+        </div>
+        <div class="hero-photo">
+          <div class="ph filled" style="--img:url('images/IMG_5455.JPG')"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAIN / INTRO ================= -->
+  <section class="s-pain pad">
+    <div class="frame pain-grid">
+      <div class="pain-inner" data-reveal="left">
+        <h2 class="sec-title">BẠN CÓ ĐANG GẶP NHỮNG ĐIỀU NÀY<span class="big-q">?</span></h2>
+        <ul class="pain-list">
+          <li>Bạn yêu thích Makeup nhưng chưa biết bắt đầu từ đâu?</li>
+          <li>Bạn mong muốn có một công việc được mọi người yêu quý, tôn trọng và có giá trị.</li>
+          <li>Bạn muốn làm một nghề thu nhập không giới hạn, thu nhập phụ thuộc vào năng lực chứ không phải mức lương cố định.</li>
+          <li>Bạn muốn chủ động thời gian, tự do làm việc, không gò bó trong môi trường công sở.</li>
+          <li>Bạn yêu cái đẹp, thích làm đẹp cho người khác và hạnh phúc khi giúp họ tự tin hơn.</li>
+          <li>Bạn muốn có một nghề để theo đuổi lâu dài, vừa tạo thu nhập vừa phát triển bản thân.</li>
+          <li>Bạn muốn xây dựng thương hiệu cá nhân, có nhiều khách hàng và tạo dấu ấn riêng trong ngành làm đẹp.</li>
+          <li>Bạn muốn kiếm tiền từ chính đam mê của mình thay vì chỉ xem Makeup là một sở thích.</li>
+        </ul>
+        <p class="pain-resolve">👉 Nếu đó là những điều bạn đang mong muốn thì <b>Khóa học Makeup Chuyên nghiệp 2026 tại Thuý Trần Academy</b> chính là lựa chọn dành cho bạn. Tại đây, bạn không chỉ học Makeup chuyên nghiệp, mà còn được đào tạo đầy đủ kỹ năng để ra nghề – có khách hàng – phát triển thương hiệu cá nhân và tạo thu nhập bền vững.</p>
+      </div>
+      <div class="pain-photo" data-reveal="right">
+        <div class="ph filled" style="--img:url('images/problem-photo.jpg')"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRICE + GIFTS ================= -->
+  <section class="s-price pad">
+    <div class="frame" data-reveal>
+      <div class="price-tag">
+        <span class="lbl">💥 HỌC PHÍ</span>
+        <span class="val">20.000.000 VNĐ</span>
+        <span class="old">25.000.000đ</span>
+      </div>
+      <p class="gift-title">🎁 ĐẶC BIỆT TẶNG NGAY</p>
+      <div class="gift4">
+        <div class="gift-card"><div class="ic">📚</div><p>Bộ giáo trình Makeup chuyên nghiệp độc quyền</p></div>
+        <div class="gift-card"><div class="ic">🎬</div><p>Khóa học Quay phim – Chụp ảnh – Chỉnh ảnh bằng điện thoại</p></div>
+        <div class="gift-card"><div class="ic">🤖</div><p>Hướng dẫn sử dụng AI phục vụ công việc Makeup &amp; sáng tạo nội dung</p></div>
+        <div class="gift-card"><div class="ic">📱</div><p>Đào tạo xây dựng thương hiệu cá nhân trên Facebook, TikTok</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY CHOOSE ================= -->
+  <section class="s-why pad">
+    <div class="frame">
+      <div class="sec-head" data-reveal>
+        <h2 class="sec-title">TẠI SAO NÊN HỌC TẠI<br>THUÝ TRẦN ACADEMY?</h2>
+      </div>
+      <ul class="why-grid" data-reveal>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Không cần có nền tảng vẫn học được.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Được cầm tay chỉ việc từ cơ bản đến nâng cao.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Giáo trình xây dựng từ nhiều năm kinh nghiệm đi nghề thực tế.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Học theo phương pháp thực chiến, không học lan man.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Luôn cập nhật xu hướng Makeup mới nhất năm 2026.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= INFO FACTS ================= -->
+  <section class="s-facts pad">
+    <div class="frame">
+      <div class="sec-head" data-reveal>
+        <h2 class="sec-title">THÔNG TIN KHÓA HỌC</h2>
+      </div>
+      <div class="facts-grid" data-reveal>
+        <div class="fact"><div class="ic">⏰</div><h3>Thời lượng</h3><p>03 tháng hoặc đến khi học viên vững tay nghề.</p></div>
+        <div class="fact"><div class="ic">📅</div><h3>Lịch học</h3><p>05 buổi/tuần — 🌞 ca sáng 8h30–11h00 hoặc 🌤 ca chiều 13h00–17h00.</p></div>
+        <div class="fact"><div class="ic">🏫</div><h3>Phòng học</h3><p>Đầy đủ trang thiết bị hiện đại.</p></div>
+        <div class="fact"><div class="ic">📚</div><h3>Giáo trình</h3><p>Bài bản, cập nhật liên tục.</p></div>
+        <div class="fact"><div class="ic">💄</div><h3>Bộ đồ nghề</h3><p>Học viên chuẩn bị theo điều kiện kinh tế, dùng học và làm nghề lâu dài.</p></div>
+        <div class="fact"><div class="ic">💥</div><h3>Học phí</h3><p>20.000.000đ trọn khoá — tặng kèm 4 quà giá trị.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRAINING CONTENT ================= -->
+  <section class="s-train pad" id="noi-dung">
+    <div class="frame">
+      <div class="train-intro">
+        <div class="ph filled" data-reveal="left" style="--img:url('images/benefit-photo.jpg')"></div>
+        <div class="sec-head" data-reveal="right">
+          <h2 class="sec-title">NỘI DUNG ĐÀO TẠO</h2>
+          <p>4 mảng kiến thức trọn gói — không chỉ makeup, mà đủ hành trang để ra nghề.</p>
+        </div>
+      </div>
+      <div class="train-grid" data-reveal>
+
+        <div class="train-card">
+          <div class="head"><span class="ic">💄</span><h3>Makeup Chuyên Nghiệp</h3></div>
+          <ul>
+            <li>Makeup kỷ yếu theo đúng xu hướng giới trẻ.</li>
+            <li>Makeup cô dâu thực chiến từ kinh nghiệm đi job thực tế.</li>
+            <li>Makeup tiệc sang trọng, trẻ trung, chuẩn xu hướng Douyin.</li>
+            <li>Xử lý nền chuyên sâu: nền căng bóng chuẩn beauty, chống trôi — chống mồ hôi, che phủ khuyết điểm, dặm &amp; xử lý nền khi makeup lại cho khách.</li>
+            <li>Thành thạo mix mi đa tầng, gắn mi ứng dụng hot nhất 2026.</li>
+            <li>Xử lý mọi dáng mắt khó: mắt một mí, mắt lệch, mắt mí lót.</li>
+            <li>Cách lựa chọn mỹ phẩm phù hợp với từng loại da.</li>
+            <li>Cách phối màu, tạo layout makeup theo từng gương mặt.</li>
+            <li>Tư duy makeup linh hoạt với mọi khách hàng, thay vì học theo khuôn mẫu.</li>
+          </ul>
+        </div>
+
+        <div class="train-card">
+          <div class="head"><span class="ic">📸</span><h3>Quay Dựng Hình Ảnh</h3></div>
+          <ul>
+            <li>Một Makeup Artist giỏi cần biết tạo ra hình ảnh đẹp để khách hàng tin tưởng.</li>
+            <li>Quay video bằng điện thoại.</li>
+            <li>Chụp ảnh khách hàng đẹp sau makeup.</li>
+            <li>Chỉnh màu ảnh.</li>
+            <li>Dựng video nhanh ngay trên điện thoại.</li>
+            <li>Tạo video chuyên nghiệp để đăng TikTok, Facebook, Reels.</li>
+          </ul>
+        </div>
+
+        <div class="train-card">
+          <div class="head"><span class="ic">🤖</span><h3>Ứng Dụng AI</h3></div>
+          <ul>
+            <li>Thời đại mới, biết makeup thôi là chưa đủ.</li>
+            <li>Lên ý tưởng makeup theo xu hướng.</li>
+            <li>Viết caption thu hút khách hàng.</li>
+            <li>Lên kịch bản video TikTok.</li>
+            <li>Lập kế hoạch nội dung, tạo ý tưởng chụp ảnh.</li>
+            <li>Tiết kiệm thời gian nhưng vẫn tạo nội dung chuyên nghiệp.</li>
+          </ul>
+        </div>
+
+        <div class="train-card">
+          <div class="head"><span class="ic">📱</span><h3>Xây Dựng Thương Hiệu Cá Nhân</h3></div>
+          <ul>
+            <li>Nội dung rất ít nơi đào tạo.</li>
+            <li>Xây dựng hình ảnh cá nhân chuyên nghiệp.</li>
+            <li>Xây dựng Facebook, TikTok, Instagram từ con số 0.</li>
+            <li>Lên kế hoạch phát triển kênh, xây nội dung thu hút đúng khách hàng.</li>
+            <li>Cách quay video dễ lên xu hướng.</li>
+            <li>Chiến lược phát triển thương hiệu cá nhân bền vững.</li>
+            <li>Biến mạng xã hội thành công cụ tìm kiếm khách hàng mỗi ngày.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COMMITMENTS ================= -->
+  <section class="s-commit pad">
+    <div class="frame">
+      <div class="sec-head" data-reveal>
+        <h2 class="sec-title">CAM KẾT CỦA<br>THUÝ TRẦN ACADEMY</h2>
+      </div>
+      <ul class="commit-grid" data-reveal>
+        <li>Không giấu nghề.</li>
+        <li>Kèm sát từng học viên.</li>
+        <li>Sửa từng lỗi nhỏ đến khi làm đẹp.</li>
+        <li>Học đến khi cứng tay nghề.</li>
+        <li>Luôn hỗ trợ học viên trong quá trình đi làm sau khóa học.</li>
+        <li>Chỉ cần bạn chăm chỉ và nghiêm túc, Thuý Trần Academy sẽ đồng hành đến khi bạn tự tin bước vào nghề.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= OUTCOMES ================= -->
+  <section class="s-outcome pad">
+    <div class="frame">
+      <div class="sec-head" data-reveal>
+        <h2 class="sec-title">SAU KHÓA HỌC<br>BẠN NHẬN ĐƯỢC GÌ?</h2>
+      </div>
+      <ul class="outcome-grid" data-reveal>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Thành thạo kỹ thuật Makeup chuyên nghiệp.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tự tin nhận Makeup cô dâu, Makeup tiệc, Makeup kỷ yếu.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Biết xử lý mọi tình trạng da và dáng mắt khó.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Biết quay video, chụp ảnh và chỉnh ảnh chuyên nghiệp.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Thành thạo ứng dụng AI trong công việc.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Biết xây dựng thương hiệu cá nhân.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Biết phát triển Facebook, TikTok để thu hút khách hàng.</li>
+        <li><span class="tick"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tự tin phát triển sự nghiệp Makeup, tạo nguồn thu nhập bền vững.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= INSTRUCTOR ================= -->
+  <section class="s-expert pad" id="giang-vien">
+    <div class="frame expert-grid">
+      <div data-reveal="left">
+        <div class="mockup-frame">
+          <div class="mockup-dots"><span></span><span></span><span></span></div>
+          <div class="mockup-photo"><div class="cut"></div></div>
+        </div>
+      </div>
+      <div data-reveal="right">
+        <div class="eyebrow expert-eyebrow">Gặp gỡ giảng viên</div>
+        <h2 class="expert-name">THUÝ TRẦN</h2>
+        <p class="expert-role">Makeup Artist &amp; Giảng viên đào tạo makeup cá nhân &amp; chuyên nghiệp</p>
+        <ul class="expert-bio">
+          <li>Chuyên gia trang điểm — đào tạo makeup cá nhân &amp; chuyên nghiệp.</li>
+          <li>Hơn 7 năm kinh nghiệm trong ngành làm đẹp.</li>
+          <li>Nhà sáng lập Thuý Trần Academy.</li>
+          <li>Trực tiếp đứng lớp, kèm sát từng học viên.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MINI GALLERY ================= -->
+  <section class="s-gallery pad">
+    <div class="frame">
+      <div class="sec-head" data-reveal>
+        <h2 class="sec-title">CÁC TÁC PHẨM</h2>
+      </div>
+      <div class="gallery-grid" data-reveal>
+        <div class="ph filled" style="--img:url('images/IMG_5454.JPG')"></div>
+        <div class="ph filled" style="--img:url('images/IMG_5452.JPG')"></div>
+        <div class="ph filled" style="--img:url('images/idx-gallery-10.jpg')"></div>
+        <div class="ph filled" style="--img:url('images/IMG_2923.JPG')"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE / SPIRIT + FINAL CTA ================= -->
+  <section class="s-quote pad" id="lien-he">
+    <div class="frame" data-reveal>
+      <h2 class="sec-title" style="color:#fff;margin-bottom:24px;">TINH THẦN ĐÀO TẠO</h2>
+      <div class="quote-block">
+        <p>"Không giấu nghề – Không để học viên học xong mà vẫn hoang mang."</p>
+      </div>
+      <p class="body">Tại Thuý Trần Academy, mục tiêu không chỉ là dạy bạn Makeup đẹp. Mà còn giúp bạn <span class="highlight">làm được nghề – có khách hàng – phát triển thương hiệu cá nhân – và kiếm tiền bền vững</span> từ chính đam mê của mình.<br><br>✨ Nếu bạn thực sự nghiêm túc với nghề Makeup, hãy bắt đầu ngay hôm nay. Một quyết định đúng hôm nay có thể thay đổi công việc, thu nhập và tương lai của bạn trong nhiều năm tới.</p>
+      <div class="hero-cta">
+        <a class="btn btn-rose" href="https://m.me/thuytran.makeup.academy" target="_blank" rel="noopener">📩 Inbox tư vấn &amp; giữ chỗ</a>
+        <a class="btn btn-outline" href="tel:0327355595" style="background:transparent;color:#fff;border-color:rgba(255,255,255,.3);">📞 Gọi 0327.355.595</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="pad">
+  <div class="frame foot-grid">
+    <div>
+      <p class="foot-company">THUÝ TRẦN ACADEMY</p>
+      <ul class="foot-list">
+        <li><b>Địa chỉ:</b> 351 Lê Hồng Phong, TP. Nam Định</li>
+        <li><b>Hotline / Zalo:</b> 0327.355.595</li>
+        <li><b>Email:</b> ami.makeup.academy@gmail.com</li>
+        <li><b>Thời gian làm việc:</b> 8:00 – 20:00 (Tất cả các ngày trong tuần)</li>
+      </ul>
+      <div class="foot-social">
+        <a class="social-ic" href="https://www.facebook.com/thuytran.makeup.academy" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V5.6c-.5-.07-2.2-.22-3.4-.22-3.36 0-5.1 2.05-5.1 5.06V13H5v3.8h3.5V23h3.9v-6.2h3.4l.5-3.8h-3.9v-2.1c0-1.1.28-1.9 1.6-1.9Z"/></svg>
+        </a>
+        <a class="social-ic" href="https://zalo.me/0327355595" target="_blank" rel="noopener" aria-label="Zalo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="4"/><path d="M8 18v3l4-3"/><path d="M7 13V9.2h4M7 13l4-3.8M12 13V9M15 9h3l-3 4h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="frame">
+    <div class="foot-map">
+      <iframe src="https://www.google.com/maps?q=351+L%C3%AA+H%E1%BB%93ng+Phong,+Nam+%C4%90%E1%BB%8Bnh&output=embed" width="100%" height="220" style="border:0;display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Bản đồ Thuý Trần Academy - 351 Lê Hồng Phong, TP. Nam Định"></iframe>
+    </div>
+  </div>
+</footer>
+
+<a href="https://m.me/thuytran.makeup.academy" target="_blank" rel="noopener" class="floating-cta">
+  📩 Inbox tư vấn
+</a>
+
+<script>
+(function(){
+  var pending = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if(!pending.length) return;
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-revealed');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -8% 0px'});
+    pending.forEach(function(el){ io.observe(el); });
+  } else {
+    pending.forEach(function(el){ el.classList.add('is-revealed'); });
+  }
+})();
+</script>
+
+</body>
+</html>

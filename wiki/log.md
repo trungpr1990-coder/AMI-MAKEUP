@@ -4,6 +4,17 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-24] build | Hệ thống tự viết metadata YouTube + fix lệch múi giờ
+- Mở rộng skill `hmh-AIOS-dang-video-youtube`: thêm `generate-metadata.js` (trích khung hình video bằng ffmpeg → Claude vision tự viết Tiêu đề/Mô tả/Tags theo văn phong Thuý Trần, xem `youtube-brand-voice.md`), Scheduled Task mới `HMH-YouTube-AutoWrite` (30 phút/lần)
+- Sửa an toàn `scan-and-post.js`: chỉ đăng khi Tiêu đề đã có chữ, tránh đăng nhầm tiêu đề rỗng khi AI chưa kịp viết
+- Fix bug lặp câu mở/kết (AI hội tụ về 1 câu quen thuộc dù đã gợi ý xoay vòng) — giải pháp: bắt AI dùng đúng nguyên văn câu mở/kết được script xoay vòng roundrobin, chỉ tự viết phần nội dung giữa
+- Fix bug JSON parse vỡ khi model trả newline thật trong chuỗi — ép JSON trả về 1 dòng
+- Thêm cột "Tên file video" tự điền cho mọi dòng có Video (kể cả dòng nhập tay), chạy trong `scan-and-post.js` mỗi phút
+- Phát hiện lỗi lệch múi giờ 1 tiếng ở cột "Ngày giờ đăng" (gõ 21h → lưu 20h) — đã loại trừ nguyên nhân Lark Calendar Settings và Base app settings; nghi vấn cao nhất là đồng hồ thiết bị Thuý dùng để nhập liệu. Giải pháp tạm: gõ bù +1 tiếng khi nhập tay. Đã sửa lại 11 dòng đang chờ đăng về đúng giờ dự định
+- Bật (Enabled) cả 2 Scheduled Task `HMH-YouTube-AutoWrite` và `HMH-YouTube-AutoPost` — đang chạy thật, đã đăng thành công 1 video test lên YouTube công khai
+- Summary: [[nang-luc/out-2026-07-24-he-thong-tu-viet-metadata-youtube]]
+- Mâu thuẫn: none
+
 ## [2026-07-22] build | Landing "Makeup Không Đồng" + domain con trainghiemmakeupkhongdong.thuytranmakeup.com
 - Redesign toàn diện `ami-website/makeup-khong-dong.html`: khung ảnh chuyên gia kiểu mockup-card (tham khảo mewartmakeup.com), tách nền ảnh thật, animation bounceIn cho chữ AMI, nút CTA nháy + nút nổi "Đăng ký ngay", cập nhật bio/testimonial, thêm bản đồ + icon Facebook/Zalo/TikTok, tách toàn bộ ảnh base64 khổng lồ ra file riêng (giảm file HTML từ ~1.3M ký tự còn ~620K)
 - Deploy thành project Cloudflare Pages riêng biệt `thuytranmakeup` (không đụng project `ami-website` đang chạy domain gốc `thuytranmakeup.com`), gắn domain con `trainghiemmakeupkhongdong.thuytranmakeup.com`
