@@ -63,6 +63,33 @@ Rút từ NotebookLM — 16 video (transcript thật) trong top outlier ngách "
 - **Format "Sửa lỗi X cho beginner"** (vd "Sửa 1001 lỗi đánh nền cho beginner") đúng khớp cụm "makeup cá nhân" trong tiêu đề — công thức tiêu đề mới đáng dùng cho content dạng cảnh báo sai lầm ở mục 1.
 - **Kênh mới đáng theo dõi**: Mai Trinh Hồ (240k sub, bám sát nhất phạm vi AMI), Tiny Loly (329k sub, kỹ thuật đơn lẻ evergreen), Quach Anh Makeup Artist (834k sub, xác nhận format beginner tutorial hiệu quả cả ở kênh lớn).
 
+## 6. Insight NotebookLM đợt 2 (transcript thật, 14 video — notebook "Forever Green - Tu makeup - 2026-07-24", id `70450566-3c70-4214-af5d-d543462cf27e`)
+
+### 6.1 Nỗi đau/băn khoăn cụ thể (bổ sung mục 1)
+- **Hoang mang trước ma trận sản phẩm**: "Họ không biết sản phẩm nào dành cho mình, cái gì cần thiết, cái gì không" — trạng thái "feel panic" trước khi bắt đầu, không chỉ thiếu kỹ năng mà còn bất ổn tâm lý.
+- **Lỗi nền kinh điển gọi tên cụ thể**: "nền mốc, trượt, trôi, nứt và đọng" (dùng nguyên cụm này làm từ khoá tiêu đề rất hiệu quả — xem mục 6.2).
+- **Sợ nền dày/giả**: sợ đánh nền xong "nhìn như tượng sáp", "cực kỳ dày, cực kỳ già" — nỗi sợ về KẾT QUẢ nhìn thấy được, không chỉ về kỹ thuật.
+- **Kẻ lông mày/mắt là 2 kỹ thuật gây nản nhất**: học viên thật từng nói "kẻ lông mày khó lắm cô ơi"; mắt là "khâu mất nhiều thời gian nhất".
+- **Nhầm lẫn kiến thức nền tảng bị người dạy khó chịu**: câu hỏi "nên đánh cushion trước hay kem nền trước" (2 thứ về bản chất giống nhau) khiến 1 creator bộc lộ bực mình thật — cho thấy khoảng cách kiến thức giữa chuyên gia và người mới lớn hơn họ tưởng, **cơ hội content "xoá mù kiến thức tận gốc"** thay vì dạy kỹ thuật nâng cao ngay.
+- **Sợ hại da/lên mụn/lão hoá do makeup** — có nguồn gốc từ định kiến truyền miệng thế hệ trước ("ăn phấn hồi trẻ thì về già xấu, nám, lão hoá"), thực chất do làm sạch da sai chứ không phải do trang điểm — trùng khớp insight cũ (mục 1) nhưng có thêm bằng chứng đây là định kiến LIÊN THẾ HỆ, không phải chỉ nỗi sợ cá nhân.
+
+### 6.2 Công thức hook/tiêu đề xác nhận thêm (bổ sung mục 2)
+- **"Sửa 1001 lỗi đánh nền cho beginner! Nền mốc, trượt, trôi, nứt và đọng!"** — công thức "liệt kê đúng tên lỗi" trong tiêu đề, không nói chung chung "sửa lỗi trang điểm".
+- **Mở đầu kiểu cam kết chuyển hoá tuyệt đối**: "sau khi xem hết clip này... chắc chắn lớp nền của mọi người sẽ sang một trang mới, đẹp hơn, bền hơn, chẳng khác gì lớp nền khi đi ra ngoài studio" — hứa hẹn định lượng + so sánh với chuẩn chuyên nghiệp.
+- **Mở đầu kiểu "cứu rỗi ngay lập tức"**: "Ngay bây giờ tôi sẽ cứu tất cả các bạn..." — framing bản thân là người giải cứu, không phải người dạy.
+- **Uy tín qua trải nghiệm thật, không phải quảng cáo**: "video này không có booking hay tài trợ gì cả, chỉ là sản phẩm mình yêu thích muốn chia sẻ" — tuyên bố phi lợi nhuận để tăng độ tin.
+- **Chia sẻ thất bại cá nhân để tạo đồng cảm**: 1 creator (Ny Nguyễn) kể thật đã học 3 lớp makeup cá nhân vì tay nghề chưa tới — dùng chính thất bại của mình làm mở đầu thay vì chỉ khoe thành quả.
+
+### 6.3 Insight tâm lý sâu mới (bổ sung mục 3)
+- **Makeup như "vũ khí" tâm lý, không chỉ thẩm mỹ**: "ra khỏi nhà mà không đánh son thì giống như đi ra ngoài mà không mặc quần áo vậy" — mức độ gắn với cảm giác an toàn/tự tin sâu hơn thẩm mỹ thuần tuý.
+- **Động lực "học nhiều lần vẫn không giỏi" đến từ việc tự mặc định bản thân "vô dụng" về tay nghề** — không phải do thiếu tiền hay thiếu nơi học tốt, mà do niềm tin tiêu cực về năng lực bản thân — khác góc "sợ tốn tiền" đã biết, đây là góc "tự ti năng lực" cần content trấn an riêng.
+- **Nhu cầu thật là được "cứu", không phải được "dạy"** — framing nội dung nên đặt mình ở vai trò giải cứu tình huống cụ thể, không phải giảng viên giảng bài.
+
+### 6.4 Khoảng trống content mới (bổ sung mục 4)
+1. **Series về "học mãi không được" — tâm lý học viên cá biệt và cách vượt rào cản kỹ năng** — gần như chưa ai khai thác, đa số video chỉ dạy "làm đúng" chứ không dạy "tại sao học hoài vẫn sai".
+2. **Kết nối "nội tâm" và "phong cách cá nhân"** — 1 nguồn có nhắc sơ "tìm hiểu nội tâm mình muốn điều gì" trước khi chọn phong cách trang điểm, nhưng chưa ai làm content chuyên sâu về hướng này (makeup theo bản sắc cá nhân, không theo trend).
+3. **"Giải oan" cho mỹ phẩm bằng lý lẽ khoa học cụ thể** — thay vì nói chung chung "makeup không hại da", nên phản biện trực tiếp định kiến liên thế hệ ("ăn phấn hồi trẻ thì già xấu") bằng cơ chế thật (do thiếu chống nắng/làm sạch sai, không phải do phấn).
+
 ## Liên quan
 
 [[nang-luc/out-2026-07-15-yt-forever-green-trang-diem-ca-nhan]] — dữ liệu research gốc. [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]] — dữ liệu research đợt 2 (bổ sung mục 5). [[nang-luc/2026-07-11-chien-luoc-makeup-ca-nhan-ami]] — chiến lược dòng Makeup Cá Nhân AMI đã có (customer avatar, insight map) — insight ở trên bổ sung thêm góc "quyết định học" và "nỗi sợ học xong không giỏi" chưa có trong bản chiến lược cũ.

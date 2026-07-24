@@ -4,6 +4,23 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-24] create | Forever Green — 30 bài content đợt 2 (tự makeup)
+- 30 record ghi vào bảng "Forever Green" (Base "CRM Thúy Thúy", `tbl4ZMKIMg9SUqgy`) qua `lark-cli base +record-batch-create`, Trạng thái = "Chờ duyệt", lịch đăng rải 2026-08-15 → 2026-09-13 (19:00 mỗi ngày) — nối tiếp ngay sau đợt 1 (kết thúc 2026-08-14)
+- Dựa trên: [[nang-luc/kb-forever-green-insight]] mục 5-6 (đợt research + NotebookLM lần 2), khung 4 tuần + `brand-voice.md`
+- Trước khi viết full đã đối chiếu 30 tiêu đề đợt 1 (đã có sẵn trong bảng) để tránh trùng — sửa lại khoảng 10 tiêu đề trong outline ban đầu (VD "cần năng khiếu không" → "tự nhủ mình vô dụng"; "thứ tự các bước" → bỏ hẳn, thay bằng "tìm phong cách hợp với chính mình") vì đợt 1 đã khai thác các góc đó rồi
+- Một số bài Tuần 3 (chứng minh) và 1 bài Tuần 4 có `[CẦN ĐIỀN]` chỗ cần Thuý bổ sung case/testimonial/số liệu thật trước khi duyệt sang "Chờ đăng"
+- Sự cố kỹ thuật khi ghi Base: script tạo payload lần đầu bị lệch ngày 1 hôm (dùng `toISOString()` sau khi tạo Date theo giờ local UTC+7, bị quy đổi lùi 1 ngày khi convert sang UTC) — phát hiện qua dry-run trước khi ghi thật, sửa bằng cách tính ngày hoàn toàn trong không gian UTC (Date.UTC + getUTC*), không dùng toISOString
+- Sources drawn from: [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]], [[nang-luc/kb-forever-green-insight]]
+- Mâu thuẫn: none
+
+## [2026-07-24] ingest | NotebookLM insight — Forever Green tự makeup (đợt 2)
+- Notebook: "Forever Green - Tu makeup - 2026-07-24" (`70450566-3c70-4214-af5d-d543462cf27e`), tài khoản Google `doanmanhtrung610@gmail.com` (khác `trungpr1990@gmail.com` — cùng tài khoản đã dùng cho notebook đợt 1 07-15, xác nhận nhất quán)
+- 19 video nạp làm nguồn, 14 nguồn xử lý thành công (5 lỗi không trích được transcript — có thể do thiếu phụ đề)
+- Sự cố kỹ thuật trước khi ingest được (đáng ghi nhớ cho lần sau): CLI `notebooklm` bị lỗi "uv trampoline failed to canonicalize script path" — cài lại qua `uv tool install` vào `AppData\Roaming` bị phần mềm diệt virus khoá file liên tục (`os error 32`) → khắc phục bằng cách cài vào `D:\uv-tools` (`UV_TOOL_DIR="D:\\uv-tools"`) thay vì thư mục mặc định; sau đó `notebooklm login` mở Chromium do Playwright tải về bị lỗi "Activation context generation failed... Dependent Assembly could not be found" (nghi cùng nguyên nhân AV can thiệp file mới tải) → khắc phục bằng `notebooklm login --browser chrome` (dùng thẳng Chrome thật đã cài sẵn máy, né hẳn Chromium bị lỗi)
+- Summary: cập nhật [[nang-luc/kb-forever-green-insight]] (mục 6) — nỗi đau cụ thể mới (nền "mốc/trượt/trôi/nứt/đọng", sợ nền "như tượng sáp", bực mình khi học viên hỏi câu quá cơ bản), công thức hook mới (liệt kê đúng tên lỗi trong tiêu đề, framing "người cứu rỗi" thay vì "người dạy"), insight tâm lý sâu mới (makeup như "vũ khí" tâm lý, động lực "học mãi không được" đến từ tự ti năng lực chứ không phải thiếu tiền), khoảng trống content mới (series "học mãi không được", kết nối nội tâm-phong cách, giải oan mỹ phẩm bằng khoa học)
+- Sources drawn from: [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]]
+- Mâu thuẫn: none
+
 ## [2026-07-24] query | research youtube: Forever Green — tự makeup / tự trang điểm (đợt 2)
 - File: `output/2026-07-24-yt-forever-green-tu-makeup/ket-qua.json` (189 video, từ khoá "makeup cá nhân"/"tự trang điểm"/"tự makeup")
 - Summary: [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]]
