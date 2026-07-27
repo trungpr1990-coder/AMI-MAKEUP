@@ -1,13 +1,13 @@
 ---
-title: Sưu Tầm Hoàng Minh Hóa — Chỉ Mục 40 Video
+title: Sưu Tầm Hoàng Minh Hóa — Chỉ Mục 44 Video
 type: index
 tags: [source, youtube, hoangminhhoaoffical, sưu tầm]
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-27
 sources: []
 ---
 
-# Sưu Tầm Kênh Hoàng Minh Hoá (@hoangminhhoaoffical) — 40 video
+# Sưu Tầm Kênh Hoàng Minh Hoá (@hoangminhhoaoffical) — 44 video
 
 > Transcript thô đã sưu tầm qua [[sources/2026-suu-tam-kien-thuc-skill]] ([[concepts/suu-tam-kien-thuc-workflow]]), phân loại theo 9 chủ đề. Đây là nguồn thô (raw) — chưa qua bước tổng hợp/consolidate thành khoang page riêng.
 
@@ -56,6 +56,11 @@ sources: []
 - [[sources/hoangminhhoaoffical/MIu_HmsLR1E — Trở thành ông trùm studio cung cấp ảnh profile cho các boss hệ thống]] — Làm thế nào để trở thành ông trùm studio cung cấp ảnh profile cho các boss hệ thống
 - [[sources/hoangminhhoaoffical/PDCgUauTTtw — Những sai lầm lớn nhất khi kinh doanh studio ai cũng dễ mắc phải]] — Những sai lầm lớn nhất khi kinh doanh studio, ai cũng dễ mắc phải
 - [[sources/hoangminhhoaoffical/NlQieoe7UEw — Sai Lầm Chí Mạng Của Make Up Bỏ Qua Điều Khách Hàng Cần]] — Sai Lầm Chí Mạng Của Make Up Bỏ Qua Điều Khách Hàng Cần
+- [[sources/hoangminhhoaoffical/BdRUjFNG0mc — Doanh nhân thời đại mới Hoàng Minh Hóa]] — Doanh nhân thời đại mới (5 yếu tố doanh nhân thời đại mới: skill, não thứ hai, token, internet/điện, quy trình)
+
+## 7 — Cảm xúc-Sức khỏe
+
+- [[sources/hoangminhhoaoffical/1YuxKLQN0BU — THẾ NÀO LÀ HẠNH PHÚC Hoàng Minh Hóa]] — THẾ NÀO LÀ HẠNH PHÚC (bài phát biểu cảm nghĩ cá nhân của phụ huynh học viên, không phải bài giảng kinh doanh)
 
 ## 8 — Tư duy-Thành công
 
@@ -71,7 +76,8 @@ sources: []
 
 - [[sources/hoangminhhoaoffical/9MsYG89wyo4 — Cam tay chi Make cong cu AI giup tu dong hoa cong viec pho bien nhat]] — Cầm tay chỉ Make - công cụ AI giúp tự động hoá công việc phổ biến nhất
 - [[sources/hoangminhhoaoffical/Sqo7TOhkhFA — Hướng dẫn làm bài tập kết nối Make trước khi vào lớp]] — Hướng dẫn làm bài tập kết nối Make trước khi vào lớp
+- [[sources/hoangminhhoaoffical/eejf0Jp1xjo — Quân Cua Vựa Cua Đăng Quân Hoàng Minh Hóa]] — Quân Cua | Vựa Cua Đăng Quân — testimonial về hệ thống AI automation (CRM, đăng bài/video tự động, website 1-click)
 
 ---
 
-**Tổng:** 40 video · Kênh: Hoàng Minh Hoá (đào tạo kinh doanh studio ảnh — nội dung áp dụng chéo được cho makeup/studio nói chung)
+**Tổng:** 44 video · Kênh: Hoàng Minh Hoá (đào tạo kinh doanh studio ảnh — nội dung áp dụng chéo được cho makeup/studio nói chung)

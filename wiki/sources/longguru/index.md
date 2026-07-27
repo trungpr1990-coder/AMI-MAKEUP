@@ -1,13 +1,13 @@
 ---
-title: Sưu Tầm Kênh @longguru (Phạm Thành Long) — Chỉ Mục 37 Video
+title: Sưu Tầm Kênh @longguru (Phạm Thành Long) — Chỉ Mục 43 Video
 type: index
 tags: [source, youtube, longguru, pham-thanh-long, sưu tầm]
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-27
 sources: []
 ---
 
-# Sưu Tầm Kênh @longguru — 37 video (Phạm Thành Long)
+# Sưu Tầm Kênh @longguru — 43 video (Phạm Thành Long)
 
 > Transcript thô đã sưu tầm + viết dàn ý qua [[sources/2026-suu-tam-kien-thuc-skill]] ([[concepts/suu-tam-kien-thuc-workflow]]), phân loại theo 9 chủ đề. Thu thập + tổng hợp ngày 2026-07-11 nhưng nằm sót ở kho thô `D:\Trí Tuệ Uyên Nhiên\raw\Tri Thức Sưu Tầm\longguru\` — chưa từng được đưa vào wiki cho tới khi phát hiện lại ngày 2026-07-13. Đây là nguồn thô (raw) — chưa qua bước tổng hợp/consolidate thành khoang page riêng.
 >
@@ -54,6 +54,12 @@ sources: []
 - [[sources/longguru/A6eWseVpfF8 — Mindset and Strategies of Sustainable Business Owners Pham Thanh Long]] — Mindset and Strategies of Sustainable Business Owners
 - [[sources/longguru/hTJ3HRV6rY8 — The Mistake That Keeps Business Owners From Ever Being Free Pham Thanh]] — The Mistake That Keeps Business Owners From Ever Being Free
 - [[sources/longguru/o6m4RaSlV4E — Why Talented People Still Can't Break Through in Business Pham Thanh L]] — Why Talented People Still Can't Break Through in Business
+- [[sources/longguru/8zmG7_oc2Yw — Hanoi - Paris Journey Day 1 Want to Go Far in Business Learn This Pham]] — Hanoi - Paris Journey | Day 1: Want to Go Far in Business? Learn This
+- [[sources/longguru/nSxC_oL7pJA — The Grasshopper Up the Slope – 22 Business Strategies for Sustainable]] — The Grasshopper Up the Slope – 22 Business Strategies for Sustainable Growth (sách nói: 4 nấc thang giàu có, 22 chiến lược kinh doanh)
+
+## 07 — Cảm xúc-Sức khỏe
+
+- [[sources/longguru/ivK2-fD2YCU — Cách đạt mọi mục tiêu, vượt qua sự trì hoãn và nỗi sợ - bằng công thức]] — Cách đạt mọi mục tiêu, vượt qua sự trì hoãn và nỗi sợ - bằng công thức TFAR (D×V×FirstStep > R)
 
 ## 08 — Tư duy-Thành công
 
@@ -67,7 +73,9 @@ sources: []
 - [[sources/longguru/N2tzcydyINM — Chiếc xe đồ chơi không chịu chạy Phạm Thành Long]] — Chiếc xe đồ chơi không chịu chạy
 - [[sources/longguru/087m8xTuzLA — Một vòng chạy bộ vòng quanh Boston dưới tuyết rơi trắng trời Phạm Thàn]] — Một vòng chạy bộ vòng quanh Boston dưới tuyết rơi trắng trời
 - [[sources/longguru/8UIRmSpOR1U — Say Yes to Life - Yes Summit Song Pham Thanh Long]] — Say Yes to Life - Yes Summit Song (bài hát)
+- [[sources/longguru/j4KI-NcGWrQ — Hanoi to Paris Journey Day 9 Exploring the Tengger Desert and How I Wo]] — Hanoi to Paris Journey | Day 9: Exploring the Tengger Desert and How I Work (vlog cá nhân, không có bài học kinh doanh cụ thể)
+- [[sources/longguru/WQt02JChwyc — EM LÀ ÁNH DƯƠNG - ÁNH DƯƠNG CỦA EM SONG Phạm Thành Long]] — EM LÀ ÁNH DƯƠNG - ÁNH DƯƠNG CỦA EM SONG (bài hát)
 
 ---
 
-**Tổng:** 37 video · Kênh: @longguru (Phạm Thành Long — kinh doanh, tư duy, bán hàng) · 3 video là bài hát/vlog cá nhân, không phải bài giảng
+**Tổng:** 43 video · Kênh: @longguru (Phạm Thành Long — kinh doanh, tư duy, bán hàng) · 5 video là bài hát/vlog cá nhân, không phải bài giảng
