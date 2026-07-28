@@ -24,3 +24,10 @@
 [2026-07-24 20:11] collect | TONG video moi hom nay: 75 (luu o _inbox, cho buoc nap luc 23h)
 [2026-07-24 20:13] collect | Nguon @ThayTranVietQuan : +33 video moi
 [2026-07-24 20:13] collect | TONG video moi hom nay: 33 (luu o _inbox, cho buoc nap luc 23h)
+[2026-07-27 20:08] consolidate | them kenh moi @ThayTranVietQuan vao sources.txt, chay COLLECT toan bo 4 kenh
+[2026-07-27 20:08] consolidate | CONSOLIDATE + XUAT BAN 79 video (4 kenh) hoan tat:
+[2026-07-27 20:08] consolidate | @HuyenNguyenDiamond: nap 36 video (viet dan y + phan loai, 4 video hop noi bo BNI + 2 video bai tap/dance ca nhan da ghi chu rieng). Phan bo: 01 Quan he-Gia dinh=6, 05 Lanh dao-Doi nhom=5, 06 Khoi nghiep-Kinh doanh=1, 08 Tu duy-Thanh cong=2, 09 Khac=22
+[2026-07-27 20:08] consolidate | @ThayTranVietQuan (kenh moi, Tran Viet Quan): nap 35 video (viet dan y + phan loai, toan bo la noi dung tri thuc that). Phan bo: 01 Quan he-Gia dinh=5, 02 Tai chinh=1, 06 Khoi nghiep-Kinh doanh=1, 07 Cam xuc-Suc khoe=1, 09 Khac=27
+[2026-07-27 20:08] consolidate | @hoangminhhoaoffical: nap them 3 video (viet dan y + phan loai). Phan bo: 06 Khoi nghiep-Kinh doanh=1, 07 Cam xuc-Suc khoe=1, 09 Khac=1. Tong kenh sau khi nap: 44 video
+[2026-07-27 20:08] consolidate | @longguru: nap them 5 video (viet dan y + phan loai, 1 bai hat + 1 vlog ca nhan da ghi chu rieng). Phan bo: 06 Khoi nghiep-Kinh doanh=2, 07 Cam xuc-Suc khoe=1, 09 Khac=2. Tong kenh sau khi nap: 43 video
+[2026-07-27 20:08] consolidate | XUAT BAN: da chuyen toan bo 79 file tu videos/<NN>/ sang layout phang wiki/sources/<kenh>/*.md kem category frontmatter; tao index.md moi cho HuyenNguyenDiamond + ThayTranVietQuan; cap nhat index.md cho hoangminhhoaoffical + longguru; cap nhat wiki/index.md va wiki/log.md

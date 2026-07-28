@@ -4,6 +4,19 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-27] ingest | Sưu tầm tri thức YouTube — 79 video (4 kênh), thêm kênh mới @ThayTranVietQuan
+- File: `wiki/sources/HuyenNguyenDiamond/videos/_inbox`, `wiki/sources/ThayTranVietQuan/videos/_inbox`, `wiki/sources/hoangminhhoaoffical/videos/_inbox`, `wiki/sources/longguru/videos/_inbox` (transcript qua skill [[sources/2026-suu-tam-kien-thuc-skill]])
+- Thêm kênh mới **@ThayTranVietQuan** (Trần Việt Quân) vào `sources.txt` theo yêu cầu; chạy COLLECT cho cả 4 kênh đang theo dõi rồi CONSOLIDATE toàn bộ backlog tồn đọng
+- Summary: [[sources/HuyenNguyenDiamond/index]] (36 video, kênh mới), [[sources/ThayTranVietQuan/index]] (35 video, kênh mới), [[sources/hoangminhhoaoffical/index]] (+3 video, tổng 44), [[sources/longguru/index]] (+5 video, tổng 43)
+- Khoang pages: không tạo — đây là nguồn thô (raw transcript + dàn ý), chưa qua bước tổng hợp thành khoang page riêng, theo đúng quy ước hiện có của 2 kênh trước
+- Viết dàn ý bằng 5 agent chạy song song (do >30 file); một số agent bị gián đoạn giữa chừng do lỗi API stream, đã resume và hoàn tất đủ 79/79 file (xác minh bằng grep `status: complete` trên đĩa, không dựa vào báo cáo tự thuật của agent)
+- Sự cố kỹ thuật khi xuất bản: script `publish.ps1` (tự viết, dùng biến `$Matches` bị PowerShell ghi đè bởi các `-match` khác trong cùng vòng lặp) đã ghi sai `category:` cho phần lớn file (giá trị bị lẫn video_id thay vì mã chủ đề) — phát hiện qua kiểm tra lại `grep category:` ngay sau khi chạy, đã viết script sửa (`fix_category.ps1`) tính lại category từ `title` bằng đúng thuật toán của `classify.ps1`, áp dụng lại cho cả 79 file và xác minh sạch
+- Pages updated: [[sources/hoangminhhoaoffical/index]], [[sources/longguru/index]], [[index]]
+- New pages: [[sources/HuyenNguyenDiamond/index]], [[sources/ThayTranVietQuan/index]] + 79 file nguồn riêng lẻ trong 4 thư mục kênh
+- Mâu thuẫn: none
+
+---
+
 ## [2026-07-24] create | Forever Green — 30 bài content đợt 2 (tự makeup)
 - 30 record ghi vào bảng "Forever Green" (Base "CRM Thúy Thúy", `tbl4ZMKIMg9SUqgy`) qua `lark-cli base +record-batch-create`, Trạng thái = "Chờ duyệt", lịch đăng rải 2026-08-15 → 2026-09-13 (19:00 mỗi ngày) — nối tiếp ngay sau đợt 1 (kết thúc 2026-08-14)
 - Dựa trên: [[nang-luc/kb-forever-green-insight]] mục 5-6 (đợt research + NotebookLM lần 2), khung 4 tuần + `brand-voice.md`
