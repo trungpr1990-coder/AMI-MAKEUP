@@ -4,6 +4,17 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-28] query | Research thị trường 360° — Đào tạo makeup cá nhân (dạy tự trang điểm)
+- Yêu cầu: tìm khoảng trống thị trường + đối tượng khách hàng cho "Đào tạo makeup, dạy học cho các chị em biết tự trang điểm cho chính mình" — dùng skill `hmh-mkt-research-thi-truong`
+- Cào dữ liệu thật qua Apify: `apify/google-search-scraper` (29 query, 238 kết quả, VN/vi) + `clockworks/tiktok-scraper` (5 từ khoá, 60 video có follower/tim/view/comment) — không đoán mò
+- Khác các báo cáo đối thủ trước đây (chỉ khảo sát đối thủ cùng khu vực Nam Định/lân cận): lần này quét TOÀN QUỐC để tìm đối thủ tầm mạng xã hội lớn — phát hiện Jane Here (@janehere_official, 1,4 triệu follower TikTok) là đối thủ trực tiếp mạnh nhất đúng định vị "makeup cá nhân cho người mới bắt đầu", cùng nhóm Chou Lười Makeup (623,5K), Mần đẹp (734,2K), Ngô Mai Phương (710,1K), Liu Bui (438,9K) — đa số là KOC nội dung, không bán đào tạo trực tiếp
+- Kết luận chính: thị trường bão hoà cao ở tầng "nội dung kỹ thuật cho người mới" (công thức "N bước" lặp lại khắp nơi, kể cả ở đối thủ follower triệu) nhưng vẫn trống ở tầng "cá nhân hoá theo gương mặt/hoàn cảnh sống" + "xây niềm tin trước khi bán" — đúng 2 trục AMI đã chủ động chọn qua 6 ebook lead magnet có sẵn, xác nhận lại bằng dữ liệu thị trường rộng (không chỉ đối thủ gần)
+- Đề xuất 2 hướng cho ebook thứ 7 (chưa làm ngay): đóng gói riêng cho phân khúc "dân văn phòng bận rộn" (đã được báo chí kenh14.vn xác nhận là hiện tượng xã hội thật), hoặc mini case-study phản bác nghi ngờ "học online có hiệu quả không"
+- Summary: [[nang-luc/out-2026-07-28-research-thi-truong-day-tu-trang-diem]]
+- Sources drawn from: [[nang-luc/out-2026-07-12-phan-tich-thi-truong-doi-thu-ami]], [[nang-luc/out-2026-07-12-ho-so-khach-hang-muc-tieu-ami]] (đối chiếu để tránh trùng lặp với nghiên cứu đối thủ cùng khu vực đã có)
+- Pages updated: [[index]]
+- Mâu thuẫn: none
+
 ## [2026-07-27] ingest | Sưu tầm tri thức YouTube — 79 video (4 kênh), thêm kênh mới @ThayTranVietQuan
 - File: `wiki/sources/HuyenNguyenDiamond/videos/_inbox`, `wiki/sources/ThayTranVietQuan/videos/_inbox`, `wiki/sources/hoangminhhoaoffical/videos/_inbox`, `wiki/sources/longguru/videos/_inbox` (transcript qua skill [[sources/2026-suu-tam-kien-thuc-skill]])
 - Thêm kênh mới **@ThayTranVietQuan** (Trần Việt Quân) vào `sources.txt` theo yêu cầu; chạy COLLECT cho cả 4 kênh đang theo dõi rồi CONSOLIDATE toàn bộ backlog tồn đọng
@@ -982,3 +993,19 @@ Append-only record of all ingest, query, and maintenance operations.
 - Thay toàn bộ nhắc tên cá nhân bằng "AMI"/"chuyên gia AMI": mô tả meta, đoạn lead hero, dòng mô tả món quà 1 (makeup cá nhân), màn hình thành công (trước "Chị Thuý sẽ liên hệ" → "AMI sẽ liên hệ"), câu trả lời FAQ về lý do giới hạn suất — rà lại bằng grep xác nhận không còn "Thuý"/"Thúy" nào trong nội dung hiển thị (chỉ còn 1 comment nội bộ trong code, không hiển thị cho khách)
 - Đã test lại bằng npx serve ở cả khung desktop (1280px, 2 cột hiển thị đúng) và mobile (375px, xếp dọc đúng: chữ → value box → 2 nút → ảnh), không lỗi console
 - Mâu thuẫn: none
+
+## [2026-07-28] query | Validate ngách — Hệ thống hoá vận hành + AI cho chủ tiệm/nghề — 45/100 Marginal
+- Saved as: [[../output/2026-07-28-validate-ngach-he-thong-hoa-ai-cho-chu-tiem-nghe/2026-07-28-validate-ngach-he-thong-hoa-ai-cho-chu-tiem-nghe]]
+- Skill: hmh-mkt-validate-ngach
+- Verdict: Pass cho 2026 (giữ hạt giống 2027+) — lệch định hướng 2026 đã chốt, Channel-Market Fit & Personal Alignment dưới ngưỡng an toàn
+- Sources drawn from: PDCA, Master Learning Hub, ieit.vn, uyenphuongcosmetic.com, vnexpress.net
+
+## [2026-07-28] query | Research thị trường 360° — AI hoá vận hành cho chủ salon/spa (Apify Google+TikTok)
+- Skill: hmh-mkt-research-thi-truong — phạm vi giới hạn ngành làm đẹp (đã hỏi xác nhận với Thuý trước khi chạy), kênh Facebook + TikTok
+- Saved as: [[nang-luc/out-2026-07-28-research-thi-truong-ai-van-hanh-chu-salon-spa]]
+- 26 truy vấn Google (apify/google-search-scraper) + 5 từ khoá TikTok/60 video (clockworks/tiktok-scraper)
+- Phát hiện chính: lớp đối thủ cụ thể trong ngành làm đẹp mà báo cáo validate-ngách cùng ngày (WebSearch chung) bỏ sót — K Đạt (tự động hoá hair salon, không AI), Dũng Nguyễn/thienancorporation (AI thực chiến salon spa, 1.9tr/ngày, tự nhận "đầu tiên & duy nhất"), The Vườn (AI For Hair Salon), Trần Hạ Xóm Spa (#tranhaAI, 112K TikTok), Thuỷ Đào Tạo Spa (⚠️ trùng tên "Thuỷ"), Vũ Mạnh Cầm, LovinBot AI, Preny AI — tất cả dạy "dùng công cụ AI" (ChatGPT/content), chưa ai dạy xây hệ thống vận hành AI thật có proof
+- Góc khác biệt đề xuất: định vị proof-based ("hệ thống AI thật tôi đang tự vận hành") — không đối thủ nào tìm được có thể tuyên bố câu này
+- Không đổi quyết định "Pass cho 2026" của báo cáo validate-ngách — đây là bản đồ đối thủ chi tiết chuẩn bị cho 2027+, khuyến nghị hành động duy nhất (nếu muốn) là đăng thử 1 bài/video đo phản ứng, không xây phễu/khoá học
+- Pages updated: [[index]]
+- Mâu thuẫn: none (bổ sung, không mâu thuẫn với kết luận validate-ngách sáng nay)

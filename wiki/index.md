@@ -143,6 +143,8 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[nang-luc/out-2026-07-18-phan-tich-chien-luoc-quang-cao-hai-lynh]] — Case study quảng cáo Facebook của Hải Lynh Beauty & Cosmetic (kem nền 4in1, đối thủ gián tiếp — bán sản phẩm không phải đào tạo), xác minh qua Meta Ad Library (~160 biến thể, chạy liên tục từ 07/2025): targeting rộng đúng cho ecommerce giá thấp nhưng KHÔNG nên áp cho AMI (cam kết mua cao hơn, ràng buộc địa lý); học được: 9-10 biến thể hook, định lượng hoá lợi ích, ưu đãi cụ thể; không nên học: ẩn danh hoá founder (added 2026-07-18)
 - [[nang-luc/out-2026-07-24-he-thong-tu-viet-metadata-youtube]] — Skill YouTube auto-post: thêm AI tự viết Tiêu đề/Mô tả/Tags từ khung hình video (ffmpeg+Claude vision), chống lặp câu mở/kết bằng cách bắt dùng nguyên văn câu xoay vòng, phát hiện+sửa lỗi lệch múi giờ 1 tiếng ở cột Ngày giờ đăng, 2 Scheduled Task AutoWrite/AutoPost đã bật chạy thật (added 2026-07-24)
 - [[nang-luc/out-2026-07-24-yt-forever-green-tu-makeup]] — Research YouTube đợt 2 cho "Forever Green" (189 video, từ khoá "makeup cá nhân"/"tự trang điểm"/"tự makeup"): 3 kênh mới phát hiện (Mai Trinh Hồ — USP "tiết kiệm tiền học makeup", Tiny Loly — kỹ thuật đơn lẻ evergreen từ 2018 vẫn hot, Quach Anh Makeup Artist), hook nghịch lý "academy tự nói không cần đi học" (added 2026-07-24)
+- [[nang-luc/out-2026-07-28-research-thi-truong-ai-van-hanh-chu-salon-spa]] — Research thị trường 360° (Apify Google+TikTok, 26 query): khoảng trống "AI hoá vận hành cho chủ salon/spa" — tìm ra lớp đối thủ cụ thể (K Đạt tự động hoá hair salon, Dũng Nguyễn AI thực chiến salon spa, Trần Hạ Xóm Spa #tranhaAI, Thuỷ Đào Tạo Spa — trùng tên) mà báo cáo validate-ngách cùng ngày bỏ sót; kết luận gap vẫn có thật (proof-based + tự động hoá vận hành thật, khác "dạy dùng ChatGPT") nhưng hẹp hơn, không đổi quyết định Pass-2026 (added 2026-07-28)
+- [[nang-luc/out-2026-07-28-research-thi-truong-day-tu-trang-diem]] — Research thị trường 360° dòng Makeup Cá Nhân (Apify Google+TikTok, 29 query, quét TOÀN QUỐC khác các báo cáo trước chỉ khảo sát đối thủ cùng khu vực): phát hiện đối thủ tầm quốc gia Jane Here (1,4M follower, đúng định vị "makeup cá nhân cho người mới") nhưng vẫn dạy giáo trình chung; xác nhận AMI đã chiếm đúng 2 khoảng trống thật (cá nhân hoá theo gương mặt + xây niềm tin trước khi bán) mà cả đối thủ follower triệu cũng chưa làm; đề xuất 2 hướng ebook thứ 7 (dân văn phòng riêng biệt / phản bác nghi ngờ học online) (added 2026-07-28)
 
 ## Vật Chất (vat-chat/) — Tài sản, hạ tầng, chi phí, credential
 
@@ -150,6 +152,10 @@ Danh mục tất cả nội dung wiki theo loại (sources, entities, concepts, 
 - [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]] — Công thức doanh thu, mô hình lợi nhuận ưu tiên, quy trình lập kế hoạch 3 bước
 - [[vat-chat/2026-07-12-backup-tu-dong-github]] — Scheduled Task backup vault lên GitHub mỗi 2 giờ (added 2026-07-12)
 - [[vat-chat/2026-07-20-he-thong-thu-chi-ami]] — Bảng "Thu Chi AMI" trong Lark Base (table_id `tblnyZNxbWcsjlsW`): ghi Thu/Chi theo khoản mục thật, tự tính Dòng tiền/Tháng/Năm, view tổng hợp theo tháng — thay cho cụm 6 bảng cũ hoá ra là template studio ảnh cưới không dùng được (added 2026-07-20)
+
+## Output (output/) — Kết quả nghiên cứu/phân tích theo yêu cầu
+
+- [[../output/2026-07-28-validate-ngach-he-thong-hoa-ai-cho-chu-tiem-nghe/2026-07-28-validate-ngach-he-thong-hoa-ai-cho-chu-tiem-nghe]] — Validate ngách "hệ thống hoá vận hành + đưa AI vào DN cho chủ tiệm/nghề": 45/100 Marginal, Pass cho 2026 (lệch định hướng năm nay, Channel-Market Fit & Personal Alignment dưới ngưỡng an toàn), giữ làm hạt giống 2027+ (added 2026-07-28)
 
 ---
 
