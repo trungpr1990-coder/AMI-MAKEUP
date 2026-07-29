@@ -4,6 +4,18 @@ Append-only record of all ingest, query, and maintenance operations.
 
 ---
 
+## [2026-07-29] query | SIPOC & ITTO — Mô hình vận hành AMI Personal Beauty (5 quy trình, file Word)
+- Yêu cầu: Thuý muốn phác thảo SIPOC cho mô hình kinh doanh (marketing, bán hàng, tài chính, vận hành lớp học, CSKH), kèm ITT(O) để thực thi chi tiết, có "phiếu rà soát chuẩn" kiểu Project Manager, xuất file Word có bảng biểu
+- Không bắt đầu từ 0: đã có nền tảng [[concepts/8-cong-cu-quan-tri-van-hanh]] (dựng 2026-07-15) — lộ trình lúc đó ưu tiên BMC→Swimlane→WI/OPL trước, để SIPOC toàn phễu lại sau; lần này làm đúng bước SIPOC đó, mở rộng ra cả 5 mảng
+- Đã gửi đề cương xin duyệt trước khi viết full (theo yêu cầu chuẩn của Thuý với nội dung số lượng lớn) — Thuý chọn "làm full luôn" + "dùng nguyên số liệu cũ" (giá khoá, mục tiêu 50tr/tháng, đội ngũ không đổi)
+- Dựng file Word bằng docx-js (BMC rút gọn + sơ đồ khối 5 quy trình + 5×(SIPOC+ITTO+phiếu rà soát) + dashboard tổng hợp + lộ trình theo tuần), validate XML toàn bộ file (không có Python/LibreOffice trên máy để chạy validate.py chuẩn của skill word-document, đã validate thay thế bằng parse XML từng file trong docx qua PowerShell)
+- Phát hiện quan trọng nhất từ phiếu rà soát: CSKH có khoảng trống Đỏ lớn nhất — 0 testimonial có tên dù đã phục vụ ~1.200 khách (~500 cô dâu, ~500 dịch vụ khác, ~200 học viên)
+- Summary: [[nang-luc/out-2026-07-29-sipoc-itto-mo-hinh-van-hanh-ami]]
+- File: `output/2026-07-29-sipoc-itto-mo-hinh-van-hanh-ami/out-2026-07-29-sipoc-itto-mo-hinh-van-hanh-ami.docx`
+- Sources drawn from: [[concepts/8-cong-cu-quan-tri-van-hanh]], [[nang-luc/out-2026-07-15-huong-dan-ap-dung-8-cong-cu-chi-tiet-ami]], [[nang-luc/2026-07-11-sop-content-video-marketing-ami]], [[nang-luc/2026-07-11-sop-ban-hang-pheu-ads-ami]], [[nang-luc/2026-07-11-sop-van-hanh-hoc-vien-nhan-su-ami]], [[vat-chat/2026-06-30-hoach-dinh-tai-chinh]], [[vat-chat/2026-07-20-he-thong-thu-chi-ami]], [[nang-luc/out-2026-07-09-phieu-dien-ho-so-doanh-nghiep-ami]]
+- Pages updated: [[index]]
+- Mâu thuẫn: none
+
 ## [2026-07-28] query | Research thị trường 360° — Đào tạo makeup cá nhân (dạy tự trang điểm)
 - Yêu cầu: tìm khoảng trống thị trường + đối tượng khách hàng cho "Đào tạo makeup, dạy học cho các chị em biết tự trang điểm cho chính mình" — dùng skill `hmh-mkt-research-thi-truong`
 - Cào dữ liệu thật qua Apify: `apify/google-search-scraper` (29 query, 238 kết quả, VN/vi) + `clockworks/tiktok-scraper` (5 từ khoá, 60 video có follower/tim/view/comment) — không đoán mò

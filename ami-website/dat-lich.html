@@ -806,7 +806,9 @@
     const locationText = currentLoc === 'store'
       ? 'Tại cửa hàng AMI — 351 Lê Hồng Phong, TP. Nam Định'
       : 'Tận nơi: ' + homeAddress;
-    const placeShort = currentLoc === 'store' ? 'Tại cửa hàng AMI' : homeAddress;
+    // "Nơi makeup" chỉ lưu LOẠI HÌNH; "Địa điểm" luôn lưu ĐỊA CHỈ CỤ THỂ — tránh 2 cột trùng dữ liệu
+    const locationType = currentLoc === 'store' ? 'Tại cửa hàng AMI' : 'Makeup tận nơi';
+    const placeShort = currentLoc === 'store' ? '351 Lê Hồng Phong, TP. Nam Định' : homeAddress;
 
     if (!service) {
       alert('⚠️ Vui lòng chọn loại dịch vụ (Bước 2)');
@@ -906,7 +908,7 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        orderCode, name, phone, email, address: locationText, mapsLink, contactChannel, contactName,
+        orderCode, name, phone, email, address: locationType, mapsLink, contactChannel, contactName,
         service, note, days,
         depositImages: files.deposit.filter(Boolean),
         makeupImages: files.makeup.filter(Boolean),
