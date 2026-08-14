@@ -1028,3 +1028,11 @@ Append-only record of all ingest, query, and maintenance operations.
 - Đã sửa: cập nhật đường dẫn trong `run-hidden.vbs`, `run-server-hidden.vbs`, và MAPPING/NAMESPACES trong file finder của venv; tạo lại shortcut `C:\Users\Admin\Desktop\Clone Giong Noi.lnk` trỏ vào launcher mới
 - Kết quả: app chạy lại bình thường, server lên ở `http://127.0.0.1:7860` (mất ~3-4 phút từ lúc bấm)
 - Mâu thuẫn: none
+
+## [2026-08-14] ops | Format SSD rời 477GB sang exFAT để dùng với điện thoại
+- Ổ: NVMe trong hộp USB Realtek RTL9210B-CG, 476.9 GB (Disk 1) — trước đó chỉ còn 1 phân vùng EFI 100MB sót từ máy tính cũ, ~477GB chưa chia nên Windows không hiện ra ổ nào
+- Đã làm: xoá sạch → khởi tạo MBR (tương thích rộng hơn GPT với thiết bị cũ) → 1 phân vùng toàn dung lượng → format **exFAT**, allocation unit 128KB, nhãn `SSD_THUY`, gán ổ E:
+- Chọn exFAT vì Thuý dùng cho **cả Android lẫn iPhone**: NTFS thì Android chỉ đọc và iPhone không đọc; FAT32 không lưu nổi file > 4GB (video 4K)
+- Nhãn đặt không dấu viết liền — nhiều điện thoại không đọc được tên ổ có dấu tiếng Việt
+- Lưu ý kỹ thuật: thao tác chia/format ổ đĩa cần quyền Administrator, phiên Claude thường bị `Access to a CIM resource was not available` → cách xử lý là viết script có khoá an toàn (kiểm tra BusType=USB + đúng dung lượng + không phải ổ boot) rồi `Start-Process -Verb RunAs` để user bấm Yes trên UAC
+- Mâu thuẫn: none
