@@ -1036,3 +1036,21 @@ Append-only record of all ingest, query, and maintenance operations.
 - Nhãn đặt không dấu viết liền — nhiều điện thoại không đọc được tên ổ có dấu tiếng Việt
 - Lưu ý kỹ thuật: thao tác chia/format ổ đĩa cần quyền Administrator, phiên Claude thường bị `Access to a CIM resource was not available` → cách xử lý là viết script có khoá an toàn (kiểm tra BusType=USB + đúng dung lượng + không phải ổ boot) rồi `Start-Process -Verb RunAs` để user bấm Yes trên UAC
 - Mâu thuẫn: none
+
+## [2026-08-14] ops | Sửa Antigravity IDE không mở được sau bản cập nhật tự động hỏng
+- Triệu chứng: bấm mở Antigravity không lên gì, không còn shortcut trong Start Menu
+- Nguyên nhân: bản cập nhật tự động 2.5.5 chạy ngầm lúc 07:21 sáng nay. Vì app đang mở nên bộ cài Inno Setup đổ toàn bộ bản mới (1.038 MB) vào thư mục tạm `_` rồi chờ app tắt để tráo file. Lúc 10:41:55 app tắt → bước tráo file **xoá file bản cũ ở thư mục gốc nhưng không chuyển bản mới từ `_` lên**
+- Bằng chứng: `C:\Users\Admin\AppData\Local\Programs\Antigravity IDE\` mất `Antigravity IDE.exe`, `bin\` 0 file (đáng lẽ 2), `locales\` 0 file (đáng lẽ 55), mất hết .dll/.pak, `resources\app\package.json` không còn. Nhật ký `%TEMP%\Setup Log 2026-08-14 #001.txt` kết thúc đúng mốc `10:41:55 Application appears not to be running.`
+- Loại trừ: Windows Defender không cách ly file Antigravity nào (chỉ có 1 phát hiện HackTool:Win32/AutoKMS ngày 11/08 trên Desktop, không liên quan)
+- Cách sửa: bộ cài 217 MB tải sáng nay vẫn còn trong `%TEMP%\antigravity-stable-user-x64\` → chạy lại ở chế độ im lặng khi app đã tắt hẳn (`/verysilent /log /norestart /mergetasks=!runcode,!desktopicon,!quicklaunchicon`), exit code 0, mất ~3 phút
+- Kết quả: exe 201 MB trở lại, bin 2 file, locales 55 file, 15 file dll/pak, package.json version 1.107.0, shortcut Start Menu được tạo lại, app khởi động OK (11 tiến trình, phiên log ghi 20 file thay vì 0 như lúc hỏng). Dữ liệu/cài đặt trong `%APPDATA%\Antigravity IDE\` còn nguyên
+- Bài học tái dùng: app kiểu VS Code fork (Inno Setup user-install) mà đột nhiên không mở được sau cập nhật → kiểm tra thư mục cài đặt có còn exe không, và có thư mục tạm `_` chứa nguyên bản mới không; bộ cài đã tải thường vẫn nằm trong `%TEMP%` nên không cần tải lại
+- Còn tồn: thư mục `_` 1.038 MB + bộ cài 217 MB trong Temp có thể xoá để lấy lại ~1,2 GB
+- Mâu thuẫn: none
+
+## [2026-08-14] ops | Dọn rác sau khi sửa Antigravity IDE
+- Tiếp nối mục "Sửa Antigravity IDE không mở được" cùng ngày — Thuý duyệt xoá phần thừa
+- Đã xoá: thư mục tạm `_` (1.038 MB), bộ cài trong `%TEMP%\antigravity-stable-user-x64` (217 MB), thư mục rỗng `%LOCALAPPDATA%\Programs\antigravity` (tên cũ), cài đặt cũ tháng 6 ở `%APPDATA%\Antigravity` (13 MB) — tổng 1.268 MB
+- Kiểm tra sau khi xoá: app vẫn chạy (16 tiến trình), exe + bin 2 file + locales 55 file + 15 dll/pak còn nguyên, dữ liệu cá nhân ở `%APPDATA%\Antigravity IDE\User` không đụng tới
+- Lưu ý phát sinh: ổ C: chỉ còn ~10 GB trống — cần theo dõi, app kiểu Electron cập nhật cần chỗ tạm bằng cả bộ app (~1 GB) nên hết chỗ có thể gây lỗi cập nhật tương tự
+- Mâu thuẫn: none
