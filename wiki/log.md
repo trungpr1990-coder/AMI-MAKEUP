@@ -1021,3 +1021,10 @@ Append-only record of all ingest, query, and maintenance operations.
 - Không đổi quyết định "Pass cho 2026" của báo cáo validate-ngách — đây là bản đồ đối thủ chi tiết chuẩn bị cho 2027+, khuyến nghị hành động duy nhất (nếu muốn) là đăng thử 1 bài/video đo phản ứng, không xây phễu/khoá học
 - Pages updated: [[index]]
 - Mâu thuẫn: none (bổ sung, không mâu thuẫn với kết luận validate-ngách sáng nay)
+
+## [2026-08-14] ops | Sửa & mở lại app Clone Giọng Nói sau khi chuyển ổ đĩa
+- Thuý yêu cầu "mở máy giọng nói" — phát hiện app đã được chuyển từ `C:\Users\Admin\.claude\skills\clone-giong-noi\` sang `D:\clone-giong-noi\`, shortcut Desktop cũ đã mất, app khởi động rồi treo im ở màn hình "Đang tải" (tiến trình python sống nhưng CPU đứng yên, port 7860 không mở)
+- Nguyên nhân: 2 launcher `.vbs` và file editable-install của venv (`engine\.venv\Lib\site-packages\__editable___vieneu_3_2_3_finder.py`) còn ghi cứng đường dẫn C: cũ → `import vieneu` báo ModuleNotFoundError nhưng chạy ẩn nên không thấy lỗi
+- Đã sửa: cập nhật đường dẫn trong `run-hidden.vbs`, `run-server-hidden.vbs`, và MAPPING/NAMESPACES trong file finder của venv; tạo lại shortcut `C:\Users\Admin\Desktop\Clone Giong Noi.lnk` trỏ vào launcher mới
+- Kết quả: app chạy lại bình thường, server lên ở `http://127.0.0.1:7860` (mất ~3-4 phút từ lúc bấm)
+- Mâu thuẫn: none
